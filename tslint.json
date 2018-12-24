@@ -11,11 +11,34 @@
   "rules": {
     "indent": [true, "spaces", 4],
     "interface-name": false,
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "private-static-field",
+          "protected-static-field",
+          "public-static-field",
+          "private-instance-field",
+          "protected-instance-field",
+          "public-instance-field",
+          "private-static-method",
+          "protected-static-method",
+          "public-static-method",
+          "private-constructor",
+          "protected-constructor",
+          "public-constructor",
+          "private-instance-method",
+          "protected-instance-method",
+          "public-instance-method"
+        ]
+      }
+    ],
     "no-consecutive-blank-lines": false,
     "object-literal-sort-keys": false,
     "one-line": false,
     "ordered-imports": false,
     "quotemark": [true, "double"],
-    "trailing-comma": false
+    "trailing-comma": false,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
   }
 }

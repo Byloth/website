@@ -1,14 +1,32 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link>
+        <nav-bar title="Byloth's Website" />
+        <div id="detail">
+            <div id="nav">
+                <router-link to="/">Home</router-link> |
+                <router-link to="/about">About</router-link>
+            </div>
+            <router-view />
         </div>
-        <router-view />
     </div>
 </template>
 
+<script lang="ts">
+    import { Component, Vue } from "vue-property-decorator";
+    import TopAppBar from "@/components/mdc/TopAppBar.vue";
+
+    @Component({ components: { "nav-bar": TopAppBar } })
+    export default class App extends Vue { }
+</script>
+
 <style lang="scss">
+    @import "@material/ripple/mdc-ripple";
+
+    body
+    {
+        margin: 0px;
+    }
+
     #app
     {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -16,6 +34,10 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
+    }
+    #detail
+    {
+        padding: 72px 8px 8px 8px;
     }
     #nav
     {
