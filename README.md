@@ -1,29 +1,54 @@
-# byloth-ws
+# Byloth's Website #
+## My personal website as a Vue.js application based on TypeScript. ##
 
-## Project setup
-```
-npm install
-```
+Actually, yet another attempt to develop my personal website, to be precise...
+> *... I'm pretty sure this is the fifth one...* 😒
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+---
 
-### Compiles and minifies for production
-```
-npm run build
-```
+This website will simply be a *"place"* where I'll be able to share my thoughts with all of you, where everyone will be able to can get to know me and my interests and *-why not?-* learn new interesting things! 😉
 
-### Run your tests
-```
-npm run test
-```
+At last but not least, this website will be:
+* My landing page.
+* My blog.
+* My portfolio.
+* My curriculum vitae.
+* My blackboard.
+* *... and some other "my-" exciting things!* 🤣
 
-### Lints and fixes files
-```
-npm run lint
-```
+---
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Some details for geeks... 🤓 ###
+
+Some of the technologies I used:
+* [Vue.js](https://vuejs.org/)
+* [TypeScript](https://www.typescriptlang.org/)
+
+---
+
+> ## Project setup ##
+> ```
+> npm install
+> ```
+>
+> ---
+>
+> ### Compiles and hot-reloads for development ###
+> ```
+> npm run serve
+> ```
+>
+> ### Compiles and minifies for production ###
+> ```
+> npm run build
+> ```
+>
+> ### Lints and fixes files ###
+> ```
+> npm run lint
+> ```
+>
+> ---
+>
+> ### Customize configuration ###
+> See [Configuration Reference](https://cli.vuejs.org/config/).
