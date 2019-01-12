@@ -1,7 +1,24 @@
 {
-  "name": "byloth-ws",
-  "version": "0.1.0",
-  "private": true,
+  "name": "byloth-website",
+  "version": "0.0.1",
+  "description": "My personal website as a Vue.js application, written in TypeScript and based on Material Design.",
+  "keywords": [
+    "Vue.js",
+    "TypeScript",
+    "ES6",
+    "Material Design",
+    "SCSS",
+    "Personal Website"
+  ],
+  "homepage": "https://github.com/Byloth/website",
+  "license": "GPL-3.0-or-later",
+  "author": {
+    "name": "Matteo Bilotta"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Byloth/website"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -23,5 +40,6 @@
     "sass-loader": "^7.0.1",
     "typescript": "^3.0.0",
     "vue-template-compiler": "^2.5.17"
-  }
+  },
+  "private": true
 }
