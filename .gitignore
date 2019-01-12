@@ -1,2 +1,21 @@
-dist/
-node_modules/
+# Files created by OS
+#
+.DS_Store
+Desktop.ini
+
+# Files created by IDE
+#
+/.idea/
+/.vscode/
+
+# Generated & compiled files
+#
+/dist/*
+
+# Downloadable & installable modules & components
+#
+/node_modules/
+
+# Not ignored
+#
+!.gitkeep
