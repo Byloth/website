@@ -1,5 +1,5 @@
 <template>
-    <header class="mdc-top-app-bar mdc-top-app-bar">
+    <header class="mdc-top-app-bar mdc-top-app-bar mdc-top-app-bar--fixed">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
@@ -16,12 +16,13 @@
 
 <script lang="ts">
     import { Component, Prop, Vue } from "vue-property-decorator";
-    import { MDCTopAppBar } from "@material/top-app-bar/index";
+
+    import TopAppBarComponent from "../mdc/components/TopAppBarComponent";
 
     @Component
     export default class TopAppBar extends Vue
     {
-        private _topAppBar!: MDCTopAppBar;
+        private _mdcComponent!: TopAppBarComponent;
 
         @Prop({
             default: "Titolo",
@@ -32,11 +33,11 @@
 
         protected mounted(): void
         {
-            this._topAppBar = new MDCTopAppBar(this.$el);
+            this._mdcComponent = new TopAppBarComponent(this);
         }
         protected destroyed(): void
         {
-            this._topAppBar.destroy();
+            this._mdcComponent.destroy();
         }
     }
 </script>

@@ -13,7 +13,7 @@
 
 <script lang="ts">
     import { Component, Vue } from "vue-property-decorator";
-    import TopAppBar from "@/components/mdc/TopAppBar.vue";
+    import TopAppBar from "@/components/TopAppBar.vue";
 
     @Component({ components: { "nav-bar": TopAppBar } })
     export default class App extends Vue { }
