@@ -3,7 +3,7 @@ import Vue from "vue";
 import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
 import { MDCTopAppBar } from "@material/top-app-bar/index";
 
-import TopAppBarFoundation from "../foundation/TopAppBarFoundation";
+import TopAppBarFoundation from "@/mdc/foundation/TopAppBarFoundation";
 
 class TopAppBarComponent extends MDCTopAppBar
 {

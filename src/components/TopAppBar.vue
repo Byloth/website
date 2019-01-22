@@ -1,5 +1,5 @@
 <template>
-    <header class="mdc-top-app-bar mdc-top-app-bar mdc-top-app-bar--fixed">
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
@@ -15,14 +15,14 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from "vue-property-decorator";
+    import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
-    import TopAppBarComponent from "../mdc/components/TopAppBarComponent";
+    import TopAppBarComponent from "@/mdc/components/TopAppBarComponent";
 
     @Component
     export default class TopAppBar extends Vue
     {
-        private _mdcComponent!: TopAppBarComponent;
+        protected _mdcComponent!: TopAppBarComponent;
 
         @Prop({
             default: "Titolo",
@@ -31,12 +31,20 @@
         })
         public title!: string;
 
-        protected mounted(): void
+        @Emit("toggle-drawer")
+        protected _toggleDrawer(evt: Event)
+        {
+            console.debug(evt);
+        }
+
+        public mounted(): void
         {
             this._mdcComponent = new TopAppBarComponent(this);
+            this._mdcComponent.listen("MDCTopAppBar:nav", this._toggleDrawer);
         }
-        protected destroyed(): void
+        public destroyed(): void
         {
+            this._mdcComponent.unlisten("MDCTopAppBar:nav", this._toggleDrawer);
             this._mdcComponent.destroy();
         }
     }

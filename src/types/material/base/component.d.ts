@@ -7,6 +7,10 @@ declare module "@material/base/component"
         public constructor(root: Element, foundation?: F, ...args: any[]);
 
         public destroy(): void;
+
+        public listen(evtType: string, handler: EventListener): void;
+        public unlisten(evtType: string, handler: EventListener): void;
+
         public emit(evtType: string, evtData: object, shouldBubble?: boolean): void;
     }
 

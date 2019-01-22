@@ -1,21 +1,23 @@
 <template>
     <div id="app">
-        <nav-bar title="Byloth's Website" />
-        <div id="detail">
-            <div id="nav">
-                <router-link to="/">Home</router-link> |
-                <router-link to="/about">About</router-link>
-            </div>
+        <master-detail>
+            <template slot="master">
+                <div id="nav">
+                    <router-link to="/">Home</router-link> |
+                    <router-link to="/about">About</router-link>
+                </div>
+            </template>
             <router-view />
-        </div>
+        </master-detail>
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from "vue-property-decorator";
-    import TopAppBar from "@/components/TopAppBar.vue";
 
-    @Component({ components: { "nav-bar": TopAppBar } })
+    import MasterDetail from "@/skeleton/MasterDetail.vue";
+
+    @Component({ components: { "master-detail": MasterDetail } })
     export default class App extends Vue { }
 </script>
 
@@ -34,10 +36,6 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-    }
-    #detail
-    {
-        padding: 72px 8px 8px 8px;
     }
     #nav
     {
