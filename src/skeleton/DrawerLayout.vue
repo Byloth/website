@@ -1,8 +1,8 @@
 <template>
-    <div id="master-detail">
+    <div id="drawer-layout">
         <nav-bar />
-        <div id="detail">
-            <slot name="master" />
+        <div id="main">
+            <slot name="menu" />
             <slot />
         </div>
     </div>
@@ -14,7 +14,7 @@
     import NavigationBar from "@/skeleton/NavigationBar.vue";
 
     @Component({ components: { "nav-bar": NavigationBar } })
-    export default class MasterDetail extends Vue { }
+    export default class DrawerLayout extends Vue { }
 </script>
 
 <style lang="scss">
@@ -33,7 +33,7 @@
         text-align: center;
         color: #2c3e50;
     }
-    #detail
+    #main
     {
         padding: 72px 8px 8px 8px;
     }

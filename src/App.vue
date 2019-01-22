@@ -1,23 +1,23 @@
 <template>
     <div id="app">
-        <master-detail>
-            <template slot="master">
+        <drawer-layout>
+            <template slot="menu">
                 <div id="nav">
                     <router-link to="/">Home</router-link> |
                     <router-link to="/about">About</router-link>
                 </div>
             </template>
             <router-view />
-        </master-detail>
+        </drawer-layout>
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from "vue-property-decorator";
 
-    import MasterDetail from "@/skeleton/MasterDetail.vue";
+    import DrawerLayout from "@/skeleton/DrawerLayout.vue";
 
-    @Component({ components: { "master-detail": MasterDetail } })
+    @Component({ components: { "drawer-layout": DrawerLayout } })
     export default class App extends Vue { }
 </script>
 
