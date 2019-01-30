@@ -22,7 +22,10 @@
 </script>
 
 <style lang="scss">
+    @import "@material/drawer/mdc-drawer";
+    @import "@material/list/mdc-list";
     @import "@material/ripple/mdc-ripple";
+    @import "@material/top-app-bar/mdc-top-app-bar";
 
     body
     {

@@ -2,13 +2,13 @@
     <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
+                <action-item class="mdc-top-app-bar__navigation-icon" icon="menu" />
                 <span class="mdc-top-app-bar__title">{{ title }}</span>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Download" alt="Download">file_download</a>
-                <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Print this page" alt="Print this page">print</a>
-                <a href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Bookmark this page" alt="Bookmark this page">bookmark</a>
+                <action-item class="mdc-top-app-bar__action-item" icon="file_download" description="Download" />
+                <action-item class="mdc-top-app-bar__action-item" icon="print" description="Print this page" />
+                <action-item class="mdc-top-app-bar__action-item" icon="bookmark" description="Bookmark this page" />
             </section>
         </div>
     </header>
@@ -17,9 +17,10 @@
 <script lang="ts">
     import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
+    import ActionItem from "@/components/ActionItem.vue";
     import TopAppBarComponent from "@/mdc/components/TopAppBarComponent";
 
-    @Component
+    @Component({ components: { "action-item": ActionItem } })
     export default class TopAppBar extends Vue
     {
         protected _mdcComponent!: TopAppBarComponent;
@@ -31,11 +32,8 @@
         })
         public title!: string;
 
-        @Emit("toggle-drawer")
-        protected _toggleDrawer(evt: Event)
-        {
-            console.debug(evt);
-        }
+        @Emit("drawer-toggle")
+        protected _toggleDrawer(evt: Event): void { }
 
         public mounted(): void
         {
@@ -49,7 +47,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped="scoped">
-    @import "@material/top-app-bar/mdc-top-app-bar";
-</style>

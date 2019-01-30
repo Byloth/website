@@ -1,6 +1,6 @@
 declare module "@material/top-app-bar/adapter"
 {
-    class MDCTopAppBarAdapter
+    interface MDCTopAppBarAdapter
     {
         addClass(className: string): void;
         removeClass(className: string): void;

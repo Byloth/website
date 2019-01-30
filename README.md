@@ -1,5 +1,5 @@
 # Byloth's Website #
-## My personal website as a Vue.js application, written in TypeScript and based on Material Design. ##
+## 🌐 My personal website as a Vue.js application, written in TypeScript and based on Material Design. ##
 
 Actually, yet another attempt to develop my personal website, to be precise...
 > *... I'm pretty sure this is the fifth one...* 😒
