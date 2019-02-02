@@ -1,4 +1,4 @@
-declare module "@material/base/component"
+declare module '@material/base/component'
 {
     class MDCComponent<F>
     {

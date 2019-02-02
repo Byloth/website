@@ -1,7 +1,7 @@
-declare module "@material/drawer/index"
+declare module '@material/drawer/index'
 {
-    import MDCComponent from "@material/base/component";
-    import MDCDismissibleDrawerFoundation from "@material/drawer/dismissible/foundation";
+    import MDCComponent from '@material/base/component';
+    import MDCDismissibleDrawerFoundation from '@material/drawer/dismissible/foundation';
 
     class MDCDrawer extends MDCComponent<MDCDismissibleDrawerFoundation>
     {

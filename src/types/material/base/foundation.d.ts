@@ -1,4 +1,4 @@
-declare module "@material/base/foundation"
+declare module '@material/base/foundation'
 {
     interface MDCStrings
     {

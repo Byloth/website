@@ -6,13 +6,13 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from "vue-property-decorator";
+    import { Component, Prop, Vue } from 'vue-property-decorator';
 
     @Component
     export default class ListItem extends Vue
     {
         @Prop({
-            default: "bookmark",
+            default: 'bookmark',
             type: String
         })
         public icon!: string;

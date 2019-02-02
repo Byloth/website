@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <drawer-layout>
+        <drawer-layout id="drawer-layout">
             <template slot="menu">
                 <div id="nav">
                     <router-link to="/">Home</router-link> |
@@ -13,33 +13,25 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
+    import { Component, Vue } from 'vue-property-decorator';
 
-    import DrawerLayout from "@/skeleton/DrawerLayout.vue";
+    import DrawerLayout from '@/skeleton/DrawerLayout.vue';
 
-    @Component({ components: { "drawer-layout": DrawerLayout } })
+    @Component({ components: { 'drawer-layout': DrawerLayout } })
     export default class App extends Vue { }
 </script>
 
 <style lang="scss">
-    @import "@material/drawer/mdc-drawer";
-    @import "@material/list/mdc-list";
-    @import "@material/ripple/mdc-ripple";
-    @import "@material/top-app-bar/mdc-top-app-bar";
+    @import '@material/drawer/mdc-drawer';
+    @import '@material/list/mdc-list';
+    @import '@material/ripple/mdc-ripple';
+    @import '@material/top-app-bar/mdc-top-app-bar';
 
     body
     {
         margin: 0px;
     }
 
-    #app
-    {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-    }
     #nav
     {
         padding: 30px;

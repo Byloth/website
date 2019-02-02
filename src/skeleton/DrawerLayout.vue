@@ -1,12 +1,11 @@
 <template>
-    <div id="drawer-layout">
-        <top-app-bar title="Byloth's Website" v-on:drawer-toggle="toggleDrawer" />
-        <drawer ref="drawer">
+    <div>
+        <drawer id="drawer" ref="drawer" @opened="drawerOpened" @closed="drawerClosed">
             <list-item class="mdc-list-item--activated" icon="inbox" description="Inbox" />
             <list-item icon="send" description="Outgoing" />
             <list-item icon="drafts" description="Draft" />
         </drawer>
-        <div class="mdc-drawer-scrim" />
+        <nav-bar title="Byloth's Website" @drawer-toggle="toggleDrawer" />
         <div id="main">
             <slot name="menu" />
             <slot />
@@ -15,63 +14,68 @@
 </template>
 
 <script lang="ts">
-    import { MDCDrawer } from "@material/drawer/index";
-    import { Component, Vue } from "vue-property-decorator";
+    import { Component, Vue } from 'vue-property-decorator';
 
-    import Drawer from "@/components/Drawer.vue";
-    import ListItem from "@/components/ListItem.vue";
-    import TopAppBar from "@/components/TopAppBar.vue";
+    import Drawer from '@/components/Drawer.vue';
+    import ListItem from '@/components/ListItem.vue';
+    import NavigationBar from '@/components/NavigationBar.vue';
 
     @Component({
         components: {
-            "drawer": Drawer,
-            "list-item": ListItem,
-            "top-app-bar": TopAppBar
+            'drawer': Drawer,
+            'list-item': ListItem,
+            'nav-bar': NavigationBar
         }
     })
     export default class DrawerLayout extends Vue
     {
-        protected _mdcComponent!: MDCDrawer;
+        protected _drawer!: Drawer;
+
+        public isOpen: boolean;
 
         public constructor()
         {
             super();
+
+            this.isOpen = false;
+        }
+
+        public drawerOpened(evt: Event): void
+        {
+            this.isOpen = true;
+        }
+        public drawerClosed(evt: Event): void
+        {
+            this.isOpen = false;
         }
 
         public toggleDrawer(evt: Event): void
         {
-            this._mdcComponent.open = !this._mdcComponent.open;
+            if (!(this.isOpen))
+            {
+                this._drawer.open();
+            }
+            else
+            {
+                this._drawer.close();
+            }
         }
 
         public mounted(): void
         {
-            const drawer: Vue = this.$refs.drawer as Vue;
-
-            this._mdcComponent = new MDCDrawer(drawer.$el);
-        }
-        public destroyed(): void
-        {
-            this._mdcComponent.destroy();
+            this._drawer = this.$refs.drawer as Drawer;
         }
     }
 </script>
 
-<style lang="scss">
-    body
-    {
-        margin: 0px;
-    }
-
-    #app
+<style lang="scss" scoped="scoped">
+    #main
     {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-    }
-    #main
-    {
         padding: 72px 8px 8px 8px;
     }
 </style>
