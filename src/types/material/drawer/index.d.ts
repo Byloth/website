@@ -5,6 +5,12 @@ declare module '@material/drawer/index'
 
     class MDCDrawer extends MDCComponent<MDCDismissibleDrawerFoundation>
     {
+        protected previousFocus_: Element | null;
+        protected focusTrap_: {
+            activate(): void,
+            deactivate(): void
+        };
+
         public open: boolean;
     }
 

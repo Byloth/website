@@ -5,7 +5,7 @@ import { MDCTopAppBar } from '@material/top-app-bar/index';
 
 import TopAppBarFoundation from '@/mdc/foundation/TopAppBarFoundation';
 
-class TopAppBarComponent extends MDCTopAppBar
+export default class TopAppBarComponent extends MDCTopAppBar
 {
     public constructor(vueElement: Vue)
     {
@@ -62,5 +62,3 @@ class TopAppBarComponent extends MDCTopAppBar
         return new TopAppBarFoundation(adapter);
     }
 }
-
-export default TopAppBarComponent;
