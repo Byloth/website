@@ -2,6 +2,7 @@ declare module '@material/top-app-bar/constants'
 {
     import { MDCStrings } from '@material/base/foundation';
 
+    // tslint:disable-next-line:class-name
     interface cssClasses extends MDCStrings
     {
         FIXED_CLASS: 'mdc-top-app-bar--fixed';
@@ -11,6 +12,7 @@ declare module '@material/top-app-bar/constants'
         SHORT_COLLAPSED_CLASS: 'mdc-top-app-bar--short-collapsed';
     }
 
+    // tslint:disable-next-line:class-name
     interface strings extends MDCStrings
     {
         ACTION_ITEM_SELECTOR: '.mdc-top-app-bar__action-item';

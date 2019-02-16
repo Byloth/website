@@ -1,7 +1,7 @@
 import MDCTopAppBarAdapter from '@material/top-app-bar/adapter';
 import MDCTopAppBarFoundation from '@material/top-app-bar/standard/foundation';
 
-class TopAppBarFoundation extends MDCTopAppBarFoundation
+export default class TopAppBarFoundation extends MDCTopAppBarFoundation
 {
     protected wasScrolled_: boolean;
 
@@ -37,5 +37,3 @@ class TopAppBarFoundation extends MDCTopAppBarFoundation
         }
     }
 }
-
-export default TopAppBarFoundation;

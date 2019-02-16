@@ -1,4 +1,0 @@
-interface Element
-{
-    focus?: () => void;
-}
