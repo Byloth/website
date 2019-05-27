@@ -1,12 +1,6 @@
 <template>
     <div id="app">
         <drawer-layout id="drawer-layout">
-            <template slot="menu">
-                <div id="nav">
-                    <router-link to="/">Home</router-link> |
-                    <router-link to="/about">About</router-link>
-                </div>
-            </template>
             <router-view />
         </drawer-layout>
     </div>
@@ -30,21 +24,5 @@
     body
     {
         margin: 0px;
-    }
-
-    #nav
-    {
-        padding: 30px;
-
-        a
-        {
-            font-weight: bold;
-            color: #2c3e50;
-
-            &.router-link-exact-active
-            {
-                color: #42b983;
-            }
-        }
     }
 </style>

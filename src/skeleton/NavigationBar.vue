@@ -17,21 +17,26 @@
 <script lang="ts">
     import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
 
+    import config from '@/config';
+
     import ActionItem from '@/components/ActionItem.vue';
     import TopAppBarComponent from '@/mdc/components/TopAppBarComponent';
 
-    @Component({ components: { 'action-item': ActionItem } })
+    @Component({ components: { 'action-item': ActionItem }})
     export default class NavigationBar extends Vue
     {
         protected static NAVIGATION_EVENT: string = 'MDCTopAppBar:nav';
 
         protected _mdcComponent!: TopAppBarComponent;
 
-        @Prop({
-            required: true,
-            type: String
-        })
-        public title!: string;
+        public title: string;
+
+        public constructor()
+        {
+            super();
+
+            this.title = config.title;
+        }
 
         @Emit('drawer-toggle')
         protected _toggleDrawer(evt: Event): void { }

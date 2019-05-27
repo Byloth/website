@@ -5,9 +5,13 @@
             <list-item icon="send" description="Outgoing" />
             <list-item icon="drafts" description="Draft" />
         </drawer>
-        <nav-bar title="Byloth's Website" @drawer-toggle="toggleDrawer" />
+        <nav-bar @drawer-toggle="toggleDrawer" />
         <div id="main">
-            <slot name="menu" />
+            <div id="nav">
+                <span v-for="page in pages" :key="page.id">
+                    <router-link :to="page.path">{{ page.title }}</router-link> |
+                </span>
+            </div>
             <slot />
         </div>
     </div>
@@ -16,9 +20,11 @@
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
 
-    import Drawer from '@/components/Drawer.vue';
+    import config, { PageOptions } from '@/config';
+
     import ListItem from '@/components/ListItem.vue';
-    import NavigationBar from '@/components/NavigationBar.vue';
+    import Drawer from '@/skeleton/Drawer.vue';
+    import NavigationBar from '@/skeleton/NavigationBar.vue';
 
     @Component({
         components: {
@@ -31,12 +37,15 @@
     {
         protected _drawer!: Drawer;
 
+        public readonly pages: PageOptions[];
+
         public isOpen: boolean;
 
         public constructor()
         {
             super();
 
+            this.pages = config.pages;
             this.isOpen = false;
         }
 
@@ -77,5 +86,21 @@
         text-align: center;
         color: #2c3e50;
         padding: 72px 8px 8px 8px;
+    }
+    
+    #nav
+    {
+        padding: 30px;
+
+        a
+        {
+            font-weight: bold;
+            color: #2c3e50;
+
+            &.router-link-exact-active
+            {
+                color: #42b983;
+            }
+        }
     }
 </style>

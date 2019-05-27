@@ -77,7 +77,7 @@
 
             if (!(drawer))
             {
-                throw new Error("It's wasn't possible to find a '.mdc-drawer' child.");
+                throw new Error("It wasn't possible to find a '.mdc-drawer' child.");
             }
 
             this._mdcComponent = new MDCDrawer(drawer);
