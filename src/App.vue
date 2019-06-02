@@ -16,13 +16,20 @@
 </script>
 
 <style lang="scss">
+    $mdc-typography-font-family: Ubuntu, Roboto, Helvetica, sans-serif;
+
     @import '@material/drawer/mdc-drawer';
     @import '@material/list/mdc-list';
     @import '@material/ripple/mdc-ripple';
     @import '@material/top-app-bar/mdc-top-app-bar';
 
+    *
+    {
+        font-family: $mdc-typography-font-family;
+    }
     body
     {
         margin: 0px;
+        overflow-y: scroll;
     }
 </style>

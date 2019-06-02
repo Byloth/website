@@ -1,5 +1,5 @@
 <template>
-    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+    <header class="mdc-top-app-bar mdc-top-app-bar--prominent">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <action-item class="mdc-top-app-bar__navigation-icon" icon="menu" />
@@ -53,3 +53,24 @@
         }
     }
 </script>
+
+<style lang="scss" scoped="scoped">
+    .mdc-top-app-bar
+    {
+        transition: box-shadow 200ms linear;
+
+        &.mdc-top-app-bar--prominent .mdc-top-app-bar__row
+        {
+            height: 192px;
+        }
+
+        &.mdc-top-app-bar--prominent .mdc-top-app-bar__title
+        {
+            font-size: 34px;
+                // -> 20px
+
+            padding-bottom: 0.4em; // 13.6px;
+                // -> 0.1em - 2px;
+        }
+    }
+</style>

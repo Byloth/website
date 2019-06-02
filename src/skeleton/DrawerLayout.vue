@@ -80,12 +80,11 @@
 <style lang="scss" scoped="scoped">
     #main
     {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        padding: 72px 8px 8px 8px;
+        padding: 200px 8px 8px 8px;
     }
     
     #nav

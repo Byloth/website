@@ -3,37 +3,48 @@ import MDCTopAppBarFoundation from '@material/top-app-bar/standard/foundation';
 
 export default class TopAppBarFoundation extends MDCTopAppBarFoundation
 {
-    protected wasScrolled_: boolean;
-
-    protected scrollHandler_: () => void;
+    protected resizeHandler_: () => void;
 
     public constructor(adapter: MDCTopAppBarAdapter)
     {
         super(adapter);
 
-        this.wasScrolled_ = false;
-
-        this.scrollHandler_ = () => this.topAppBarScrollHandler_();
+        this.resizeHandler_ = () => this._topAppBarResizeHandler();
+        this.scrollHandler_ = () => this._topAppBarScrollHandler();
     }
 
-    protected topAppBarScrollHandler_(): void
+    protected _topAppBarResizeHandler(): void
     {
-        super.topAppBarScrollHandler_();
+        // TODO: Manage this...
+    }
 
-        const currentScroll = this.adapter_.getViewportScrollY();
+    protected _topAppBarScrollHandler(): void
+    {
+        const currentScrollPosition: number = Math.max(this.adapter_.getViewportScrollY(), 0);
 
-        if (currentScroll <= 0)
-        {
-            if (this.wasScrolled_)
-            {
-                this.adapter_.removeClass(TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS);
-                this.wasScrolled_ = false;
-            }
-        }
-        else if (!this.wasScrolled_)
+        if (currentScrollPosition > 0)
         {
             this.adapter_.addClass(TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS);
-            this.wasScrolled_ = true;
         }
+        else
+        {
+            this.adapter_.removeClass(TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS);
+        }
+    }
+
+    public init(): void
+    {
+        super.init();
+
+        this.adapter_.registerScrollHandler(this.scrollHandler_);
+        this.adapter_.registerResizeHandler(this.resizeHandler_);
+    }
+    public destroy(): void
+    {
+        super.destroy();
+
+        this.adapter_.deregisterScrollHandler(this.scrollHandler_);
+        this.adapter_.deregisterResizeHandler(this.resizeHandler_);
+        this.adapter_.setStyle('top', '');
     }
 }
