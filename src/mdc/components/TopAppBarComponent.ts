@@ -49,7 +49,7 @@ export default class TopAppBarComponent extends MDCTopAppBar
                 this.scrollTarget_[this.scrollTarget_ === window ? "pageYOffset" : "scrollTop"],
 
             getTotalActionItems: () =>
-                this.root_.querySelectorAll(TopAppBarFoundation.strings.ACTION_ITEM_SELECTOR).length,
+                this.root_.querySelectorAll(TopAppBarFoundation.strings.ACTION_ITEM_SELECTOR).length
         }));
 
         return adapter;
