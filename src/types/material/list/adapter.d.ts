@@ -1,4 +1,4 @@
-declare module '@material/list/adapter'
+declare module "@material/list/adapter"
 {
     interface MDCListAdapter
     {

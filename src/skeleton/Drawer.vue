@@ -30,15 +30,14 @@
 </template>
 
 <script lang="ts">
-    import { MDCDrawer } from '@material/drawer/index';
-    import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
+    import { MDCDrawer } from "@material/drawer/index";
+    import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+
+    import DrawerFoundation from "@/mdc/foundation/DrawerFoundation";
 
     @Component
     export default class Drawer extends Vue
     {
-        protected static OPENED_EVENT: string = 'MDCDrawer:opened';
-        protected static CLOSED_EVENT: string = 'MDCDrawer:closed';
-
         protected _mdcComponent!: MDCDrawer;
 
         public isOpen: boolean;
@@ -50,13 +49,13 @@
             this.isOpen = false;
         }
 
-        @Emit('opened')
+        @Emit("opened")
         protected _opened(evt: Event): void
         {
             this.isOpen = true;
         }
 
-        @Emit('closed')
+        @Emit("closed")
         protected _closed(evt: Event): void
         {
             this.isOpen = false;
@@ -73,7 +72,7 @@
 
         public mounted(): void
         {
-            const drawer = this.$el.querySelector('.mdc-drawer');
+            const drawer = this.$el.querySelector(".mdc-drawer");
 
             if (!(drawer))
             {
@@ -81,13 +80,13 @@
             }
 
             this._mdcComponent = new MDCDrawer(drawer);
-            this._mdcComponent.listen(Drawer.OPENED_EVENT, this._opened);
-            this._mdcComponent.listen(Drawer.CLOSED_EVENT, this._closed);
+            this._mdcComponent.listen(DrawerFoundation.strings.OPENED_EVENT, this._opened);
+            this._mdcComponent.listen(DrawerFoundation.strings.CLOSED_EVENT, this._closed);
         }
         public destroyed(): void
         {
-            this._mdcComponent.unlisten(Drawer.CLOSED_EVENT, this._closed);
-            this._mdcComponent.unlisten(Drawer.OPENED_EVENT, this._opened);
+            this._mdcComponent.unlisten(DrawerFoundation.strings.CLOSED_EVENT, this._closed);
+            this._mdcComponent.unlisten(DrawerFoundation.strings.OPENED_EVENT, this._opened);
             this._mdcComponent.destroy();
         }
     }
