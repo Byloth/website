@@ -61,6 +61,7 @@
         &.mdc-top-app-bar--prominent .mdc-top-app-bar__row
         {
             height: 192px;
+                // -> 64px
         }
 
         &.mdc-top-app-bar--prominent .mdc-top-app-bar__title
