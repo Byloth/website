@@ -1,9 +1,9 @@
-import Vue from 'vue';
+import Vue from "vue";
 
-import MDCTopAppBarAdapter from '@material/top-app-bar/adapter';
-import { MDCTopAppBar } from '@material/top-app-bar/index';
+import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
+import { MDCTopAppBar } from "@material/top-app-bar/index";
 
-import TopAppBarFoundation from '@/mdc/foundation/TopAppBarFoundation';
+import TopAppBarFoundation from "@/mdc/foundation/TopAppBarFoundation";
 
 export default class TopAppBarComponent extends MDCTopAppBar
 {
@@ -39,17 +39,17 @@ export default class TopAppBarComponent extends MDCTopAppBar
 
                 this.emit(TopAppBarFoundation.strings.NAVIGATION_EVENT, {});
             },
-            registerScrollHandler: (handler: EventListener) => this.scrollTarget_.addEventListener('scroll', handler),
+            registerScrollHandler: (handler: EventListener) => this.scrollTarget_.addEventListener("scroll", handler),
             deregisterScrollHandler: (handler: EventListener) =>
-                this.scrollTarget_.removeEventListener('scroll', handler),
+                this.scrollTarget_.removeEventListener("scroll", handler),
 
-            registerResizeHandler: (handler: EventListener) => window.addEventListener('resize', handler),
-            deregisterResizeHandler: (handler: EventListener) => window.removeEventListener('resize', handler),
+            registerResizeHandler: (handler: EventListener) => window.addEventListener("resize", handler),
+            deregisterResizeHandler: (handler: EventListener) => window.removeEventListener("resize", handler),
             getViewportScrollY: () =>
-                this.scrollTarget_[this.scrollTarget_ === window ? 'pageYOffset' : 'scrollTop'],
+                this.scrollTarget_[this.scrollTarget_ === window ? "pageYOffset" : "scrollTop"],
 
             getTotalActionItems: () =>
-                this.root_.querySelectorAll(TopAppBarFoundation.strings.ACTION_ITEM_SELECTOR).length,
+                this.root_.querySelectorAll(TopAppBarFoundation.strings.ACTION_ITEM_SELECTOR).length
         }));
 
         return adapter;

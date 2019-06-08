@@ -1,11 +1,11 @@
-import Vue from 'vue';
+import Vue from "vue";
 
-import MDCDrawerAdapter from '@material/drawer/adapter';
-import { MDCDrawer } from '@material/drawer/index';
+import MDCDrawerAdapter from "@material/drawer/adapter";
+import { MDCDrawer } from "@material/drawer/index";
 
-import MDCListFoundation from '@material/list/foundation';
+import MDCListFoundation from "@material/list/foundation";
 
-import DrawerFoundation from '@/mdc/foundation/DrawerFoundation';
+import DrawerFoundation from "@/mdc/foundation/DrawerFoundation";
 
 export default class DrawerComponent extends MDCDrawer
 {

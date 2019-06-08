@@ -15,18 +15,17 @@
 </template>
 
 <script lang="ts">
-    import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
+    import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
-    import config from '@/config';
+    import config from "@/config";
 
-    import ActionItem from '@/components/ActionItem.vue';
-    import TopAppBarComponent from '@/mdc/components/TopAppBarComponent';
+    import ActionItem from "@/components/ActionItem.vue";
+    import TopAppBarComponent from "@/mdc/components/TopAppBarComponent";
+    import TopAppBarFoundation from "@/mdc/foundation/TopAppBarFoundation";
 
-    @Component({ components: { 'action-item': ActionItem }})
+    @Component({ components: { "action-item": ActionItem }})
     export default class NavigationBar extends Vue
     {
-        protected static NAVIGATION_EVENT: string = 'MDCTopAppBar:nav';
-
         protected _mdcComponent!: TopAppBarComponent;
 
         public title: string;
@@ -38,17 +37,17 @@
             this.title = config.title;
         }
 
-        @Emit('drawer-toggle')
+        @Emit("drawer-toggle")
         protected _toggleDrawer(evt: Event): void { }
 
         public mounted(): void
         {
             this._mdcComponent = new TopAppBarComponent(this);
-            this._mdcComponent.listen(NavigationBar.NAVIGATION_EVENT, this._toggleDrawer);
+            this._mdcComponent.listen(TopAppBarFoundation.strings.NAVIGATION_EVENT, this._toggleDrawer);
         }
         public destroyed(): void
         {
-            this._mdcComponent.unlisten(NavigationBar.NAVIGATION_EVENT, this._toggleDrawer);
+            this._mdcComponent.unlisten(TopAppBarFoundation.strings.NAVIGATION_EVENT, this._toggleDrawer);
             this._mdcComponent.destroy();
         }
     }

@@ -18,19 +18,19 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from 'vue-property-decorator';
+    import { Component, Vue } from "vue-property-decorator";
 
-    import config, { PageOptions } from '@/config';
+    import config, { PageOptions } from "@/config";
 
-    import ListItem from '@/components/ListItem.vue';
-    import Drawer from '@/skeleton/Drawer.vue';
-    import NavigationBar from '@/skeleton/NavigationBar.vue';
+    import ListItem from "@/components/ListItem.vue";
+    import Drawer from "@/skeleton/Drawer.vue";
+    import NavigationBar from "@/skeleton/NavigationBar.vue";
 
     @Component({
         components: {
-            'drawer': Drawer,
-            'list-item': ListItem,
-            'nav-bar': NavigationBar
+            "drawer": Drawer,
+            "list-item": ListItem,
+            "nav-bar": NavigationBar
         }
     })
     export default class DrawerLayout extends Vue

@@ -1,9 +1,9 @@
-declare module '@material/top-app-bar/foundation'
+declare module "@material/top-app-bar/foundation"
 {
-    import MDCFoundation from '@material/base/foundation';
+    import MDCFoundation from "@material/base/foundation";
 
-    import MDCTopAppBarAdapter from '@material/top-app-bar/adapter';
-    import { cssClasses, numbers, strings } from '@material/top-app-bar/constants';
+    import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
+    import { cssClasses, numbers, strings } from "@material/top-app-bar/constants";
 
     class MDCTopAppBarBaseFoundation extends MDCFoundation<MDCTopAppBarAdapter>
     {

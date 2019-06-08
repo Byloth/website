@@ -1,8 +1,8 @@
-declare module '@material/list/foundation'
+declare module "@material/list/foundation"
 {
-    import MDCFoundation from '@material/base/foundation';
-    import MDCListAdapter from '@material/list/adapter';
-    import { cssClasses, strings } from '@material/list/constants';
+    import MDCFoundation from "@material/base/foundation";
+    import MDCListAdapter from "@material/list/adapter";
+    import { cssClasses, strings } from "@material/list/constants";
 
     class MDCListFoundation extends MDCFoundation<MDCListAdapter>
     {

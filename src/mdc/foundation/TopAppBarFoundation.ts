@@ -1,5 +1,5 @@
-import MDCTopAppBarAdapter from '@material/top-app-bar/adapter';
-import MDCTopAppBarFoundation from '@material/top-app-bar/standard/foundation';
+import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
+import MDCTopAppBarFoundation from "@material/top-app-bar/standard/foundation";
 
 export default class TopAppBarFoundation extends MDCTopAppBarFoundation
 {
@@ -45,6 +45,6 @@ export default class TopAppBarFoundation extends MDCTopAppBarFoundation
 
         this.adapter_.deregisterScrollHandler(this.scrollHandler_);
         this.adapter_.deregisterResizeHandler(this.resizeHandler_);
-        this.adapter_.setStyle('top', '');
+        this.adapter_.setStyle("top", "");
     }
 }
