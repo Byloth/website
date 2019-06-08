@@ -1,7 +1,7 @@
-declare module '@material/drawer/dismissible/foundation'
+declare module "@material/drawer/dismissible/foundation"
 {
-    import MDCFoundation from '@material/base/foundation';
-    import MDCDrawerAdapter from '@material/drawer/adapter';
+    import MDCDrawerAdapter from "@material/drawer/adapter";
+    import MDCFoundation from "@material/base/foundation";
 
     class MDCDismissibleDrawerFoundation extends MDCFoundation<MDCDrawerAdapter> { }
 

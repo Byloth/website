@@ -38,7 +38,6 @@
     "object-literal-sort-keys": false,
     "one-line": false,
     "ordered-imports": false,
-    "quotemark": [true, "single", "avoid-escape", "avoid-template"],
     "trailing-comma": false,
     "variable-name": [
       true,

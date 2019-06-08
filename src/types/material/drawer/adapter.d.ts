@@ -1,4 +1,4 @@
-declare module '@material/drawer/adapter'
+declare module "@material/drawer/adapter"
 {
     interface MDCDrawerAdapter { }
 

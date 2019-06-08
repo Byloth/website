@@ -14,17 +14,17 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from 'vue-property-decorator';
+    import { Component, Vue } from "vue-property-decorator";
 
-    import Drawer from '@/components/Drawer.vue';
-    import ListItem from '@/components/ListItem.vue';
-    import NavigationBar from '@/components/NavigationBar.vue';
+    import Drawer from "@/components/Drawer.vue";
+    import ListItem from "@/components/ListItem.vue";
+    import NavigationBar from "@/components/NavigationBar.vue";
 
     @Component({
         components: {
-            'drawer': Drawer,
-            'list-item': ListItem,
-            'nav-bar': NavigationBar
+            "drawer": Drawer,
+            "list-item": ListItem,
+            "nav-bar": NavigationBar
         }
     })
     export default class DrawerLayout extends Vue

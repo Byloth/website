@@ -1,4 +1,4 @@
-declare module '@material/top-app-bar/adapter'
+declare module "@material/top-app-bar/adapter"
 {
     interface MDCTopAppBarAdapter
     {
