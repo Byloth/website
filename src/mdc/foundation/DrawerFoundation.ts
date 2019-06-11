@@ -8,4 +8,3 @@ export default class DrawerFoundation extends MDCDismissibleDrawerFoundation
         super(adapter);
     }
 }
-
