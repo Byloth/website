@@ -4,14 +4,19 @@
 
 import _Vue, { PluginObject } from "vue";
 
-class Updater implements PluginObject<object>
+import VueAnimation, { VueAnimationOptions } from "@/plugins/animations/VueAnimation";
+
+class VueAnimator implements PluginObject<object>
 {
     protected _isUpdating: boolean;
     protected _requestId?: number;
 
+    protected _animations: VueAnimation[];
+
     public constructor()
     {
         this._isUpdating = false;
+        this._animations = [];
     }
 
     protected _frameCallback = (timestamp: number) => this._frameHandler(timestamp);
@@ -19,9 +24,26 @@ class Updater implements PluginObject<object>
     {
         if (this._isUpdating)
         {
-            //
-            // TODO: Do something!
-            //
+            const screenWidth: number = window.innerWidth;
+            const screenHeight: number = window.innerHeight;
+            const scrollLeft: number = window.pageXOffset;
+            const scrollTop: number = window.pageYOffset;
+
+            for (const animation in this._animations.filter((a: VueAnimation) => a.isEnabled))
+            {
+                // if (scrollPosition <= <min_value>)
+                // {
+                //     // Inizio dell'animazione.
+                // }
+                // else if (scrollPosition >= <max_value>)
+                // {
+                //     // Fine dell'animazione.
+                // }
+                // else
+                // {
+                //     // Stato intermedio.
+                // }
+            }
 
             this._isUpdating = false;
         }
@@ -37,10 +59,20 @@ class Updater implements PluginObject<object>
         }
     }
 
+    public animate(options: VueAnimationOptions): VueAnimation
+    {
+        const animation: VueAnimation = new VueAnimation(options);
+        this._animations.push(animation);
+
+        return animation;
+    }
+
     // tslint:disable-next-line:variable-name
     public install(Vue: typeof _Vue, options?: object): void
     {
-        Vue.prototype.$myProperty = "Ciao, come va?";
+        this.init();
+
+        Vue.prototype.$animate = this.animate;
     }
 
     public init(): void
@@ -62,7 +94,4 @@ class Updater implements PluginObject<object>
     }
 }
 
-const updater = new Updater();
-updater.init();
-
-export default updater;
+export default new VueAnimator();

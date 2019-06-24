@@ -3,11 +3,12 @@
  */
 
 import Vue from "vue";
+import VueAnimation, { VueAnimationOptions } from "@/plugins/animations/VueAnimation";
 
 declare module "vue/types/vue"
 {
     interface Vue
     {
-        $myProperty: string;
+        $animate(options: VueAnimationOptions): VueAnimation;
     }
 }
