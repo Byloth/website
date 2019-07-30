@@ -42,6 +42,16 @@
 
         public mounted(): void
         {
+            this.$animate({
+                startValue: 0,
+                endValue: 128,
+                changes: [{
+                    property: "height",
+                    startValue: 192,
+                    endValue: 64
+                }]
+            });
+
             this._mdcComponent = new TopAppBarComponent(this);
             this._mdcComponent.listen(TopAppBarFoundation.strings.NAVIGATION_EVENT, this._toggleDrawer);
         }
