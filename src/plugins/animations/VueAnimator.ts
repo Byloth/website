@@ -50,7 +50,7 @@ class VueAnimator implements PluginObject<object>
     }
 
     protected _eventListener = (evt: Event) => this._eventHandler(evt);
-    protected _eventHandler(e: Event): void
+    protected _eventHandler(evt: Event): void
     {
         if (this._isUpdating === false)
         {
@@ -59,20 +59,25 @@ class VueAnimator implements PluginObject<object>
         }
     }
 
-    public animate(options: VueAnimationOptions): VueAnimation
+    public animate(target: _Vue, options: VueAnimationOptions): VueAnimation
     {
-        const animation: VueAnimation = new VueAnimation(options);
+        const animation: VueAnimation = new VueAnimation(target.$el, options);
         this._animations.push(animation);
 
         return animation;
     }
 
     // tslint:disable-next-line:variable-name
-    public install(Vue: typeof _Vue, options?: object): void
+    public install(Vue: typeof _Vue, configuration?: object): void
     {
+        const self: VueAnimator = this;
+
         this.init();
 
-        Vue.prototype.$animate = this.animate;
+        Vue.prototype.$animate = function(options: VueAnimationOptions): VueAnimation
+        {
+            return self.animate.call(self, this, options);
+        };
     }
 
     public init(): void

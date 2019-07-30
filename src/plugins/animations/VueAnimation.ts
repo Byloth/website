@@ -1,33 +1,38 @@
-interface VueAnimationProperty
+interface VueAnimationChange
 {
     property: string;
 
     startValue: number;
     endValue: number;
+    // unit?: string; -> px / em / rem
 
-    // ease?: string;
+    // timing?: string; -> linear / ease / cubic
 }
 
 interface VueAnimationOptions
 {
-    start: number;
-    end?: number;
+    startValue: number;
+    endValue?: number;
+    // direction?: string; -> vertical / horizontal
 
-    target?: Element;
-    targets?: NodeListOf<Element>;
-
-    properties: VueAnimationProperty[];
+    changes: VueAnimationChange[];
 }
 
-export { VueAnimationOptions, VueAnimationProperty };
+export { VueAnimationOptions, VueAnimationChange };
 
 export default class VueAnimation
 {
     protected _enabled: boolean;
 
-    public constructor(options: VueAnimationOptions)
+    protected _target: Element;
+    protected _options: VueAnimationOptions;
+
+    public constructor(target: Element, options: VueAnimationOptions)
     {
         this._enabled = true;
+
+        this._target = target;
+        this._options = options;
     }
 
     public get isEnabled(): boolean
