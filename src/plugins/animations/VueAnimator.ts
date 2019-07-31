@@ -24,25 +24,9 @@ class VueAnimator implements PluginObject<object>
     {
         if (this._isUpdating)
         {
-            const screenWidth: number = window.innerWidth;
-            const screenHeight: number = window.innerHeight;
-            const scrollLeft: number = window.pageXOffset;
-            const scrollTop: number = window.pageYOffset;
-
-            for (const animation in this._animations.filter((a: VueAnimation) => a.isEnabled))
+            for (const animation of this._animations.filter((a: VueAnimation) => a.isEnabled))
             {
-                // if (scrollPosition <= <min_value>)
-                // {
-                //     // Inizio dell'animazione.
-                // }
-                // else if (scrollPosition >= <max_value>)
-                // {
-                //     // Fine dell'animazione.
-                // }
-                // else
-                // {
-                //     // Stato intermedio.
-                // }
+                animation.update();
             }
 
             this._isUpdating = false;
@@ -52,7 +36,7 @@ class VueAnimator implements PluginObject<object>
     protected _eventListener = (evt: Event) => this._eventHandler(evt);
     protected _eventHandler(evt: Event): void
     {
-        if (this._isUpdating === false)
+        if (!this._isUpdating)
         {
             this._isUpdating = true;
             this._requestId = window.requestAnimationFrame(this._frameCallback);
