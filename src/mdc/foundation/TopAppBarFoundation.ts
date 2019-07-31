@@ -33,7 +33,7 @@ export default class TopAppBarFoundation extends MDCTopAppBarFoundation
 
         if (scrollPosition > 0)
         {
-            if (this._wasScrolled === false)
+            if (!this._wasScrolled)
             {
                 this.adapter_.addClass(TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS);
 
@@ -42,7 +42,7 @@ export default class TopAppBarFoundation extends MDCTopAppBarFoundation
         }
         else
         {
-            if (this._wasScrolled === true)
+            if (this._wasScrolled)
             {
                 this.adapter_.removeClass(TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS);
 
