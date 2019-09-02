@@ -3,12 +3,12 @@
  */
 
 import Vue from "vue";
-import VueAnimation, { VueAnimationOptions } from "@/plugins/animations/VueAnimation";
+import VueAnimation, { AnimationOptions } from "@/plugins/vue-scroll-animator/core/ScrollAnimation";
 
 declare module "vue/types/vue"
 {
     interface Vue
     {
-        $animate(options: VueAnimationOptions): VueAnimation;
+        $scrollAnimate(options: AnimationOptions): VueAnimation;
     }
 }

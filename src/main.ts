@@ -1,15 +1,15 @@
 import Vue from "vue";
 
-import router from "@/router";
-import store from "@/store";
+import router from "./router";
+import store from "./store";
 
-import VueAnimator from "@/plugins/animations/VueAnimator";
+import VueScrollAnimator from "./plugins/vue-scroll-animator/VueScrollAnimator";
 
-import App from "@/App.vue";
+import App from "./App.vue";
 
 Vue.config.productionTip = false;
 
-Vue.use(VueAnimator);
+Vue.use(VueScrollAnimator);
 
 new Vue({
     router,

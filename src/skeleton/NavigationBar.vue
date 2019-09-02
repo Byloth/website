@@ -17,11 +17,11 @@
 <script lang="ts">
     import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
-    import config from "@/config";
+    import config from "../config";
 
-    import ActionItem from "@/components/ActionItem.vue";
-    import TopAppBarComponent from "@/mdc/components/TopAppBarComponent";
-    import TopAppBarFoundation from "@/mdc/foundation/TopAppBarFoundation";
+    import ActionItem from "../components/ActionItem.vue";
+    import TopAppBarComponent from "../mdc/components/TopAppBarComponent";
+    import TopAppBarFoundation from "../mdc/foundation/TopAppBarFoundation";
 
     @Component({ components: { "action-item": ActionItem }})
     export default class NavigationBar extends Vue
@@ -42,7 +42,7 @@
 
         public mounted(): void
         {
-            this.$animate({
+            this.$scrollAnimate({
                 startValue: 0,
                 endValue: 128,
                 changes: [{
