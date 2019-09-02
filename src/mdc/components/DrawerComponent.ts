@@ -5,7 +5,7 @@ import { MDCDrawer } from "@material/drawer/index";
 
 import MDCListFoundation from "@material/list/foundation";
 
-import DrawerFoundation from "@/mdc/foundation/DrawerFoundation";
+import DrawerFoundation from "../foundation/DrawerFoundation";
 
 export default class DrawerComponent extends MDCDrawer
 {

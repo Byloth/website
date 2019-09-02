@@ -4,14 +4,14 @@
 
 import _Vue, { PluginObject } from "vue";
 
-import VueAnimation, { VueAnimationOptions } from "@/plugins/animations/VueAnimation";
+import ScrollAnimation, { AnimationOptions } from "./core/ScrollAnimation";
 
-class VueAnimator implements PluginObject<object>
+class VueScrollAnimator implements PluginObject<object>
 {
     protected _isUpdating: boolean;
     protected _requestId?: number;
 
-    protected _animations: VueAnimation[];
+    protected _animations: ScrollAnimation[];
 
     public constructor()
     {
@@ -24,7 +24,7 @@ class VueAnimator implements PluginObject<object>
     {
         if (this._isUpdating)
         {
-            for (const animation of this._animations.filter((a: VueAnimation) => a.isEnabled))
+            for (const animation of this._animations.filter((a: ScrollAnimation) => a.isEnabled))
             {
                 animation.update();
             }
@@ -43,9 +43,9 @@ class VueAnimator implements PluginObject<object>
         }
     }
 
-    public animate(target: _Vue, options: VueAnimationOptions): VueAnimation
+    public animate(target: _Vue, options: AnimationOptions): ScrollAnimation
     {
-        const animation: VueAnimation = new VueAnimation(target.$el, options);
+        const animation: ScrollAnimation = new ScrollAnimation(target.$el, options);
         this._animations.push(animation);
 
         return animation;
@@ -54,11 +54,11 @@ class VueAnimator implements PluginObject<object>
     // tslint:disable-next-line:variable-name
     public install(Vue: typeof _Vue, configuration?: object): void
     {
-        const self: VueAnimator = this;
+        const self: VueScrollAnimator = this;
 
         this.init();
 
-        Vue.prototype.$animate = function(options: VueAnimationOptions): VueAnimation
+        Vue.prototype.$scrollAnimate = function(options: AnimationOptions): ScrollAnimation
         {
             return self.animate.call(self, this, options);
         };
@@ -83,4 +83,4 @@ class VueAnimator implements PluginObject<object>
     }
 }
 
-export default new VueAnimator();
+export default new VueScrollAnimator();

@@ -1,26 +1,17 @@
-interface VueAnimationChange
-{
-    property: string;
+import { PropertyOptions } from "./PropertyAnimation";
 
-    startValue: number;
-    endValue?: number;
-    // unit?: string; -> px / em / rem
-
-    // timing?: string; -> linear / ease / cubic
-}
-
-interface VueAnimationOptions
+interface AnimationOptions
 {
     startValue: number;
     endValue?: number;
     // direction?: string; -> vertical / horizontal
 
-    changes: VueAnimationChange[];
+    changes: PropertyOptions[];
 }
 
-export { VueAnimationOptions, VueAnimationChange };
+export { AnimationOptions };
 
-export default class VueAnimation
+export default class ScrollAnimation
 {
     protected _enabled: boolean;
 
@@ -28,19 +19,22 @@ export default class VueAnimation
     protected _startValue: number;
     protected _endValue?: number;
 
-    protected _options: VueAnimationOptions;
+    protected _options: AnimationOptions;
 
     protected _computeRate: (value: number) => number;
 
-    public constructor(target: Element, options: VueAnimationOptions)
+    public constructor(target: Element, options: AnimationOptions)
     {
+        let difference: number;
+
         this._enabled = true;
 
         this._target = target;
         this._startValue = options.startValue;
         this._endValue = options.endValue;
 
-        let difference: number;
+        this._options = options;
+
         if (this._endValue)
         {
             difference = this._endValue - this._startValue;
@@ -52,10 +46,13 @@ export default class VueAnimation
 
         this._computeRate = function(value: number)
         {
-            return (value - this._startValue) / (difference);
+            return (value - this._startValue) / difference;
         };
+    }
 
-        this._options = options;
+    protected _compile()
+    {
+        ;
     }
 
     protected _getHorizontalScroll(element?: Element)
@@ -98,26 +95,35 @@ export default class VueAnimation
         // const horizontalScroll: number = this._getHorizontalScroll();
         const verticalScroll: number = this._getVerticalScroll();
 
-        let rate: number;
+        let ratio: number;
         if (verticalScroll <= this._startValue)
         {
-            rate = 0;
+            ratio = 0;
         }
         else if (!this._endValue)
         {
-            rate = 1;
+            ratio = (verticalScroll - this._startValue);
         }
         else if (verticalScroll >= this._endValue)
         {
-            rate = 1;
+            ratio = 1;
         }
         else
         {
-            rate = this._computeRate(verticalScroll);
+            ratio = this._computeRate(verticalScroll);
         }
 
         //
-        // TODO: Continuare da qui...
+        // FIXME: Probabilmente, si può ottimizzare ancora...
         //
+        for (const change of this._options.changes)
+        {
+            let difference: number = change.endValue - change.startValue;
+            let newValue: number = change.startValue + (difference * ratio);
+
+            //
+            // TODO: Continuare da qui...
+            //
+        }
     }
 }

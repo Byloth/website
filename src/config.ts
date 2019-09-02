@@ -1,6 +1,6 @@
 import { RouteConfig } from "vue-router";
 
-import Home from "@/pages/Home.vue";
+import Home from "./pages/Home.vue";
 
 interface PageOptions extends RouteConfig
 {

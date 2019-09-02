@@ -33,7 +33,7 @@
     import { MDCDrawer } from "@material/drawer/index";
     import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
-    import DrawerFoundation from "@/mdc/foundation/DrawerFoundation";
+    import DrawerFoundation from "../mdc/foundation/DrawerFoundation";
 
     @Component
     export default class Drawer extends Vue
