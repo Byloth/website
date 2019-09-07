@@ -74,7 +74,7 @@
         {
             const drawer = this.$el.querySelector(".mdc-drawer");
 
-            if (!(drawer))
+            if (drawer === null)
             {
                 throw new Error("It wasn't possible to find a '.mdc-drawer' child.");
             }

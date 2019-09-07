@@ -3,7 +3,7 @@
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <action-item class="mdc-top-app-bar__navigation-icon" icon="menu" />
-                <span class="mdc-top-app-bar__title">{{ title }}</span>
+                <span ref="title" class="mdc-top-app-bar__title">{{ title }}</span>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                 <action-item class="mdc-top-app-bar__action-item" icon="file_download" description="Download" />
@@ -23,10 +23,14 @@
     import TopAppBarComponent from "../mdc/components/TopAppBarComponent";
     import TopAppBarFoundation from "../mdc/foundation/TopAppBarFoundation";
 
+    import ScrollAnimation from "../plugins/vue-scroll-animator/base/ScrollAnimation";
+    import { ClassAnimatorBehavior } from "../plugins/vue-scroll-animator/animators/ClassAnimator";
+
     @Component({ components: { "action-item": ActionItem }})
     export default class NavigationBar extends Vue
     {
         protected _mdcComponent!: TopAppBarComponent;
+        protected _scrollAnimation!: ScrollAnimation;
 
         public title: string;
 
@@ -42,18 +46,32 @@
 
         public mounted(): void
         {
-            this.$scrollAnimate({
-                startValue: 0,
-                endValue: 128,
-                changes: [{
-                    property: "height",
-                    startValue: 192,
-                    endValue: 64
-                }]
-            });
-
             this._mdcComponent = new TopAppBarComponent(this);
             this._mdcComponent.listen(TopAppBarFoundation.strings.NAVIGATION_EVENT, this._toggleDrawer);
+
+            this._scrollAnimation = this.$scrollAnimate({
+
+                startValue: 0,
+                endValue: 128,
+                classes: [{
+
+                    classesName: [ TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS ],
+                    behavior: ClassAnimatorBehavior.FROM_END
+                }],
+                cssProperties: [
+                    {
+                        name: "height",
+                        startValue: 192,
+                        endValue: 64
+                    },
+                    {
+                        target: this.$refs.title as HTMLElement,
+                        name: "font-size",
+                        startValue: 34,
+                        endValue: 20
+                    }
+                ]
+            });
         }
         public destroyed(): void
         {
