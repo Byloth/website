@@ -8,7 +8,7 @@ Actually, yet another attempt to develop my personal website, to be precise...
 
 ---
 
-This website will simply be a *"place"* where I'll be able to share my thoughts with all of you, where everyone will be able to can get to know me and my interests and *-why not?-* learn new interesting things! 😉
+This website will simply be a *"place"* where I'll be able to share my thoughts with all of you, where everyone will be able to get to know me and my interests and *-why not?-* learn new interesting things! 😉
 
 At last but not least, this website will be:
 

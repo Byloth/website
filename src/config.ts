@@ -15,6 +15,8 @@ interface ConfigOptions
     pages: PageOptions[];
 }
 
+export { ConfigOptions, PageOptions };
+
 class Config implements ConfigOptions
 {
     protected _options: ConfigOptions;
@@ -33,8 +35,6 @@ class Config implements ConfigOptions
         this._options = options;
     }
 }
-
-export { ConfigOptions, PageOptions };
 
 export default new Config({
     title: "Byloth's Website",

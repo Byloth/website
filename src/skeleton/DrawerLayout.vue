@@ -61,7 +61,7 @@
 
         public toggleDrawer(evt: Event): void
         {
-            if (!(this.isOpen))
+            if (this.isOpen === false)
             {
                 this._drawer.open();
             }

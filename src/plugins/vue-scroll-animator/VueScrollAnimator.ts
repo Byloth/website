@@ -4,7 +4,7 @@
 
 import _Vue, { PluginObject } from "vue";
 
-import ScrollAnimation, { AnimationOptions } from "./core/ScrollAnimation";
+import ScrollAnimation, { AnimationOptions } from "./base/ScrollAnimation";
 
 class VueScrollAnimator implements PluginObject<object>
 {
@@ -19,10 +19,9 @@ class VueScrollAnimator implements PluginObject<object>
         this._animations = [];
     }
 
-    protected _frameCallback = (timestamp: number) => this._frameHandler(timestamp);
-    protected _frameHandler(timestamp: number): void
-    {
-        if (this._isUpdating)
+    protected _requestCallback = (timestamp: number): void => {
+
+        if (this._isUpdating === true)
         {
             for (const animation of this._animations.filter((a: ScrollAnimation) => a.isEnabled))
             {
@@ -33,19 +32,18 @@ class VueScrollAnimator implements PluginObject<object>
         }
     }
 
-    protected _eventListener = (evt: Event) => this._eventHandler(evt);
-    protected _eventHandler(evt: Event): void
-    {
-        if (!this._isUpdating)
+    protected _eventListener = (evt: Event): void => {
+
+        if (this._isUpdating === false)
         {
             this._isUpdating = true;
-            this._requestId = window.requestAnimationFrame(this._frameCallback);
+            this._requestId = window.requestAnimationFrame(this._requestCallback);
         }
     }
 
-    public animate(target: _Vue, options: AnimationOptions): ScrollAnimation
+    public animate(options: AnimationOptions): ScrollAnimation
     {
-        const animation: ScrollAnimation = new ScrollAnimation(target.$el, options);
+        const animation = new ScrollAnimation(options);
         this._animations.push(animation);
 
         return animation;
@@ -54,13 +52,13 @@ class VueScrollAnimator implements PluginObject<object>
     // tslint:disable-next-line:variable-name
     public install(Vue: typeof _Vue, configuration?: object): void
     {
-        const self: VueScrollAnimator = this;
+        const self = this;
 
         this.init();
 
         Vue.prototype.$scrollAnimate = function(options: AnimationOptions): ScrollAnimation
         {
-            return self.animate.call(self, this, options);
+            return self.animate.call(self, {target: this.$el, ...options});
         };
     }
 
@@ -74,7 +72,7 @@ class VueScrollAnimator implements PluginObject<object>
         window.removeEventListener("resize", this._eventListener);
         window.removeEventListener("scroll", this._eventListener);
 
-        if (this._requestId)
+        if (this._requestId !== undefined)
         {
             window.cancelAnimationFrame(this._requestId);
 

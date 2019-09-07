@@ -22,5 +22,4 @@ declare module "@material/base/foundation"
     }
 
     export default MDCFoundation;
-
 }
