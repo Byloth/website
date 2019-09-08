@@ -3,37 +3,39 @@ import MDCTopAppBarFoundation from "@material/top-app-bar/standard/foundation";
 
 export default class TopAppBarFoundation extends MDCTopAppBarFoundation
 {
-    protected wasScrolled_: boolean;
-
-    protected scrollHandler_: () => void;
-
     public constructor(adapter: MDCTopAppBarAdapter)
     {
         super(adapter);
-
-        this.wasScrolled_ = false;
-
-        this.scrollHandler_ = () => this.topAppBarScrollHandler_();
     }
 
     protected topAppBarScrollHandler_(): void
     {
-        super.topAppBarScrollHandler_();
+        const currentScrollPosition = Math.max(this.adapter_.getViewportScrollY(), 0);
+        const diff = currentScrollPosition - this.lastScrollPosition_;
 
-        const currentScroll = this.adapter_.getViewportScrollY();
+        this.lastScrollPosition_ = currentScrollPosition;
 
-        if (currentScroll <= 0)
+        if (this.isCurrentlyBeingResized_ === false)
         {
-            if (this.wasScrolled_)
+            if (currentScrollPosition <= 128)
             {
-                this.adapter_.removeClass(TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS);
-                this.wasScrolled_ = false;
+                this.currentAppBarOffsetTop_ = 0;
             }
-        }
-        else if (!this.wasScrolled_)
-        {
-            this.adapter_.addClass(TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS);
-            this.wasScrolled_ = true;
+            else
+            {
+                this.currentAppBarOffsetTop_ -= diff;
+
+                if (this.currentAppBarOffsetTop_ > 0)
+                {
+                    this.currentAppBarOffsetTop_ = 0;
+                }
+                else if (Math.abs(this.currentAppBarOffsetTop_) > 74)
+                {
+                    this.currentAppBarOffsetTop_ = -74;
+                }
+            }
+
+            this.moveTopAppBar_();
         }
     }
 }

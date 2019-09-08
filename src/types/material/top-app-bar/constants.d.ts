@@ -1,6 +1,6 @@
 declare module "@material/top-app-bar/constants"
 {
-    import { MDCStrings } from "@material/base/foundation";
+    import { MDCNumbers, MDCStrings } from "@material/base/foundation";
 
     // tslint:disable-next-line:class-name
     interface cssClasses extends MDCStrings
@@ -13,6 +13,13 @@ declare module "@material/top-app-bar/constants"
     }
 
     // tslint:disable-next-line:class-name
+    interface numbers extends MDCNumbers
+    {
+        DEBOUNCE_THROTTLE_RESIZE_TIME_MS: 100;
+        MAX_TOP_APP_BAR_HEIGHT: 128;
+    }
+
+    // tslint:disable-next-line:class-name
     interface strings extends MDCStrings
     {
         ACTION_ITEM_SELECTOR: ".mdc-top-app-bar__action-item";
@@ -22,5 +29,5 @@ declare module "@material/top-app-bar/constants"
         TITLE_SELECTOR: ".mdc-top-app-bar__title";
     }
 
-    export { cssClasses, strings };
+    export { cssClasses, numbers, strings };
 }
