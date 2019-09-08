@@ -1,6 +1,6 @@
 import { RouteConfig } from "vue-router";
 
-import Home from "@/pages/Home.vue";
+import Home from "./pages/Home.vue";
 
 interface PageOptions extends RouteConfig
 {
@@ -14,6 +14,8 @@ interface ConfigOptions
     title: string;
     pages: PageOptions[];
 }
+
+export { ConfigOptions, PageOptions };
 
 class Config implements ConfigOptions
 {
@@ -33,8 +35,6 @@ class Config implements ConfigOptions
         this._options = options;
     }
 }
-
-export { ConfigOptions, PageOptions };
 
 export default new Config({
     title: "Byloth's Website",

@@ -5,7 +5,7 @@ import { MDCDrawer } from "@material/drawer/index";
 
 import MDCListFoundation from "@material/list/foundation";
 
-import DrawerFoundation from "@/mdc/foundation/DrawerFoundation";
+import DrawerFoundation from "../foundation/DrawerFoundation";
 
 export default class DrawerComponent extends MDCDrawer
 {
@@ -33,7 +33,8 @@ export default class DrawerComponent extends MDCDrawer
             },
             restoreFocus: () => {
 
-                if (this.root_.contains(document.activeElement) && this._hasElementFocus(this.previousFocus_))
+                if ((this.root_.contains(document.activeElement) === true) &&
+                    (this._hasElementFocus(this.previousFocus_) === true))
                 {
                     (this.previousFocus_ as any).focus();
                 }
@@ -43,7 +44,7 @@ export default class DrawerComponent extends MDCDrawer
                 const listItemActivatedClass = MDCListFoundation.cssClasses.LIST_ITEM_ACTIVATED_CLASS;
                 const activeNavItemEl = this.root_.querySelector(`.${listItemActivatedClass}`);
 
-                if (this._hasElementFocus(activeNavItemEl))
+                if (this._hasElementFocus(activeNavItemEl) === true)
                 {
                     (activeNavItemEl as any).focus();
                 }

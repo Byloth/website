@@ -20,11 +20,12 @@
 <script lang="ts">
     import { Component, Vue } from "vue-property-decorator";
 
-    import config, { PageOptions } from "@/config";
+    import config, { PageOptions } from "../config";
 
-    import ListItem from "@/components/ListItem.vue";
-    import Drawer from "@/skeleton/Drawer.vue";
-    import NavigationBar from "@/skeleton/NavigationBar.vue";
+    import ListItem from "../components/ListItem.vue";
+
+    import Drawer from "./Drawer.vue";
+    import NavigationBar from "./NavigationBar.vue";
 
     @Component({
         components: {
@@ -60,7 +61,7 @@
 
         public toggleDrawer(evt: Event): void
         {
-            if (!(this.isOpen))
+            if (this.isOpen === false)
             {
                 this._drawer.open();
             }
@@ -80,12 +81,11 @@
 <style lang="scss" scoped="scoped">
     #main
     {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        padding: 72px 8px 8px 8px;
+        padding: 200px 8px 8px 8px;
     }
     
     #nav

@@ -3,7 +3,7 @@ import Vue from "vue";
 import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
 import { MDCTopAppBar } from "@material/top-app-bar/index";
 
-import TopAppBarFoundation from "@/mdc/foundation/TopAppBarFoundation";
+import TopAppBarFoundation from "../foundation/TopAppBarFoundation";
 
 export default class TopAppBarComponent extends MDCTopAppBar
 {
@@ -23,14 +23,14 @@ export default class TopAppBarComponent extends MDCTopAppBar
             getTopAppBarHeight: () => this.root_.clientHeight,
             registerNavigationIconInteractionHandler: (evtType: string, handler: EventListener) => {
 
-                if (this.navIcon_)
+                if (this.navIcon_ !== undefined)
                 {
                     this.navIcon_.addEventListener(evtType, handler);
                 }
             },
             deregisterNavigationIconInteractionHandler: (evtType: string, handler: EventListener) => {
 
-                if (this.navIcon_)
+                if (this.navIcon_ !== undefined)
                 {
                     this.navIcon_.removeEventListener(evtType, handler);
                 }
