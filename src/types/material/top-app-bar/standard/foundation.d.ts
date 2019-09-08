@@ -3,7 +3,7 @@ declare module "@material/top-app-bar/standard/foundation"
     import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
     import MDCTopAppBarBaseFoundation from "@material/top-app-bar/foundation";
 
-    export default class MDCTopAppBarFoundation extends MDCTopAppBarBaseFoundation
+    class MDCTopAppBarFoundation extends MDCTopAppBarBaseFoundation
     {
         protected lastScrollPosition_: number;
         protected topAppBarHeight_: number;
@@ -19,4 +19,6 @@ declare module "@material/top-app-bar/standard/foundation"
         protected topAppBarScrollHandler_(): void;
         protected throttledResizeHandler_(): void;
     }
+
+    export default MDCTopAppBarFoundation;
 }
