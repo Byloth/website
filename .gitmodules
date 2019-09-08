@@ -1,0 +1,3 @@
+[submodule "src/plugins/vue-scroll-animator"]
+	path = src/plugins/vue-scroll-animator
+	url = https://github.com/Byloth/vue-scroll-animator.git
