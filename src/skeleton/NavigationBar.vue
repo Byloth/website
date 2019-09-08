@@ -89,7 +89,8 @@
         &.mdc-top-app-bar--prominent .mdc-top-app-bar__row
         {
             height: 192px;
-                // -> 64px
+                // @media(max-width: 600px) -> 64px
+                // @media(max-width: 599px) -> 56px
         }
 
         &.mdc-top-app-bar--prominent .mdc-top-app-bar__title
@@ -97,8 +98,7 @@
             font-size: 34px;
                 // -> 20px
 
-            padding-bottom: 0.4em; // 13.6px;
-                // -> 0.1em - 2px;
+            padding-bottom: 0.4em;
         }
     }
 </style>

@@ -3,9 +3,9 @@ import Vue from "vue";
 import router from "./router";
 import store from "./store";
 
-import VueScrollAnimator from "./plugins/vue-scroll-animator/VueScrollAnimator";
-
 import App from "./App.vue";
+
+import VueScrollAnimator from "./plugins/vue-scroll-animator/VueScrollAnimator";
 
 Vue.config.productionTip = false;
 
