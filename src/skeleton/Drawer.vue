@@ -80,13 +80,13 @@
             }
 
             this._mdcComponent = new MDCDrawer(drawer);
-            this._mdcComponent.listen(DrawerFoundation.strings.OPENED_EVENT, this._opened);
-            this._mdcComponent.listen(DrawerFoundation.strings.CLOSED_EVENT, this._closed);
+            this._mdcComponent.listen(DrawerFoundation.strings.OPEN_EVENT, this._opened);
+            this._mdcComponent.listen(DrawerFoundation.strings.CLOSE_EVENT, this._closed);
         }
         public destroyed(): void
         {
-            this._mdcComponent.unlisten(DrawerFoundation.strings.CLOSED_EVENT, this._closed);
-            this._mdcComponent.unlisten(DrawerFoundation.strings.OPENED_EVENT, this._opened);
+            this._mdcComponent.unlisten(DrawerFoundation.strings.CLOSE_EVENT, this._closed);
+            this._mdcComponent.unlisten(DrawerFoundation.strings.OPEN_EVENT, this._opened);
             this._mdcComponent.destroy();
         }
     }

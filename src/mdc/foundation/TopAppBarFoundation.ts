@@ -1,4 +1,5 @@
-import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
+import { MDCTopAppBarAdapter } from "@material/top-app-bar/adapter";
+
 import MDCTopAppBarFoundation from "@material/top-app-bar/standard/foundation";
 
 export default class TopAppBarFoundation extends MDCTopAppBarFoundation
