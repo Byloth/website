@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-import MDCDrawerAdapter from "@material/drawer/adapter";
+import { MDCDrawerAdapter } from "@material/drawer/adapter";
 import { MDCDrawer } from "@material/drawer/index";
 
 import MDCListFoundation from "@material/list/foundation";
