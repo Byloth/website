@@ -5,9 +5,9 @@ declare module "@material/drawer/component"
 
     class MDCDrawer extends MDCComponent<MDCDismissibleDrawerFoundation>
     {
-        public open: boolean;
         protected previousFocus_: any;
         protected focusTrap_: any;
+        public open: boolean;
     }
 
     export { MDCDrawer };
