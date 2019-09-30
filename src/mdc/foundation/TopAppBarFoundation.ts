@@ -9,7 +9,7 @@ export default class TopAppBarFoundation extends MDCTopAppBarFoundation
         super(adapter);
     }
 
-    protected topAppBarScrollHandler_(): void
+    public handleTargetScroll(): void
     {
         const currentScrollPosition = Math.max(this.adapter_.getViewportScrollY(), 0);
         const diff = currentScrollPosition - this.lastScrollPosition_;
