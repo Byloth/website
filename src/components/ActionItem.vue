@@ -1,5 +1,5 @@
 <template>
-    <a href="#" class="material-icons" :alt="description" :title="description" :aria-label="description">{{ icon }}</a>
+    <button class="material-icons mdc-icon-button" :alt="description" :title="description" :aria-label="description">{{ icon }}</button>
 </template>
 
 <script lang="ts">

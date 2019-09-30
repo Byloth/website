@@ -19,6 +19,7 @@
     $mdc-typography-font-family: Ubuntu, Roboto, Helvetica, sans-serif;
 
     @import "@material/drawer/mdc-drawer";
+    @import "@material/icon-button/mdc-icon-button";
     @import "@material/list/mdc-list";
     @import "@material/ripple/mdc-ripple";
     @import "@material/top-app-bar/mdc-top-app-bar";
