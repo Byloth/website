@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
+import { MDCTopAppBarAdapter } from "@material/top-app-bar/adapter";
 import { MDCTopAppBar } from "@material/top-app-bar/index";
 
 import TopAppBarFoundation from "../foundation/TopAppBarFoundation";
@@ -19,7 +19,8 @@ export default class TopAppBarComponent extends MDCTopAppBar
             hasClass: (className: string) => this.root_.classList.contains(className),
             addClass: (className: string) => this.root_.classList.add(className),
             removeClass: (className: string) => this.root_.classList.remove(className),
-            setStyle: (property: string, value: string) => this.root_.style.setProperty(property, value),
+            setStyle: (property: string, value: string) =>
+                (this.root_ as HTMLElement).style.setProperty(property, value),
             getTopAppBarHeight: () => this.root_.clientHeight,
             registerNavigationIconInteractionHandler: (evtType: string, handler: EventListener) => {
 

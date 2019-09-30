@@ -1,4 +1,5 @@
-import MDCTopAppBarAdapter from "@material/top-app-bar/adapter";
+import { MDCTopAppBarAdapter } from "@material/top-app-bar/adapter";
+
 import MDCTopAppBarFoundation from "@material/top-app-bar/standard/foundation";
 
 export default class TopAppBarFoundation extends MDCTopAppBarFoundation
@@ -8,7 +9,7 @@ export default class TopAppBarFoundation extends MDCTopAppBarFoundation
         super(adapter);
     }
 
-    protected topAppBarScrollHandler_(): void
+    public handleTargetScroll(): void
     {
         const currentScrollPosition = Math.max(this.adapter_.getViewportScrollY(), 0);
         const diff = currentScrollPosition - this.lastScrollPosition_;
