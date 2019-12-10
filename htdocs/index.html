@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+
+        <link type="text/css" rel="stylesheet" href="/static/assets/css/jquery-ui.min.css" />
+        <link type="text/css" rel="stylesheet" href="/static/assets/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="/static/assets/css/bootstrap-theme.min.css" />
+        <link type="text/css" rel="stylesheet" href="/static/assets/css/font-awesome.min.css" />
+
+        <link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+
+        <title>Byloth's Website</title>
+    </head>
+
+    <body>
+        <header class="jumbotron">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Byloth's Website</h1>
+                </div>
+                <h1>
+                    <small>Coming soon...</small>
+                </h1>
+            </div>
+        </header>
+        
+        <main id="main-container">
+            <div class="spacer"></div>
+            <div id="contact-window" class="modal-content window ui-draggable ui-resizable">
+                <div class="navbar navbar-default title-bar ui-draggable-handle">
+                    <span class="navbar-brand">Modulo di contatto</span>
+                    <button type="button" class="close" data-dismiss="window" aria-label="Chiudi">
+                        <span class="fa fa-times-circle"></span>
+                    </button>
+                </div>
+                <div class="well">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="contact-form">
+                                <div class="form-group form-inline">
+                                    <div class="input-group">
+                                        <label id="contact-form_name-label" class="input-group-addon" for="contact-form_name">Nome:</label>
+                                        <input id="contact-form_name" class="form-control" type="text" aria-describedby="contact-form_name-label" placeholder="Mario Rossi" required="required" />
+                                    </div>
+                                    <div class="input-group">
+                                        <label id="contact-form_email-label" class="input-group-addon" for="contact-form_email">Indirizzo e-mail:</label>
+                                        <input id="contact-form_email" class="form-control" type="email" aria-describedby="contact-form_email-label" placeholder="email@example.com" required="required" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-form_subject">Oggetto:</label>
+                                    <input id="contact-form_subject" class="form-control" type="text" placeholder="Richiesta di contatto" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-form_message">Messaggio:</label>
+                                    <textarea id="contact-form_message" class="form-control" rows="5" placeholder="Scrivi qui il tuo messaggio" required="required"></textarea>
+                                </div>
+                                <div class="form-group text-right">
+                                    <button id="contact-form_submit" class="btn btn-primary" type="submit">
+                                        <span class="fa fa-paper-plane-o"></span>
+                                        <span class="text">Invia</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="code-window" class="modal-content window ui-draggable ui-resizable">
+                <div class="navbar navbar-default title-bar ui-draggable-handle">
+                    <span class="navbar-brand">Nuovo progetto</span>
+                    <button type="button" class="close" data-dismiss="window" aria-label="Chiudi">
+                        <span class="fa fa-times-circle"></span>
+                    </button>
+                </div>
+                <div class="well">
+                    <div class="panel-body">
+                        <pre id="code"><span></span></pre>
+                    </div>
+                </div>
+            </div>
+            <div id="console-window" class="modal-content window ui-draggable ui-resizable">
+                <div class="navbar navbar-default title-bar ui-draggable-handle">
+                    <span class="navbar-brand">Byloth's Website Console</span>
+                    <button type="button" class="close" data-dismiss="window" aria-label="Chiudi">
+                        <span class="fa fa-times-circle"></span>
+                    </button>
+                </div>
+                <div class="well">
+                    <div id="console" class="panel panel-default">
+                        <div class="panel-body">
+                            Byloth's WEB_SRV 3.0-RELEASE (STABLE): <span id="full-date"></span>
+                            <br />
+                            <br />
+                            Welcome to Byloth's Website!<br />
+                            <br />
+                            Login: <span class="cursor">_</span>
+                            <!-- guest@byloth_srv:~$ <span class="cursor">_</span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-7 col-xs-7 col">
+                        Copyright © 2014-<span id="date-year"></span>, Byloth's Website. All rights reserved.
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5 text-right">
+                        Designed & Developed by Bylothink.
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script type="application/javascript" src="/static/assets/js/jquery.min.js"></script>
+        <script type="application/javascript" src="/static/assets/js/bootstrap.min.js"></script>
+        <script type="application/javascript" src="/static/assets/js/jquery-ui.min.js"></script>
+        <script type="application/javascript" src="/static/assets/js/typed.min.js"></script>
+
+        <script type="application/javascript" src="/static/js/script.js"></script>
+        <script type="application/javascript" src="/static/js/typed.js"></script>
+    </body>
+</html>
