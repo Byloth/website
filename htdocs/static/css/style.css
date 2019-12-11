@@ -122,6 +122,11 @@ textarea
     -moz-animation: blink 1s infinite;
     animation: blink 1s infinite;
 }
+
+.fa.fa-heart
+{
+    color: #FF0000;
+}
         
 #code-window
 {

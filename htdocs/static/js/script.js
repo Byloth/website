@@ -29,44 +29,6 @@ function convertSize(window)
     });
 }
 
-function dateAsString()
-{
-    let now = new Date();
-
-    let days = ["Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato"];
-    let months = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
-    
-    let day = days[now.getDay()] + " " + now.getDate();
-    let month = months[now.getMonth()];
-    let year = now.getFullYear();
-    
-    return [day, month, year].join(" ");
-}
-
-function timeAsString()
-{
-    let now = new Date();
-    
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    let seconds = now.getSeconds();
-                
-    if (hours < 10)
-    {
-        hours = "0" + hours;
-    }
-    if (minutes < 10)
-    {
-        minutes = "0" + minutes;
-    }
-    if (seconds < 10)
-    {
-        seconds = "0" + seconds;
-    }
-    
-    return [hours, minutes, seconds].join(":");
-}
-
 function setTopMost(window)
 {
     if (window.hasClass("active") == false)
@@ -219,15 +181,15 @@ $(function()
                     alert(response.text);
                     
                     $("#contact-form_submit").prop("disabled", false);
-                    $("#contact-form_submit").children(".text").text("Riprova");
+                    $("#contact-form_submit").children(".text").text("Retry");
                 }
             },
             error: function(response)
             {
-                alert("Si è verificato un errore sconosciuto!");
+                alert("An unknown error has occurred!");
                 
                 $("#contact-form_submit").prop("disabled", false);
-                $("#contact-form_submit").children(".text").text("Riprova");
+                $("#contact-form_submit").children(".text").text("Retry");
             }
         });
     });
