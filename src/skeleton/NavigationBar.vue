@@ -62,7 +62,14 @@
                     {
                         name: "height",
                         startValue: 192,
-                        endValue: 64
+                        endValue: 56,
+                        maxWidth: 599
+                    },
+                    {
+                        name: "height",
+                        startValue: 192,
+                        endValue: 64,
+                        minWidth: 600
                     },
                     {
                         target: this.$refs.title as HTMLElement,
