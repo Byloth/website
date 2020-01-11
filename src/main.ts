@@ -5,7 +5,7 @@ import store from "./store";
 
 import App from "./App.vue";
 
-import VueScrollAnimator from "./plugins/vue-scroll-animator/VueScrollAnimator";
+import VueScrollAnimator from "@byloth/vue-scroll-animator/VueScrollAnimator";
 
 Vue.config.productionTip = false;
 

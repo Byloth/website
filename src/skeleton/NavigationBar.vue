@@ -23,8 +23,8 @@
     import TopAppBarComponent from "../mdc/components/TopAppBarComponent";
     import TopAppBarFoundation from "../mdc/foundation/TopAppBarFoundation";
 
-    import ScrollAnimation from "../plugins/vue-scroll-animator/base/ScrollAnimation";
-    import { ClassAnimatorBehavior } from "../plugins/vue-scroll-animator/animators/ClassAnimator";
+    import ScrollAnimation from "@byloth/vue-scroll-animator/base/ScrollAnimation";
+    import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/ClassAnimator";
 
     @Component({ components: { "action-item": ActionItem }})
     export default class NavigationBar extends Vue
