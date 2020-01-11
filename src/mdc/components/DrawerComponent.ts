@@ -1,6 +1,5 @@
-import Vue from "vue";
-
 import { MDCDrawerAdapter } from "@material/drawer/adapter";
+import { strings } from "@material/drawer/constants";
 import { MDCDrawer } from "@material/drawer/index";
 
 import MDCListFoundation from "@material/list/foundation";
@@ -9,55 +8,67 @@ import DrawerFoundation from "../foundation/DrawerFoundation";
 
 export default class DrawerComponent extends MDCDrawer
 {
-    public constructor(vueElement: Vue)
-    {
-        super(vueElement.$el);
-    }
+    protected foundation_!: DrawerFoundation;
 
-    protected _hasElementFocus(element: any): boolean
+    protected _handleWindowResize!: EventListener;
+
+    public initialSyncWithDOM(): void
     {
-        return (element && element.focus);
+        super.initialSyncWithDOM();
+
+        this._handleWindowResize = this.foundation_.handleWindowResize.bind(this.foundation_);
+
+        window.addEventListener("resize", this._handleWindowResize);
+    }
+    public destroy(): void
+    {
+        super.destroy();
+
+        window.removeEventListener("resize", this._handleWindowResize);
     }
 
     public getDefaultAdapter(): MDCDrawerAdapter
     {
-        const adapter = (Object.assign({
+        //
+        // tslint:disable-next-line: max-line-length
+        // Based on: https://github.com/material-components/material-components-web/blob/737da83fc1a04b179a00128080c639e2c7046d4e/packages/mdc-drawer/component.ts#L131
+        //
+
+        const adapter: MDCDrawerAdapter = {
 
             addClass: (className: string) => this.root_.classList.add(className),
             removeClass: (className: string) => this.root_.classList.remove(className),
             hasClass: (className: string) => this.root_.classList.contains(className),
             elementHasClass: (element: Element, className: string) => element.classList.contains(className),
-            saveFocus: () => {
-
-                this.previousFocus_ = document.activeElement;
-            },
+            saveFocus: () => this.previousFocus_ = document.activeElement,
             restoreFocus: () => {
 
-                if ((this.root_.contains(document.activeElement) === true) &&
-                    (this._hasElementFocus(this.previousFocus_) === true))
+                const previousFocus = this.previousFocus_ as HTMLOrSVGElement | null;
+
+                if (previousFocus && previousFocus.focus && this.root_.contains(document.activeElement))
                 {
-                    (this.previousFocus_ as any).focus();
+                    previousFocus.focus();
                 }
             },
+
             focusActiveNavigationItem: () => {
 
                 const listItemActivatedClass = MDCListFoundation.cssClasses.LIST_ITEM_ACTIVATED_CLASS;
-                const activeNavItemEl = this.root_.querySelector(`.${listItemActivatedClass}`);
+                const activeNavItemEl = this.root_.querySelector<HTMLElement>(`.${listItemActivatedClass}`);
 
-                if (this._hasElementFocus(activeNavItemEl) === true)
+                if (activeNavItemEl)
                 {
-                    (activeNavItemEl as any).focus();
+                    activeNavItemEl.focus();
                 }
             },
-            notifyClose: () => this.emit(DrawerFoundation.strings.CLOSE_EVENT, {}, true),
-            notifyOpen: () => this.emit(DrawerFoundation.strings.OPEN_EVENT, {}, true),
+            notifyClose: () => this.emit(strings.CLOSE_EVENT, {}, true),
+            notifyOpen: () => this.emit(strings.OPEN_EVENT, {}, true),
             trapFocus: () => this.focusTrap_.activate(),
             releaseFocus: () => this.focusTrap_.deactivate()
-        }));
+        };
 
         return adapter;
     }
-
     public getDefaultFoundation(): DrawerFoundation
     {
         const adapter = this.getDefaultAdapter();

@@ -1,6 +1,6 @@
-/*
- * Based on: https://vuejs.org/v2/guide/typescript.html#Augmenting-Types-for-Use-with-Plugins
- */
+//
+// Based on: https://vuejs.org/v2/guide/typescript.html#Augmenting-Types-for-Use-with-Plugins
+//
 
 import Vue from "vue";
 import VueAnimation, { AnimationOptions } from "@byloth/vue-scroll-animator/base/ScrollAnimation";

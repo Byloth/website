@@ -24,6 +24,8 @@
     @import "@material/ripple/mdc-ripple";
     @import "@material/top-app-bar/mdc-top-app-bar";
 
+    @import "@/styles/flex-layout";
+
     *
     {
         font-family: $mdc-typography-font-family;

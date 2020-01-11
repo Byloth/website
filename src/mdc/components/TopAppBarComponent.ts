@@ -1,61 +1,40 @@
-import Vue from "vue";
-
 import { MDCTopAppBarAdapter } from "@material/top-app-bar/adapter";
+import { strings } from "@material/top-app-bar/constants";
 import { MDCTopAppBar } from "@material/top-app-bar/index";
 
 import TopAppBarFoundation from "../foundation/TopAppBarFoundation";
 
 export default class TopAppBarComponent extends MDCTopAppBar
 {
-    public constructor(vueElement: Vue)
-    {
-        super(vueElement.$el);
-    }
-
     public getDefaultAdapter(): MDCTopAppBarAdapter
     {
-        const adapter = (Object.assign({
+        //
+        // tslint:disable-next-line: max-line-length
+        // Based on: https://github.com/material-components/material-components-web/blob/737da83fc1a04b179a00128080c639e2c7046d4e/packages/mdc-top-app-bar/component.ts#L112
+        //
+
+        const adapter: MDCTopAppBarAdapter = {
 
             hasClass: (className: string) => this.root_.classList.contains(className),
             addClass: (className: string) => this.root_.classList.add(className),
             removeClass: (className: string) => this.root_.classList.remove(className),
             setStyle: (property: string, value: string) =>
                 (this.root_ as HTMLElement).style.setProperty(property, value),
+
             getTopAppBarHeight: () => this.root_.clientHeight,
-            registerNavigationIconInteractionHandler: (evtType: string, handler: EventListener) => {
+            notifyNavigationIconClicked: () => this.emit(strings.NAVIGATION_EVENT, {}),
+            getViewportScrollY: () => {
 
-                if (this.navIcon_ !== undefined)
-                {
-                    this.navIcon_.addEventListener(evtType, handler);
-                }
+                const win = this.scrollTarget_ as Window;
+                const el = this.scrollTarget_ as Element;
+
+                return win.pageYOffset !== undefined ? win.pageYOffset : el.scrollTop;
             },
-            deregisterNavigationIconInteractionHandler: (evtType: string, handler: EventListener) => {
-
-                if (this.navIcon_ !== undefined)
-                {
-                    this.navIcon_.removeEventListener(evtType, handler);
-                }
-            },
-            notifyNavigationIconClicked: () => {
-
-                this.emit(TopAppBarFoundation.strings.NAVIGATION_EVENT, {});
-            },
-            registerScrollHandler: (handler: EventListener) => this.scrollTarget_.addEventListener("scroll", handler),
-            deregisterScrollHandler: (handler: EventListener) =>
-                this.scrollTarget_.removeEventListener("scroll", handler),
-
-            registerResizeHandler: (handler: EventListener) => window.addEventListener("resize", handler),
-            deregisterResizeHandler: (handler: EventListener) => window.removeEventListener("resize", handler),
-            getViewportScrollY: () =>
-                this.scrollTarget_[this.scrollTarget_ === window ? "pageYOffset" : "scrollTop"],
-
-            getTotalActionItems: () =>
-                this.root_.querySelectorAll(TopAppBarFoundation.strings.ACTION_ITEM_SELECTOR).length
-        }));
+            getTotalActionItems: () => this.root_.querySelectorAll(strings.ACTION_ITEM_SELECTOR).length
+        };
 
         return adapter;
     }
-
     public getDefaultFoundation(): TopAppBarFoundation
     {
         const adapter = this.getDefaultAdapter();

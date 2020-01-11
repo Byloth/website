@@ -1,18 +1,20 @@
 <template>
-    <div>
+    <div class="flex-container">
         <drawer id="drawer" ref="drawer" @opened="drawerOpened" @closed="drawerClosed">
             <list-item class="mdc-list-item--activated" icon="inbox" description="Inbox" />
             <list-item icon="send" description="Outgoing" />
             <list-item icon="drafts" description="Draft" />
         </drawer>
-        <nav-bar @drawer-toggle="toggleDrawer" />
-        <div id="main">
-            <div id="nav">
-                <span v-for="page in pages" :key="page.id">
-                    <router-link :to="page.path">{{ page.title }}</router-link> |
-                </span>
+        <div class="flex-auto">
+            <nav-bar @drawer-toggle="toggleDrawer" />
+            <div id="main">
+                <div id="nav">
+                    <span v-for="page in pages" :key="page.id">
+                        <router-link :to="page.path">{{ page.title }}</router-link> |
+                    </span>
+                </div>
+                <slot />
             </div>
-            <slot />
         </div>
     </div>
 </template>
@@ -79,6 +81,11 @@
 </script>
 
 <style lang="scss" scoped="scoped">
+    #pippo
+    {
+        display: flex;
+    }
+
     #main
     {
         -webkit-font-smoothing: antialiased;

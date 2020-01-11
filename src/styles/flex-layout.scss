@@ -1,0 +1,9 @@
+.flex-container
+{
+    display: flex;
+
+    & > .flex-auto
+    {
+        flex: auto;
+    }
+}
