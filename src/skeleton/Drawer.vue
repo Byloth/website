@@ -30,15 +30,15 @@
 </template>
 
 <script lang="ts">
-    import { MDCDrawer } from "@material/drawer/index";
     import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
+    import DrawerComponent from "../mdc/components/DrawerComponent";
     import DrawerFoundation from "../mdc/foundation/DrawerFoundation";
 
     @Component
     export default class Drawer extends Vue
     {
-        protected _mdcComponent!: MDCDrawer;
+        protected _mdcComponent!: DrawerComponent;
 
         public isOpen: boolean;
 
@@ -79,7 +79,7 @@
                 throw new Error("It wasn't possible to find a '.mdc-drawer' child.");
             }
 
-            this._mdcComponent = new MDCDrawer(drawer);
+            this._mdcComponent = new DrawerComponent(drawer);
             this._mdcComponent.listen(DrawerFoundation.strings.OPEN_EVENT, this._opened);
             this._mdcComponent.listen(DrawerFoundation.strings.CLOSE_EVENT, this._closed);
         }

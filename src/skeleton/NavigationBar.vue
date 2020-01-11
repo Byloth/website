@@ -46,7 +46,7 @@
 
         public mounted(): void
         {
-            this._mdcComponent = new TopAppBarComponent(this);
+            this._mdcComponent = new TopAppBarComponent(this.$el);
             this._mdcComponent.listen(TopAppBarFoundation.strings.NAVIGATION_EVENT, this._toggleDrawer);
 
             this._scrollAnimation = this.$scrollAnimate({
