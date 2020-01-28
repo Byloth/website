@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "removeComments": true,
+    "target": "esnext",
+    "module": "esnext",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -13,7 +12,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "jest"
     ],
     "paths": {
       "@/*": [
@@ -21,7 +21,7 @@
       ]
     },
     "lib": [
-      "es2019",
+      "esnext",
       "dom",
       "dom.iterable",
       "scripthost"
@@ -35,7 +35,6 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "dist",
     "node_modules"
   ]
 }

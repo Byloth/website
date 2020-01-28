@@ -51,6 +51,12 @@ Some of the technologies I used:
 > yarn build
 > ```
 >
+> ### Run your unit tests ###
+>
+> ```bash
+> yarn test:unit
+> ```
+>
 > ### Lints and fixes files ###
 >
 > ```bash
