@@ -34,7 +34,7 @@ Some of the technologies I used:
 > ## Project setup ##
 >
 > ```bash
-> npm install
+> yarn install
 > ```
 >
 > ---
@@ -42,19 +42,19 @@ Some of the technologies I used:
 > ### Compiles and hot-reloads for development ###
 >
 > ```bash
-> npm run serve
+> yarn serve
 > ```
 >
 > ### Compiles and minifies for production ###
 >
 > ```bash
-> npm run build
+> yarn build
 > ```
 >
 > ### Lints and fixes files ###
 >
 > ```bash
-> npm run lint
+> yarn lint
 > ```
 >
 > ---
