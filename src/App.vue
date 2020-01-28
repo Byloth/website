@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <drawer-layout id="drawer-layout">
             <router-view />
         </drawer-layout>

@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-    import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+    import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 
     import DrawerComponent from "../mdc/components/DrawerComponent";
     import DrawerFoundation from "../mdc/foundation/DrawerFoundation";
@@ -40,34 +40,29 @@
     {
         protected _mdcComponent!: DrawerComponent;
 
-        public isOpen: boolean;
+        @Prop({
+            required: true,
+            type: Boolean
+        })
+        public value!: boolean;
 
         public constructor()
         {
             super();
 
-            this.isOpen = false;
+            this.value = false;
         }
 
-        @Emit("opened")
-        protected _opened(evt: Event): void
+        @Emit("input")
+        protected _emitInput(evt: Event): boolean
         {
-            this.isOpen = true;
+            return this._mdcComponent.open;
         }
 
-        @Emit("closed")
-        protected _closed(evt: Event): void
+        @Watch("value")
+        protected _toggle(value: boolean, oldValue: boolean)
         {
-            this.isOpen = false;
-        }
-
-        public open(): void
-        {
-            this._mdcComponent.open = true;
-        }
-        public close(): void
-        {
-            this._mdcComponent.open = false;
+            this._mdcComponent.open = value;
         }
 
         public mounted(): void
@@ -80,13 +75,13 @@
             }
 
             this._mdcComponent = new DrawerComponent(drawer);
-            this._mdcComponent.listen(DrawerFoundation.strings.OPEN_EVENT, this._opened);
-            this._mdcComponent.listen(DrawerFoundation.strings.CLOSE_EVENT, this._closed);
+            this._mdcComponent.listen(DrawerFoundation.strings.OPEN_EVENT, this._emitInput);
+            this._mdcComponent.listen(DrawerFoundation.strings.CLOSE_EVENT, this._emitInput);
         }
         public destroyed(): void
         {
-            this._mdcComponent.unlisten(DrawerFoundation.strings.CLOSE_EVENT, this._closed);
-            this._mdcComponent.unlisten(DrawerFoundation.strings.OPEN_EVENT, this._opened);
+            this._mdcComponent.unlisten(DrawerFoundation.strings.CLOSE_EVENT, this._emitInput);
+            this._mdcComponent.unlisten(DrawerFoundation.strings.OPEN_EVENT, this._emitInput);
             this._mdcComponent.destroy();
         }
     }

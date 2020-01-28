@@ -1,12 +1,12 @@
 <template>
     <div class="flex-container">
-        <drawer id="drawer" ref="drawer" @opened="drawerOpened" @closed="drawerClosed">
+        <drawer id="drawer" v-model="isDrawerOpen">
             <list-item class="mdc-list-item--activated" icon="inbox" description="Inbox" />
             <list-item icon="send" description="Outgoing" />
             <list-item icon="drafts" description="Draft" />
         </drawer>
         <div class="flex-auto">
-            <nav-bar @drawer-toggle="toggleDrawer" />
+            <nav-bar id="nav-bar" @drawer-toggle="toggleDrawer" />
             <div id="main">
                 <div id="nav">
                     <span v-for="page in pages" :key="page.id">
@@ -38,44 +38,21 @@
     })
     export default class DrawerLayout extends Vue
     {
-        protected _drawer!: Drawer;
-
         public readonly pages: PageOptions[];
 
-        public isOpen: boolean;
+        public isDrawerOpen: boolean;
 
         public constructor()
         {
             super();
 
             this.pages = config.pages;
-            this.isOpen = false;
-        }
-
-        public drawerOpened(evt: Event): void
-        {
-            this.isOpen = true;
-        }
-        public drawerClosed(evt: Event): void
-        {
-            this.isOpen = false;
+            this.isDrawerOpen = false;
         }
 
         public toggleDrawer(evt: Event): void
         {
-            if (this.isOpen === false)
-            {
-                this._drawer.open();
-            }
-            else
-            {
-                this._drawer.close();
-            }
-        }
-
-        public mounted(): void
-        {
-            this._drawer = this.$refs.drawer as Drawer;
+            this.isDrawerOpen = !this.isDrawerOpen;
         }
     }
 </script>
