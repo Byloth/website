@@ -63,8 +63,8 @@ export default class DrawerComponent extends MDCDrawer
             },
             notifyClose: () => this.emit(strings.CLOSE_EVENT, {}, true),
             notifyOpen: () => this.emit(strings.OPEN_EVENT, {}, true),
-            trapFocus: () => this.focusTrap_.activate(),
-            releaseFocus: () => this.focusTrap_.deactivate()
+            trapFocus: () => this.focusTrap_?.activate(),
+            releaseFocus: () => this.focusTrap_?.deactivate()
         };
 
         return adapter;

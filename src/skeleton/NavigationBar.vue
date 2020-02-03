@@ -17,11 +17,11 @@
 <script lang="ts">
     import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
-    import config from "../config";
+    import config from "@/config";
 
-    import ActionItem from "../components/ActionItem.vue";
-    import TopAppBarComponent from "../mdc/components/TopAppBarComponent";
-    import TopAppBarFoundation from "../mdc/foundation/TopAppBarFoundation";
+    import ActionItem from "@/components/ActionItem.vue";
+    import TopAppBarComponent from "@/mdc/components/TopAppBarComponent";
+    import TopAppBarFoundation from "@/mdc/foundation/TopAppBarFoundation";
 
     import ScrollAnimation from "@byloth/vue-scroll-animator/base/ScrollAnimation";
     import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/ClassAnimator";
@@ -93,15 +93,15 @@
     {
         transition: box-shadow 200ms linear;
 
-        &.mdc-top-app-bar--prominent .mdc-top-app-bar__row
+        &.mdc-top-app-bar--prominent > .mdc-top-app-bar__row
         {
             height: 192px;
-        }
 
-        &.mdc-top-app-bar--prominent .mdc-top-app-bar__title
-        {
-            font-size: 34px;
-            padding-bottom: 0.4em;
+            & .mdc-top-app-bar__title
+            {
+                font-size: 34px;
+                padding-bottom: 0.4em;
+            }
         }
     }
 </style>
