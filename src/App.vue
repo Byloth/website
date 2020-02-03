@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <drawer-layout id="drawer-layout">
-            <router-view />
-        </drawer-layout>
-    </div>
+    <drawer-layout id="drawer-layout">
+        <router-view />
+    </drawer-layout>
 </template>
 
 <script lang="ts">

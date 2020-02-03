@@ -5,7 +5,9 @@
             <list-item icon="send" description="Outgoing" />
             <list-item icon="drafts" description="Draft" />
         </drawer>
-        <div class="flex-auto">
+        <!-- <div class="mdc-drawer-scrim" /> -->
+        <!-- <div class="flex-auto mdc-drawer-app-content" :class="{'mdc-drawer-app-content--opened': isDrawerOpen}"> -->
+        <div class="flex-auto mdc-drawer-app-content">
             <nav-bar id="nav-bar" @drawer-toggle="toggleDrawer" />
             <div id="main">
                 <div id="nav">
@@ -22,9 +24,9 @@
 <script lang="ts">
     import { Component, Vue } from "vue-property-decorator";
 
-    import config, { PageOptions } from "../config";
+    import config, { PageOptions } from "@/config";
 
-    import ListItem from "../components/ListItem.vue";
+    import ListItem from "@/components/ListItem.vue";
 
     import Drawer from "./Drawer.vue";
     import NavigationBar from "./NavigationBar.vue";
@@ -58,11 +60,6 @@
 </script>
 
 <style lang="scss" scoped="scoped">
-    #pippo
-    {
-        display: flex;
-    }
-
     #main
     {
         -webkit-font-smoothing: antialiased;
@@ -87,4 +84,31 @@
             }
         }
     }
+
+    // .mdc-drawer-app-content
+    // {
+    //     @import "@material/animation/variables";
+    //     @import "@material/drawer/variables";
+
+    //     transition-duration: $mdc-drawer-animation-enter;
+    //     transition-property: margin;
+    //     transition-timing-function: $mdc-animation-standard-curve-timing-function;
+
+    //     #nav-bar
+    //     {
+    //         transition-duration: $mdc-drawer-animation-enter;
+    //         transition-property: width;
+    //         transition-timing-function: $mdc-animation-standard-curve-timing-function;
+    //     }
+
+    //     &.mdc-drawer-app-content--opened
+    //     {
+    //         margin-left: $mdc-drawer-width;
+
+    //         #nav-bar
+    //         {
+    //             width: calc(100% - #{$mdc-drawer-width});
+    //         }
+    //     }
+    // }
 </style>
