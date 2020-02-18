@@ -68,7 +68,7 @@
         color: #2c3e50;
         padding: 200px 8px 8px 8px;
     }
-    
+
     #nav
     {
         padding: 30px;

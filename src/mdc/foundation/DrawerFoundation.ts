@@ -5,9 +5,10 @@ import MDCModalDrawerFoundation from "@material/drawer/modal/foundation";
 
 export default class DrawerFoundation extends MDCModalDrawerFoundation
 {
-    public static DESKTOP_SIZE: number = 1200;
-    public static TABLET_SIZE: number = 600;
+    public static DESKTOP_SIZE = 1200;
+    public static TABLET_SIZE = 600;
 
+    // eslint-disable-next-line no-useless-constructor
     public constructor(adapter: MDCDrawerAdapter)
     {
         super(adapter);
@@ -18,13 +19,11 @@ export default class DrawerFoundation extends MDCModalDrawerFoundation
         this.adapter_.addClass(cssClasses.DISMISSIBLE);
         this.adapter_.removeClass(cssClasses.MODAL);
     }
-
     protected _setModal(): void
     {
         this.adapter_.addClass(cssClasses.MODAL);
         this.adapter_.removeClass(cssClasses.DISMISSIBLE);
     }
-
     protected _setPermanent(): void
     {
         this.adapter_.removeClass(cssClasses.MODAL);

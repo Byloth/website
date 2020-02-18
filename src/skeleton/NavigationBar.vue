@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-    import { Component, Emit, Prop, Vue } from "vue-property-decorator";
+    import { Component, Emit, Vue } from "vue-property-decorator";
 
     import config from "@/config";
 
@@ -26,7 +26,7 @@
     import ScrollAnimation from "@byloth/vue-scroll-animator/base/ScrollAnimation";
     import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/ClassAnimator";
 
-    @Component({ components: { "action-item": ActionItem }})
+    @Component({ components: { "action-item": ActionItem } })
     export default class NavigationBar extends Vue
     {
         protected _mdcComponent!: TopAppBarComponent;
@@ -42,7 +42,10 @@
         }
 
         @Emit("drawer-toggle")
-        protected _toggleDrawer(evt: Event): void { }
+        protected _toggleDrawer(evt: Event): void
+        {
+            // Emits the "drawer-toggle" event to the parent component.
+        }
 
         public mounted(): void
         {
@@ -55,7 +58,7 @@
                 endValue: 128,
                 classes: [{
 
-                    classesName: [ TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS ],
+                    classesName: [TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS],
                     behavior: ClassAnimatorBehavior.FROM_END
                 }],
                 cssProperties: [

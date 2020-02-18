@@ -4,6 +4,7 @@ import MDCTopAppBarFoundation from "@material/top-app-bar/standard/foundation";
 
 export default class TopAppBarFoundation extends MDCTopAppBarFoundation
 {
+    // eslint-disable-next-line no-useless-constructor
     public constructor(adapter: MDCTopAppBarAdapter)
     {
         super(adapter);

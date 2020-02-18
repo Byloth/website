@@ -40,9 +40,9 @@ export default class DrawerComponent extends MDCDrawer
             removeClass: (className: string) => this.root_.classList.remove(className),
             hasClass: (className: string) => this.root_.classList.contains(className),
             elementHasClass: (element: Element, className: string) => element.classList.contains(className),
-            saveFocus: () => this.previousFocus_ = document.activeElement,
-            restoreFocus: () => {
-
+            saveFocus: () => { this.previousFocus_ = document.activeElement; },
+            restoreFocus: () =>
+            {
                 const previousFocus = this.previousFocus_ as HTMLOrSVGElement | null;
 
                 if (previousFocus && previousFocus.focus && this.root_.contains(document.activeElement))
@@ -51,8 +51,8 @@ export default class DrawerComponent extends MDCDrawer
                 }
             },
 
-            focusActiveNavigationItem: () => {
-
+            focusActiveNavigationItem: () =>
+            {
                 const listItemActivatedClass = MDCListFoundation.cssClasses.LIST_ITEM_ACTIVATED_CLASS;
                 const activeNavItemEl = this.root_.querySelector<HTMLElement>(`.${listItemActivatedClass}`);
 
