@@ -23,8 +23,8 @@ export default class TopAppBarComponent extends MDCTopAppBar
 
             getTopAppBarHeight: () => this.root_.clientHeight,
             notifyNavigationIconClicked: () => this.emit(strings.NAVIGATION_EVENT, {}),
-            getViewportScrollY: () => {
-
+            getViewportScrollY: () =>
+            {
                 const win = this.scrollTarget_ as Window;
                 const el = this.scrollTarget_ as Element;
 

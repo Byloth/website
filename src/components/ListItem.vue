@@ -24,4 +24,3 @@
         public description!: string;
     }
 </script>
-

@@ -5,7 +5,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         sassOptions: {
-          includePaths: [ PATH.resolve(__dirname, "node_modules") ]
+          includePaths: [PATH.resolve(__dirname, "node_modules")]
         }
       }
     }
