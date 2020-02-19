@@ -1,5 +1,5 @@
 <template>
-    <button class="material-icons mdc-icon-button" :alt="description" :title="description" :aria-label="description">{{ icon }}</button>
+    <button class="material-icons mdc-icon-button mdc-ripple-upgraded--unbounded mdc-ripple-upgraded" :alt="description" :title="description" :aria-label="description">{{ icon }}</button>
 </template>
 
 <script lang="ts">
