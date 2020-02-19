@@ -13,7 +13,7 @@ module.exports = {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
     "comma-dangle": DYNAMIC_LEVEL,
-    "indent": ["error", 4, { MemberExpression: "off" }],
+    "indent": ["error", 4],
     "lines-between-class-members": "off",
     "newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
     "no-console": DYNAMIC_LEVEL,
@@ -35,7 +35,7 @@ module.exports = {
       rules: {
         "indent": ["error", 2],
 
-        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-var-requires": "off"
       }
     },
     {
