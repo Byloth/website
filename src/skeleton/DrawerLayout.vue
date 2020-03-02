@@ -1,13 +1,11 @@
 <template>
-    <div class="flex-container">
+    <div>
         <drawer id="drawer" v-model="isDrawerOpen">
             <list-item class="mdc-list-item--activated" icon="inbox" description="Inbox" />
             <list-item icon="send" description="Outgoing" />
             <list-item icon="drafts" description="Draft" />
         </drawer>
-        <!-- <div class="mdc-drawer-scrim" /> -->
-        <!-- <div class="flex-auto mdc-drawer-app-content" :class="{'mdc-drawer-app-content--opened': isDrawerOpen}"> -->
-        <div class="flex-auto mdc-drawer-app-content">
+        <div class="mdc-drawer-app-content">
             <nav-bar id="nav-bar" @drawer-toggle="toggleDrawer" />
             <div id="main">
                 <div id="nav">
@@ -18,6 +16,7 @@
                 <slot />
             </div>
         </div>
+        <div class="mdc-drawer-scrim" />
     </div>
 </template>
 
@@ -32,6 +31,7 @@
     import NavigationBar from "./NavigationBar.vue";
 
     @Component({
+        name: "DrawerLayout",
         components: {
             "drawer": Drawer,
             "list-item": ListItem,
@@ -60,6 +60,34 @@
 </script>
 
 <style lang="scss" scoped="scoped">
+    @import "@material/animation/variables";
+    @import "@material/drawer/variables";
+
+    .mdc-drawer-app-content
+    {
+        transition-duration: $mdc-drawer-animation-enter;
+        transition-property: margin;
+        transition-timing-function: $mdc-animation-standard-curve-timing-function;
+
+        & > #nav-bar
+        {
+            transition-duration: $mdc-drawer-animation-enter;
+            transition-property: width;
+            transition-timing-function: $mdc-animation-standard-curve-timing-function;
+
+            .mdc-drawer.mdc-drawer--open + &
+            {
+                transition-duration: $mdc-drawer-animation-exit;
+                width: calc(100% - #{$mdc-drawer-width});
+            }
+        }
+
+        .mdc-drawer.mdc-drawer--open + &
+        {
+            transition-duration: $mdc-drawer-animation-exit;
+        }
+    }
+
     #main
     {
         -webkit-font-smoothing: antialiased;
@@ -84,31 +112,4 @@
             }
         }
     }
-
-    // .mdc-drawer-app-content
-    // {
-    //     @import "@material/animation/variables";
-    //     @import "@material/drawer/variables";
-
-    //     transition-duration: $mdc-drawer-animation-enter;
-    //     transition-property: margin;
-    //     transition-timing-function: $mdc-animation-standard-curve-timing-function;
-
-    //     #nav-bar
-    //     {
-    //         transition-duration: $mdc-drawer-animation-enter;
-    //         transition-property: width;
-    //         transition-timing-function: $mdc-animation-standard-curve-timing-function;
-    //     }
-
-    //     &.mdc-drawer-app-content--opened
-    //     {
-    //         margin-left: $mdc-drawer-width;
-
-    //         #nav-bar
-    //         {
-    //             width: calc(100% - #{$mdc-drawer-width});
-    //         }
-    //     }
-    // }
 </style>

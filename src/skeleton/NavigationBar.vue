@@ -16,20 +16,18 @@
 
 <script lang="ts">
     import { Component, Emit, Vue } from "vue-property-decorator";
+    import { cssClasses } from "@material/top-app-bar";
+
+    import ScrollAnimation from "@byloth/vue-scroll-animator/animations";
+    import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/classes";
 
     import config from "@/config";
 
     import ActionItem from "@/components/ActionItem.vue";
-    import TopAppBarComponent from "@/mdc/components/TopAppBarComponent";
-    import TopAppBarFoundation from "@/mdc/foundation/TopAppBarFoundation";
 
-    import ScrollAnimation from "@byloth/vue-scroll-animator/base/ScrollAnimation";
-    import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/ClassAnimator";
-
-    @Component({ components: { "action-item": ActionItem } })
+    @Component({ name: "NavigationBar", components: { "action-item": ActionItem } })
     export default class NavigationBar extends Vue
     {
-        protected _mdcComponent!: TopAppBarComponent;
         protected _scrollAnimation!: ScrollAnimation;
 
         public title: string;
@@ -49,16 +47,13 @@
 
         public mounted(): void
         {
-            this._mdcComponent = new TopAppBarComponent(this.$el);
-            this._mdcComponent.listen(TopAppBarFoundation.strings.NAVIGATION_EVENT, this._toggleDrawer);
-
             this._scrollAnimation = this.$scrollAnimate({
 
                 startValue: 0,
                 endValue: 128,
                 classes: [{
 
-                    classesName: [TopAppBarFoundation.cssClasses.FIXED_SCROLLED_CLASS],
+                    classesName: [cssClasses.FIXED_SCROLLED_CLASS],
                     behavior: ClassAnimatorBehavior.FROM_END
                 }],
                 cssProperties: [
@@ -82,11 +77,6 @@
                     }
                 ]
             });
-        }
-        public destroyed(): void
-        {
-            this._mdcComponent.unlisten(TopAppBarFoundation.strings.NAVIGATION_EVENT, this._toggleDrawer);
-            this._mdcComponent.destroy();
         }
     }
 </script>
