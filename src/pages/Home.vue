@@ -10,6 +10,6 @@
 
     import HelloWorld from "@/components/HelloWorld.vue";
 
-    @Component({ components: { HelloWorld } })
+    @Component({ name: "Home", components: { HelloWorld } })
     export default class Home extends Vue { }
 </script>

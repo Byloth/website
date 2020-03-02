@@ -9,7 +9,7 @@
 
     import DrawerLayout from "./skeleton/DrawerLayout.vue";
 
-    @Component({ components: { "drawer-layout": DrawerLayout } })
+    @Component({ name: "App", components: { "drawer-layout": DrawerLayout } })
     export default class App extends Vue { }
 </script>
 
@@ -21,8 +21,6 @@
     @import "@material/list/mdc-list";
     @import "@material/ripple/mdc-ripple";
     @import "@material/top-app-bar/mdc-top-app-bar";
-
-    @import "@/styles/flex-layout";
 
     *
     {

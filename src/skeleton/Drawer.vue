@@ -1,5 +1,5 @@
 <template>
-    <aside class="mdc-drawer">
+    <aside class="mdc-drawer" :class="classes">
         <div class="mdc-drawer__header">
             <h3 class="mdc-drawer__title">Mail</h3>
             <h6 class="mdc-drawer__subtitle">email@material.io</h6>
@@ -27,21 +27,19 @@
 </template>
 
 <script lang="ts">
-    import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
+    import { Component, Prop, Vue } from "vue-property-decorator";
+    import { cssClasses } from "@material/drawer";
 
-    import DrawerComponent from "@/mdc/components/DrawerComponent";
-    import DrawerFoundation from "@/mdc/foundation/DrawerFoundation";
-
-    @Component
+    @Component({ name: "Drawer" })
     export default class Drawer extends Vue
     {
-        protected _mdcComponent!: DrawerComponent;
+        @Prop(Boolean)
+        public value: boolean;
 
-        @Prop({
-            required: true,
-            type: Boolean
-        })
-        public value!: boolean;
+        protected get classes()
+        {
+            return { [cssClasses.OPEN]: this.value };
+        }
 
         public constructor()
         {
@@ -49,30 +47,25 @@
 
             this.value = false;
         }
-
-        @Emit("input")
-        protected _emitInput(evt: Event): boolean
-        {
-            return this._mdcComponent.open;
-        }
-
-        @Watch("value")
-        protected _toggle(value: boolean, oldValue: boolean)
-        {
-            this._mdcComponent.open = value;
-        }
-
-        public mounted(): void
-        {
-            this._mdcComponent = new DrawerComponent(this.$el);
-            this._mdcComponent.listen(DrawerFoundation.strings.OPEN_EVENT, this._emitInput);
-            this._mdcComponent.listen(DrawerFoundation.strings.CLOSE_EVENT, this._emitInput);
-        }
-        public destroyed(): void
-        {
-            this._mdcComponent.unlisten(DrawerFoundation.strings.CLOSE_EVENT, this._emitInput);
-            this._mdcComponent.unlisten(DrawerFoundation.strings.OPEN_EVENT, this._emitInput);
-            this._mdcComponent.destroy();
-        }
     }
 </script>
+
+<style lang="scss" scoped="scoped">
+    @import "@material/animation/variables";
+    @import "@material/drawer/variables";
+
+    .mdc-drawer
+    {
+        margin-left: -$mdc-drawer-width;
+        position: fixed;
+        transition-duration: $mdc-drawer-animation-enter;
+        transition-property: margin;
+        transition-timing-function: $mdc-animation-standard-curve-timing-function;
+
+        &.mdc-drawer--open
+        {
+            margin-left: 0px;
+            transition-duration: $mdc-drawer-animation-exit;
+        }
+    }
+</style>

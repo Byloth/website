@@ -8,7 +8,7 @@
 <script lang="ts">
     import { Component, Prop, Vue } from "vue-property-decorator";
 
-    @Component
+    @Component({ name: "ListItem" })
     export default class ListItem extends Vue
     {
         @Prop({
