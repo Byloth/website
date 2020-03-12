@@ -1,7 +1,9 @@
 <template>
     <a class="mdc-list-item" href="#">
         <i class="material-icons mdc-list-item__graphic" aria-hidden="true">{{ icon }}</i>
-        <span class="mdc-list-item__text">{{ description }}</span>
+        <span class="mdc-list-item__text">
+            <slot />
+        </span>
     </a>
 </template>
 
@@ -16,11 +18,5 @@
             type: String
         })
         public icon!: string;
-
-        @Prop({
-            required: true,
-            type: String
-        })
-        public description!: string;
     }
 </script>
