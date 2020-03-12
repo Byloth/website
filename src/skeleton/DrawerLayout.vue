@@ -1,9 +1,15 @@
 <template>
     <div>
         <drawer id="drawer" v-model="isDrawerOpen">
-            <list-item class="mdc-list-item--activated" icon="inbox" description="Inbox" />
-            <list-item icon="send" description="Outgoing" />
-            <list-item icon="drafts" description="Draft" />
+            <list-item class="mdc-list-item--activated" icon="inbox">
+                Inbox
+            </list-item>
+            <list-item icon="send">
+                Outgoing
+            </list-item>
+            <list-item icon="drafts">
+                Draft
+            </list-item>
         </drawer>
         <div class="mdc-drawer-app-content">
             <nav-bar id="nav-bar" @drawer-toggle="toggleDrawer" />
@@ -50,6 +56,15 @@
 
             this.pages = config.pages;
             this.isDrawerOpen = false;
+        }
+
+        public mounted(): void
+        {
+            // Start listening for resizing event...
+        }
+        public destroyed(): void
+        {
+            // Stop listening for resizing event...
         }
 
         public toggleDrawer(evt: Event): void

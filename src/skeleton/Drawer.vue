@@ -5,38 +5,46 @@
             <h6 class="mdc-drawer__subtitle">email@material.io</h6>
         </div>
         <div class="mdc-drawer__content">
-            <nav class="mdc-list">
+            <nav-list>
                 <slot />
                 <hr class="mdc-list-divider">
-                <h6 class="mdc-list-group__subheader">Labels</h6>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Family</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Friends</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Work</span>
-                </a>
-            </nav>
+                <h6 class="mdc-list-group__subheader">
+                    Labels
+                </h6>
+                <list-item>
+                    Family
+                </list-item>
+                <list-item>
+                    Friends
+                </list-item>
+                <list-item>
+                    Work
+                </list-item>
+            </nav-list>
         </div>
     </aside>
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from "vue-property-decorator";
     import { cssClasses } from "@material/drawer";
+    import { Component, Prop, Vue } from "vue-property-decorator";
 
-    @Component({ name: "Drawer" })
+    import ListItem from "@/components/ListItem.vue";
+    import NavigationList from "@/components/NavigationList.vue";
+
+    @Component({
+        name: "Drawer",
+        components: {
+            "list-item": ListItem,
+            "nav-list": NavigationList
+        }
+    })
     export default class Drawer extends Vue
     {
         @Prop(Boolean)
         public value: boolean;
 
-        protected get classes()
+        protected get classes(): Record<string, boolean>
         {
             return { [cssClasses.OPEN]: this.value };
         }

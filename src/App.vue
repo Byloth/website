@@ -9,7 +9,10 @@
 
     import DrawerLayout from "./skeleton/DrawerLayout.vue";
 
-    @Component({ name: "App", components: { "drawer-layout": DrawerLayout } })
+    @Component({
+        name: "App",
+        components: { "drawer-layout": DrawerLayout }
+    })
     export default class App extends Vue { }
 </script>
 

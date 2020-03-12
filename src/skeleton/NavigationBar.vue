@@ -27,8 +27,8 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
     import { cssClasses } from "@material/top-app-bar";
+    import { Component, Vue } from "vue-property-decorator";
 
     import ScrollAnimation from "@byloth/vue-scroll-animator/animations";
     import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/classes";
@@ -37,7 +37,10 @@
 
     import ActionItem from "@/components/ActionItem.vue";
 
-    @Component({ name: "NavigationBar", components: { "action-item": ActionItem } })
+    @Component({
+        name: "NavigationBar",
+        components: { "action-item": ActionItem }
+    })
     export default class NavigationBar extends Vue
     {
         protected _resizingAnimation!: ScrollAnimation;
@@ -107,6 +110,17 @@
 </script>
 
 <style lang="scss" scoped="scoped">
+    /*
+     *  Extra small             x < 600px -> Modal
+     *  Small          600px <= x < 960px -> Dismissable
+     *  Medium         960px <= x < 1264px* -> Dismissable
+     *  Large        1264px* <= x < 1904px* -> Permanent
+     *  Extra large             x <= 1904px* -> Permanent
+     *
+     *      * -16px on Desktop
+     *
+     */
+
     .mdc-top-app-bar
     {
         transition: box-shadow 200ms linear;
