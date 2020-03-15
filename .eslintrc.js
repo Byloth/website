@@ -27,6 +27,7 @@ module.exports = {
     "vue/no-unused-components": DYNAMIC_LEVEL,
     "vue/script-indent": ["error", 4, { baseIndent: 1 }],
 
+    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }]
   },
   overrides: [

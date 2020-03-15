@@ -14,7 +14,7 @@
         protected _list!: MDCList;
 
         @Emit("select")
-        protected _onSelectHandler(evt: Event)
+        protected _onActionEvent(evt: Event)
         {
             return evt;
         }
@@ -24,11 +24,11 @@
             this._list = MDCList.attachTo(this.$el);
             this._list.wrapFocus = true;
 
-            this._list.listen(strings.ACTION_EVENT, this._onSelectHandler);
+            this._list.listen(strings.ACTION_EVENT, this._onActionEvent);
         }
         public destroyed()
         {
-            this._list.unlisten(strings.ACTION_EVENT, this._onSelectHandler);
+            this._list.unlisten(strings.ACTION_EVENT, this._onActionEvent);
         }
     }
 </script>

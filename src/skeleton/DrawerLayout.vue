@@ -1,6 +1,6 @@
 <template>
     <div>
-        <drawer id="drawer" v-model="isDrawerOpen">
+        <drawer id="drawer" :modal="modal" v-model="open">
             <list-item class="mdc-list-item--activated" icon="inbox">
                 Inbox
             </list-item>
@@ -11,8 +11,8 @@
                 Draft
             </list-item>
         </drawer>
-        <div class="mdc-drawer-app-content">
-            <nav-bar id="nav-bar" @drawer-toggle="toggleDrawer" />
+        <div class="mdc-drawer-app-content" :class="classes">
+            <nav-bar id="nav-bar" :toggle="toggle" @drawer-toggle="toggleDrawer" />
             <div id="main">
                 <div id="nav">
                     <span v-for="page in pages" :key="page.id">
@@ -22,7 +22,7 @@
                 <slot />
             </div>
         </div>
-        <div class="mdc-drawer-scrim" />
+        <drawer-scrim id="drawer-scrim" :value="modal && open" @input="open = $event" />
     </div>
 </template>
 
@@ -34,42 +34,124 @@
     import ListItem from "@/components/ListItem.vue";
 
     import Drawer from "./Drawer.vue";
+    import DrawerScrim from "./DrawerScrim.vue";
     import NavigationBar from "./NavigationBar.vue";
+
+    enum DrawerStatus
+    {
+        MODAL = 0,
+        DISMISSABLE = 1,
+        PERMANENT = 2
+    }
 
     @Component({
         name: "DrawerLayout",
         components: {
             "drawer": Drawer,
+            "drawer-scrim": DrawerScrim,
             "list-item": ListItem,
             "nav-bar": NavigationBar
         }
     })
     export default class DrawerLayout extends Vue
     {
+        public static readonly MOBILE_SIZE: number = 600;
+        public static readonly TABLET_SIZE: number = 1264;
+
+        protected _status: DrawerStatus;
+
         public readonly pages: PageOptions[];
 
-        public isDrawerOpen: boolean;
+        public modal: boolean;
+        public open: boolean;
+        public toggle: boolean;
+
+        public get classes(): Record<string, boolean>
+        {
+            return {
+                "mdc-drawer-app-content--open": (this.open && !this.modal)
+            };
+        }
 
         public constructor()
         {
             super();
 
+            this._status = DrawerStatus.DISMISSABLE;
+
             this.pages = config.pages;
-            this.isDrawerOpen = false;
+
+            this.modal = false;
+            this.open = false;
+            this.toggle = true;
+        }
+
+        protected _setModal()
+        {
+            if (this._status !== DrawerStatus.MODAL)
+            {
+                this._status = DrawerStatus.MODAL;
+
+                this.modal = true;
+                this.open = false;
+                this.toggle = true;
+            }
+        }
+        protected _setDismissable()
+        {
+            if (this._status !== DrawerStatus.DISMISSABLE)
+            {
+                this._status = DrawerStatus.DISMISSABLE;
+
+                this.modal = false;
+                this.open = false;
+                this.toggle = true;
+            }
+        }
+        protected _setPermanent()
+        {
+            if (this._status !== DrawerStatus.PERMANENT)
+            {
+                this._status = DrawerStatus.PERMANENT;
+
+                this.modal = false;
+                this.open = true;
+                this.toggle = false;
+            }
+        }
+
+        protected _onResizeEvent(evt?: Event)
+        {
+            const windowWidth = window.innerWidth;
+
+            if (windowWidth < DrawerLayout.MOBILE_SIZE)
+            {
+                this._setModal();
+            }
+            else if (windowWidth < DrawerLayout.TABLET_SIZE)
+            {
+                this._setDismissable();
+            }
+            else
+            {
+                this._setPermanent();
+            }
         }
 
         public mounted(): void
         {
-            // Start listening for resizing event...
+            window.addEventListener("resize", this._onResizeEvent);
+
+            this._onResizeEvent();
         }
         public destroyed(): void
         {
-            // Stop listening for resizing event...
+            window.removeEventListener("resize", this._onResizeEvent);
         }
 
-        public toggleDrawer(evt: Event): void
+        public toggleDrawer(evt?: Event): void
         {
-            this.isDrawerOpen = !this.isDrawerOpen;
+            this.open = !this.open;
         }
     }
 </script>
@@ -89,17 +171,22 @@
             transition-duration: $mdc-drawer-animation-enter;
             transition-property: width;
             transition-timing-function: $mdc-animation-standard-curve-timing-function;
+        }
 
-            .mdc-drawer.mdc-drawer--open + &
+        &.mdc-drawer-app-content--open
+        {
+            transition-duration: $mdc-drawer-animation-exit;
+
+            & > #nav-bar
             {
                 transition-duration: $mdc-drawer-animation-exit;
                 width: calc(100% - #{$mdc-drawer-width});
             }
         }
 
-        .mdc-drawer.mdc-drawer--open + &
+        .mdc-drawer.mdc-drawer--modal.mdc-drawer--open + &
         {
-            transition-duration: $mdc-drawer-animation-exit;
+            margin-left: 0px;
         }
     }
 
