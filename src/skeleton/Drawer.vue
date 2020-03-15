@@ -41,19 +41,24 @@
     })
     export default class Drawer extends Vue
     {
-        @Prop(Boolean)
-        public value: boolean;
+        @Prop({
+            default: false,
+            type: Boolean
+        })
+        public modal!: boolean;
+
+        @Prop({
+            default: false,
+            type: Boolean
+        })
+        public value!: boolean;
 
         protected get classes(): Record<string, boolean>
         {
-            return { [cssClasses.OPEN]: this.value };
-        }
-
-        public constructor()
-        {
-            super();
-
-            this.value = false;
+            return {
+                "mdc-drawer--modal": this.modal,
+                [cssClasses.OPEN]: this.value
+            };
         }
     }
 </script>
@@ -67,8 +72,21 @@
         margin-left: -$mdc-drawer-width;
         position: fixed;
         transition-duration: $mdc-drawer-animation-enter;
-        transition-property: margin;
+        transition-property: box-shadow, margin;
         transition-timing-function: $mdc-animation-standard-curve-timing-function;
+
+        &.mdc-drawer--modal
+        {
+            box-shadow: none;
+            display: flex;
+
+            &.mdc-drawer--open
+            {
+                box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
+                            0px 16px 24px 2px rgba(0, 0, 0, 0.14),
+                            0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+            }
+        }
 
         &.mdc-drawer--open
         {

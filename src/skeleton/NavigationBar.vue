@@ -2,7 +2,8 @@
     <header class="mdc-top-app-bar mdc-top-app-bar--prominent">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <action-item class="mdc-top-app-bar__navigation-icon"
+                <action-item v-if="toggle"
+                             class="mdc-top-app-bar__navigation-icon"
                              @click="$emit('drawer-toggle', $event)">
                     menu
                 </action-item>
@@ -28,7 +29,7 @@
 
 <script lang="ts">
     import { cssClasses } from "@material/top-app-bar";
-    import { Component, Vue } from "vue-property-decorator";
+    import { Component, Prop, Vue } from "vue-property-decorator";
 
     import ScrollAnimation from "@byloth/vue-scroll-animator/animations";
     import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/classes";
@@ -43,8 +44,14 @@
     })
     export default class NavigationBar extends Vue
     {
-        protected _resizingAnimation!: ScrollAnimation;
-        protected _movingAnimation!: ScrollAnimation;
+        protected _resizingAnimation?: ScrollAnimation;
+        protected _movingAnimation?: ScrollAnimation;
+
+        @Prop({
+            default: true,
+            type: Boolean
+        })
+        public toggle!: boolean;
 
         public title: string;
 
@@ -57,7 +64,7 @@
 
         public mounted(): void
         {
-            this._resizingAnimation = this.$scrollAnimate({
+            this._resizingAnimation = this.$initScrollAnimation({
                 startingValue: 0,
                 endingValue: 128,
                 classes: [{
@@ -86,8 +93,7 @@
                     }
                 ]
             });
-
-            this._movingAnimation = this.$scrollAnimate({
+            this._movingAnimation = this.$initScrollAnimation({
                 startingValue: 129,
                 maxDifference: 74,
                 cssProperties: [
@@ -106,21 +112,15 @@
                 ]
             });
         }
+        public destroyed(): void
+        {
+            this.$destroyScrollAnimation(this._resizingAnimation!);
+            this.$destroyScrollAnimation(this._movingAnimation!);
+        }
     }
 </script>
 
 <style lang="scss" scoped="scoped">
-    /*
-     *  Extra small             x < 600px -> Modal
-     *  Small          600px <= x < 960px -> Dismissable
-     *  Medium         960px <= x < 1264px* -> Dismissable
-     *  Large        1264px* <= x < 1904px* -> Permanent
-     *  Extra large             x <= 1904px* -> Permanent
-     *
-     *      * -16px on Desktop
-     *
-     */
-
     .mdc-top-app-bar
     {
         transition: box-shadow 200ms linear;

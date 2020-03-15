@@ -9,6 +9,7 @@ declare module "vue/types/vue"
 {
     interface Vue
     {
-        $scrollAnimate(options: AnimationOptions): ScrollAnimation;
+        $initScrollAnimation(options: AnimationOptions): ScrollAnimation;
+        $destroyScrollAnimation(animation: ScrollAnimation): void;
     }
 }
