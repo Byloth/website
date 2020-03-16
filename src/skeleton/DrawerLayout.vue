@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
+    import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 
     import config, { PageOptions } from "@/config";
 
@@ -65,6 +65,12 @@
         public modal: boolean;
         public open: boolean;
         public toggle: boolean;
+
+        @Prop({
+            default: false,
+            type: Boolean
+        })
+        public value!: boolean;
 
         public get classes(): Record<string, boolean>
         {
@@ -136,6 +142,18 @@
             {
                 this._setPermanent();
             }
+        }
+
+        @Watch("open")
+        @Emit("input")
+        protected _onOpenChanged(value: boolean, oldValue: boolean)
+        {
+            if (this.modal)
+            {
+                return this.open;
+            }
+
+            return false;
         }
 
         public mounted(): void
