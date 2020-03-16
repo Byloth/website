@@ -47,13 +47,13 @@
         protected _resizingAnimation?: ScrollAnimation;
         protected _movingAnimation?: ScrollAnimation;
 
+        public title: string;
+
         @Prop({
             default: true,
             type: Boolean
         })
         public toggle!: boolean;
-
-        public title: string;
 
         public constructor()
         {
