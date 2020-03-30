@@ -40,7 +40,7 @@
     }
 </script>
 
-<style lang="scss" scoped="scoped">
+<style lang="scss" scoped>
     h3
     {
         margin: 40px 0 0;

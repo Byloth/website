@@ -13,6 +13,16 @@
         </drawer>
         <div class="mdc-drawer-app-content" :class="classes">
             <nav-bar id="nav-bar" :toggle="toggle" @drawer-toggle="toggleDrawer" />
+            <div id="jumbotron">
+                <blockquote>
+                    <h2><q>Niente è reale; tutto è lecito.</q></h2>
+                    <footer>
+                        <cite>
+                            Altaïr Ibn-La'Ahad
+                        </cite>
+                    </footer>
+                </blockquote>
+            </div>
             <div id="main">
                 <div id="nav">
                     <span v-for="page in pages" :key="page.id">
@@ -174,7 +184,9 @@
     }
 </script>
 
-<style lang="scss" scoped="scoped">
+<style lang="scss" scoped>
+    @import "@/styles/base";
+
     @import "@material/animation/variables";
     @import "@material/drawer/variables";
 
@@ -208,13 +220,25 @@
         }
     }
 
+    #jumbotron
+    {
+        background: #004BA0;
+        color: #FFFFFF;
+        padding: 200px 8px 8px 8px;
+
+        cite::before
+        {
+            content: "—";
+        }
+    }
+
     #main
     {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        padding: 200px 8px 8px 8px;
+        padding: 8px;
     }
 
     #nav

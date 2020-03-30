@@ -21,7 +21,7 @@
     }
 </script>
 
-<style lang="scss" scoped="scoped">
+<style lang="scss" scoped>
     @import "@material/animation/variables";
     @import "@material/drawer/variables";
 
