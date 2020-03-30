@@ -120,7 +120,7 @@
     }
 </script>
 
-<style lang="scss" scoped="scoped">
+<style lang="scss" scoped>
     .mdc-top-app-bar
     {
         transition: box-shadow 200ms linear;

@@ -47,33 +47,5 @@
 </script>
 
 <style lang="scss">
-    $mdc-theme-primary: #1976d2;
-    $mdc-theme-accent: #ffd600;
-    $mdc-typography-font-family: Ubuntu, Roboto, Helvetica, sans-serif;
-
-    @import "@material/drawer/mdc-drawer";
-    @import "@material/icon-button/mdc-icon-button";
-    @import "@material/list/mdc-list";
-    @import "@material/ripple/mdc-ripple";
-    @import "@material/top-app-bar/mdc-top-app-bar";
-
-    *
-    {
-        font-family: $mdc-typography-font-family;
-
-        &::selection
-        {
-            background-color: rgba($mdc-theme-accent, 0.5);
-        }
-    }
-    body
-    {
-        margin: 0px;
-        overflow-y: scroll;
-
-        &[disabled]
-        {
-            overflow: hidden;
-        }
-    }
+    @import "@/styles/base";
 </style>

@@ -1,0 +1,51 @@
+$mdc-theme-primary: #1976D2;
+$mdc-theme-secondary: #FFD600;
+$mdc-theme-background: #FAFAFA;
+
+$mdc-typography-font-family: Ubuntu, Roboto, Helvetica, sans-serif;
+
+@import "@material/drawer/mdc-drawer";
+@import "@material/icon-button/mdc-icon-button";
+@import "@material/list/mdc-list";
+@import "@material/ripple/mdc-ripple";
+@import "@material/top-app-bar/mdc-top-app-bar";
+
+*
+{
+    font-family: $mdc-typography-font-family;
+
+    &::selection
+    {
+        background-color: rgba($mdc-theme-secondary, 0.5);
+    }
+}
+
+body
+{
+    margin: 0px;
+    overflow-y: scroll;
+
+    &[disabled]
+    {
+        overflow: hidden;
+    }
+}
+
+q
+{
+    &::before
+    {
+        content: "«";
+    }
+    &::after
+    {
+        content: "»";
+    }
+}
+
+[title]:not(.mdc-icon-button)
+{
+    cursor: help;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+}

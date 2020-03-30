@@ -12,7 +12,7 @@ Desktop.ini
 
 # Generated & compiled files
 #
-/dist/*
+/dist/
 
 # Downloadable & installable modules & components
 #
