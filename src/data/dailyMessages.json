@@ -1,0 +1,576 @@
+[
+  {
+    "id": 1,
+    "type_id": 1,
+    "text": "<samp>Bip… Bip… Bip…</samp>",
+    "author": "Sputnik 1",
+    "source": ""
+  },
+  {
+    "id": 2,
+    "type_id": 1,
+    "text": "<cite>Che io sappia, non lo so!</cite>",
+    "author": "Federico Bilotta",
+    "source": ""
+  },
+  {
+    "id": 3,
+    "type_id": 1,
+    "text": "<cite>Stay hungry… Stay foolish!</cite>",
+    "author": "Steven Paul Jobs",
+    "source": ""
+  },
+  {
+    "id": 4,
+    "type_id": 1,
+    "text": "<samp>… Ci scusiamo per il disagio.</samp>",
+    "author": "voce sintetizzata",
+    "source": "Trenord S.r.l."
+  },
+  {
+    "id": 5,
+    "type_id": 1,
+    "text": "<cite>Bazinga!</cite>",
+    "author": "Dr. Sheldon Lee Cooper",
+    "source": "The Big Bang Theory"
+  },
+  {
+    "id": 6,
+    "type_id": 2,
+    "text": "<cite>Io sono ciò che sono in virtù di ciò che tutti siamo.</cite>",
+    "author": "",
+    "source": "Ubuntu"
+  },
+  {
+    "id": 7,
+    "type_id": 1,
+    "text": "<cite>Grande Giove!</cite>",
+    "author": "Dr. Emmett Lathrop Brown",
+    "source": "Ritorno al Futuro"
+  },
+  {
+    "id": 8,
+    "type_id": 1,
+    "text": "<cite>It’s-a me… Mario!</cite>",
+    "author": "Mario",
+    "source": "Super Mario Bros."
+  },
+  {
+    "id": 9,
+    "type_id": 1,
+    "text": "<cite>Requiescat in pace…</cite>",
+    "author": "Ezio Auditore da Firenze",
+    "source": "Assassin’s Creed"
+  },
+  {
+    "id": 10,
+    "type_id": 1,
+    "text": "<cite>Nulla è reale; tutto è lecito.</cite>",
+    "author": "Altaïr Ibn-La’Ahad",
+    "source": "Assassin’s Creed"
+  },
+  {
+    "id": 11,
+    "type_id": 1,
+    "text": "<cite>L’ignoranza è un’apostrofo tra le parole “un” e “apostrofo”.</cite>",
+    "author": "Anonimo",
+    "source": ""
+  },
+  {
+    "id": 12,
+    "type_id": 1,
+    "text": "<samp>C’è un luogo e un momento per ogni cosa; ma non ora.</samp>",
+    "author": "Prof. Samuel Oak",
+    "source": "Pokémon"
+  },
+  {
+    "id": 13,
+    "type_id": 1,
+    "text": "<cite>Come la lama lacera la carne, così il potere deturpa lo spirito.</cite>",
+    "author": "iscrizione sul piedistallo di Frostmourne",
+    "source": "WarCraft III"
+  },
+  {
+    "id": 14,
+    "type_id": 1,
+    "text": "<cite>Due cose sono infinite: l’universo e la stupidità umana; ma riguardo all’universo ho ancora dei dubbi.</cite>",
+    "author": "Albert Einstein",
+    "source": ""
+  },
+  {
+    "id": 15,
+    "type_id": 1,
+    "text": "<cite>Un tempo, anch’io ero un avventuriero… Finché non mi sono buscato una freccia nel ginocchio.</cite>",
+    "author": "soldato Manto della tempesta",
+    "source": "The Elder Scrolls V"
+  },
+  {
+    "id": 16,
+    "type_id": 1,
+    "text": "<cite>“Ohana” significa “famiglia”… “Famiglia” significa che nessuno viene abbandonato o dimenticato.</cite>",
+    "author": "Lilo Pelekai",
+    "source": "Lilo & Stitch"
+  },
+  {
+    "id": 17,
+    "type_id": 1,
+    "text": "<cite>Dopo quello che abbiamo passato… Dopo tutto quello che ho fatto… Non può essere tutto inutile!</cite>",
+    "author": "Ellie Williams",
+    "source": "The Last of Us"
+  },
+  {
+    "id": 18,
+    "type_id": 1,
+    "text": "<cite>Il miglior disprezzo è la non curanza.</cite>",
+    "author": "Carmelo Bilotta",
+    "source": ""
+  },
+  {
+    "id": 19,
+    "type_id": 0,
+    "text": "Finalmente online!",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 20,
+    "type_id": 0,
+    "text": "<span title=\"Maybe…\">Easter egg free!</span>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 21,
+    "type_id": 0,
+    "text": "Via il Broncio!",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 22,
+    "type_id": 0,
+    "text": "Nato da un’idea del 20 Dicembre 2013.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 23,
+    "type_id": 3,
+    "text": "<input class=\"form-control\" placeholder=\"Inserire un sottotitolo…\" type=\"text\" />",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 24,
+    "type_id": 0,
+    "text": "I <span style=\"color:#cc0000\">♥</span> <span title=\"N: 40°4'12\" / E: 15°41'4\"\">Carpineta</span>!",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 25,
+    "type_id": 0,
+    "text": "<samp>Objects in mirror are closer than they appear.</samp>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 26,
+    "type_id": 3,
+    "text": "<span class=\"screen\"><span style=\"color:#cccccc;\">Nessuna tastiera rilevata! Premere F2 per continuare…</span></span>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 27,
+    "type_id": 3,
+    "text": "<span class=\"screen\"><span style=\"color:#FF0000;\">Syntax error!</span></span>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 28,
+    "type_id": 0,
+    "text": "<code>printf(<span style=\"color:#cc0000\">\"Hello world!\"</span>);</code>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 29,
+    "type_id": 1,
+    "text": "<cite>The cake is a lie!</cite>",
+    "author": "graffiti sul muro",
+    "source": "Portal"
+  },
+  {
+    "id": 30,
+    "type_id": 1,
+    "text": "<cite>Verso l’infinito… E oltre!</cite>",
+    "author": "Buzz Lightyear",
+    "source": "Toy Story"
+  },
+  {
+    "id": 31,
+    "type_id": 0,
+    "text": "Lorem ipsum dolor sit amet…",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 32,
+    "type_id": 1,
+    "text": "<cite>Ego cogito, ergo sum, sive existo!</cite>",
+    "author": "René Descartes",
+    "source": ""
+  },
+  {
+    "id": 33,
+    "type_id": 0,
+    "text": "Who’s your daddy?",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 34,
+    "type_id": 3,
+    "text": "<span class=\"screen\"><span style=\"color:#99ff99\">The Matrix has you… Follow the white rabbit.</span></span>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 35,
+    "type_id": 0,
+    "text": "Ogni riferimento a fatti, luoghi, cose e/o persone reali è puramente casuale.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 36,
+    "type_id": 1,
+    "text": "<cite>Strade? Dove stiamo andando non c’è bisogno di strade!</cite>",
+    "author": "Dr. Emmeth Lathrop Brown",
+    "source": "Ritorno al Futuro"
+  },
+  {
+    "id": 37,
+    "type_id": 0,
+    "text": "Cum finis est licitus, etiam media sunt licita.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 38,
+    "type_id": 0,
+    "text": "<span style=\"cursor: wait;\"><span title=\"*mumble mumble mumble*\">Sto pensando…</span></span>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 39,
+    "type_id": 3,
+    "text": "<button class=\"btn btn-default\">ctrl</button>\n\n<button class=\"btn btn-default\">alt</button>\n\n<button class=\"btn btn-default\">del</button>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 40,
+    "type_id": 1,
+    "text": "<cite>La cosa più bella del nostro futuro è che arriva, sempre, un giorno alla volta.</cite>",
+    "author": "Abraham Lincoln",
+    "source": ""
+  },
+  {
+    "id": 41,
+    "type_id": 0,
+    "text": "<span style=\"font-family:comic sans ms,cursive;\">Helvetica.</span>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 42,
+    "type_id": 3,
+    "text": "<h5>Oggi è <span id=\"main-subtitle-date\">Giovedì 1 Gennaio 1970</span> e sono le <span id=\"main-subtitle-time\">00:00:00</span>.</h5>\n\n<script type=\"text/javascript\">\n\n    setInterval(function()\n\n    {\n\n        var now = new Date();\n\n\n\n        try\n\n        {\n\n            document.getElementById('main-subtitle-date').innerHTML = dateAsString(now);\n\n            document.getElementById('main-subtitle-time').innerHTML = timeAsString(now);\n\n        }\n\n        catch (error)\n\n        {\n\n        }\n\n    },\n\n\n\n    1000);\n\n</script>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 43,
+    "type_id": 1,
+    "text": "<cite>Come raggiungere un traguardo? Senza fretta ma senza sosta.</cite>",
+    "author": "Johann Wolfgang von Goethe",
+    "source": ""
+  },
+  {
+    "id": 44,
+    "type_id": 1,
+    "text": "<cite>Non ho fallito; ho solamente provato 10.000 metodi che non hanno funzionato.</cite>",
+    "author": "Thomas Alva Edison",
+    "source": ""
+  },
+  {
+    "id": 45,
+    "type_id": 1,
+    "text": "<cite>È l’idea giusta ma non è il momento giusto.</cite>",
+    "author": "John Dalton",
+    "source": ""
+  },
+  {
+    "id": 46,
+    "type_id": 1,
+    "text": "<cite>Fai del bene e gettalo nel mare.</cite>",
+    "author": "proverbio Arabo",
+    "source": ""
+  },
+  {
+    "id": 47,
+    "type_id": 1,
+    "text": "<cite>Perché tirarsela quando si è i migliori?</cite>",
+    "author": "Anonimo",
+    "source": ""
+  },
+  {
+    "id": 48,
+    "type_id": 0,
+    "text": "<span title=\"E non hai visto quelle precedenti…\">La versione migliore di sempre!</span>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 49,
+    "type_id": 3,
+    "text": "<h5>Questo sito esiste da <span id=\"main-subtitle-elapsed-time\" title=\"Dal 30/09/2015 alle 17:16:41\">0 anni, 0 mesi, 0 settimane, 0 giorni, 0 ore, 0 minuti e 0 secondi</span>.</h5>\n\n<script type=\"text/javascript\">\n\n    setInterval(function()\n\n    {\n\n        try\n\n        {\n\n            document.getElementById('main-subtitle-elapsed-time').innerHTML = timeDifferenceAsString(new Date(\"2015-09-30T17:16:41\"), new Date(), false);\n\n        }\n\n        catch (error)\n\n        {\n\n        }\n\n    },\n\n\n\n    1000);\n\n</script>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 50,
+    "type_id": 1,
+    "text": "<cite>L’asino che non ha mai avuto brache, quando se le vede addosso, se le caca.</cite>",
+    "author": "proverbio Garganico",
+    "source": ""
+  },
+  {
+    "id": 51,
+    "type_id": 0,
+    "text": "Ogni cosa ha il suo prezzo.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 52,
+    "type_id": 1,
+    "text": "<cite>La minestra riscaldata non va mai bene!</cite>",
+    "author": "Mirko Angioletti",
+    "source": ""
+  },
+  {
+    "id": 53,
+    "type_id": 1,
+    "text": "<cite>Nella giungla dovrai stare finché un 5 o un 8 non compare.</cite>",
+    "author": "indovinello",
+    "source": "Jumanji"
+  },
+  {
+    "id": 54,
+    "type_id": 1,
+    "text": "<cite>È gratis?</cite>",
+    "author": "Federico Bilotta",
+    "source": ""
+  },
+  {
+    "id": 55,
+    "type_id": 1,
+    "text": "<cite>Mi ha detto di aver bisogno di tempo e spazio; sicuramente dovrà calcolare la velocità!</cite>",
+    "author": "Anonimo",
+    "source": ""
+  },
+  {
+    "id": 56,
+    "type_id": 1,
+    "text": "<cite>Sta’ sü de doss!</cite>",
+    "author": "modo di dire Milanese",
+    "source": ""
+  },
+  {
+    "id": 57,
+    "type_id": 1,
+    "text": "<cite>La lampadina non è stata inventata perfezionando all’infinito la candela.</cite>",
+    "author": "Anonimo",
+    "source": ""
+  },
+  {
+    "id": 58,
+    "type_id": 1,
+    "text": "<cite>Quel giorno in cui sono cadute le stelle… È stato come… Come una visione dentro ad un sogno! Nientemeno di questo! Uno spettacolo magnifico!</cite>",
+    "author": "Taki & Mitsuha",
+    "source": "Your Name."
+  },
+  {
+    "id": 59,
+    "type_id": 1,
+    "text": "<cite>La felicità è fatta d’un niente che, al momento in cui lo viviamo, ci sembra tutto.</cite>",
+    "author": "James Douglas Morrison",
+    "source": ""
+  },
+  {
+    "id": 60,
+    "type_id": 1,
+    "text": "<cite>La calma è la virtù dei morti; i forti perdono la pazienza e ti picchiano.</cite>",
+    "author": "Anonimo",
+    "source": ""
+  },
+  {
+    "id": 61,
+    "type_id": 0,
+    "text": "Do <span title=\"Information Technology\">IT</span> better!",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 62,
+    "type_id": 1,
+    "text": "<cite>Il pesce puzza sempre dalla testa.</cite>",
+    "author": "antico proverbio",
+    "source": ""
+  },
+  {
+    "id": 63,
+    "type_id": 0,
+    "text": "Sono i dettagli a far la differenza!",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 64,
+    "type_id": 1,
+    "text": "<cite>La mia Vita è un continuo errore sottolineato.</cite>",
+    "author": "Roberto Andreoni",
+    "source": ""
+  },
+  {
+    "id": 65,
+    "type_id": 1,
+    "text": "<cite>Quanto manca alla vetta? Tu sali e non pensarci!</cite>",
+    "author": "Friedrich Wilhelm Nietzsche",
+    "source": ""
+  },
+  {
+    "id": 66,
+    "type_id": 1,
+    "text": "<cite>La somma dell’intelligenza sulla Terra è costante; la popolazione in aumento.</cite>",
+    "author": "Verascienza",
+    "source": ""
+  },
+  {
+    "id": 67,
+    "type_id": 0,
+    "text": "Senza glutine, senza lattosio e senza olio di palma.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 68,
+    "type_id": 1,
+    "text": "<cite>Sii la chiave di te stesso: apriti!</cite>",
+    "author": "Matteo Bilotta",
+    "source": ""
+  },
+  {
+    "id": 69,
+    "type_id": 1,
+    "text": "<cite>Code never lies. Comments sometimes do.</cite>",
+    "author": "Ron Jeffries",
+    "source": ""
+  },
+  {
+    "id": 70,
+    "type_id": 0,
+    "text": "Don’t worry… I have a dream!",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 71,
+    "type_id": 0,
+    "text": "<span title=\"‘STO CAZZO!\">Sai chi altro ha visitato questo sito?</span>",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 72,
+    "type_id": 0,
+    "text": "When nothing goes right, go left.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 73,
+    "type_id": 1,
+    "text": "<cite>Il rock non è arte, è il modo in cui parla la gente normale.</cite>",
+    "author": "William Michael Albert Broad",
+    "source": ""
+  },
+  {
+    "id": 74,
+    "type_id": 1,
+    "text": "<cite>L’intelligenza è la capacità di adattarsi al cambiamento.</cite>",
+    "author": "Stephen William Hawking",
+    "source": ""
+  },
+  {
+    "id": 75,
+    "type_id": 0,
+    "text": "Errare humanum est, perseverare autem diabolicum.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 76,
+    "type_id": 0,
+    "text": "Tenere lontano dalla portata dei bambini.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 77,
+    "type_id": 1,
+    "text": "<cite>One good thing about music, when it hits you, you feel no pain!</cite>",
+    "author": "Robert Nesta Marley",
+    "source": ""
+  },
+  {
+    "id": 78,
+    "type_id": 1,
+    "text": "<cite>Non tutto ciò che può essere contato conta e non tutto ciò che conta può essere contato.</cite>",
+    "author": "Albert Einstein",
+    "source": ""
+  },
+  {
+    "id": 79,
+    "type_id": 0,
+    "text": "Risolvo problemi; talvolta usando il computer, più spesso usando la testa.",
+    "author": "",
+    "source": ""
+  },
+  {
+    "id": 80,
+    "type_id": 1,
+    "text": "<cite>Hai la capacità di imparare dai tuoi errori… Oggi imparerai molto!</cite>",
+    "author": "Anonimo",
+    "source": ""
+  },
+  {
+    "id": 81,
+    "type_id": 1,
+    "text": "<cite>Se fallisci nella pianificazione, stai pianificando il tuo fallimento.</cite>",
+    "author": "Benjamin Franklin",
+    "source": ""
+  },
+  {
+    "id": 0,
+    "type_id": 0,
+    "text": "",
+    "author": "",
+    "source": ""
+  }
+]

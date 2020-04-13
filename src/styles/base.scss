@@ -1,8 +1,4 @@
-$mdc-theme-primary: #1976D2;
-$mdc-theme-secondary: #FFD600;
-$mdc-theme-background: #FAFAFA;
-
-$mdc-typography-font-family: Ubuntu, Roboto, Helvetica, sans-serif;
+@import "./variables";
 
 @import "@material/drawer/mdc-drawer";
 @import "@material/icon-button/mdc-icon-button";
