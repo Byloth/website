@@ -121,8 +121,12 @@
 </script>
 
 <style lang="scss" scoped>
-    .mdc-top-app-bar
+    @import "@/styles/variables";
+
+    header.mdc-top-app-bar
     {
+        backdrop-filter: blur(20px) saturate(180%);
+        background-color: rgba($mdc-theme-primary, 0.75);
         transition: box-shadow 200ms linear;
 
         &.mdc-top-app-bar--prominent > .mdc-top-app-bar__row
