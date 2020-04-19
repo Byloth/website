@@ -168,7 +168,7 @@
 
         public mounted(): void
         {
-            window.addEventListener("resize", this._onResizeEvent);
+            window.addEventListener("resize", this._onResizeEvent, { passive: true });
 
             this._onResizeEvent();
         }

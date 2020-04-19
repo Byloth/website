@@ -67,7 +67,7 @@
     @import "@material/animation/variables";
     @import "@material/drawer/variables";
 
-    .mdc-drawer
+    aside.mdc-drawer
     {
         margin-left: -$mdc-drawer-width;
         position: fixed;
