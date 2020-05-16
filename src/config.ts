@@ -21,14 +21,8 @@ class Config implements ConfigOptions
 {
     protected _options: ConfigOptions;
 
-    public get title(): string
-    {
-        return this._options.title;
-    }
-    public get pages(): PageOptions[]
-    {
-        return this._options.pages;
-    }
+    public get title(): string { return this._options.title; }
+    public get pages(): PageOptions[] { return this._options.pages; }
 
     constructor(options: ConfigOptions)
     {

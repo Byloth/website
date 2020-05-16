@@ -13,14 +13,29 @@
         </drawer>
         <div class="mdc-drawer-app-content" :class="classes">
             <nav-bar id="nav-bar" :toggle="toggle" @drawer-toggle="toggleDrawer" />
-            <div id="jumbotron">
+            <div id="jumbotron" v-if="dailyMessage.isLoaded">
                 <blockquote>
-                    <h2><q>Niente è reale; tutto è lecito.</q></h2>
-                    <footer>
-                        <cite>
-                            Altaïr Ibn-La'Ahad
-                        </cite>
-                    </footer>
+                    <template v-if="dailyMessage.typeId === 0">
+                        <h2 v-html="dailyMessage.text" />
+                    </template>
+                    <template v-else-if="dailyMessage.typeId === 1">
+                        <h2 v-html="dailyMessage.text" />
+                        <footer>
+                            <cite>{{ dailyMessage.author }}</cite>
+                            <template v-if="dailyMessage.source">
+                                di “{{ dailyMessage.source }}”
+                            </template>
+                        </footer>
+                    </template>
+                    <template v-else-if="dailyMessage.typeId === 2">
+                        <h2 v-html="dailyMessage.text" />
+                        <footer>
+                            traduzione di “{{ dailyMessage.source }}”
+                        </footer>
+                    </template>
+                    <template v-else-if="dailyMessage.typeId === 3">
+                        <h2 v-html="dailyMessage.text" />
+                    </template>
                 </blockquote>
             </div>
             <div id="main">
@@ -46,6 +61,8 @@
     import Drawer from "./Drawer.vue";
     import DrawerScrim from "./DrawerScrim.vue";
     import NavigationBar from "./NavigationBar.vue";
+
+    import { DailyMessage } from "@/models";
 
     enum DrawerStatus
     {
@@ -76,6 +93,8 @@
         public open: boolean;
         public toggle: boolean;
 
+        public dailyMessage: DailyMessage;
+
         @Prop({
             default: false,
             type: Boolean
@@ -84,9 +103,7 @@
 
         public get classes(): Record<string, boolean>
         {
-            return {
-                "mdc-drawer-app-content--open": (this.open && !this.modal)
-            };
+            return { "mdc-drawer-app-content--open": (this.open && !this.modal) };
         }
 
         public constructor()
@@ -100,6 +117,8 @@
             this.modal = false;
             this.open = false;
             this.toggle = true;
+
+            this.dailyMessage = DailyMessage.Empty;
         }
 
         protected _setModal()
@@ -166,6 +185,20 @@
             return false;
         }
 
+        public created(): void
+        {
+            DailyMessage.GetRandomOne()
+                .then((dailyMessage) =>
+                {
+                    this.dailyMessage = dailyMessage;
+
+                    if (this.dailyMessage.script)
+                    {
+                        // eslint-disable-next-line no-eval
+                        eval(this.dailyMessage.script);
+                    }
+                });
+        }
         public mounted(): void
         {
             window.addEventListener("resize", this._onResizeEvent, { passive: true });
@@ -186,9 +219,6 @@
 
 <style lang="scss" scoped>
     @import "@/styles/base";
-
-    @import "@material/animation/variables";
-    @import "@material/drawer/variables";
 
     .mdc-drawer-app-content
     {
@@ -224,11 +254,53 @@
     {
         background: #004BA0;
         color: #FFFFFF;
-        padding: 200px 8px 8px 8px;
+        display: flex;
+        min-height: 114px;
+        padding: 200px 8px 8px 16px;
 
-        cite::before
+        & > blockquote
         {
-            content: "—";
+            border-left: 0.333em solid lighten($mdc-theme-primary, 15);
+            padding: 0px 20px;
+
+            &::before
+            {
+                color: lighten($mdc-theme-primary, 20);
+                content: "“";
+                font-size: 3em;
+                left: 18px;
+                position: absolute;
+            }
+
+            & > h2
+            {
+                margin-top: 0px;
+            }
+
+            & > footer
+            {
+                padding: 0px 0px 1em 1em;
+
+                &::before
+                {
+                    content: "— ";
+                }
+            }
+        }
+
+        @media (max-width: 599px)
+        {
+            padding: 200px 8px 8px 10px;
+
+            & > blockquote
+            {
+                padding: 0px 18px;
+
+                &::before
+                {
+                    left: 15px;
+                }
+            }
         }
     }
 

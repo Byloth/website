@@ -25,7 +25,7 @@
     @import "@material/animation/variables";
     @import "@material/drawer/variables";
 
-    .mdc-drawer-scrim
+    div.mdc-drawer-scrim
     {
         background-color: $mdc-drawer-modal-scrim-color;
         display: block;
