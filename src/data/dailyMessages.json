@@ -209,7 +209,7 @@
   {
     "id": 24,
     "typeId": 0,
-    "text": "I <span style=\"color: #CC0000;\">♥</span> <span title=\"N: 40°4'12\" / E: 15°41'4\"\">Carpineta</span>!",
+    "text": "I <span class=\"red\">♥</span> <span title=\"N: 40°4'12&quot; / E: 15°41'4&quot;\">Carpineta</span>!",
     "script": null,
     "author": null,
     "source": null,
@@ -227,7 +227,7 @@
   {
     "id": 26,
     "typeId": 3,
-    "text": "<span class=\"screen\"><span style=\"color: #CCCCCC;\">Nessuna tastiera rilevata! Premere F2 per continuare…</span></span>",
+    "text": "<samp class=\"grey screen\">Nessuna tastiera rilevata! Premere F2 per continuare...</samp>",
     "script": null,
     "author": null,
     "source": null,
@@ -236,7 +236,7 @@
   {
     "id": 27,
     "typeId": 3,
-    "text": "<span class=\"screen\"><span style=\"color: #FF0000;\">Syntax error!</span></span>",
+    "text": "<samp class=\"red screen\">Syntax error!</samp>",
     "script": null,
     "author": null,
     "source": null,
@@ -245,7 +245,7 @@
   {
     "id": 28,
     "typeId": 0,
-    "text": "<code>printf(<span style=\"color: #CC0000;\">\"Hello world!\"</span>);</code>",
+    "text": "<code>printf(<span class=\"red\">\"Hello world!\"</span>);</code>",
     "script": null,
     "author": null,
     "source": null,
@@ -299,7 +299,7 @@
   {
     "id": 34,
     "typeId": 3,
-    "text": "<span class=\"screen\"><span style=\"color: #99FF99;\">The Matrix has you… Follow the white rabbit.</span></span>",
+    "text": "<samp class=\"green screen\">The Matrix has you... Follow the white rabbit.</samp>",
     "script": null,
     "author": null,
     "source": null,
@@ -335,7 +335,7 @@
   {
     "id": 38,
     "typeId": 0,
-    "text": "<span style=\"cursor: wait;\"><span title=\"*mumble mumble mumble*\">Sto pensando…</span></span>",
+    "text": "<span style=\"cursor: wait;\" title=\"*mumble mumble mumble*\">Sto pensando…</span>",
     "script": null,
     "author": null,
     "source": null,
@@ -344,7 +344,7 @@
   {
     "id": 39,
     "typeId": 3,
-    "text": "<button class=\"btn btn-default\">ctrl</button>\n\n<button class=\"btn btn-default\">alt</button>\n\n<button class=\"btn btn-default\">del</button>",
+    "text": "<button class=\"kbd-btn large\">Ctrl</button>\n\n<button class=\"kbd-btn large\">Alt</button>\n\n<button class=\"kbd-btn\">Del</button>",
     "script": null,
     "author": null,
     "source": null,
@@ -372,7 +372,7 @@
     "id": 42,
     "typeId": 3,
     "text": "Oggi è <span id=\"main-header-daily-message-date\">Giovedì 1 Gennaio 1970</span> e sono le <span id=\"main-header-daily-message-time\">00:00:00</span>.",
-    "script": "(function() {\nsetInterval(function() {\ntry {\nlet _n = new Date(), _d = document.getElementById('main-header-daily-message-date'), _t = document.getElementById('main-header-daily-message-time');\n_d.innerHTML = Time.DateAsString(_n);\n_t.innerHTML = Time.TimeAsString(_n);\n} catch (_e) { console.error(_e); }\n}, 1000);\n})();",
+    "script": "let _i = setInterval(function() {\ntry {\nlet _n = new Date(), _d = document.getElementById('main-header-daily-message-date'), _t = document.getElementById('main-header-daily-message-time');\n_d.innerHTML = Time.DateAsString(_n);\n_t.innerHTML = Time.TimeAsString(_n);\n} catch (_e) { console.error(_e);\nclearInterval(_i); }\n}, 1000);",
     "author": null,
     "source": null,
     "url": null
@@ -435,7 +435,7 @@
     "id": 49,
     "typeId": 3,
     "text": "Questo sito esiste da <span id=\"main-header-daily-message-elapsed-time\" title=\"Dal 30/09/2015 alle 17:16:41\">0 anni, 0 mesi, 0 settimane, 0 giorni, 0 ore, 0 minuti e 0 secondi</span>.",
-    "script": "(function() {\nsetInterval(function() {\ntry {\ndocument.getElementById('main-header-daily-message-elapsed-time').innerHTML = Time.TimeDifferenceAsString(new Date('2015-09-30T17:16:41'), new Date(), false);\n} catch (_e) { console.error(_e); }\n}, 1000);\n})();",
+    "script": "let _i = setInterval(function() {\ntry {\ndocument.getElementById('main-header-daily-message-elapsed-time').innerHTML = Time.TimeDifferenceAsString(new Date('2015-09-30T17:16:41'), new Date(), false);\n} catch (_e) { console.error(_e);\nclearInterval(_i); }\n}, 1000);",
     "author": null,
     "source": null,
     "url": null

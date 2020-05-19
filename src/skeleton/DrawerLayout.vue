@@ -13,30 +13,8 @@
         </drawer>
         <div class="mdc-drawer-app-content" :class="classes">
             <nav-bar id="nav-bar" :toggle="toggle" @drawer-toggle="toggleDrawer" />
-            <div id="jumbotron" v-if="dailyMessage.isLoaded">
-                <blockquote>
-                    <template v-if="dailyMessage.typeId === 0">
-                        <h2 v-html="dailyMessage.text" />
-                    </template>
-                    <template v-else-if="dailyMessage.typeId === 1">
-                        <h2 v-html="dailyMessage.text" />
-                        <footer>
-                            <cite>{{ dailyMessage.author }}</cite>
-                            <template v-if="dailyMessage.source">
-                                di “{{ dailyMessage.source }}”
-                            </template>
-                        </footer>
-                    </template>
-                    <template v-else-if="dailyMessage.typeId === 2">
-                        <h2 v-html="dailyMessage.text" />
-                        <footer>
-                            traduzione di “{{ dailyMessage.source }}”
-                        </footer>
-                    </template>
-                    <template v-else-if="dailyMessage.typeId === 3">
-                        <h2 v-html="dailyMessage.text" />
-                    </template>
-                </blockquote>
+            <div id="jumbotron">
+                <jumbotron />
             </div>
             <div id="main">
                 <div id="nav">
@@ -61,8 +39,7 @@
     import Drawer from "./Drawer.vue";
     import DrawerScrim from "./DrawerScrim.vue";
     import NavigationBar from "./NavigationBar.vue";
-
-    import { DailyMessage } from "@/models";
+    import Jumbotron from "./Jumbotron.vue";
 
     enum DrawerStatus
     {
@@ -77,7 +54,8 @@
             "drawer": Drawer,
             "drawer-scrim": DrawerScrim,
             "list-item": ListItem,
-            "nav-bar": NavigationBar
+            "nav-bar": NavigationBar,
+            "jumbotron": Jumbotron
         }
     })
     export default class DrawerLayout extends Vue
@@ -92,8 +70,6 @@
         public modal: boolean;
         public open: boolean;
         public toggle: boolean;
-
-        public dailyMessage: DailyMessage;
 
         @Prop({
             default: false,
@@ -117,8 +93,6 @@
             this.modal = false;
             this.open = false;
             this.toggle = true;
-
-            this.dailyMessage = DailyMessage.Empty;
         }
 
         protected _setModal()
@@ -185,20 +159,6 @@
             return false;
         }
 
-        public created(): void
-        {
-            DailyMessage.GetRandomOne()
-                .then((dailyMessage) =>
-                {
-                    this.dailyMessage = dailyMessage;
-
-                    if (this.dailyMessage.script)
-                    {
-                        // eslint-disable-next-line no-eval
-                        eval(this.dailyMessage.script);
-                    }
-                });
-        }
         public mounted(): void
         {
             window.addEventListener("resize", this._onResizeEvent, { passive: true });
@@ -258,49 +218,9 @@
         min-height: 114px;
         padding: 200px 8px 8px 16px;
 
-        & > blockquote
-        {
-            border-left: 0.333em solid lighten($mdc-theme-primary, 15);
-            padding: 0px 20px;
-
-            &::before
-            {
-                color: lighten($mdc-theme-primary, 20);
-                content: "“";
-                font-size: 3em;
-                left: 18px;
-                position: absolute;
-            }
-
-            & > h2
-            {
-                margin-top: 0px;
-            }
-
-            & > footer
-            {
-                padding: 0px 0px 1em 1em;
-
-                &::before
-                {
-                    content: "— ";
-                }
-            }
-        }
-
         @media (max-width: 599px)
         {
             padding: 200px 8px 8px 10px;
-
-            & > blockquote
-            {
-                padding: 0px 18px;
-
-                &::before
-                {
-                    left: 15px;
-                }
-            }
         }
     }
 
