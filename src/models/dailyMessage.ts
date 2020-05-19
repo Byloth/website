@@ -13,9 +13,9 @@ export interface DailyMessageData
     id: number;
     typeId: number;
     text: string;
-    script: string | null;
     author: string | null;
     source: string | null;
+    script: string | null;
     url: string | null;
 }
 
@@ -28,7 +28,7 @@ export default class DailyMessage extends Model implements DailyMessageData
 
     public static async GetAll(): Promise<Array<DailyMessage>>
     {
-        const elements = await import("@/data/dailyMessages.json") as Array<DailyMessageData>;
+        const elements: Array<DailyMessageData> = await import(/* webpackChunkName: "dailyMessages" */ "@/data/dailyMessages.json");
         const dailyMessages = new Array<DailyMessage>();
 
         for (const index in elements)
@@ -48,24 +48,47 @@ export default class DailyMessage extends Model implements DailyMessageData
     public readonly id: number;
     public readonly typeId: number;
     public readonly text: string;
-    public readonly script: string | null;
     public readonly author: string | null;
     public readonly source: string | null;
+    public readonly script: string | null;
     public readonly url: string | null;
 
-    public get type() { return this.typeId as DailyMessageType; };
+    public get canBeExecuted(): boolean { return !!this.script; }
+    public get type(): DailyMessageType { return this.typeId as DailyMessageType; }
 
-    public constructor({ id, typeId, text, script, author, source, url }: DailyMessageData)
+    public constructor({ id, typeId, text, author, source, script, url }: DailyMessageData)
     {
         super(id !== -1);
 
-        this.typeId = typeId;
-
         this.id = id;
+        this.typeId = typeId;
         this.text = text;
-        this.script = script;
         this.author = author;
         this.source = source;
+        this.script = script;
         this.url = url;
+    }
+
+    public async execute(): Promise<unknown>
+    {
+        if (!this.script)
+        {
+            throw new Error("This daily message cannot be executed. It hasn't a valid script to run.");
+        }
+
+        return new Promise((resolve, reject) =>
+        {
+            try
+            {
+                // eslint-disable-next-line no-eval
+                const result = eval(`(function() { "use strict"; ${this.script} })();`);
+
+                resolve(result);
+            }
+            catch (error)
+            {
+                reject(error);
+            }
+        });
     }
 }
