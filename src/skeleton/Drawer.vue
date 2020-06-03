@@ -1,5 +1,5 @@
 <template>
-    <aside class="mdc-drawer" :class="classes">
+    <aside id="drawer" class="mdc-drawer" :class="classes">
         <div class="mdc-drawer__header">
             <h3 class="mdc-drawer__title">Mail</h3>
             <h6 class="mdc-drawer__subtitle">email@material.io</h6>
@@ -21,6 +21,11 @@
                     Work
                 </list-item>
             </nav-list>
+        </div>
+        <div class="mdc-drawer__footer">
+            Designed &amp; Developed with
+            <span class="red">♥</span> by
+            <a href="https://github.com/Byloth" target="_blank" title="Byloth on GitHub">Byloth</a>.
         </div>
     </aside>
 </template>
@@ -67,7 +72,7 @@
     @import "@material/animation/variables";
     @import "@material/drawer/variables";
 
-    aside.mdc-drawer
+    #drawer
     {
         margin-left: -$mdc-drawer-width;
         position: fixed;
@@ -92,6 +97,19 @@
         {
             margin-left: 0px;
             transition-duration: $mdc-drawer-animation-exit;
+        }
+
+        & > .mdc-drawer__content
+        {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        }
+
+        & > .mdc-drawer__footer
+        {
+            background-color: #F1F1F1;
+            font-size: 87.5%;
+            padding: 16px 8px;
+            text-align: center;
         }
     }
 </style>

@@ -1,5 +1,6 @@
 @import "./variables";
 
+@import "@material/card/mdc-card";
 @import "@material/drawer/mdc-drawer";
 @import "@material/icon-button/mdc-icon-button";
 @import "@material/list/mdc-list";
@@ -24,8 +25,44 @@
     }
 }
 
+[title]
+{
+    cursor: help;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+
+    &.mdc-icon-button
+    {
+        cursor: inherit;
+        text-decoration: none;
+    }
+}
+
+a
+{
+    &[title]
+    {
+        cursor: pointer;
+
+        &:hover
+        {
+            text-decoration: underline;
+        }
+    }
+
+    [title]
+    {
+        cursor: inherit;
+    }
+    &:hover [title]
+    {
+        text-decoration: none;
+    }
+}
+
 body
 {
+    background-color: #F1F1F1;
     margin: 0px;
     overflow-y: scroll;
 
@@ -53,19 +90,6 @@ q
     {
         content: "»";
     }
-}
-
-[title]:not(.mdc-icon-button)
-{
-    cursor: help;
-    text-decoration-line: underline;
-    text-decoration-style: dotted;
-}
-
-a:hover [title]
-{
-    cursor: inherit;
-    text-decoration: none;
 }
 
 .red
