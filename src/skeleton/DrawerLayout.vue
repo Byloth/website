@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <drawer id="drawer" :modal="modal" v-model="open">
+    <div id="drawer-layout">
+        <drawer :modal="modal" v-model="open">
             <list-item class="mdc-list-item--activated" icon="inbox">
                 Inbox
             </list-item>
@@ -12,32 +12,24 @@
             </list-item>
         </drawer>
         <div class="mdc-drawer-app-content" :class="classes">
-            <nav-bar id="nav-bar" :toggle="toggle" @drawer-toggle="toggleDrawer" />
-            <div id="jumbotron">
-                <jumbotron />
-            </div>
-            <div id="main">
-                <div id="nav">
-                    <span v-for="page in pages" :key="page.id">
-                        <router-link :to="page.path">{{ page.title }}</router-link> |
-                    </span>
-                </div>
+            <nav-bar :toggle="toggle" @drawer-toggle="toggleDrawer" />
+            <jumbotron />
+            <main-content>
                 <slot />
-            </div>
+            </main-content>
         </div>
-        <drawer-scrim id="drawer-scrim" :value="modal && open" @input="open = $event" />
+        <drawer-scrim :value="modal && open" @input="open = $event" />
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
 
-    import config, { PageOptions } from "@/config";
-
     import ListItem from "@/components/ListItem.vue";
 
     import Drawer from "./Drawer.vue";
     import DrawerScrim from "./DrawerScrim.vue";
+    import MainContent from "./MainContent.vue";
     import NavigationBar from "./NavigationBar.vue";
     import Jumbotron from "./Jumbotron.vue";
 
@@ -54,6 +46,7 @@
             "drawer": Drawer,
             "drawer-scrim": DrawerScrim,
             "list-item": ListItem,
+            "main-content": MainContent,
             "nav-bar": NavigationBar,
             "jumbotron": Jumbotron
         }
@@ -64,8 +57,6 @@
         public static readonly TABLET_SIZE: number = 1264;
 
         protected _status: DrawerStatus;
-
-        public readonly pages: PageOptions[];
 
         public modal: boolean;
         public open: boolean;
@@ -87,8 +78,6 @@
             super();
 
             this._status = DrawerStatus.DISMISSABLE;
-
-            this.pages = config.pages;
 
             this.modal = false;
             this.open = false;
@@ -207,45 +196,6 @@
         .mdc-drawer.mdc-drawer--modal.mdc-drawer--open + &
         {
             margin-left: 0px;
-        }
-    }
-
-    #jumbotron
-    {
-        background: #004BA0;
-        color: #FFFFFF;
-        display: flex;
-        min-height: 114px;
-        padding: 200px 8px 8px 16px;
-
-        @media (max-width: 599px)
-        {
-            padding: 200px 8px 8px 10px;
-        }
-    }
-
-    #main
-    {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        padding: 8px;
-    }
-
-    #nav
-    {
-        padding: 30px;
-
-        a
-        {
-            font-weight: bold;
-            color: #2c3e50;
-
-            &.router-link-exact-active
-            {
-                color: #42b983;
-            }
         }
     }
 </style>

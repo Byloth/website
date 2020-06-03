@@ -1,5 +1,5 @@
 <template>
-    <div class="mdc-drawer-scrim" :class="classes" @click="$emit('input', false)" />
+    <div id="drawer-scrim" class="mdc-drawer-scrim" :class="classes" @click="$emit('input', false)" />
 </template>
 
 <script lang="ts">
@@ -25,7 +25,7 @@
     @import "@material/animation/variables";
     @import "@material/drawer/variables";
 
-    div.mdc-drawer-scrim
+    #drawer-scrim
     {
         background-color: $mdc-drawer-modal-scrim-color;
         display: block;

@@ -1,5 +1,5 @@
 <template>
-    <header class="mdc-top-app-bar mdc-top-app-bar--prominent">
+    <header id="nav-bar" class="mdc-top-app-bar mdc-top-app-bar--prominent">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <action-item v-if="toggle"
@@ -123,7 +123,7 @@
 <style lang="scss" scoped>
     @import "@/styles/variables";
 
-    header.mdc-top-app-bar
+    #nav-bar
     {
         backdrop-filter: blur(20px) saturate(180%);
         background-color: rgba($mdc-theme-primary, 0.75);
@@ -133,7 +133,7 @@
         {
             height: 192px;
 
-            & .mdc-top-app-bar__title
+            .mdc-top-app-bar__title
             {
                 font-size: 34px;
                 padding-bottom: 0.4em;

@@ -1,5 +1,5 @@
 <template>
-    <drawer-layout id="drawer-layout" v-model="disable">
+    <drawer-layout v-model="disable">
         <router-view />
     </drawer-layout>
 </template>
