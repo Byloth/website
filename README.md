@@ -27,7 +27,9 @@ Some of the technologies I used:
 
 * [Vue.js](https://vuejs.org/)
 * [TypeScript](https://www.typescriptlang.org/)
+* [Sass](https://sass-lang.com/)
 * [Material Design](https://material.io/)
+* [Vue Scroll Animator](https://github.com/Byloth/vue-scroll-animator)
 
 ---
 
