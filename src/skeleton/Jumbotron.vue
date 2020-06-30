@@ -66,15 +66,11 @@
 <script lang="ts">
     import { Component, Vue } from "vue-property-decorator";
 
-    import ScrollAnimation from "@byloth/vue-scroll-animator/animations";
-
     import { DailyMessage } from "@/models";
 
     @Component({ name: "Jumbotron" })
     export default class Jumbotron extends Vue
     {
-        protected _movingAnimation?: ScrollAnimation;
-
         public dailyMessage: DailyMessage;
 
         public constructor()
@@ -89,6 +85,11 @@
             DailyMessage.GetRandomOne()
                 .then((dailyMessage) =>
                 {
+                    if (dailyMessage.id === undefined)
+                    {
+                        console.log(dailyMessage);
+                    }
+
                     this.dailyMessage = dailyMessage;
 
                     if (this.dailyMessage.canBeExecuted)
@@ -96,24 +97,6 @@
                         this.dailyMessage.execute();
                     }
                 });
-        }
-        public mounted(): void
-        {
-            this._movingAnimation = this.$initScrollAnimation({
-                startingValue: 0,
-                endingValue: 200,
-                cssProperties: [
-                    {
-                        name: "margin-top",
-                        startValue: 0,
-                        endValue: -200
-                    }
-                ]
-            });
-        }
-        public destroyed(): void
-        {
-            this.$destroyScrollAnimation(this._movingAnimation!);
         }
     }
 </script>
@@ -124,14 +107,10 @@
     #jumbotron
     {
         background: #004BA0;
-        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
         color: #FFFFFF;
         display: flex;
         min-height: 114px;
         padding: 200px 8px 8px 16px;
-        position: absolute;
-        width: calc(100% - 24px);
-        z-index: 1;
 
         & > blockquote
         {
@@ -189,7 +168,6 @@
         @media (max-width: 599px)
         {
             padding: 200px 8px 8px 10px;
-            width: calc(100% - 18px);
 
             & > blockquote
             {

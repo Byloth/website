@@ -2,7 +2,8 @@ import { RouteConfig } from "vue-router";
 
 import Home from "./pages/Home.vue";
 
-interface PageOptions extends RouteConfig
+// SMELLS: interface PageOptions extends RouteConfig
+type PageOptions = RouteConfig &
 {
     id: number;
     title: string;

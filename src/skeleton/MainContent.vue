@@ -33,8 +33,11 @@
 <style lang="scss" scoped>
     #main
     {
+        background-color: #F1F1F1;
+        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
         color: #2C3E50;
-        padding: 200px 8px 8px;
+        margin-bottom: 250px;
+        padding: 8px;
         text-align: center;
 
         & > .mdc-card

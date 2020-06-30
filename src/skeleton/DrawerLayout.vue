@@ -17,6 +17,7 @@
             <main-content>
                 <slot />
             </main-content>
+            <flooter />
         </div>
         <drawer-scrim :value="modal && open" @input="open = $event" />
     </div>
@@ -29,6 +30,7 @@
 
     import Drawer from "./Drawer.vue";
     import DrawerScrim from "./DrawerScrim.vue";
+    import Flooter from "./Flooter.vue";
     import MainContent from "./MainContent.vue";
     import NavigationBar from "./NavigationBar.vue";
     import Jumbotron from "./Jumbotron.vue";
@@ -45,6 +47,7 @@
         components: {
             "drawer": Drawer,
             "drawer-scrim": DrawerScrim,
+            "flooter": Flooter,
             "list-item": ListItem,
             "main-content": MainContent,
             "nav-bar": NavigationBar,
@@ -175,7 +178,8 @@
         transition-property: margin;
         transition-timing-function: $mdc-animation-standard-curve-timing-function;
 
-        & > #nav-bar
+        & > #nav-bar,
+        & > #flooter
         {
             transition-duration: $mdc-drawer-animation-enter;
             transition-property: width;
@@ -186,7 +190,8 @@
         {
             transition-duration: $mdc-drawer-animation-exit;
 
-            & > #nav-bar
+            & > #nav-bar,
+            & > #flooter
             {
                 transition-duration: $mdc-drawer-animation-exit;
                 width: calc(100% - #{$mdc-drawer-width});
