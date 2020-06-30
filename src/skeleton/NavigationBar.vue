@@ -128,6 +128,7 @@
         backdrop-filter: blur(20px) saturate(180%);
         background-color: rgba($mdc-theme-primary, 0.75);
         transition: box-shadow 200ms linear;
+        width: 100%;
 
         &.mdc-top-app-bar--prominent > .mdc-top-app-bar__row
         {

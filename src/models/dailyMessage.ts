@@ -33,7 +33,12 @@ export default class DailyMessage extends Model implements DailyMessageData
 
         for (const index in elements)
         {
-            dailyMessages.push(new DailyMessage(elements[index]));
+            const number = parseInt(index);
+
+            if (!isNaN(number))
+            {
+                dailyMessages.push(new DailyMessage(elements[index]));
+            }
         }
 
         return dailyMessages;

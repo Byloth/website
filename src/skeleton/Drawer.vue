@@ -23,9 +23,35 @@
             </nav-list>
         </div>
         <div class="mdc-drawer__footer">
-            Designed &amp; Developed with
-            <span class="red">♥</span> by
-            <a href="https://github.com/Byloth" target="_blank" title="Byloth on GitHub">Byloth</a>.
+            <strong style="margin-left: 8px;">Follow me on:</strong>
+            <hr class="mdc-list-divider" style="margin: 8px;" />
+            <div style="display: flex; font-size: 24px; text-align: center;">
+                <div style="flex: 1;">
+                    <a href="//www.facebook.com/matteo.bilotta" target="_blank" title="Byloth on Facebook">
+                        <span class="fab fa-facebook" />
+                    </a>
+                </div>
+                <div style="flex: 1;">
+                    <a href="//github.com/Byloth" target="_blank" title="Byloth on GitHub">
+                        <span class="fab fa-github" />
+                    </a>
+                </div>
+                <div style="flex: 1;">
+                    <a href="//www.instagram.com/i.byloth/" target="_blank" title="Byloth on Instagram">
+                        <span class="fab fa-instagram" />
+                    </a>
+                </div>
+                <div style="flex: 1;">
+                    <a href="//www.linkedin.com/in/byloth/" target="_blank" title="Byloth on LinkedIn">
+                        <span class="fab fa-linkedin-in" />
+                    </a>
+                </div>
+                <div style="flex: 1;">
+                    <a href="//twitter.com/iByloth" target="_blank" title="Byloth on Twitter">
+                        <span class="fab fa-twitter" />
+                    </a>
+                </div>
+            </div>
         </div>
     </aside>
 </template>
@@ -109,7 +135,6 @@
             background-color: #F1F1F1;
             font-size: 87.5%;
             padding: 16px 8px;
-            text-align: center;
         }
     }
 </style>
