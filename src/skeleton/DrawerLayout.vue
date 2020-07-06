@@ -143,7 +143,7 @@
         @Emit("input")
         protected _onOpenChanged(value: boolean, oldValue: boolean)
         {
-            if (this.modal)
+            if (this.modal === true)
             {
                 return this.open;
             }
