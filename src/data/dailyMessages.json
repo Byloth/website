@@ -209,7 +209,7 @@
   {
     "id": 24,
     "typeId": 0,
-    "text": "I <span class=\"fas fa-heart\"></span> <span title=\"N: 40°4'12&quot; / E: 15°41'4&quot;\">Carpineta</span>!",
+    "text": "I <span class=\"fas fa-heart red\"></span> <span title=\"N: 40°4'12&quot; / E: 15°41'4&quot;\">Carpineta</span>!",
     "script": null,
     "author": null,
     "source": null,

@@ -85,14 +85,9 @@
             DailyMessage.GetRandomOne()
                 .then((dailyMessage) =>
                 {
-                    if (dailyMessage.id === undefined)
-                    {
-                        console.log(dailyMessage);
-                    }
-
                     this.dailyMessage = dailyMessage;
 
-                    if (this.dailyMessage.canBeExecuted)
+                    if (this.dailyMessage.canBeExecuted === true)
                     {
                         this.dailyMessage.execute();
                     }

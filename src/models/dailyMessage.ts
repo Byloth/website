@@ -33,15 +33,10 @@ export default class DailyMessage extends Model implements DailyMessageData
 
         for (const index in elements)
         {
-            const number = parseInt(index);
-
-            if (!isNaN(number))
-            {
-                dailyMessages.push(new DailyMessage(elements[index]));
-            }
+            dailyMessages.push(new DailyMessage(elements[index]));
         }
 
-        return dailyMessages;
+        return dailyMessages.filter((el) => el.id);
     }
     public static async GetRandomOne(): Promise<DailyMessage>
     {
@@ -58,7 +53,7 @@ export default class DailyMessage extends Model implements DailyMessageData
     public readonly script: string | null;
     public readonly url: string | null;
 
-    public get canBeExecuted(): boolean { return !!this.script; }
+    public get canBeExecuted(): boolean { return (this.script !== null); }
     public get type(): DailyMessageType { return this.typeId as DailyMessageType; }
 
     public constructor({ id, typeId, text, author, source, script, url }: DailyMessageData)
@@ -76,7 +71,7 @@ export default class DailyMessage extends Model implements DailyMessageData
 
     public async execute(): Promise<unknown>
     {
-        if (!this.script)
+        if (this.canBeExecuted === false)
         {
             throw new Error("This daily message cannot be executed. It hasn't a valid script to run.");
         }

@@ -1,7 +1,7 @@
 <template>
     <footer id="flooter">
         <p>
-            Designed &amp; Developed with <span data-v-678128b2="" class="fas fa-heart"></span> by
+            Designed &amp; Developed with <span data-v-678128b2="" class="fas fa-heart red"></span> by
             <a href="https://github.com/Byloth" target="_blank" title="Byloth on GitHub">Byloth</a>.
         </p>
         <p>
