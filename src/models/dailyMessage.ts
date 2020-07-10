@@ -28,15 +28,9 @@ export default class DailyMessage extends Model implements DailyMessageData
 
     public static async GetAll(): Promise<Array<DailyMessage>>
     {
-        const elements: Array<DailyMessageData> = await import(/* webpackChunkName: "dailyMessages" */ "@/data/dailyMessages.json");
-        const dailyMessages = new Array<DailyMessage>();
+        const messages = (await import(/* webpackChunkName: "dailyMessages" */ "@/data/dailyMessages.json")).default;
 
-        for (const index in elements)
-        {
-            dailyMessages.push(new DailyMessage(elements[index]));
-        }
-
-        return dailyMessages.filter((el) => el.id);
+        return messages.map((message) => new DailyMessage(message));
     }
     public static async GetRandomOne(): Promise<DailyMessage>
     {
