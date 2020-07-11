@@ -23,25 +23,7 @@
             </nav-list>
         </div>
         <div class="mdc-drawer__footer">
-            <strong style="margin-left: 8px;">Follow me on:</strong>
-            <hr class="mdc-list-divider" style="margin: 8px;" />
-            <div style="font-size: 48px; text-align: center;">
-                <a href="//www.facebook.com/matteo.bilotta" target="_blank" title="Byloth on Facebook">
-                    <facebook-icon />
-                </a>
-                <a href="//github.com/Byloth" target="_blank" title="Byloth on GitHub">
-                    <github-icon />
-                </a>
-                <a href="//www.instagram.com/i.byloth/" target="_blank" title="Byloth on Instagram">
-                    <instagram-icon />
-                </a>
-                <a href="//www.linkedin.com/in/byloth/" target="_blank" title="Byloth on LinkedIn">
-                    <linkedin-icon />
-                </a>
-                <a href="//twitter.com/iByloth" target="_blank" title="Byloth on Twitter">
-                    <twitter-icon />
-                </a>
-            </div>
+            <h1 style="text-align: center;">Footer</h1>
         </div>
     </aside>
 </template>
@@ -50,24 +32,14 @@
     import { cssClasses } from "@material/drawer";
     import { Component, Prop, Vue } from "vue-property-decorator";
 
-    import FacebookIcon from "@/components/icons/FacebookIcon.vue";
-    import GithubIcon from "@/components/icons/GithubIcon.vue";
-    import InstagramIcon from "@/components/icons/InstagramIcon.vue";
-    import LinkedinIcon from "@/components/icons/LinkedinIcon.vue";
     import ListItem from "@/components/ListItem.vue";
     import NavigationList from "@/components/NavigationList.vue";
-    import TwitterIcon from "@/components/icons/TwitterIcon.vue";
 
     @Component({
         name: "Drawer",
         components: {
-            "facebook-icon": FacebookIcon,
-            "github-icon": GithubIcon,
-            "instagram-icon": InstagramIcon,
-            "linkedin-icon": LinkedinIcon,
             "list-item": ListItem,
-            "nav-list": NavigationList,
-            "twitter-icon": TwitterIcon
+            "nav-list": NavigationList
         }
     })
     export default class Drawer extends Vue
