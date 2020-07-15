@@ -11,16 +11,16 @@
     "Personal Website"
   ],
   "homepage": "https://github.com/Byloth/website",
-  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Byloth/website.git"
+  },
   "author": {
     "name": "Matteo Bilotta",
     "email": "me@byloth.net",
     "url": "https://www.byloth.net/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Byloth/website.git"
-  },
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -29,12 +29,12 @@
   "dependencies": {
     "@byloth/vue-scroll-animator": "^2.1.1",
     "@fortawesome/fontawesome-free": "^5.13.1",
-    "@material/card": "^5.1.0",
-    "@material/drawer": "^5.1.0",
-    "@material/icon-button": "^5.1.0",
-    "@material/ripple": "^5.1.0",
-    "@material/textfield": "^5.1.0",
-    "@material/top-app-bar": "^5.1.0",
+    "@material/card": "^7.0.0",
+    "@material/drawer": "^7.0.0",
+    "@material/icon-button": "^7.0.0",
+    "@material/ripple": "^7.0.0",
+    "@material/textfield": "^7.0.0",
+    "@material/top-app-bar": "^7.0.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
