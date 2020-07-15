@@ -1,30 +1,4 @@
-$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
-
-$mdc-theme-primary: #1976D2;
-$mdc-theme-secondary: #FFD600;
-$mdc-theme-background: #FAFAFA;
-
-$font-family: unquote("Ubuntu, Roboto, Helvetica, sans-serif");
-
-@use "~@material/typography" with ($font-family: $font-family);
-
-@use "~@material/card";
-@use "~@material/drawer/mdc-drawer";
-@use "~@material/list/mdc-list";
-@use "~@material/icon-button";
-@use "~@material/top-app-bar/mdc-top-app-bar";
-
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free/scss/solid";
-@import "~@fortawesome/fontawesome-free/scss/brands";
-
-// @import "~@material/ripple/mdc-ripple";
-
-@include card.core-styles;
-@include icon-button.core-styles;
+@use "./variables";
 
 @keyframes blink
 {
@@ -36,11 +10,11 @@ $font-family: unquote("Ubuntu, Roboto, Helvetica, sans-serif");
 
 *
 {
-    font-family: $font-family;
+    font-family: variables.$font-family;
 
     &::selection
     {
-        background-color: rgba($mdc-theme-secondary, 0.5);
+        background-color: rgba(variables.$secondary-color, 0.5);
     }
 }
 
@@ -52,7 +26,7 @@ $font-family: unquote("Ubuntu, Roboto, Helvetica, sans-serif");
 
     &.mdc-icon-button
     {
-        cursor: inherit;
+        cursor: pointer;
         text-decoration: none;
     }
 }
@@ -81,6 +55,7 @@ a
 
 body
 {
+    background-color: #FFFFFF;
     margin: 0px;
     overflow-y: scroll;
 
@@ -96,6 +71,11 @@ samp,
 samp *
 {
     font-family: "Courier New", "Courier", monospace;
+}
+
+html
+{
+    background-color: #3F3F3F;
 }
 
 q

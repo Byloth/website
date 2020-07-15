@@ -97,7 +97,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "@/styles/base";
+    @import "@/styles/variables";
 
     #jumbotron
     {
@@ -106,15 +106,16 @@
         display: flex;
         min-height: 114px;
         padding: 200px 8px 8px 16px;
+        position: relative;
 
         & > blockquote
         {
-            border-left: 0.333em solid lighten($mdc-theme-primary, 15);
+            border-left: 0.333em solid lighten($app-primary-color, 15);
             padding: 0px 20px;
 
             &::before
             {
-                color: lighten($mdc-theme-primary, 20);
+                color: lighten($app-primary-color, 20);
                 content: "“";
                 font-size: 3em;
                 left: 18px;
