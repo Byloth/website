@@ -121,24 +121,24 @@
 </script>
 
 <style lang="scss" scoped>
-    // @import "@/styles/variables";
+    @import "@/styles/variables";
 
-    // #nav-bar
-    // {
-    //     backdrop-filter: blur(20px) saturate(180%);
-    //     background-color: rgba($mdc-theme-primary, 0.75);
-    //     transition: box-shadow 200ms linear;
-    //     width: 100%;
+    #nav-bar
+    {
+        backdrop-filter: blur(20px) saturate(180%);
+        background-color: rgba($app-primary-color, 0.75);
+        transition: box-shadow 200ms linear;
+        width: 100%;
 
-    //     &.mdc-top-app-bar--prominent > .mdc-top-app-bar__row
-    //     {
-    //         height: 192px;
+        &.mdc-top-app-bar--prominent > .mdc-top-app-bar__row
+        {
+            height: 192px;
 
-    //         .mdc-top-app-bar__title
-    //         {
-    //             font-size: 34px;
-    //             padding-bottom: 0.4em;
-    //         }
-    //     }
-    // }
+            .mdc-top-app-bar__title
+            {
+                font-size: 34px;
+                padding-bottom: 0.4em;
+            }
+        }
+    }
 </style>

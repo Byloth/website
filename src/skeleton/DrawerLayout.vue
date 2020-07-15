@@ -170,37 +170,38 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "@/styles/base";
+    @import "@material/animation/variables";
+    @import "@material/drawer/variables";
 
-    // .mdc-drawer-app-content
-    // {
-    //     transition-duration: $mdc-drawer-animation-enter;
-    //     transition-property: margin;
-    //     transition-timing-function: $mdc-animation-standard-curve-timing-function;
+    .mdc-drawer-app-content
+    {
+        transition-duration: $mdc-drawer-animation-enter;
+        transition-property: margin;
+        transition-timing-function: $mdc-animation-standard-curve-timing-function;
 
-    //     & > #nav-bar,
-    //     & > #flooter
-    //     {
-    //         transition-duration: $mdc-drawer-animation-enter;
-    //         transition-property: width;
-    //         transition-timing-function: $mdc-animation-standard-curve-timing-function;
-    //     }
+        & > #nav-bar,
+        & > #flooter
+        {
+            transition-duration: $mdc-drawer-animation-enter;
+            transition-property: width;
+            transition-timing-function: $mdc-animation-standard-curve-timing-function;
+        }
 
-    //     &.mdc-drawer-app-content--open
-    //     {
-    //         transition-duration: $mdc-drawer-animation-exit;
+        &.mdc-drawer-app-content--open
+        {
+            transition-duration: $mdc-drawer-animation-exit;
 
-    //         & > #nav-bar,
-    //         & > #flooter
-    //         {
-    //             transition-duration: $mdc-drawer-animation-exit;
-    //             width: calc(100% - #{$mdc-drawer-width});
-    //         }
-    //     }
+            & > #nav-bar,
+            & > #flooter
+            {
+                transition-duration: $mdc-drawer-animation-exit;
+                width: calc(100% - #{$mdc-drawer-width});
+            }
+        }
 
-    //     .mdc-drawer.mdc-drawer--modal.mdc-drawer--open + &
-    //     {
-    //         margin-left: 0px;
-    //     }
-    // }
+        .mdc-drawer.mdc-drawer--modal.mdc-drawer--open + &
+        {
+            margin-left: 0px;
+        }
+    }
 </style>

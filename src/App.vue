@@ -47,5 +47,5 @@
 </script>
 
 <style lang="scss">
-    @import "@/styles/base";
+    @import "@/styles/main";
 </style>
