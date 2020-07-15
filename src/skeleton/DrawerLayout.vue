@@ -170,7 +170,8 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "@/styles/base";
+    @import "@material/animation/variables";
+    @import "@material/drawer/variables";
 
     .mdc-drawer-app-content
     {

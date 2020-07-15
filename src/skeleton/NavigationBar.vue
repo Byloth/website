@@ -126,7 +126,7 @@
     #nav-bar
     {
         backdrop-filter: blur(20px) saturate(180%);
-        background-color: rgba($mdc-theme-primary, 0.75);
+        background-color: rgba($app-primary-color, 0.75);
         transition: box-shadow 200ms linear;
         width: 100%;
 

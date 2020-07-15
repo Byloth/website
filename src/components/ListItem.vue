@@ -1,5 +1,6 @@
 <template>
     <a class="mdc-list-item" href="#">
+        <span class="mdc-list-item__ripple" />
         <span class="material-icons mdc-list-item__graphic" aria-hidden="true">{{ icon }}</span>
         <span class="mdc-list-item__text">
             <slot />
