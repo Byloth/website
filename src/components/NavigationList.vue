@@ -1,5 +1,5 @@
 <template>
-    <nav ref="list" class="mdc-list">
+    <nav class="mdc-list">
         <slot />
     </nav>
 </template>
