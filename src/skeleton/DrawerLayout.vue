@@ -153,7 +153,7 @@
 
         public mounted(): void
         {
-            window.addEventListener("resize", this._onResizeEvent, { passive: true });
+            window.addEventListener("resize", this._onResizeEvent, { capture: true, passive: true });
 
             this._onResizeEvent();
         }
