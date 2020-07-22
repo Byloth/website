@@ -75,8 +75,8 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "@material/animation/variables";
-    @import "@material/drawer/variables";
+    @import "~@material/animation/variables";
+    @import "~@material/drawer/variables";
 
     #drawer
     {
