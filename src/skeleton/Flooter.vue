@@ -7,13 +7,13 @@
                 </p>
                 <p>
                     <a rel="license"
-                    href="http://creativecommons.org/licenses/by-sa/4.0/"
-                    target="_blank"
-                    title="CC BY-SA 4.0"
-                    style="background-color: #C7C7C7; border-radius: 5px; box-shadow: 1px 1px 4px #000000; display: inline-block; font-size: 24px;">
-                        <span class="fab fa-creative-commons" style="margin: 0.25em;" />
-                        <span class="fab fa-creative-commons-by" style="margin: 0.25em;" />
-                        <span class="fab fa-creative-commons-sa" style="margin: 0.25em;" />
+                       href="http://creativecommons.org/licenses/by-sa/4.0/"
+                       target="_blank"
+                       title="CC BY-SA 4.0"
+                       style="background-color: #C7C7C7; border-radius: 5px; box-shadow: 1px 1px 4px #000000; display: inline-block; font-size: 24px;">
+                        <span class="fab fa-creative-commons" style="margin: 0.25em;"></span>
+                        <span class="fab fa-creative-commons-by" style="margin: 0.25em;"></span>
+                        <span class="fab fa-creative-commons-sa" style="margin: 0.25em;"></span>
                     </a>
                 </p>
             </div>

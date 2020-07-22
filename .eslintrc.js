@@ -4,9 +4,9 @@ module.exports = {
   root: true,
   env: { node: true },
   extends: [
-    "plugin:vue/essential",
     "@vue/standard",
-    "@vue/typescript/recommended"
+    "@vue/typescript/recommended",
+    "plugin:vue/recommended"
   ],
   parserOptions: { ecmaVersion: 2020 },
   rules: {
@@ -24,6 +24,10 @@ module.exports = {
     "semi": ["error", "always"],
     "space-before-function-paren": ["error", { anonymous: "never", named: "never", asyncArrow: "always" }],
 
+    "vue/html-closing-bracket-newline": ["error", { singleline: "never", multiline: "never" }],
+    "vue/html-indent": ["error", 4],
+    "vue/html-self-closing": ["error", { html: { void: "always", normal: "never" } }],
+    "vue/max-attributes-per-line": ["error", { multiline: { max: 1, allowFirstLine: true }, singleline: 2 }],
     "vue/no-unused-components": DYNAMIC_LEVEL,
     "vue/script-indent": ["error", 4, { baseIndent: 1 }],
 

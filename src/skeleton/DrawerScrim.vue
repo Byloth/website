@@ -1,5 +1,9 @@
 <template>
-    <div id="drawer-scrim" class="mdc-drawer-scrim" :class="classes" @click="$emit('input', false)" />
+    <div id="drawer-scrim"
+         class="mdc-drawer-scrim"
+         :class="classes"
+         @click="$emit('input', false)">
+    </div>
 </template>
 
 <script lang="ts">

@@ -1,13 +1,19 @@
 <template>
-    <aside id="drawer" class="mdc-drawer" :class="classes">
+    <aside id="drawer"
+           class="mdc-drawer"
+           :class="classes">
         <div class="mdc-drawer__header">
-            <h3 class="mdc-drawer__title">Mail</h3>
-            <h6 class="mdc-drawer__subtitle">email@material.io</h6>
+            <h3 class="mdc-drawer__title">
+                Mail
+            </h3>
+            <h6 class="mdc-drawer__subtitle">
+                email@material.io
+            </h6>
         </div>
         <div class="mdc-drawer__content">
             <nav-list>
-                <slot />
-                <hr class="mdc-list-divider">
+                <slot></slot>
+                <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
                     Labels
                 </h6>
@@ -23,7 +29,9 @@
             </nav-list>
         </div>
         <div class="mdc-drawer__footer">
-            <h1 style="text-align: center;">Footer</h1>
+            <h1 style="text-align: center;">
+                Footer
+            </h1>
         </div>
     </aside>
 </template>

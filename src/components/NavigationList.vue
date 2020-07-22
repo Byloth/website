@@ -1,6 +1,6 @@
 <template>
     <nav class="mdc-list">
-        <slot />
+        <slot></slot>
     </nav>
 </template>
 

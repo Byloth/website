@@ -1,19 +1,23 @@
 <template>
+    <!-- eslint-disable vue/no-v-html -->
     <div id="jumbotron">
         <blockquote v-if="dailyMessage.isLoaded">
             <template v-if="dailyMessage.typeId === 0">
                 <template v-if="dailyMessage.url">
                     <h2>
-                        <a :href="dailyMessage.url" target="_blank" v-html="dailyMessage.text" />
+                        <a :href="dailyMessage.url"
+                           target="_blank"
+                           v-html="dailyMessage.text">
+                        </a>
                     </h2>
                 </template>
                 <template v-else>
-                    <h2 v-html="dailyMessage.text" />
+                    <h2 v-html="dailyMessage.text"></h2>
                 </template>
             </template>
             <template v-else-if="dailyMessage.typeId === 1">
                 <template v-if="dailyMessage.url">
-                    <h2 v-html="dailyMessage.text" />
+                    <h2 v-html="dailyMessage.text"></h2>
                     <footer>
                         <a :href="dailyMessage.url" target="_blank">
                             <cite>{{ dailyMessage.author }}</cite>
@@ -24,7 +28,7 @@
                     </footer>
                 </template>
                 <template v-else>
-                    <h2 v-html="dailyMessage.text" />
+                    <h2 v-html="dailyMessage.text"></h2>
                     <footer>
                         <cite>{{ dailyMessage.author }}</cite>
                         <template v-if="dailyMessage.source">
@@ -35,7 +39,7 @@
             </template>
             <template v-else-if="dailyMessage.typeId === 2">
                 <template v-if="dailyMessage.url">
-                    <h2 v-html="dailyMessage.text" />
+                    <h2 v-html="dailyMessage.text"></h2>
                     <footer>
                         <a :href="dailyMessage.url" target="_blank">
                             traduzione di “{{ dailyMessage.source }}”
@@ -43,7 +47,7 @@
                     </footer>
                 </template>
                 <template v-else>
-                    <h2 v-html="dailyMessage.text" />
+                    <h2 v-html="dailyMessage.text"></h2>
                     <footer>
                         traduzione di “{{ dailyMessage.source }}”
                     </footer>
@@ -52,11 +56,14 @@
             <template v-else-if="dailyMessage.typeId === 3">
                 <template v-if="dailyMessage.url">
                     <h2>
-                        <a :href="dailyMessage.url" target="_blank" v-html="dailyMessage.text" />
+                        <a :href="dailyMessage.url"
+                           target="_blank"
+                           v-html="dailyMessage.text">
+                        </a>
                     </h2>
                 </template>
                 <template v-else>
-                    <h2 v-html="dailyMessage.text" />
+                    <h2 v-html="dailyMessage.text"></h2>
                 </template>
             </template>
         </blockquote>
