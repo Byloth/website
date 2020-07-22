@@ -121,7 +121,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "@/styles/variables";
+    @import "~@/styles/variables";
 
     #nav-bar
     {
@@ -132,7 +132,7 @@
 
         &.mdc-top-app-bar--prominent > .mdc-top-app-bar__row
         {
-            height: 192px;
+            height: 100%;
 
             .mdc-top-app-bar__title
             {
