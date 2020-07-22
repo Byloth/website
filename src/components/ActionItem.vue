@@ -4,7 +4,7 @@
             :title="description"
             :aria-label="description"
             @click="$emit('click', $event)">
-        <slot />
+        <slot></slot>
     </button>
 </template>
 

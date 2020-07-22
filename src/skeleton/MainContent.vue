@@ -6,7 +6,7 @@
                     <router-link :to="page.path">{{ page.title }}</router-link> |
                 </span>
             </div>
-            <slot />
+            <slot></slot>
         </div>
     </div>
 </template>
