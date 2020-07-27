@@ -173,7 +173,7 @@
   {
     "id": 20,
     "typeId": 0,
-    "text": "<span title=\"Maybe…\">Easter egg free!</span>",
+    "text": "<span title=\"Maybe… 😏\">Easter egg free!</span>",
     "script": null,
     "author": null,
     "source": null,
@@ -290,7 +290,7 @@
   {
     "id": 33,
     "typeId": 0,
-    "text": "Who’s your daddy?",
+    "text": "Who’s your daddy? 😎",
     "script": null,
     "author": null,
     "source": null,
@@ -335,7 +335,7 @@
   {
     "id": 38,
     "typeId": 0,
-    "text": "<span style=\"cursor: wait;\" title=\"*mumble mumble mumble*\">Sto pensando…</span>",
+    "text": "<span style=\"cursor: wait;\" title=\"*mumble mumble mumble* \">Sto pensando… 🤔</span>",
     "script": null,
     "author": null,
     "source": null,
@@ -425,7 +425,7 @@
   {
     "id": 48,
     "typeId": 0,
-    "text": "<span title=\"E non hai visto quelle precedenti…\">La versione migliore di sempre!</span>",
+    "text": "<span title=\"E non hai visto quelle precedenti… 😅\">La versione migliore di sempre!</span>",
     "script": null,
     "author": null,
     "source": null,
@@ -883,7 +883,7 @@
   },
   {
     "id": 99,
-    "typeId": 0,
+    "typeId": 1,
     "text": "<q>L’unica grande illusione è che il genere umano abbia delle limitazioni.</q>",
     "script": null,
     "author": "Robert Allan Monroe",
@@ -892,7 +892,7 @@
   },
   {
     "id": 100,
-    "typeId": 0,
+    "typeId": 1,
     "text": "<q>È più facile spezzare un atomo che un pregiudizio.</q>",
     "script": null,
     "author": "Albert Einstein",
@@ -901,10 +901,19 @@
   },
   {
     "id": 101,
-    "typeId": 0,
+    "typeId": 1,
     "text": "<q>L’unica vera saggezza è sapere di non sapere nulla.</q>",
     "script": null,
     "author": "Socrate",
+    "source": null,
+    "url": null
+  },
+  {
+    "id": 102,
+    "typeId": 1,
+    "text": "<q>Internet fa bene ai ricchi ma fa male ai poveri.</q>",
+    "script": null,
+    "author": "Umberto Eco",
     "source": null,
     "url": null
   }

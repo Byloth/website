@@ -1,6 +1,6 @@
 <template>
-    <div id="main">
-        <div class="mdc-card">
+    <div id="main-content">
+        <div class="container mdc-card">
             <div id="nav">
                 <span v-for="page in pages" :key="page.id">
                     <router-link :to="page.path">{{ page.title }}</router-link> |
@@ -31,37 +31,47 @@
 </script>
 
 <style lang="scss" scoped>
-    #main
+    @import "~@material/animation/variables";
+    @import "~@material/drawer/variables";
+
+    #main-content
     {
         background-color: #F1F1F1;
-        box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12), 0px 0.25em 0.5em 0.5em #3F3F3F;
+        box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em #3F3F3F;
         color: #2C3E50;
         margin-bottom: 250px;
         padding: 8px;
         text-align: center;
 
-        & > .mdc-card
+        & > .container.mdc-card
         {
-            margin: auto;
             padding: 8px;
-            max-width: 1158px;
-        }
+            transition-duration: $mdc-drawer-animation-enter;
+            transition-property: max-width;
+            transition-timing-function: $mdc-animation-standard-curve-timing-function;
 
-        @media (min-width: 600px)  /* Small */
-        {
-            /* ... */
-        }
-        @media (min-width: 960px)  /* Medium */
-        {
-            /* ... */
-        }
-        @media (min-width: 1264px)  /* Large */
-        {
-            /* ... */
-        }
-        @media (min-width: 1904px)  /* Extra-large */
-        {
-            /* ... */
+            .mdc-drawer-app-content.mdc-drawer-app-content--open > &
+            {
+                max-width: 100%;
+                transition-duration: $mdc-drawer-animation-exit;
+
+                @media (min-width: 855px)
+                {
+                    max-width: 550px;
+                }
+                @media (min-width: 1215px)
+                {
+                    max-width: 800px;
+                }
+                @media (min-width: 1535px)
+                {
+                    max-width: 960px;
+                }
+                @media (min-width: 1855px)
+                {
+                    max-width: 1070px;
+                }
+            }
         }
     }
 

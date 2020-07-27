@@ -29,9 +29,10 @@
             </nav-list>
         </div>
         <div class="mdc-drawer__footer">
-            <h1 style="text-align: center;">
-                Footer
-            </h1>
+            <small>
+                <i>Vue</i>rsione corrente:
+            </small>
+            <strong>{{ version }}</strong>
         </div>
     </aside>
 </template>
@@ -39,6 +40,8 @@
 <script lang="ts">
     import { cssClasses } from "@material/drawer";
     import { Component, Prop, Vue } from "vue-property-decorator";
+
+    import config from "@/config";
 
     import ListItem from "@/components/ListItem.vue";
     import NavigationList from "@/components/NavigationList.vue";
@@ -52,6 +55,8 @@
     })
     export default class Drawer extends Vue
     {
+        public version: string;
+
         @Prop({
             default: false,
             type: Boolean
@@ -70,6 +75,13 @@
                 "mdc-drawer--modal": this.modal,
                 [cssClasses.OPEN]: this.value
             };
+        }
+
+        public constructor()
+        {
+            super();
+
+            this.version = config.version;
         }
     }
 </script>
@@ -113,8 +125,16 @@
         & > .mdc-drawer__footer
         {
             background-color: #F1F1F1;
+            color: #5F5F5F;
             font-size: 87.5%;
-            padding: 16px 8px;
+            padding: 16px;
+            text-align: right;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+
+            & > small > i
+            {
+                margin-right: 0.075em;
+            }
         }
     }
 </style>

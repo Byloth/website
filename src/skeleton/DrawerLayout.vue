@@ -57,7 +57,7 @@
     export default class DrawerLayout extends Vue
     {
         public static readonly MOBILE_SIZE: number = 600;
-        public static readonly TABLET_SIZE: number = 1264;
+        public static readonly TABLET_SIZE: number = 1280;
 
         protected _status: DrawerStatus;
 
@@ -196,6 +196,28 @@
             {
                 transition-duration: $mdc-drawer-animation-exit;
                 width: calc(100% - #{$mdc-drawer-width});
+            }
+
+            & > #main-content > .container.mdc-card
+            {
+                max-width: 100% !important;
+
+                @media (min-width: 855px)
+                {
+                    max-width: 550px !important;
+                }
+                @media (min-width: 1215px)
+                {
+                    max-width: 800px !important;
+                }
+                @media (min-width: 1535px)
+                {
+                    max-width: 960px !important;
+                }
+                @media (min-width: 1855px)
+                {
+                    max-width: 1066px !important;
+                }
             }
         }
 
