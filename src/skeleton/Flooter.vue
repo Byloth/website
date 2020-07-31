@@ -1,46 +1,41 @@
 <template>
     <footer id="flooter">
-        <div class="row" style="flex: auto;">
-            <div class="col" style="padding: 0px 16px;">
+        <div class="row">
+            <div class="col">
                 <h3>Mappa del sito</h3>
                 <div v-for="page in pages" :key="page.id">
-                    <router-link :to="page.path" style="color: white;">
+                    <router-link :to="page.path">
                         {{ page.title }}
                     </router-link>
                 </div>
             </div>
-            <div class="col" style="padding: 0px 16px;">
+            <div class="col">
                 <h3>Contatti e social</h3>
-                <a href="//www.facebook.com/matteo.bilotta"
-                   target="_blank"
-                   title="Byloth on Facebook"
-                   style="color: white; font-size: 2em; margin: 0.5em;">
+                <ripple-anchor description="Matteo Bilotta su Facebook"
+                               href="//www.facebook.com/matteo.bilotta"
+                               target="_blank">
                     <span class="fab fa-facebook"></span>
-                </a>
-                <a href="//github.com/Byloth"
-                   target="_blank"
-                   title="Byloth on GitHub"
-                   style="color: white; font-size: 2em; margin: 0.5em;">
+                </ripple-anchor>
+                <ripple-anchor description="Matteo Bilotta su GitHub"
+                               href="//github.com/Byloth"
+                               target="_blank">
                     <span class="fab fa-github"></span>
-                </a>
-                <a href="//www.instagram.com/i.byloth/"
-                   target="_blank"
-                   title="Byloth on Instagram"
-                   style="color: white; font-size: 2em; margin: 0.5em;">
+                </ripple-anchor>
+                <ripple-anchor description="Matteo Bilotta su Instagram"
+                               href="//www.instagram.com/i.byloth/"
+                               target="_blank">
                     <span class="fab fa-instagram"></span>
-                </a>
-                <a href="//www.linkedin.com/in/byloth/"
-                   target="_blank"
-                   title="Byloth on LinkedIn"
-                   style="color: white; font-size: 2em; margin: 0.5em;">
+                </ripple-anchor>
+                <ripple-anchor description="Matteo Bilotta su LinkedIn"
+                               href="//www.linkedin.com/in/byloth/"
+                               target="_blank">
                     <span class="fab fa-linkedin-in"></span>
-                </a>
-                <a href="//twitter.com/iByloth"
-                   target="_blank"
-                   title="Byloth on Twitter"
-                   style="color: white; font-size: 2em; margin: 0.5em;">
+                </ripple-anchor>
+                <ripple-anchor description="Matteo Bilotta su Twitter"
+                               href="//twitter.com/iByloth"
+                               target="_blank">
                     <span class="fab fa-twitter"></span>
-                </a>
+                </ripple-anchor>
             </div>
         </div>
         <div style="text-align: center;">
@@ -49,7 +44,7 @@
                    href="http://creativecommons.org/licenses/by-sa/4.0/"
                    target="_blank"
                    title="CC BY-SA 4.0"
-                   style="background-color: #C7C7C7; border-radius: 5px; box-shadow: 1px 1px 4px #000000; display: inline-block; font-size: 24px;">
+                   style="background-color: #C7C7C7; border-radius: 5px; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); display: inline-block; font-size: 24px;">
                     <span class="fab fa-creative-commons" style="margin: 0.25em;"></span>
                     <span class="fab fa-creative-commons-by" style="margin: 0.25em;"></span>
                     <span class="fab fa-creative-commons-sa" style="margin: 0.25em;"></span>
@@ -67,7 +62,12 @@
 
     import config, { PageOptions } from "@/config";
 
-    @Component({ name: "Flooter" })
+    import RippleAnchor from "@/components/RippleAnchor.vue";
+
+    @Component({
+        name: "Flooter",
+        components: { "ripple-anchor": RippleAnchor }
+    })
     export default class Flooter extends Vue
     {
         public author: string;
@@ -94,13 +94,36 @@
         flex-direction: column;
         height: 250px;
         position: fixed;
-        text-shadow: 1px 1px 4px #000000;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
         width: 100%;
         z-index: -1;
 
-        a
+        & > div.row
         {
-            color: #1976D2;
+            flex: auto;
+
+            & > div.col
+            {
+                padding: 0px 16px;
+
+                & a
+                {
+                    color: #FFFFFF;
+                    margin-right: 0.5em;
+
+                    &::before,
+                    &::after
+                    {
+                        background-color: #FFFFFF;
+                        background-color: var(--mdc-theme-on-primary, #FFFFFF);
+                    }
+
+                    &.router-link-exact-active
+                    {
+                        color: #8CBAE8;
+                    }
+                }
+            }
         }
     }
 </style>

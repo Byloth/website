@@ -81,7 +81,10 @@
     @Component({ name: "HelloWorld" })
     export default class HelloWorld extends Vue
     {
-        @Prop(String)
+        @Prop({
+            required: true,
+            type: String
+        })
         private msg!: string;
     }
 </script>

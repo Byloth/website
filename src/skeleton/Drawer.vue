@@ -129,7 +129,7 @@
             font-size: 87.5%;
             padding: 16px;
             text-align: right;
-            text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+            text-shadow: 1px 1px 1px #FFFFFF;
 
             & > small > i
             {
