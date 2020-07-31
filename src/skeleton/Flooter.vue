@@ -1,7 +1,7 @@
 <template>
     <footer id="flooter">
         <div class="row">
-            <div class="col">
+            <div class="col-md-6">
                 <h3>Mappa del sito</h3>
                 <div v-for="page in pages" :key="page.id">
                     <router-link :to="page.path">
@@ -9,7 +9,7 @@
                     </router-link>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-md-6">
                 <h3>Contatti e social</h3>
                 <ripple-anchor description="Matteo Bilotta su Facebook"
                                href="//www.facebook.com/matteo.bilotta"
@@ -43,11 +43,8 @@
                 <a rel="license"
                    href="http://creativecommons.org/licenses/by-sa/4.0/"
                    target="_blank"
-                   title="CC BY-SA 4.0"
-                   style="background-color: #C7C7C7; border-radius: 5px; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); display: inline-block; font-size: 24px;">
-                    <span class="fab fa-creative-commons" style="margin: 0.25em;"></span>
-                    <span class="fab fa-creative-commons-by" style="margin: 0.25em;"></span>
-                    <span class="fab fa-creative-commons-sa" style="margin: 0.25em;"></span>
+                   title="Creative Commons Attribution-ShareAlike 4.0">
+                    <creative-commons-icon />
                 </a>
             </p>
             <p>
@@ -63,10 +60,14 @@
     import config, { PageOptions } from "@/config";
 
     import RippleAnchor from "@/components/RippleAnchor.vue";
+    import CreativeCommonsIcon from "@/components/icons/CreativeCommonsIcon.vue";
 
     @Component({
         name: "Flooter",
-        components: { "ripple-anchor": RippleAnchor }
+        components: {
+            "creative-commons-icon": CreativeCommonsIcon,
+            "ripple-anchor": RippleAnchor
+        }
     })
     export default class Flooter extends Vue
     {
@@ -102,7 +103,7 @@
         {
             flex: auto;
 
-            & > div.col
+            & > div.col-md-6
             {
                 padding: 0px 16px;
 

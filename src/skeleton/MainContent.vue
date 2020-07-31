@@ -1,11 +1,6 @@
 <template>
     <div id="main-content">
         <div class="container mdc-card">
-            <div id="nav">
-                <span v-for="page in pages" :key="page.id">
-                    <router-link :to="page.path">{{ page.title }}</router-link> |
-                </span>
-            </div>
             <slot></slot>
         </div>
     </div>
@@ -71,22 +66,6 @@
                 {
                     max-width: 1070px;
                 }
-            }
-        }
-    }
-
-    #nav
-    {
-        padding: 22px;
-
-        a
-        {
-            color: #2C3E50;
-            font-weight: bold;
-
-            &.router-link-exact-active
-            {
-                color: #42B983;
             }
         }
     }
