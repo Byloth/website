@@ -1,19 +1,18 @@
 <template>
-    <button class="material-icons mdc-icon-button mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
-            :alt="description"
-            :title="description"
-            :aria-label="description"
-            @click="$emit('click', $event)">
+    <a class="mdc-icon-button mdc-ripple-radius-unbounded mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+       :alt="description"
+       :title="description"
+       :aria-label="description">
         <slot></slot>
-    </button>
+    </a>
 </template>
 
 <script lang="ts">
     import { MDCRipple } from "@material/ripple";
     import { Component, Prop, Vue } from "vue-property-decorator";
 
-    @Component({ name: "ActionItem" })
-    export default class ActionItem extends Vue
+    @Component({ name: "RippleAnchor" })
+    export default class RippleAnchor extends Vue
     {
         protected _ripple!: MDCRipple;
 
@@ -30,3 +29,10 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    a
+    {
+        text-align: center;
+    }
+</style>

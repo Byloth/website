@@ -4,6 +4,7 @@
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <action-item v-if="toggle"
                              class="mdc-top-app-bar__navigation-icon"
+                             description="Toggle navigation drawer"
                              @click="$emit('drawer-toggle', $event)">
                     menu
                 </action-item>
