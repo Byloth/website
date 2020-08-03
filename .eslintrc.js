@@ -29,6 +29,7 @@ module.exports = {
     "vue/html-self-closing": ["error", { html: { void: "always", normal: "never" } }],
     "vue/max-attributes-per-line": ["error", { multiline: { max: 1, allowFirstLine: true }, singleline: 2 }],
     "vue/no-unused-components": DYNAMIC_LEVEL,
+    "vue/no-unused-vars": DYNAMIC_LEVEL,
     "vue/script-indent": ["error", 4, { baseIndent: 1 }],
 
     "@typescript-eslint/no-non-null-assertion": "off",

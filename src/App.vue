@@ -1,7 +1,5 @@
 <template>
-    <drawer-layout v-model="disable">
-        <router-view />
-    </drawer-layout>
+    <drawer-layout v-model="disable" />
 </template>
 
 <script lang="ts">

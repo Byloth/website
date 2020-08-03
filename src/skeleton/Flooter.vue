@@ -3,10 +3,19 @@
         <div class="row">
             <div class="col-md-6">
                 <h3>Mappa del sito</h3>
-                <div v-for="page in pages" :key="page.id">
-                    <router-link :to="page.path">
-                        {{ page.title }}
+                <ul>
+                    <router-link v-for="page in pages"
+                                 :key="page.id"
+                                 v-slot="{ href, route, navigate, isActive, isExactActive }"
+                                 :to="page">
+                        <li :class="[isExactActive && 'active']">
+                            <a :href="href" @click="navigate">
+                                {{ page.title }}
+                            </a>
+                        </li>
                     </router-link>
+                </ul>
+                <div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -85,6 +94,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use "~@/styles/variables";
+
     #flooter
     {
         align-items: stretch;
@@ -118,10 +129,42 @@
                         background-color: #FFFFFF;
                         background-color: var(--mdc-theme-on-primary, #FFFFFF);
                     }
+                }
 
-                    &.router-link-exact-active
+                & > ul
+                {
+                    list-style: none;
+
+                    & > li
                     {
-                        color: #8CBAE8;
+                        position: relative;
+
+                        &::before
+                        {
+                            content: "•";
+                            font-size: 1.25em;
+                            left: -0.9em;
+                            position: absolute;
+                            top: -2px;
+                        }
+
+                        &.active
+                        {
+                            $active-color: lighten(variables.$primary-color, 30);
+
+                            &::before
+                            {
+                                color: $active-color;
+                                content: "»";
+                                font-size: 1em;
+                                left: -1.125em;
+                                top: -1px;
+                            }
+                            & > a
+                            {
+                                color: $active-color;
+                            }
+                        }
                     }
                 }
             }

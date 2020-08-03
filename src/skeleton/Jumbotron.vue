@@ -104,25 +104,25 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "~@/styles/variables";
+    @use "~@/styles/variables";
 
     #jumbotron
     {
         background: #004BA0;
         color: #FFFFFF;
         display: flex;
-        min-height: 114px;
         padding: 200px 8px 8px 16px;
         position: relative;
 
         & > blockquote
         {
-            border-left: 0.333em solid lighten($app-primary-color, 15);
+            border-left: 0.333em solid lighten(variables.$primary-color, 15);
             padding: 0px 20px;
+            min-height: 82px;
 
             &::before
             {
-                color: lighten($app-primary-color, 20);
+                color: lighten(variables.$primary-color, 20);
                 content: "“";
                 font-size: 3em;
                 left: 18px;
