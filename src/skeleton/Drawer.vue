@@ -12,7 +12,15 @@
         </div>
         <div class="mdc-drawer__content">
             <nav-list>
-                <slot></slot>
+                <list-item class="mdc-list-item--activated" icon="inbox">
+                    Inbox
+                </list-item>
+                <list-item icon="send">
+                    Outgoing
+                </list-item>
+                <list-item icon="drafts">
+                    Draft
+                </list-item>
                 <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
                     Labels

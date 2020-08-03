@@ -1,6 +1,6 @@
 import { RouteConfig } from "vue-router";
 
-import Home from "./pages/Home.vue";
+import HomePage from "./pages/HomePage.vue";
 
 // SMELLS: interface PageOptions extends RouteConfig
 type PageOptions = RouteConfig &
@@ -43,15 +43,25 @@ export default new Config({
             id: 1,
             name: "home",
             path: "/",
-            component: Home,
-            title: "Home"
+            component: HomePage,
+            title: "Home",
+            icon: "home"
         },
         {
             id: 2,
+            name: "blog",
+            path: "/blog",
+            component: () => import(/* webpackChunkName: "blog-page" */ "@/pages/BlogPage.vue"),
+            title: "BLog",
+            icon: "article"
+        },
+        {
+            id: 3,
             name: "about",
             path: "/about",
-            component: () => import(/* webpackChunkName: "about" */ "@/pages/About.vue"),
-            title: "About"
+            component: () => import(/* webpackChunkName: "about-page" */ "@/pages/AboutPage.vue"),
+            title: "About",
+            icon: "info"
         }
     ],
     version: "5.0.0α"
