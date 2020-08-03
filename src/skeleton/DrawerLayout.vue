@@ -1,16 +1,6 @@
 <template>
     <div id="drawer-layout">
-        <drawer v-model="open" :modal="modal">
-            <list-item class="mdc-list-item--activated" icon="inbox">
-                Inbox
-            </list-item>
-            <list-item icon="send">
-                Outgoing
-            </list-item>
-            <list-item icon="drafts">
-                Draft
-            </list-item>
-        </drawer>
+        <drawer v-model="open" :modal="modal" />
         <div class="mdc-drawer-app-content" :class="classes">
             <nav-bar :toggle="toggle" @drawer-toggle="toggleDrawer" />
             <jumbotron />
