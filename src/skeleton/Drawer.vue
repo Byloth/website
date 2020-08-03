@@ -4,42 +4,39 @@
            :class="classes">
         <div class="mdc-drawer__header">
             <h3 class="mdc-drawer__title">
-                Mail
+                Benvenuto
             </h3>
             <h6 class="mdc-drawer__subtitle">
-                email@material.io
+                Visitatore anonimo
             </h6>
         </div>
         <div class="mdc-drawer__content">
             <nav-list>
-                <list-item class="mdc-list-item--activated" icon="inbox">
-                    Inbox
-                </list-item>
-                <list-item icon="send">
-                    Outgoing
-                </list-item>
-                <list-item icon="drafts">
-                    Draft
-                </list-item>
+                <router-link v-for="page in pages"
+                             :key="page.id"
+                             v-slot="{ href, route, navigate, isActive, isExactActive }"
+                             :to="page">
+                    <list-item :active="isExactActive"
+                               :icon="page.icon"
+                               :description="`Naviga a ${page.title}`"
+                               :href="href"
+                               @click="navigate">
+                        {{ page.title }}
+                    </list-item>
+                </router-link>
                 <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
-                    Labels
+                    Link utili
                 </h6>
-                <list-item>
-                    Family
-                </list-item>
-                <list-item>
-                    Friends
-                </list-item>
-                <list-item>
-                    Work
+                <list-item icon="mail"
+                           description="Contattami"
+                           @click.stop>
+                    Contattami
                 </list-item>
             </nav-list>
         </div>
         <div class="mdc-drawer__footer">
-            <small>
-                <i>Vue</i>rsione corrente:
-            </small>
+            <i>Vue</i>rsione corrente:
             <strong>{{ version }}</strong>
         </div>
     </aside>
@@ -49,7 +46,7 @@
     import { cssClasses } from "@material/drawer";
     import { Component, Prop, Vue } from "vue-property-decorator";
 
-    import config from "@/config";
+    import config, { PageOptions } from "@/config";
 
     import ListItem from "@/components/ListItem.vue";
     import NavigationList from "@/components/NavigationList.vue";
@@ -63,6 +60,7 @@
     })
     export default class Drawer extends Vue
     {
+        public pages: PageOptions[];
         public version: string;
 
         @Prop({
@@ -89,6 +87,7 @@
         {
             super();
 
+            this.pages = config.pages;
             this.version = config.version;
         }
     }
@@ -134,14 +133,18 @@
         {
             background-color: #F1F1F1;
             color: #5F5F5F;
-            font-size: 87.5%;
-            padding: 16px;
+            font-size: smaller;
+            padding: 12px 16px;
             text-align: right;
             text-shadow: 1px 1px 1px #FFFFFF;
 
-            & > small > i
+            & > i
             {
                 margin-right: 0.075em;
+            }
+            & > strong
+            {
+                font-size: larger;
             }
         }
     }

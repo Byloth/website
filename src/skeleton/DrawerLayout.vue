@@ -5,7 +5,7 @@
             <nav-bar :toggle="toggle" @drawer-toggle="toggleDrawer" />
             <jumbotron />
             <main-content>
-                <slot></slot>
+                <router-view />
             </main-content>
             <flooter />
         </div>

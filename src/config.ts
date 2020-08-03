@@ -53,14 +53,14 @@ export default new Config({
             path: "/blog",
             component: () => import(/* webpackChunkName: "blog-page" */ "@/pages/BlogPage.vue"),
             title: "BLog",
-            icon: "article"
+            icon: "library_books"
         },
         {
             id: 3,
             name: "about",
-            path: "/about",
+            path: "/about-me",
             component: () => import(/* webpackChunkName: "about-page" */ "@/pages/AboutPage.vue"),
-            title: "About",
+            title: "Chi sono",
             icon: "info"
         }
     ],
