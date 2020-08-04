@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@byloth/vue-scroll-animator": "^2.2.0",
-    "@fortawesome/fontawesome-free": "^5.13.1",
+    "@fortawesome/fontawesome-free": "^5.14.0",
     "@material/card": "^7.0.0",
     "@material/drawer": "^7.0.0",
     "@material/icon-button": "^7.0.0",
@@ -38,13 +38,12 @@
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vue-class-component": "^7.2.3",
+    "vue-class-component": "^7.2.5",
     "vue-property-decorator": "^9.0.0",
     "vue-router": "^3.3.4",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "@vue/cli-plugin-babel": "^4.4.6",
@@ -55,7 +54,6 @@
     "@vue/cli-service": "^4.4.6",
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/eslint-config-typescript": "^5.0.2",
-    "babel-loader": "^8.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
@@ -64,9 +62,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
-    "typescript": "^3.9.6",
-    "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.44.0"
+    "typescript": "^3.9.7",
+    "vue-template-compiler": "^2.6.11"
   },
   "private": true
 }
