@@ -85,7 +85,7 @@
             required: true,
             type: String
         })
-        private msg!: string;
+        public readonly msg!: string;
     }
 </script>
 

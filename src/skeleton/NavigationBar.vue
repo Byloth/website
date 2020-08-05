@@ -54,7 +54,7 @@
             default: true,
             type: Boolean
         })
-        public toggle!: boolean;
+        public readonly toggle!: boolean;
 
         public constructor()
         {

@@ -23,19 +23,19 @@
             default: false,
             type: Boolean
         })
-        public active!: boolean;
+        public readonly active!: boolean;
 
         @Prop({
             default: "label",
             type: String
         })
-        public icon!: string;
+        public readonly icon!: string;
 
         @Prop({
             required: true,
             type: String
         })
-        public description!: string;
+        public readonly description!: string;
 
         protected get classes(): Record<string, boolean>
         {
