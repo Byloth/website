@@ -16,7 +16,7 @@
             default: false,
             type: Boolean
         })
-        public value!: boolean;
+        public readonly value!: boolean;
 
         public get classes(): Record<string, boolean>
         {

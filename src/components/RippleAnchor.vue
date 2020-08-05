@@ -20,7 +20,7 @@
             required: true,
             type: String
         })
-        public description!: string;
+        public readonly description!: string;
 
         public mounted(): void
         {

@@ -67,13 +67,13 @@
             default: false,
             type: Boolean
         })
-        public modal!: boolean;
+        public readonly modal!: boolean;
 
         @Prop({
             default: false,
             type: Boolean
         })
-        public value!: boolean;
+        public readonly value!: boolean;
 
         protected get classes(): Record<string, boolean>
         {
