@@ -5,18 +5,24 @@
 </template>
 
 <script lang="ts">
+    import Vue from "vue";
+
     import { MDCList } from "@material/list";
-    import { Component, Vue } from "vue-property-decorator";
 
-    @Component({ name: "NavigationList" })
-    export default class ListItem extends Vue
+    export interface NavigationListData
     {
-        protected _list!: MDCList;
+        _list?: MDCList;
+    }
 
-        public mounted()
+    export default Vue.extend({
+        name: "NavigationList",
+
+        data: (): NavigationListData => ({ }),
+
+        mounted(): void
         {
             this._list = MDCList.attachTo(this.$el);
             this._list.wrapFocus = true;
         }
-    }
+    });
 </script>

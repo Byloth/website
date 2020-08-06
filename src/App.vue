@@ -3,45 +3,42 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue, Watch } from "vue-property-decorator";
+    import Vue from "vue";
 
     import DrawerLayout from "./skeleton/DrawerLayout.vue";
 
-    @Component({
-        name: "App",
-        components: { "drawer-layout": DrawerLayout }
-    })
-    export default class App extends Vue
+    export interface AppData
     {
-        protected _body!: HTMLElement;
+        _body?: HTMLElement;
 
-        public disable: boolean;
+        disable: boolean;
+    }
 
-        public constructor()
-        {
-            super();
+    export default Vue.extend({
+        name: "App",
+        components: { "drawer-layout": DrawerLayout },
 
-            this.disable = false;
-        }
+        data: (): AppData => ({ disable: false }),
 
-        @Watch("disable")
-        protected _onDisableChanged(value: boolean, oldValue: boolean)
-        {
-            if (value === true)
+        watch: {
+            disable: function(value: boolean, oldValue: boolean)
             {
-                this._body.setAttribute("disabled", "");
+                if (value === true)
+                {
+                    this._body!.setAttribute("disabled", "");
+                }
+                else
+                {
+                    this._body!.removeAttribute("disabled");
+                }
             }
-            else
-            {
-                this._body.removeAttribute("disabled");
-            }
-        }
+        },
 
-        public mounted()
+        mounted(): void
         {
             this._body = document.querySelector("body")!;
         }
-    }
+    });
 </script>
 
 <style lang="scss">

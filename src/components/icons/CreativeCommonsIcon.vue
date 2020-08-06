@@ -13,10 +13,9 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
-    @Component({ name: "CreativeCommonsIcon" })
-    export default class CreativeCommonsIcon extends Vue { }
+    export default Vue.extend({ name: "CreativeCommonsIcon" });
 </script>
 
 <style lang="scss" scoped>

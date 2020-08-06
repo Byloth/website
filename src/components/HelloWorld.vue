@@ -76,17 +76,18 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
-    @Component({ name: "HelloWorld" })
-    export default class HelloWorld extends Vue
-    {
-        @Prop({
-            required: true,
-            type: String
-        })
-        public readonly msg!: string;
-    }
+    export default Vue.extend({
+        name: "HelloWorld",
+
+        props: {
+            msg: {
+                required: true,
+                type: String
+            }
+        }
+    });
 </script>
 
 <style lang="scss" scoped>

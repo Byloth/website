@@ -8,26 +8,32 @@
 </template>
 
 <script lang="ts">
+    import Vue from "vue";
+
     import { MDCRipple } from "@material/ripple";
-    import { Component, Prop, Vue } from "vue-property-decorator";
 
-    @Component({ name: "RippleAnchor" })
-    export default class RippleAnchor extends Vue
+    export interface RippleAnchorData
     {
-        protected _ripple!: MDCRipple;
+        _ripple?: MDCRipple;
+    }
 
-        @Prop({
-            required: true,
-            type: String
-        })
-        public readonly description!: string;
+    export default Vue.extend({
+        name: "RippleAnchor",
 
-        public mounted(): void
+        props: {
+            description: {
+                required: true,
+                type: String
+            }
+        },
+        data: (): RippleAnchorData => ({ }),
+
+        mounted(): void
         {
             this._ripple = new MDCRipple(this.$el);
             this._ripple.unbounded = true;
         }
-    }
+    });
 </script>
 
 <style lang="scss" scoped>

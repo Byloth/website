@@ -43,54 +43,52 @@
 </template>
 
 <script lang="ts">
+    import Vue from "vue";
+
     import { cssClasses } from "@material/drawer";
-    import { Component, Prop, Vue } from "vue-property-decorator";
 
     import config, { PageOptions } from "@/config";
 
     import ListItem from "@/components/ListItem.vue";
     import NavigationList from "@/components/NavigationList.vue";
 
-    @Component({
+    export interface DrawerData
+    {
+        pages: PageOptions[];
+        version: string;
+    }
+
+    export default Vue.extend({
         name: "Drawer",
         components: {
             "list-item": ListItem,
             "nav-list": NavigationList
+        },
+
+        props: {
+            modal: {
+                default: false,
+                type: Boolean
+            },
+            value: {
+                default: false,
+                type: Boolean
+            }
+        },
+        data: (): DrawerData => ({
+            pages: config.pages,
+            version: config.version
+        }),
+        computed: {
+            classes: function(): Record<string, boolean>
+            {
+                return {
+                    "mdc-drawer--modal": this.modal,
+                    [cssClasses.OPEN]: this.value
+                };
+            }
         }
-    })
-    export default class Drawer extends Vue
-    {
-        public pages: PageOptions[];
-        public version: string;
-
-        @Prop({
-            default: false,
-            type: Boolean
-        })
-        public readonly modal!: boolean;
-
-        @Prop({
-            default: false,
-            type: Boolean
-        })
-        public readonly value!: boolean;
-
-        protected get classes(): Record<string, boolean>
-        {
-            return {
-                "mdc-drawer--modal": this.modal,
-                [cssClasses.OPEN]: this.value
-            };
-        }
-
-        public constructor()
-        {
-            super();
-
-            this.pages = config.pages;
-            this.version = config.version;
-        }
-    }
+    });
 </script>
 
 <style lang="scss" scoped>

@@ -6,16 +6,12 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
     import HelloWorld from "@/components/HelloWorld.vue";
 
-    @Component({
+    export default Vue.extend({
         name: "HomePage",
         components: { "hello-world": HelloWorld }
-    })
-    export default class HomePage extends Vue { }
+    });
 </script>
-
-<style lang="sass" scoped>
-</style>

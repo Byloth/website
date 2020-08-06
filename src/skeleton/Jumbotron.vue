@@ -71,23 +71,21 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
     import { DailyMessage } from "@/models";
 
-    @Component({ name: "Jumbotron" })
-    export default class Jumbotron extends Vue
+    export interface JumbotronData
     {
-        public dailyMessage: DailyMessage;
+        dailyMessage: DailyMessage;
+    }
 
-        public constructor()
-        {
-            super();
+    export default Vue.extend({
+        name: "Jumbotron",
 
-            this.dailyMessage = DailyMessage.Empty;
-        }
+        data: (): JumbotronData => ({ dailyMessage: DailyMessage.Empty }),
 
-        public created(): void
+        created(): void
         {
             DailyMessage.GetRandomOne()
                 .then((dailyMessage) =>
@@ -100,7 +98,7 @@
                     }
                 });
         }
-    }
+    });
 </script>
 
 <style lang="scss" scoped>

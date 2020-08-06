@@ -2,7 +2,10 @@ const DYNAMIC_LEVEL = process.env.NODE_ENV === "production" ? "error" : "warn";
 
 module.exports = {
   root: true,
-  env: { node: true },
+  env: {
+    browser: true,
+    node: true
+  },
   extends: [
     "@vue/standard",
     "@vue/typescript/recommended",

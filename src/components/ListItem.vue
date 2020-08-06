@@ -14,34 +14,32 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
-    @Component({ name: "ListItem" })
-    export default class ListItem extends Vue
-    {
-        @Prop({
-            default: false,
-            type: Boolean
-        })
-        public readonly active!: boolean;
+    export default Vue.extend({
+        name: "ListItem",
 
-        @Prop({
-            default: "label",
-            type: String
-        })
-        public readonly icon!: string;
-
-        @Prop({
-            required: true,
-            type: String
-        })
-        public readonly description!: string;
-
-        protected get classes(): Record<string, boolean>
-        {
-            return { "mdc-list-item--activated": this.active };
+        props: {
+            active: {
+                default: false,
+                type: Boolean
+            },
+            icon: {
+                default: "label",
+                type: String
+            },
+            description: {
+                required: true,
+                type: String
+            }
+        },
+        computed: {
+            classes: function(): Record<string, boolean>
+            {
+                return { "mdc-list-item--activated": this.active };
+            }
         }
-    }
+    });
 </script>
 
 <style lang="scss" scoped>

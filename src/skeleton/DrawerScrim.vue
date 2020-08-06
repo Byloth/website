@@ -7,22 +7,24 @@
 </template>
 
 <script lang="ts">
-    import { Component, Prop, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
-    @Component({ name: "DrawerScrim" })
-    export default class DrawerScrim extends Vue
-    {
-        @Prop({
-            default: false,
-            type: Boolean
-        })
-        public readonly value!: boolean;
+    export default Vue.extend({
+        name: "DrawerScrim",
 
-        public get classes(): Record<string, boolean>
-        {
-            return { "mdc-drawer-scrim--open": this.value };
+        props: {
+            value: {
+                default: false,
+                type: Boolean
+            }
+        },
+        computed: {
+            classes: function(): Record<string, boolean>
+            {
+                return { "mdc-drawer-scrim--open": this.value };
+            }
         }
-    }
+    });
 </script>
 
 <style lang="scss" scoped>
