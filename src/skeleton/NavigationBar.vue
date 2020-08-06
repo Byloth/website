@@ -29,8 +29,9 @@
 </template>
 
 <script lang="ts">
+    import Vue from "vue";
+
     import { cssClasses } from "@material/top-app-bar";
-    import { Component, Prop, Vue } from "vue-property-decorator";
 
     import ScrollAnimation from "@byloth/vue-scroll-animator/animations";
     import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/classes";
@@ -39,31 +40,27 @@
 
     import ActionItem from "@/components/ActionItem.vue";
 
-    @Component({
-        name: "NavigationBar",
-        components: { "action-item": ActionItem }
-    })
-    export default class NavigationBar extends Vue
+    export interface NavigationBarData
     {
-        protected _resizingAnimation?: ScrollAnimation;
-        protected _movingAnimation?: ScrollAnimation;
+        _resizingAnimation?: ScrollAnimation;
+        _movingAnimation?: ScrollAnimation;
 
-        public title: string;
+        title: string;
+    }
 
-        @Prop({
-            default: true,
-            type: Boolean
-        })
-        public readonly toggle!: boolean;
+    export default Vue.extend({
+        name: "NavigationBar",
+        components: { "action-item": ActionItem },
 
-        public constructor()
-        {
-            super();
+        props: {
+            toggle: {
+                default: true,
+                type: Boolean
+            }
+        },
+        data: (): NavigationBarData => ({ title: config.title }),
 
-            this.title = config.title;
-        }
-
-        public mounted(): void
+        mounted(): void
         {
             this._resizingAnimation = this.$initScrollAnimation({
                 startingValue: 0,
@@ -112,13 +109,13 @@
                     }
                 ]
             });
-        }
-        public destroyed(): void
+        },
+        destroyed(): void
         {
             this.$destroyScrollAnimation(this._resizingAnimation!);
             this.$destroyScrollAnimation(this._movingAnimation!);
         }
-    }
+    });
 </script>
 
 <style lang="scss" scoped>

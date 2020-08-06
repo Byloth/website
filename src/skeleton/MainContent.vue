@@ -7,22 +7,9 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
-    import config, { PageOptions } from "@/config";
-
-    @Component({ name: "MainContent" })
-    export default class MainContent extends Vue
-    {
-        public readonly pages: PageOptions[];
-
-        public constructor()
-        {
-            super();
-
-            this.pages = config.pages;
-        }
-    }
+    export default Vue.extend({ name: "MainContent" });
 </script>
 
 <style lang="scss" scoped>

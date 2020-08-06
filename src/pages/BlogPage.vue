@@ -5,11 +5,7 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
-    @Component({ name: "BlogPage" })
-    export default class BlogPage extends Vue { }
+    export default Vue.extend({ name: "BlogPage" });
 </script>
-
-<style lang="sass" scoped>
-</style>

@@ -64,33 +64,32 @@
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from "vue-property-decorator";
+    import Vue from "vue";
 
     import config, { PageOptions } from "@/config";
 
     import RippleAnchor from "@/components/RippleAnchor.vue";
     import CreativeCommonsIcon from "@/components/icons/CreativeCommonsIcon.vue";
 
-    @Component({
+    export interface FlooterData
+    {
+        author: string;
+        pages: PageOptions[];
+    }
+
+    export default Vue.extend({
         name: "Flooter",
+
         components: {
             "creative-commons-icon": CreativeCommonsIcon,
             "ripple-anchor": RippleAnchor
-        }
-    })
-    export default class Flooter extends Vue
-    {
-        public author: string;
-        public pages: PageOptions[];
+        },
 
-        public constructor()
-        {
-            super();
-
-            this.author = config.author;
-            this.pages = config.pages;
-        }
-    }
+        data: (): FlooterData => ({
+            author: config.author,
+            pages: config.pages
+        })
+    });
 </script>
 
 <style lang="scss" scoped>

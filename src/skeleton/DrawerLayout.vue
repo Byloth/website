@@ -14,9 +14,7 @@
 </template>
 
 <script lang="ts">
-    import { Component, Emit, Prop, Vue, Watch } from "vue-property-decorator";
-
-    import ListItem from "@/components/ListItem.vue";
+    import Vue from "vue";
 
     import Drawer from "./Drawer.vue";
     import DrawerScrim from "./DrawerScrim.vue";
@@ -25,138 +23,132 @@
     import NavigationBar from "./NavigationBar.vue";
     import Jumbotron from "./Jumbotron.vue";
 
-    enum DrawerStatus
+    export const MOBILE_SIZE = 600;
+    export const TABLET_SIZE = 1280;
+
+    export enum DrawerStatus
     {
         MODAL = 0,
         DISMISSABLE = 1,
         PERMANENT = 2
     }
+    export interface DrawerLayoutData
+    {
+        _status: DrawerStatus;
 
-    @Component({
+        modal: boolean;
+        open: boolean;
+        toggle: boolean;
+    }
+
+    export default Vue.extend({
         name: "DrawerLayout",
         components: {
             "drawer": Drawer,
             "drawer-scrim": DrawerScrim,
             "flooter": Flooter,
-            "list-item": ListItem,
             "main-content": MainContent,
             "nav-bar": NavigationBar,
             "jumbotron": Jumbotron
-        }
-    })
-    export default class DrawerLayout extends Vue
-    {
-        public static readonly MOBILE_SIZE: number = 600;
-        public static readonly TABLET_SIZE: number = 1280;
+        },
 
-        protected _status: DrawerStatus;
+        props: {
+            value: {
+                default: false,
+                type: Boolean
+            }
+        },
+        data: (): DrawerLayoutData => ({
+            _status: DrawerStatus.DISMISSABLE,
 
-        public modal: boolean;
-        public open: boolean;
-        public toggle: boolean;
-
-        @Prop({
-            default: false,
-            type: Boolean
-        })
-        public readonly value!: boolean;
-
-        public get classes(): Record<string, boolean>
-        {
-            return { "mdc-drawer-app-content--open": (this.open && !this.modal) };
-        }
-
-        public constructor()
-        {
-            super();
-
-            this._status = DrawerStatus.DISMISSABLE;
-
-            this.modal = false;
-            this.open = false;
-            this.toggle = true;
-        }
-
-        protected _setModal()
-        {
-            if (this._status !== DrawerStatus.MODAL)
+            modal: false,
+            open: false,
+            toggle: true
+        }),
+        computed: {
+            classes: function(): Record<string, boolean>
             {
-                this._status = DrawerStatus.MODAL;
+                return { "mdc-drawer-app-content--open": (this.open && !this.modal) };
+            }
+        },
 
-                this.modal = true;
-                this.open = false;
-                this.toggle = true;
+        watch: {
+            open: function(value: boolean, oldValue: boolean): void
+            {
+                this.$emit("input", (this.modal === true) && this.open);
+            }
+        },
+
+        mounted(): void
+        {
+            window.addEventListener("resize", this.onResizeEvent, { capture: true, passive: true });
+
+            this.onResizeEvent();
+        },
+        destroyed(): void
+        {
+            window.removeEventListener("resize", this.onResizeEvent);
+        },
+
+        methods: {
+            _setModal: function(): void
+            {
+                if (this._status !== DrawerStatus.MODAL)
+                {
+                    this._status = DrawerStatus.MODAL;
+
+                    this.modal = true;
+                    this.open = false;
+                    this.toggle = true;
+                }
+            },
+            _setDismissable: function(): void
+            {
+                if (this._status !== DrawerStatus.DISMISSABLE)
+                {
+                    this._status = DrawerStatus.DISMISSABLE;
+
+                    this.modal = false;
+                    this.open = false;
+                    this.toggle = true;
+                }
+            },
+            _setPermanent: function(): void
+            {
+                if (this._status !== DrawerStatus.PERMANENT)
+                {
+                    this._status = DrawerStatus.PERMANENT;
+
+                    this.modal = false;
+                    this.open = true;
+                    this.toggle = false;
+                }
+            },
+
+            onResizeEvent: function(evt?: Event): void
+            {
+                const windowWidth = window.innerWidth;
+
+                if (windowWidth < MOBILE_SIZE)
+                {
+                    this._setModal();
+                }
+                else if (windowWidth < TABLET_SIZE)
+                {
+                    this._setDismissable();
+                }
+                else
+                {
+                    this._setPermanent();
+                }
+            },
+
+            toggleDrawer: function(evt?: Event): void
+            {
+                this.open = !this.open;
             }
         }
-        protected _setDismissable()
-        {
-            if (this._status !== DrawerStatus.DISMISSABLE)
-            {
-                this._status = DrawerStatus.DISMISSABLE;
-
-                this.modal = false;
-                this.open = false;
-                this.toggle = true;
-            }
-        }
-        protected _setPermanent()
-        {
-            if (this._status !== DrawerStatus.PERMANENT)
-            {
-                this._status = DrawerStatus.PERMANENT;
-
-                this.modal = false;
-                this.open = true;
-                this.toggle = false;
-            }
-        }
-
-        protected _onResizeEvent(evt?: Event)
-        {
-            const windowWidth = window.innerWidth;
-
-            if (windowWidth < DrawerLayout.MOBILE_SIZE)
-            {
-                this._setModal();
-            }
-            else if (windowWidth < DrawerLayout.TABLET_SIZE)
-            {
-                this._setDismissable();
-            }
-            else
-            {
-                this._setPermanent();
-            }
-        }
-
-        @Watch("open")
-        @Emit("input")
-        protected _onOpenChanged(value: boolean, oldValue: boolean)
-        {
-            if (this.modal === true)
-            {
-                return this.open;
-            }
-
-            return false;
-        }
-
-        public mounted(): void
-        {
-            window.addEventListener("resize", this._onResizeEvent, { capture: true, passive: true });
-
-            this._onResizeEvent();
-        }
-        public destroyed(): void
-        {
-            window.removeEventListener("resize", this._onResizeEvent);
-        }
-
-        public toggleDrawer(evt?: Event): void
-        {
-            this.open = !this.open;
-        }
-    }
+    });
 </script>
 
 <style lang="scss" scoped>
