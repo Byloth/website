@@ -15,9 +15,9 @@ export class TimeDefinition
 
 export default abstract class Time
 {
-    protected static readonly _DIVISOR: number = 1000 * 60 * 60 * 24 * 7 * 4 * 12;
+    protected static readonly _DIVISOR = 1000 * 60 * 60 * 24 * 7 * 4 * 12;
 
-    protected static readonly _DAYS: Array<string> = [
+    protected static readonly _DAYS = [
         "Domenica",
         "Lunedì",
         "Martedì",
@@ -26,7 +26,7 @@ export default abstract class Time
         "Venerdì",
         "Sabato"
     ];
-    protected static readonly _MONTHS: Array<string> = [
+    protected static readonly _MONTHS = [
         "Gennaio",
         "Febbraio",
         "Marzo",
@@ -41,7 +41,7 @@ export default abstract class Time
         "Dicembre"
     ];
 
-    protected static readonly _TIME_DEFINITIONS: Array<TimeDefinition> = [
+    protected static readonly _TIME_DEFINITIONS = [
         new TimeDefinition(12, "anno", "anni"),
         new TimeDefinition(4, "mese", "mesi"),
         new TimeDefinition(7, "settimana", "settimane"),
@@ -53,9 +53,9 @@ export default abstract class Time
 
     protected static _TimeDifferenceAsArray(timeDifference: number,
         stopAtFirst: boolean,
-        divisor: number = Time._DIVISOR,
+        divisor = Time._DIVISOR,
         iterationCount = 0,
-        applyModule = false): Array<string> | undefined
+        applyModule = false): string[] | undefined
     {
         if (iterationCount < Time._TIME_DEFINITIONS.length)
         {
@@ -72,15 +72,15 @@ export default abstract class Time
 
             if (value > 0)
             {
-                let resultArray: Array<string>;
+                let resultArray: string[];
 
                 if (value > 1)
                 {
-                    resultArray = [value + " " + Time._TIME_DEFINITIONS[iterationCount].plural];
+                    resultArray = [`${value} ${Time._TIME_DEFINITIONS[iterationCount].plural}`];
                 }
                 else
                 {
-                    resultArray = ["1 " + Time._TIME_DEFINITIONS[iterationCount].singular];
+                    resultArray = [`1 ${Time._TIME_DEFINITIONS[iterationCount].singular}`];
                 }
 
                 if (stopAtFirst === false)
@@ -112,7 +112,7 @@ export default abstract class Time
 
     public static DateAsString(date: Date): string
     {
-        const day = Time._DAYS[date.getDay()] + " " + date.getDate();
+        const day = `${Time._DAYS[date.getDay()]} ${date.getDate()}`;
         const month = Time._MONTHS[date.getMonth()];
         const year = date.getFullYear();
 
@@ -124,9 +124,9 @@ export default abstract class Time
         const minutes = time.getMinutes();
         const seconds = time.getSeconds();
 
-        const hoursString = (hours < 10) ? "0" + hours.toString() : hours.toString();
-        const minutesString = (minutes < 10) ? "0" + minutes.toString() : minutes.toString();
-        const secondsString = (seconds < 10) ? "0" + seconds.toString() : seconds.toString();
+        const hoursString = (hours < 10) ? `0${hours}` : `${hours}`;
+        const minutesString = (minutes < 10) ? `0${minutes}` : `${minutes}`;
+        const secondsString = (seconds < 10) ? `0${seconds}` : `${seconds}`;
 
         return [hoursString, minutesString, secondsString].join(":");
     }
@@ -136,10 +136,6 @@ export default abstract class Time
         const timeDifference = secondTime.getTime() - firstTime.getTime();
         const timeDifferences = Time._TimeDifferenceAsArray(timeDifference, stopAtFirst)!;
 
-        let timeDifferenceAsString = timeDifferences.slice(0, -1).join(", ");
-
-        timeDifferenceAsString += " e " + timeDifferences[timeDifferences.length - 1];
-
-        return timeDifferenceAsString;
+        return `${timeDifferences.slice(0, -1).join(", ")} e ${timeDifferences[timeDifferences.length - 1]}`;
     }
 }
