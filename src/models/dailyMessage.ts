@@ -26,7 +26,7 @@ export default class DailyMessage extends Model implements DailyMessageData
         return new DailyMessage({ id: -1, typeId: 3, text: "" } as DailyMessageData);
     }
 
-    public static async GetAll(): Promise<Array<DailyMessage>>
+    public static async GetAll(): Promise<DailyMessage[]>
     {
         const messages = (await import(/* webpackChunkName: "daily-messages" */ "@/data/dailyMessages.json")).default;
 

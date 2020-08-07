@@ -13,7 +13,7 @@ Vue.config.productionTip = false;
 
 Vue.use(VueScrollAnimator);
 
-new Vue({
+export default new Vue({
     router,
     store,
     render: (hack) => hack(App)
