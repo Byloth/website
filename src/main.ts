@@ -16,6 +16,14 @@ Vue.use(VueScrollAnimator);
 export default new Vue({
     router,
     store,
+
+    mounted: () =>
+    {
+        const pageLoader = document.getElementById("page-loader")!;
+
+        pageLoader.setAttribute("disabled", "");
+        setTimeout(() => pageLoader.remove(), 200);
+    },
     render: (hack) => hack(App)
 
 }).$mount("#app");
