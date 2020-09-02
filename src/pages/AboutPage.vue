@@ -1,11 +1,18 @@
 <template>
-    <div id="about-page">
-        <h1>This is the about page.</h1>
-    </div>
+    <card-layout>
+        <main id="about-page">
+            <h1>This is the about page.</h1>
+        </main>
+    </card-layout>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
-    export default Vue.extend({ name: "AboutPage" });
+    import CardLayout from "@/layouts/CardLayout.vue";
+
+    export default Vue.extend({
+        name: "AboutPage",
+        components: { "card-layout": CardLayout }
+    });
 </script>

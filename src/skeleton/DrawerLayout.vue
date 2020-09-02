@@ -4,9 +4,7 @@
         <div class="mdc-drawer-app-content" :class="classes">
             <nav-bar :toggle="toggle" @drawer-toggle="toggleDrawer" />
             <jumbotron />
-            <main-content>
-                <router-view />
-            </main-content>
+            <router-view />
             <flooter />
         </div>
         <drawer-scrim :value="modal && open" @input="open = $event" />
@@ -19,7 +17,6 @@
     import Drawer from "./Drawer.vue";
     import DrawerScrim from "./DrawerScrim.vue";
     import Flooter from "./Flooter.vue";
-    import MainContent from "./MainContent.vue";
     import NavigationBar from "./NavigationBar.vue";
     import Jumbotron from "./Jumbotron.vue";
 
@@ -47,7 +44,6 @@
             "drawer": Drawer,
             "drawer-scrim": DrawerScrim,
             "flooter": Flooter,
-            "main-content": MainContent,
             "nav-bar": NavigationBar,
             "jumbotron": Jumbotron
         },

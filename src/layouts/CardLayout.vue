@@ -1,5 +1,5 @@
 <template>
-    <div id="main-content">
+    <div id="card-layout">
         <div class="container mdc-card">
             <slot></slot>
         </div>
@@ -9,14 +9,14 @@
 <script lang="ts">
     import Vue from "vue";
 
-    export default Vue.extend({ name: "MainContent" });
+    export default Vue.extend({ name: "CardLayout" });
 </script>
 
 <style lang="scss" scoped>
     @import "~@material/animation/variables";
     @import "~@material/drawer/variables";
 
-    #main-content
+    #card-layout
     {
         background-color: #F1F1F1;
         box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em #3F3F3F;
