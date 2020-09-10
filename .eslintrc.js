@@ -22,6 +22,7 @@ module.exports = {
     "no-console": DYNAMIC_LEVEL,
     "no-debugger": DYNAMIC_LEVEL,
     "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "object-shorthand": ["error", "always"],
     "quote-props": ["error", "consistent"],
     "quotes": ["error", "double", { allowTemplateLiterals: true, avoidEscape: true }],
     "semi": ["error", "always"],

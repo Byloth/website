@@ -34,7 +34,7 @@
             }
         },
         computed: {
-            classes: function(): Record<string, boolean>
+            classes(): Record<string, boolean>
             {
                 return { "mdc-list-item--activated": this.active };
             }

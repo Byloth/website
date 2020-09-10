@@ -19,7 +19,7 @@
             }
         },
         computed: {
-            classes: function(): Record<string, boolean>
+            classes(): Record<string, boolean>
             {
                 return { "mdc-drawer-scrim--open": this.value };
             }

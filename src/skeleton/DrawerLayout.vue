@@ -62,14 +62,14 @@
             toggle: true
         }),
         computed: {
-            classes: function(): Record<string, boolean>
+            classes(): Record<string, boolean>
             {
                 return { "mdc-drawer-app-content--open": (this.open && !this.modal) };
             }
         },
 
         watch: {
-            open: function(value: boolean, oldValue: boolean): void
+            open(value: boolean, oldValue: boolean): void
             {
                 this.$emit("input", (this.modal === true) && this.open);
             }
@@ -87,7 +87,7 @@
         },
 
         methods: {
-            _setModal: function(): void
+            _setModal(): void
             {
                 if (this._status !== DrawerStatus.MODAL)
                 {
@@ -98,7 +98,7 @@
                     this.toggle = true;
                 }
             },
-            _setDismissable: function(): void
+            _setDismissable(): void
             {
                 if (this._status !== DrawerStatus.DISMISSABLE)
                 {
@@ -109,7 +109,7 @@
                     this.toggle = true;
                 }
             },
-            _setPermanent: function(): void
+            _setPermanent(): void
             {
                 if (this._status !== DrawerStatus.PERMANENT)
                 {
@@ -121,7 +121,7 @@
                 }
             },
 
-            onResizeEvent: function(evt?: Event): void
+            onResizeEvent(evt?: Event): void
             {
                 const windowWidth = window.innerWidth;
 
@@ -139,7 +139,7 @@
                 }
             },
 
-            toggleDrawer: function(evt?: Event): void
+            toggleDrawer(evt?: Event): void
             {
                 this.open = !this.open;
             }
