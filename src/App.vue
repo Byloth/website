@@ -21,7 +21,7 @@
         data: (): AppData => ({ disable: false }),
 
         watch: {
-            disable: function(value: boolean, oldValue: boolean)
+            disable(value: boolean, oldValue: boolean)
             {
                 if (value === true)
                 {
