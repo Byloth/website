@@ -21,7 +21,7 @@ module.exports = {
     "newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
     "no-console": DYNAMIC_LEVEL,
     "no-debugger": DYNAMIC_LEVEL,
-    "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "no-unused-vars": "off",
     "object-shorthand": ["error", "always"],
     "quote-props": ["error", "consistent"],
     "quotes": ["error", "double", { allowTemplateLiterals: true, avoidEscape: true }],
@@ -41,6 +41,12 @@ module.exports = {
   },
   overrides: [
     {
+      files: ["*.js"],
+      rules: {
+        "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }]
+      }
+    },
+    {
       files: [".eslintrc.js", "*.config.js"],
       rules: {
         "indent": ["error", 2],
@@ -51,8 +57,6 @@ module.exports = {
     {
       files: ["*.d.ts"],
       rules: {
-        "no-unused-vars": "off",
-
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": "off"
       }
