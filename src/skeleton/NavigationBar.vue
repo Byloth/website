@@ -51,13 +51,13 @@
     export default Vue.extend({
         name: "NavigationBar",
         components: { "action-item": ActionItem },
-
         props: {
             toggle: {
                 default: true,
                 type: Boolean
             }
         },
+
         data: (): NavigationBarData => ({ title: config.title }),
 
         mounted(): void

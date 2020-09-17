@@ -80,7 +80,6 @@
 
     export default Vue.extend({
         name: "HelloWorld",
-
         props: {
             msg: {
                 required: true,

@@ -18,7 +18,6 @@
 
     export default Vue.extend({
         name: "ListItem",
-
         props: {
             active: {
                 default: false,

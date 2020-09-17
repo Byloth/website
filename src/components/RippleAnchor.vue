@@ -19,7 +19,6 @@
 
     export default Vue.extend({
         name: "RippleAnchor",
-
         props: {
             description: {
                 required: true,

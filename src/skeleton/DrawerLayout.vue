@@ -47,13 +47,13 @@
             "nav-bar": NavigationBar,
             "jumbotron": Jumbotron
         },
-
         props: {
             value: {
                 default: false,
                 type: Boolean
             }
         },
+
         data: (): DrawerLayoutData => ({
             _status: DrawerStatus.DISMISSABLE,
 
@@ -61,6 +61,7 @@
             open: false,
             toggle: true
         }),
+
         computed: {
             classes(): Record<string, boolean>
             {

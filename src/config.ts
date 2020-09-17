@@ -8,6 +8,7 @@ type PageOptions = RouteConfig &
     id: number;
     title: string;
     icon?: string;
+    topLevel: boolean;
 }
 
 interface ConfigOptions
@@ -40,28 +41,40 @@ export default new Config({
     author: "Matteo Bilotta",
     pages: [
         {
-            id: 1,
+            id: 0x1,
             name: "home",
             path: "/",
             component: HomePage,
             title: "Home",
-            icon: "home"
+            icon: "home",
+            topLevel: true
         },
         {
-            id: 2,
+            id: 0x2,
             name: "blog",
             path: "/blog",
             component: () => import(/* webpackChunkName: "blog-page" */ "@/pages/BlogPage.vue"),
             title: "BLog",
-            icon: "library_books"
+            icon: "library_books",
+            topLevel: true
         },
         {
-            id: 3,
+            id: 0x20,
+            name: "article",
+            path: "/blog/:slug",
+            props: true,
+            component: () => import(/* webpackChunkName: "article-page" */ "@/pages/ArticlePage.vue"),
+            title: "Articolo",
+            topLevel: false
+        },
+        {
+            id: 0x3,
             name: "about",
             path: "/about-me",
             component: () => import(/* webpackChunkName: "about-page" */ "@/pages/AboutPage.vue"),
             title: "Chi sono",
-            icon: "info"
+            icon: "info",
+            topLevel: true
         }
     ],
     version: "5.0.0α"
