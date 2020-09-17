@@ -15,8 +15,9 @@
                 <router-link v-for="page in pages"
                              :key="page.id"
                              v-slot="{ href, route, navigate, isActive, isExactActive }"
+                             :exact="page.path === '/'"
                              :to="page">
-                    <list-item :active="isExactActive"
+                    <list-item :active="isActive"
                                :icon="page.icon"
                                :description="`Naviga a ${page.title}`"
                                :href="href"
@@ -64,7 +65,6 @@
             "list-item": ListItem,
             "nav-list": NavigationList
         },
-
         props: {
             modal: {
                 default: false,
@@ -75,10 +75,12 @@
                 type: Boolean
             }
         },
+
         data: (): DrawerData => ({
-            pages: config.pages,
+            pages: config.pages.filter((page) => page.topLevel),
             version: config.version
         }),
+
         computed: {
             classes(): Record<string, boolean>
             {

@@ -20,7 +20,6 @@
 
     export default Vue.extend({
         name: "ActionItem",
-
         props: {
             description: {
                 required: true,

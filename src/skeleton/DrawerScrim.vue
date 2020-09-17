@@ -11,7 +11,6 @@
 
     export default Vue.extend({
         name: "DrawerScrim",
-
         props: {
             value: {
                 default: false,

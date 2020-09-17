@@ -7,16 +7,15 @@
                     <router-link v-for="page in pages"
                                  :key="page.id"
                                  v-slot="{ href, route, navigate, isActive, isExactActive }"
+                                 :exact="page.path === '/'"
                                  :to="page">
-                        <li :class="[isExactActive && 'active']">
+                        <li :class="[isActive && 'active']">
                             <a :href="href" @click="navigate">
                                 {{ page.title }}
                             </a>
                         </li>
                     </router-link>
                 </ul>
-                <div>
-                </div>
             </div>
             <div class="col-md-6">
                 <h3>Contatti e social</h3>
@@ -87,7 +86,7 @@
 
         data: (): FlooterData => ({
             author: config.author,
-            pages: config.pages
+            pages: config.pages.filter((page) => page.topLevel)
         })
     });
 </script>
