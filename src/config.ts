@@ -1,6 +1,6 @@
 import { RouteConfig } from "vue-router";
 
-import HomePage from "./pages/HomePage.vue";
+import HomePage from "@/pages/HomePage.vue";
 
 // SMELLS: interface PageOptions extends RouteConfig
 type PageOptions = RouteConfig &

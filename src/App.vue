@@ -5,7 +5,7 @@
 <script lang="ts">
     import Vue from "vue";
 
-    import DrawerLayout from "./skeleton/DrawerLayout.vue";
+    import DrawerLayout from "@/skeleton/DrawerLayout.vue";
 
     export interface AppData
     {
