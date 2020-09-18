@@ -9,3 +9,12 @@
 
     export default Vue.extend({ name: "AboutPage" });
 </script>
+
+<style lang="scss" scoped>
+    #about-page
+    {
+        margin-bottom: 250px;
+        padding: 32px;
+        text-align: center;
+    }
+</style>

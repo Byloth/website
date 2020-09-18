@@ -35,11 +35,13 @@
 <style lang="scss" scoped>
     #home-page
     {
-        margin: 0 auto;
-        min-height: 100vh;
+        align-items: center;
         display: flex;
         justify-content: center;
-        align-items: center;
+        margin: 0 auto;
+        margin-bottom: 250px;
+        min-height: 100vh;
+        padding: 32px;
         text-align: center;
 
         & > div
