@@ -1,7 +1,7 @@
 <template>
     <card-layout>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <main id="blog-page" v-html="article"></main>
+        <main id="article-page" v-html="article"></main>
     </card-layout>
 </template>
 
