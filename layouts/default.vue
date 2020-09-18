@@ -1,48 +1,48 @@
 <template>
-    <div>
+    <drawer-layout id="drawer-layout" v-model="disable">
         <nuxt />
-    </div>
+    </drawer-layout>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
-    export default Vue.extend({ name: "DefaultLayout" });
+    import DrawerLayout from "./core/drawer-layout.vue";
+
+    export interface AppData
+    {
+        _body?: HTMLElement;
+
+        disable: boolean;
+    }
+
+    export default Vue.extend({
+        name: "DefaultLayout",
+        components: { "drawer-layout": DrawerLayout },
+
+        data: (): AppData => ({ disable: false }),
+
+        watch: {
+            disable(value: boolean, oldValue: boolean)
+            {
+                if (value === true)
+                {
+                    this._body!.setAttribute("disabled", "");
+                }
+                else
+                {
+                    this._body!.removeAttribute("disabled");
+                }
+            }
+        },
+
+        mounted(): void
+        {
+            this._body = document.querySelector("body")!;
+        }
+    });
 </script>
 
 <style lang="scss">
-    html
-    {
-        font-family:
-            "Source Sans Pro",
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            "Helvetica Neue",
-            Arial,
-            sans-serif;
-
-        font-size: 16px;
-        word-spacing: 1px;
-        -ms-text-size-adjust: 100%;
-        -webkit-text-size-adjust: 100%;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-sizing: border-box;
-    }
-
-    *,
-    *::before,
-    *::after
-    {
-        box-sizing: border-box;
-        margin: 0;
-    }
-
-    [title]
-    {
-        cursor: help;
-        text-decoration: underline dotted;
-    }
+    @import "~@/styles/main";
 </style>

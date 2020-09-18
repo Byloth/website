@@ -9,3 +9,12 @@
 
     export default Vue.extend({ name: "ArticlePage" });
 </script>
+
+<style lang="scss" scoped>
+    #article-page
+    {
+        margin-bottom: 250px;
+        padding: 32px;
+        text-align: center;
+    }
+</style>
