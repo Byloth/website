@@ -1,40 +1,23 @@
-export interface PageOptions
-{
-    id: number;
-    name: string;
-    path: string;
-    title: string;
-    icon?: string;
-}
-
-export interface ConfigState
-{
-    title: string;
-    author: string;
-    pages: PageOptions[];
-    version: string;
-}
-
-export const state = (): ConfigState => ({
+const state = () => ({
     title: "Byloth's Website",
     author: "Matteo Bilotta",
     pages: [
         {
-            id: 0x1,
+            id: 1,
             name: "index",
             path: "/",
             title: "Home",
             icon: "home"
         },
         {
-            id: 0x2,
+            id: 2,
             name: "blog",
             path: "/blog",
             title: "BLog",
             icon: "library_books"
         },
         {
-            id: 0x3,
+            id: 3,
             name: "about",
             path: "/about-me",
             title: "Chi sono",
@@ -43,3 +26,5 @@ export const state = (): ConfigState => ({
     ],
     version: "5.0.0α"
 });
+
+export { state };

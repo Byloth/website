@@ -75,7 +75,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @use "~@/styles/variables";
+    @use "~@/assets/scss/variables";
 
     .mdc-flooter
     {
