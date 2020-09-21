@@ -8,7 +8,9 @@
                             :toggle="toggle"
                             @drawer-toggle="toggleDrawer" />
             <jumbotron id="jumbotron" />
-            <slot></slot>
+            <div id="main-content">
+                <slot></slot>
+            </div>
             <flooter id="flooter" />
         </div>
         <drawer-scrim id="drawer-scrim"
@@ -170,6 +172,12 @@
             transition-duration: $mdc-drawer-animation-enter;
             transition-property: width;
             transition-timing-function: $mdc-animation-standard-curve-timing-function;
+        }
+
+        & > #main-content
+        {
+            box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em #35363A;
+            margin-bottom: 250px;
         }
 
         &.mdc-drawer-app-content--open

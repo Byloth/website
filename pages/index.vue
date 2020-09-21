@@ -1,7 +1,8 @@
 <template>
-    <main id="home-page">
-        <div>
-            <nuxt-logo />
+    <card-layout id="home-page">
+        <main>
+            <vue-icon />
+            <nuxt-icon />
             <h1 class="title">
                 Byloth's Website
             </h1>
@@ -22,30 +23,33 @@
                     GitHub
                 </a>
             </div>
-        </div>
-    </main>
+        </main>
+    </card-layout>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
-    export default Vue.extend({ name: "HomePage" });
+    import CardLayout from "@/layouts/pages/card-layout.vue";
+
+    export default Vue.extend({
+        name: "HomePage",
+        components: { "card-layout": CardLayout }
+    });
 </script>
 
 <style lang="scss" scoped>
     #home-page
     {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        margin-bottom: 250px;
-        min-height: 100vh;
-        padding: 32px;
-        text-align: center;
-
-        & > div
+        main
         {
+            text-align: center;
+
+            & > .vue-icon,
+            & > .nuxt-icon
+            {
+                width: 200px;
+            }
             & > .title
             {
                 font-family:
@@ -60,17 +64,11 @@
                     sans-serif;
 
                 display: block;
-                font-weight: 300;
-                font-size: 100px;
-                color: #35495e;
-                letter-spacing: 1px;
+                color: #35495E;
             }
             & > .subtitle
             {
-                font-weight: 300;
-                font-size: 42px;
                 color: #526488;
-                word-spacing: 5px;
                 padding-bottom: 15px;
             }
             & > .links
@@ -81,23 +79,23 @@
                 {
                     display: inline-block;
                     border-radius: 4px;
-                    border: 1px solid #3b8070;
-                    color: #3b8070;
+                    border: 1px solid #3B8070;
+                    color: #3B8070;
                     text-decoration: none;
                     padding: 10px 30px;
 
                     &:hover
                     {
                         color: #fff;
-                        background-color: #3b8070;
+                        background-color: #3B8070;
                     }
                 }
                 & > .button--grey
                 {
                     display: inline-block;
                     border-radius: 4px;
-                    border: 1px solid #35495e;
-                    color: #35495e;
+                    border: 1px solid #35495E;
+                    color: #35495E;
                     text-decoration: none;
                     padding: 10px 30px;
                     margin-left: 15px;
@@ -105,7 +103,7 @@
                     &:hover
                     {
                         color: #fff;
-                        background-color: #35495e;
+                        background-color: #35495E;
                     }
                 }
             }

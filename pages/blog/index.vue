@@ -1,20 +1,25 @@
 <template>
-    <main id="blog-page">
-        <h1>This is the main BLog page.</h1>
-    </main>
+    <card-layout id="blog-page">
+        <main>
+            <h1>This is the main BLog page.</h1>
+        </main>
+    </card-layout>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
-    export default Vue.extend({ name: "BlogPage" });
+    import CardLayout from "@/layouts/pages/card-layout.vue";
+
+    export default Vue.extend({
+        name: "BlogPage",
+        components: { "card-layout": CardLayout }
+    });
 </script>
 
 <style lang="scss" scoped>
     #blog-page
     {
-        margin-bottom: 250px;
-        padding: 32px;
         text-align: center;
     }
 </style>
