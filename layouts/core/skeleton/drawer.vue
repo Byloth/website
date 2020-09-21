@@ -69,13 +69,6 @@
             },
             pages(): string { return this.$store.state.config.pages; },
             version(): string { return this.$store.state.config.version; }
-        },
-
-        methods: {
-            pippo(): string
-            {
-                return this.$store.state.config.pages;
-            }
         }
     });
 </script>
@@ -86,6 +79,7 @@
 
     .mdc-drawer
     {
+        border: none;
         margin-left: -$mdc-drawer-width;
         position: fixed;
         transition-duration: $mdc-drawer-animation-enter;
@@ -111,14 +105,18 @@
             transition-duration: $mdc-drawer-animation-exit;
         }
 
+        & > .mdc-drawer__header,
         & > .mdc-drawer__content
         {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+            border-bottom: none;
+            border-right: 1px solid rgba(0, 0, 0, 0.12);
         }
 
         & > .mdc-drawer__footer
         {
-            background-color: #F1F1F1;
+            background-color: #DEE1E6;
+            border-right: 1px solid rgba(0, 0, 0, 0.075);
+            border-top: 1px solid rgba(0, 0, 0, 0.075);
             color: #5F5F5F;
             font-size: smaller;
             padding: 12px 16px;

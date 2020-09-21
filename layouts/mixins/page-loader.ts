@@ -1,3 +1,10 @@
+const removeElement = (element: HTMLElement) =>
+{
+    element.setAttribute("disabled", "");
+
+    setTimeout(() => element.remove(), 200);
+};
+
 export default {
     mounted()
     {
@@ -5,12 +12,7 @@ export default {
 
         if (pageLoader !== null)
         {
-            setTimeout(() =>
-            {
-                pageLoader.setAttribute("disabled", "");
-
-                setTimeout(() => pageLoader.remove(), 200);
-            }, 200);
+            setTimeout(() => removeElement(pageLoader), 200);
         }
     }
 };

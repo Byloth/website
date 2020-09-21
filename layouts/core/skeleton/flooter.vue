@@ -80,7 +80,7 @@
     .mdc-flooter
     {
         align-items: stretch;
-        background-color: #3F3F3F;
+        background-color: #35363A;
         bottom: 0px;
         color: #FFFFFF;
         display: flex;
