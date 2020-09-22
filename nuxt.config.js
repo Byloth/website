@@ -22,7 +22,11 @@ export default {
   css: ["@/assets/scss/main.import.scss"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ["@/plugins/vue-scroll-animator.client.ts"],
+  plugins: [
+    "@/plugins/globals/time.client.ts",
+
+    "@/plugins/vue-scroll-animator.client.ts"
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
