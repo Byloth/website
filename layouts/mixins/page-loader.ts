@@ -8,11 +8,14 @@ const removeElement = (element: HTMLElement) =>
 export default {
     mounted()
     {
-        const pageLoader = document.getElementById("page-loader");
-
-        if (pageLoader !== null)
+        if (process.browser)
         {
-            setTimeout(() => removeElement(pageLoader), 200);
+            const pageLoader = document.getElementById("page-loader");
+
+            if (pageLoader !== null)
+            {
+                setTimeout(() => removeElement(pageLoader), 200);
+            }
         }
     }
 };
