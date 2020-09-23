@@ -40,7 +40,10 @@
 
         mounted(): void
         {
-            this._body = document.querySelector("body")!;
+            if (process.browser)
+            {
+                this._body = document.querySelector("body")!;
+            }
         }
     });
 </script>
