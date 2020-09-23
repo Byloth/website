@@ -24,12 +24,10 @@
   "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "nuxt-ts",
-    "build:server": "nuxt-ts build",
-    "build:static": "nuxt-ts generate",
-    "prod": "nuxt-ts start",
-    "prod:build": "yarn build:server && yarn prod",
-    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
-    "lint:fix": "yarn lint --fix"
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
     "@byloth/vue-scroll-animator": "^2.2.0",
