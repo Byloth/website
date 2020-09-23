@@ -28,7 +28,7 @@ export class DailyMessage extends Model implements DailyMessageData
 
     public static async GetAll(): Promise<DailyMessage[]>
     {
-        const messages = (await import(/* webpackChunkName: "daily-messages" */ "./data/dailyMessages.json")).default;
+        const messages = (await import(/* webpackChunkName: "daily-messages" */ "./data/daily-messages.json")).default;
 
         return messages.map((message) => new DailyMessage(message));
     }
