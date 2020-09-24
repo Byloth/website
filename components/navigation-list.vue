@@ -19,7 +19,7 @@
 
         data: (): NavigationListData => ({ }),
 
-        mounted(): void
+        mounted: function(): void
         {
             this._list = MDCList.attachTo(this.$el);
             this._list.wrapFocus = true;

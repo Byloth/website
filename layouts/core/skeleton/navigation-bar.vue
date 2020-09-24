@@ -55,7 +55,7 @@
 
         computed: { title(): string { return this.$store.state.config.title; } },
 
-        mounted(): void
+        mounted: function(): void
         {
             this._resizingAnimation = this.$initScrollAnimation({
                 startingValue: 0,
@@ -105,7 +105,7 @@
                 ]
             });
         },
-        destroyed(): void
+        destroyed: function(): void
         {
             this.$destroyScrollAnimation(this._resizingAnimation!);
             this.$destroyScrollAnimation(this._movingAnimation!);

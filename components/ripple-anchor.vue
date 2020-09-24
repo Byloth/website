@@ -27,7 +27,7 @@
         },
         data: (): RippleAnchorData => ({ }),
 
-        mounted(): void
+        mounted: function(): void
         {
             this._ripple = new MDCRipple(this.$el);
             this._ripple.unbounded = true;
