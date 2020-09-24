@@ -88,13 +88,13 @@
             }
         },
 
-        mounted(): void
+        mounted: function(): void
         {
             window.addEventListener("resize", this.onResizeEvent, { capture: true, passive: true });
 
             this.onResizeEvent();
         },
-        destroyed(): void
+        destroyed: function(): void
         {
             window.removeEventListener("resize", this.onResizeEvent);
         },

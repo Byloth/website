@@ -38,7 +38,7 @@
             }
         },
 
-        mounted(): void
+        mounted: function(): void
         {
             if (process.browser)
             {

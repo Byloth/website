@@ -91,7 +91,7 @@
 
         data: (): JumbotronData => ({ dailyMessage: DailyMessage.Empty }),
 
-        created(): void
+        created: function(): void
         {
             DailyMessage.GetRandomOne()
                 .then((dailyMessage) =>
