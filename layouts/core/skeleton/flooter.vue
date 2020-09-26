@@ -85,7 +85,6 @@
         color: #FFFFFF;
         display: flex;
         flex-direction: column;
-        height: 250px;
         position: fixed;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
         width: 100%;
