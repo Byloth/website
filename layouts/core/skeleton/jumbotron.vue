@@ -1,70 +1,76 @@
 <template>
     <!-- eslint-disable vue/no-v-html -->
     <div class="mdc-jumbotron">
-        <blockquote v-if="dailyMessage.isLoaded">
-            <template v-if="dailyMessage.typeId === 0">
-                <template v-if="dailyMessage.url">
-                    <h2>
-                        <a :href="dailyMessage.url"
-                           target="_blank"
-                           v-html="dailyMessage.text">
-                        </a>
-                    </h2>
+        <blockquote>
+            <template v-if="dailyMessage.isLoaded">
+                <template v-if="dailyMessage.typeId === 0">
+                    <template v-if="dailyMessage.url">
+                        <h2>
+                            <a :href="dailyMessage.url"
+                               target="_blank"
+                               v-html="dailyMessage.text">
+                            </a>
+                        </h2>
+                    </template>
+                    <template v-else>
+                        <h2 v-html="dailyMessage.text"></h2>
+                    </template>
                 </template>
-                <template v-else>
-                    <h2 v-html="dailyMessage.text"></h2>
-                </template>
-            </template>
-            <template v-else-if="dailyMessage.typeId === 1">
-                <template v-if="dailyMessage.url">
-                    <h2 v-html="dailyMessage.text"></h2>
-                    <footer>
-                        <a :href="dailyMessage.url" target="_blank">
+                <template v-else-if="dailyMessage.typeId === 1">
+                    <template v-if="dailyMessage.url">
+                        <h2 v-html="dailyMessage.text"></h2>
+                        <footer>
+                            <a :href="dailyMessage.url" target="_blank">
+                                <cite>{{ dailyMessage.author }}</cite>
+                                <template v-if="dailyMessage.source">
+                                    di “{{ dailyMessage.source }}”
+                                </template>
+                            </a>
+                        </footer>
+                    </template>
+                    <template v-else>
+                        <h2 v-html="dailyMessage.text"></h2>
+                        <footer>
                             <cite>{{ dailyMessage.author }}</cite>
                             <template v-if="dailyMessage.source">
                                 di “{{ dailyMessage.source }}”
                             </template>
-                        </a>
-                    </footer>
+                        </footer>
+                    </template>
                 </template>
-                <template v-else>
-                    <h2 v-html="dailyMessage.text"></h2>
-                    <footer>
-                        <cite>{{ dailyMessage.author }}</cite>
-                        <template v-if="dailyMessage.source">
-                            di “{{ dailyMessage.source }}”
-                        </template>
-                    </footer>
-                </template>
-            </template>
-            <template v-else-if="dailyMessage.typeId === 2">
-                <template v-if="dailyMessage.url">
-                    <h2 v-html="dailyMessage.text"></h2>
-                    <footer>
-                        <a :href="dailyMessage.url" target="_blank">
+                <template v-else-if="dailyMessage.typeId === 2">
+                    <template v-if="dailyMessage.url">
+                        <h2 v-html="dailyMessage.text"></h2>
+                        <footer>
+                            <a :href="dailyMessage.url" target="_blank">
+                                traduzione di “{{ dailyMessage.source }}”
+                            </a>
+                        </footer>
+                    </template>
+                    <template v-else>
+                        <h2 v-html="dailyMessage.text"></h2>
+                        <footer>
                             traduzione di “{{ dailyMessage.source }}”
-                        </a>
-                    </footer>
+                        </footer>
+                    </template>
                 </template>
-                <template v-else>
-                    <h2 v-html="dailyMessage.text"></h2>
-                    <footer>
-                        traduzione di “{{ dailyMessage.source }}”
-                    </footer>
+                <template v-else-if="dailyMessage.typeId === 3">
+                    <template v-if="dailyMessage.url">
+                        <h2>
+                            <a :href="dailyMessage.url"
+                               target="_blank"
+                               v-html="dailyMessage.text">
+                            </a>
+                        </h2>
+                    </template>
+                    <template v-else>
+                        <h2 v-html="dailyMessage.text"></h2>
+                    </template>
                 </template>
             </template>
-            <template v-else-if="dailyMessage.typeId === 3">
-                <template v-if="dailyMessage.url">
-                    <h2>
-                        <a :href="dailyMessage.url"
-                           target="_blank"
-                           v-html="dailyMessage.text">
-                        </a>
-                    </h2>
-                </template>
-                <template v-else>
-                    <h2 v-html="dailyMessage.text"></h2>
-                </template>
+            <template v-else>
+                <subtitle-loader />
+                <text-loader />
             </template>
         </blockquote>
     </div>
@@ -117,6 +123,7 @@
             border-left: 0.333em solid lighten(variables.$primary-color, 15);
             padding: 0px 20px;
             min-height: 82px;
+            width: 100%;
 
             &::before
             {

@@ -8,10 +8,10 @@
                             :toggle="toggle"
                             @drawer-toggle="toggleDrawer" />
             <jumbotron id="jumbotron" />
-            <div id="main-content">
+            <div id="main-content" :style="{ 'margin-bottom': `${height}px` }">
                 <slot></slot>
             </div>
-            <flooter id="flooter" />
+            <flooter id="flooter" ref="flooter" />
         </div>
         <drawer-scrim id="drawer-scrim"
                       :value="modal && open"
@@ -39,11 +39,13 @@
     }
     export interface DrawerLayoutData
     {
-        _status: DrawerStatus;
-
         modal: boolean;
         open: boolean;
         toggle: boolean;
+
+        height: number;
+
+        status: DrawerStatus;
     }
 
     export default Vue.extend({
@@ -63,11 +65,13 @@
         },
 
         data: (): DrawerLayoutData => ({
-            _status: DrawerStatus.DISMISSABLE,
-
             modal: false,
             open: false,
-            toggle: true
+            toggle: true,
+
+            height: 0,
+
+            status: DrawerStatus.DISMISSABLE
         }),
 
         computed: {
@@ -96,33 +100,33 @@
         },
 
         methods: {
-            _setModal(): void
+            setModal(): void
             {
-                if (this._status !== DrawerStatus.MODAL)
+                if (this.status !== DrawerStatus.MODAL)
                 {
-                    this._status = DrawerStatus.MODAL;
+                    this.status = DrawerStatus.MODAL;
 
                     this.modal = true;
                     this.open = false;
                     this.toggle = true;
                 }
             },
-            _setDismissable(): void
+            setDismissable(): void
             {
-                if (this._status !== DrawerStatus.DISMISSABLE)
+                if (this.status !== DrawerStatus.DISMISSABLE)
                 {
-                    this._status = DrawerStatus.DISMISSABLE;
+                    this.status = DrawerStatus.DISMISSABLE;
 
                     this.modal = false;
                     this.open = false;
                     this.toggle = true;
                 }
             },
-            _setPermanent(): void
+            setPermanent(): void
             {
-                if (this._status !== DrawerStatus.PERMANENT)
+                if (this.status !== DrawerStatus.PERMANENT)
                 {
-                    this._status = DrawerStatus.PERMANENT;
+                    this.status = DrawerStatus.PERMANENT;
 
                     this.modal = false;
                     this.open = true;
@@ -136,16 +140,18 @@
 
                 if (windowWidth < MOBILE_SIZE)
                 {
-                    this._setModal();
+                    this.setModal();
                 }
                 else if (windowWidth < TABLET_SIZE)
                 {
-                    this._setDismissable();
+                    this.setDismissable();
                 }
                 else
                 {
-                    this._setPermanent();
+                    this.setPermanent();
                 }
+
+                this.height = (this.$refs.flooter as Vue).$el.clientHeight;
             },
 
             toggleDrawer(evt?: Event): void
@@ -177,7 +183,6 @@
         & > #main-content
         {
             box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em #35363A;
-            margin-bottom: 250px;
         }
 
         &.mdc-drawer-app-content--open
