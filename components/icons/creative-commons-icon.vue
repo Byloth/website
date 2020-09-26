@@ -19,7 +19,7 @@
 </script>
 
 <style lang="scss" scoped>
-    div.creative-commons-icon
+    .creative-commons-icon
     {
         background-color: #000000;
         border: 0.06125em solid #000000;
@@ -32,7 +32,7 @@
         text-decoration: none;
         text-shadow: none;
 
-        & > div.creative-commons-icon--content
+        & > .creative-commons-icon--content
         {
             background-color: #C7C7C7;
             color: #000000;
@@ -62,7 +62,7 @@
                 }
             }
         }
-        & > div.creative-commons-icon--footer
+        & > .creative-commons-icon--footer
         {
             display: flex;
             font-size: 0.5em;

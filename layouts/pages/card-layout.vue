@@ -28,7 +28,7 @@
             transition-property: max-width;
             transition-timing-function: $mdc-animation-standard-curve-timing-function;
 
-            .mdc-drawer-app-content.mdc-drawer-app-content--open > &
+            .mdc-drawer-app-content.mdc-drawer-app-content--open &
             {
                 max-width: 100%;
                 transition-duration: $mdc-drawer-animation-exit;
