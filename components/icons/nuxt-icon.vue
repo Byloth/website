@@ -20,7 +20,7 @@
     export default Vue.extend({ name: "NuxtIcon" });
 </script>
 
-<style>
+<style lang="scss" scoped>
     @keyframes appear
     {
         0% { opacity: 0; }

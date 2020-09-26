@@ -51,22 +51,20 @@ Some of the technologies I used:
 > ### Project build & run ###
 >
 > ```bash
-> # Serve with hot reload at localhost:3000
+> # Serve with hot reload at localhost:8080
 > $ yarn dev
 >
+> # Build for production
+> $ yarn build
+> 
 > # Generate static project files
-> $ yarn build:static
+> $ yarn generate
 >
-> # Build for production and launch server
-> $ yarn build:server
-> $ yarn prod
-> # ... or (more easily)
-> $ yarn prod:build
+> # Launch server
+> $ yarn start
 >
 > # Linting project
 > $ yarn lint
-> # ... and apply fixes
-> $ yarn lint:fix
 > ```
 >
 > ---
