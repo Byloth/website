@@ -195,30 +195,6 @@
                 transition-duration: $mdc-drawer-animation-exit;
                 width: calc(100% - #{$mdc-drawer-width});
             }
-
-            // TODO: Da sistemare!
-            //
-            // & > #main-content > .container.mdc-card
-            // {
-            //     max-width: 100% !important;
-
-            //     @media (min-width: 855px)
-            //     {
-            //         max-width: 550px !important;
-            //     }
-            //     @media (min-width: 1215px)
-            //     {
-            //         max-width: 800px !important;
-            //     }
-            //     @media (min-width: 1535px)
-            //     {
-            //         max-width: 960px !important;
-            //     }
-            //     @media (min-width: 1855px)
-            //     {
-            //         max-width: 1066px !important;
-            //     }
-            // }
         }
 
         .mdc-drawer.mdc-drawer--modal.mdc-drawer--open + &

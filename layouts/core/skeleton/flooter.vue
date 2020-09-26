@@ -46,7 +46,7 @@
                 </ripple-anchor>
             </div>
         </div>
-        <div style="text-align: center;">
+        <div class="license-info">
             <div>
                 <a rel="license"
                    href="http://creativecommons.org/licenses/by-sa/4.0/"
@@ -77,76 +77,88 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
+    @keyframes pulse
+    {
+        0% { transform: scale(1); }
+        15% { transform: scale(1); }
+        30% { transform: scale(1.25); }
+        52% { transform: scale(1); }
+        68% { transform: scale(1.25); }
+        90% { transform: scale(1); }
+        100% { transform: scale(1); }
+    }
+
     .mdc-flooter
     {
-        align-items: stretch;
         background-color: #35363A;
         bottom: 0px;
         color: #FFFFFF;
-        display: flex;
-        flex-direction: column;
         position: fixed;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
         width: 100%;
         z-index: -1;
 
-        & > div.row
+        & > .row > .col-md-6
         {
-            flex: auto;
+            padding: 0px 16px;
 
-            & > div.col-md-6
+            & > ul
             {
-                padding: 0px 16px;
+                list-style: none;
 
-                & a
+                & > li
                 {
-                    color: #FFFFFF;
-                    margin-right: 0.5em;
+                    position: relative;
 
-                    &::before,
-                    &::after
+                    &::before
                     {
-                        background-color: #FFFFFF;
-                        background-color: var(--mdc-theme-on-primary, #FFFFFF);
+                        content: "•";
+                        font-size: 1.25em;
+                        left: -0.9em;
+                        position: absolute;
+                        top: -2px;
                     }
-                }
 
-                & > ul
-                {
-                    list-style: none;
-
-                    & > li
+                    &.active
                     {
-                        position: relative;
+                        $active-color: lighten(variables.$primary-color, 30);
 
                         &::before
                         {
-                            content: "•";
-                            font-size: 1.25em;
-                            left: -0.9em;
-                            position: absolute;
-                            top: -2px;
+                            color: $active-color;
+                            content: "»";
+                            font-size: 1em;
+                            left: -1.125em;
+                            top: -1px;
                         }
-
-                        &.active
+                        & > a
                         {
-                            $active-color: lighten(variables.$primary-color, 30);
-
-                            &::before
-                            {
-                                color: $active-color;
-                                content: "»";
-                                font-size: 1em;
-                                left: -1.125em;
-                                top: -1px;
-                            }
-                            & > a
-                            {
-                                color: $active-color;
-                            }
+                            color: $active-color;
                         }
                     }
                 }
+            }
+
+            & a
+            {
+                color: #FFFFFF;
+                margin-right: 0.5em;
+
+                &::before,
+                &::after
+                {
+                    background-color: #FFFFFF;
+                }
+            }
+        }
+        & > .license-info
+        {
+            margin-top: 1em;
+            text-align: center;
+
+            & > p > .fa-heart
+            {
+                animation: pulse 1.5s infinite;
             }
         }
     }
