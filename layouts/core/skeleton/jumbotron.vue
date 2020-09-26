@@ -100,7 +100,7 @@
 
                     if (this.dailyMessage.canBeExecuted === true)
                     {
-                        this.dailyMessage.execute();
+                        this.$nextTick(() => this.dailyMessage.execute());
                     }
                 });
         }

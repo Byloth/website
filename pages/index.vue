@@ -34,7 +34,11 @@
 
     export default Vue.extend({
         name: "HomePage",
-        components: { "card-layout": CardLayout }
+        components: { "card-layout": CardLayout },
+
+        head: {
+            title: "Home"
+        }
     });
 </script>
 

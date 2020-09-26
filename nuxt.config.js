@@ -4,8 +4,7 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: "Byloth's Website",
-    titleTemplate: "%s | Byloth's Website",
+    titleTemplate: "%s 🡒 Byloth's Website",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -24,6 +23,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    "@/plugins/globals/mdc.client.ts",
     "@/plugins/globals/time.client.ts",
 
     "@/plugins/vue-scroll-animator.client.ts"

@@ -36,6 +36,7 @@
     "@material/drawer": "^7.0.0",
     "@material/icon-button": "^7.0.0",
     "@material/ripple": "^7.0.0",
+    "@material/textfield": "^7.0.0",
     "@material/top-app-bar": "^7.0.0",
     "@nuxt/content": "^1.8.1",
     "@nuxt/typescript-runtime": "^2.0.0",

@@ -200,8 +200,8 @@
   {
     "id": 23,
     "typeId": 3,
-    "text": "<input class=\"form-control\" placeholder=\"Inserire un sottotitolo…\" type=\"text\" />",
-    "script": null,
+    "text": "<label id=\"main-header-daily-message-text-field\" class=\"mdc-text-field mdc-text-field--outlined\" style=\"background-color: #FFFFFF; border-radius: 4px; box-shadow: 0px 0px 4px 4px #FFFFFF; font-size: 1rem;\"><span class=\"mdc-notched-outline\"><span class=\"mdc-notched-outline__leading\"></span><span class=\"mdc-notched-outline__notch\"><span id=\"main-header-daily-message-text-field-input\" class=\"mdc-floating-label\">Inserire un sottotitolo…</span></span><span class=\"mdc-notched-outline__trailing\"></span></span><input type=\"text\" class=\"mdc-text-field__input\" aria-labelledby=\"main-header-daily-message-text-field-input\" /></label>",
+    "script": "return new mdc.textfield.MDCTextField(document.getElementById(\"main-header-daily-message-text-field\"));",
     "author": null,
     "source": null,
     "url": null
