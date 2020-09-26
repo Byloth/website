@@ -8,7 +8,7 @@
                              @click="$emit('drawer-toggle', $event)">
                     menu
                 </action-item>
-                <span ref="title" class="mdc-top-app-bar__title">{{ title }}</span>
+                <h1 ref="title" class="mdc-top-app-bar__title">{{ title }}</h1>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                 <action-item class="mdc-top-app-bar__action-item"
@@ -130,6 +130,7 @@
             .mdc-top-app-bar__title
             {
                 font-size: 34px;
+                margin: 0px;
                 padding-bottom: 0.4em;
             }
         }

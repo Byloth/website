@@ -56,7 +56,7 @@
                 </a>
             </div>
             <p>
-                Designed &amp; Developed with <span class="fas fa-heart red"></span> by {{ author }}.
+                Designed &amp; Developed with <span class="fas fa-heart red"></span> by {{ author }}
             </p>
         </div>
     </footer>

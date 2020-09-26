@@ -13,7 +13,9 @@
 
     export default Vue.extend({
         name: "BlogPage",
-        components: { "card-layout": CardLayout }
+        components: { "card-layout": CardLayout },
+
+        head: { title: "BLog" }
     });
 </script>
 
