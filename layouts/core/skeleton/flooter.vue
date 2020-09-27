@@ -77,17 +77,6 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
-    @keyframes pulse
-    {
-        0% { transform: scale(1); }
-        15% { transform: scale(1); }
-        30% { transform: scale(1.25); }
-        52% { transform: scale(1); }
-        68% { transform: scale(1.25); }
-        90% { transform: scale(1); }
-        100% { transform: scale(1); }
-    }
-
     .mdc-flooter
     {
         background-color: #35363A;
@@ -155,11 +144,6 @@
         {
             margin-top: 1em;
             text-align: center;
-
-            & > p > .fa-heart
-            {
-                animation: pulse 1.5s infinite;
-            }
         }
     }
 </style>

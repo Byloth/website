@@ -62,6 +62,8 @@ export default {
       name: "Byloth's Website",
       short_name: "Byloth",
 
+      start_url: "/",
+
       background_color: "#35363A",
       theme_color: "#DEE1E6",
 

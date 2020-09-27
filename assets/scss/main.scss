@@ -7,6 +7,16 @@
     50% { opacity: 0; }
     100% { opacity: 0; }
 }
+@keyframes pulse
+{
+    0% { transform: scale(1); }
+    15% { transform: scale(1); }
+    30% { transform: scale(1.25); }
+    52% { transform: scale(1); }
+    68% { transform: scale(1.25); }
+    90% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
 
 *
 {
@@ -90,6 +100,42 @@ q
     }
 }
 
+.fa-heart
+{
+    animation: pulse 1.5s infinite;
+    color: #FF0000;
+}
+
+.kbd-btn
+{
+    background-image: linear-gradient(45deg, #D0C4AA, #F3E4CD);
+    border-bottom: 10px solid #B2A088;
+    border-left: 6px solid #ECE3D4;
+    border-radius: 3px;
+    border-right: 6px solid #938268;
+    border-top: 2px solid #B2A088;
+    box-shadow: 0px 1px 2px rgba(#45361F, 0.5), inset 2px 0px 2px #CDC1A9, inset -2px 0px 2px #F5E9D3;
+    color: #51402C;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: bolder;
+    margin: 0px 0.25em;
+    outline: none;
+    padding: 0.75em 0.5em;
+    vertical-align: top;
+
+    &.large
+    {
+        padding: 0.75em 1em;
+    }
+
+    &:active
+    {
+        box-shadow: 0px 0px 2px 1px rgba(#45361F, 0.5), inset 2px 0px 2px #CDC1A9, inset -2px 0px 2px #F5E9D3;
+        margin-top: 3px;
+    }
+}
+
 .red
 {
     color: #FF0000;
@@ -120,34 +166,5 @@ q
     {
         animation: blink 1.2s infinite;
         content: "▁";
-    }
-}
-
-.kbd-btn
-{
-    background-image: linear-gradient(45deg, #D0C4AA, #F3E4CD);
-    border-bottom: 10px solid #B2A088;
-    border-left: 6px solid #ECE3D4;
-    border-radius: 3px;
-    border-right: 6px solid #938268;
-    border-top: 2px solid #B2A088;
-    box-shadow: 0px 1px 2px rgba(#45361F, 0.5), inset 2px 0px 2px #CDC1A9, inset -2px 0px 2px #F5E9D3;
-    color: #51402C;
-    cursor: pointer;
-    font-family: sans-serif;
-    font-weight: bolder;
-    outline: none;
-    padding: 0.75em 0.5em;
-    vertical-align: top;
-
-    &.large
-    {
-        padding: 0.75em 1em;
-    }
-
-    &:active
-    {
-        box-shadow: 0px 0px 2px 1px rgba(#45361F, 0.5), inset 2px 0px 2px #CDC1A9, inset -2px 0px 2px #F5E9D3;
-        margin-top: 3px;
     }
 }
