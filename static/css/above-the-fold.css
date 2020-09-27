@@ -46,8 +46,10 @@
     to { transform: scale(1.5); }
 }
 
+html,
 body
 {
+    background-color: #35363A;
     overflow: hidden;
 }
 

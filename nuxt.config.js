@@ -18,6 +18,8 @@ export default {
     ]
   },
 
+  loading: { color: "#FFD600" },
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: ["@/assets/scss/main.import.scss"],
 
@@ -42,10 +44,10 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    // https://go.nuxtjs.dev/pwa
-    "@nuxtjs/pwa",
     // https://go.nuxtjs.dev/content
-    "@nuxt/content"
+    "@nuxt/content",
+    // https://go.nuxtjs.dev/pwa
+    "@nuxtjs/pwa"
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -53,6 +55,19 @@ export default {
 
   // Content module configuration (https://go.nuxtjs.dev/content-config)
   content: {},
+
+  // PWA module configuration (https://pwa.nuxtjs.org/setup)
+  pwa: {
+    manifest: {
+      name: "Byloth's Website",
+      short_name: "Byloth",
+
+      background_color: "#35363A",
+      theme_color: "#DEE1E6",
+
+      lang: "it"
+    }
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
