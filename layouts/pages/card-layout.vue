@@ -28,28 +28,30 @@
             transition-property: max-width;
             transition-timing-function: $mdc-animation-standard-curve-timing-function;
 
-            .mdc-drawer-app-content.mdc-drawer-app-content--open &
-            {
-                max-width: 100%;
-                transition-duration: $mdc-drawer-animation-exit;
+            // SMELLS!
+            //
+            // .mdc-drawer-app-content.mdc-drawer-app-content--open &
+            // {
+            //     max-width: 100%;
+            //     transition-duration: $mdc-drawer-animation-exit;
 
-                @media (min-width: 855px)
-                {
-                    max-width: 550px;
-                }
-                @media (min-width: 1215px)
-                {
-                    max-width: 800px;
-                }
-                @media (min-width: 1535px)
-                {
-                    max-width: 960px;
-                }
-                @media (min-width: 1855px)
-                {
-                    max-width: 1070px;
-                }
-            }
+            //     @media (min-width: 855px)
+            //     {
+            //         max-width: 550px;
+            //     }
+            //     @media (min-width: 1215px)
+            //     {
+            //         max-width: 800px;
+            //     }
+            //     @media (min-width: 1535px)
+            //     {
+            //         max-width: 960px;
+            //     }
+            //     @media (min-width: 1855px)
+            //     {
+            //         max-width: 1070px;
+            //     }
+            // }
         }
     }
 </style>
