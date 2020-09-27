@@ -209,7 +209,7 @@
   {
     "id": 24,
     "typeId": 0,
-    "text": "I <span class=\"fas fa-heart red\"></span> <span title=\"N: 40°4'12&quot; / E: 15°41'4&quot;\">Carpineta</span>!",
+    "text": "I <span class=\"fas fa-heart\"></span> <span title=\"N: 40°4'12&quot; / E: 15°41'4&quot;\">Carpineta</span>!",
     "script": null,
     "author": null,
     "source": null,
@@ -344,7 +344,7 @@
   {
     "id": 39,
     "typeId": 3,
-    "text": "<button class=\"kbd-btn large\">Ctrl</button>\n\n<button class=\"kbd-btn large\">Alt</button>\n\n<button class=\"kbd-btn\">Del</button>",
+    "text": "<button class=\"kbd-btn large\">Ctrl</button><button class=\"kbd-btn large\">Alt</button><button class=\"kbd-btn\">Del</button>",
     "script": null,
     "author": null,
     "source": null,
@@ -372,7 +372,7 @@
     "id": 42,
     "typeId": 3,
     "text": "Oggi è <span id=\"main-header-daily-message-date\">Giovedì 1 Gennaio 1970</span> e sono le <span id=\"main-header-daily-message-time\">00:00:00</span>.",
-    "script": "let _i = setInterval(function() {\ntry {\nlet _n = new Date(), _d = document.getElementById('main-header-daily-message-date'), _t = document.getElementById('main-header-daily-message-time');\n_d.innerHTML = Time.DateAsString(_n);\n_t.innerHTML = Time.TimeAsString(_n);\n} catch (_e) { console.error(_e);\nclearInterval(_i); }\n}, 1000);",
+    "script": "let _i = setInterval(function() { try { let _n = new Date(), _d = document.getElementById('main-header-daily-message-date'), _t = document.getElementById('main-header-daily-message-time'); _d.innerHTML = Time.DateAsString(_n); _t.innerHTML = Time.TimeAsString(_n); } catch (_e) { console.error(_e); clearInterval(_i); } }, 1000);",
     "author": null,
     "source": null,
     "url": null
@@ -435,7 +435,7 @@
     "id": 49,
     "typeId": 3,
     "text": "Questo sito esiste da <span id=\"main-header-daily-message-elapsed-time\" title=\"Dal 30/09/2015 alle 17:16:41\">0 anni, 0 mesi, 0 settimane, 0 giorni, 0 ore, 0 minuti e 0 secondi</span>.",
-    "script": "let _i = setInterval(function() {\ntry {\ndocument.getElementById('main-header-daily-message-elapsed-time').innerHTML = Time.TimeDifferenceAsString(new Date('2015-09-30T17:16:41'), new Date(), false);\n} catch (_e) { console.error(_e);\nclearInterval(_i); }\n}, 1000);",
+    "script": "let _i = setInterval(function() { try { document.getElementById('main-header-daily-message-elapsed-time').innerHTML = Time.TimeDifferenceAsString(new Date('2015-09-30T17:16:41'), new Date(), false); } catch (_e) { console.error(_e); clearInterval(_i); } }, 1000);",
     "author": null,
     "source": null,
     "url": null
