@@ -22,14 +22,13 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import { MOBILE_SIZE, TABLET_SIZE } from "@/core/constants";
+
     import Drawer from "./skeleton/drawer.vue";
     import DrawerScrim from "./skeleton/drawer-scrim.vue";
     import Flooter from "./skeleton/flooter.vue";
     import NavigationBar from "./skeleton/navigation-bar.vue";
     import Jumbotron from "./skeleton/jumbotron.vue";
-
-    export const MOBILE_SIZE = 600;
-    export const TABLET_SIZE = 1280;
 
     export enum DrawerStatus
     {

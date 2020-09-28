@@ -1,6 +1,6 @@
 import Vue from "vue";
 
-export const FADEOUT_TIMEOUT = 200;
+import { FADEOUT_TIMEOUT } from "@/core/constants";
 
 export default Vue.extend({
     mounted: function()
