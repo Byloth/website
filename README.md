@@ -39,31 +39,29 @@ Some of the technologies I used:
 > ### Project setup ###
 >
 > ```bash
-> # install dependencies
-> yarn install
+> # Install dependencies...
+> $ yarn install
 >
-> # update dependencies
-> yarn upgrade
+> # Update dependencies...
+> $ yarn upgrade
 > ```
 >
 > ---
 >
-> ### Project build & run ###
+> ### Project up & running ###
 >
 > ```bash
-> # Serve with hot reload at localhost:8080
+> # Serve with hot reload at `localhost:8080`...
 > $ yarn dev
 >
-> # Build for production
+> # Build for production and launch server...
 > $ yarn build
+> $ yarn start
 > 
-> # Generate static project files
+> # Generate static project files...
 > $ yarn generate
 >
-> # Launch server
-> $ yarn start
->
-> # Linting project
+> # Lint project...
 > $ yarn lint
 > ```
 >
