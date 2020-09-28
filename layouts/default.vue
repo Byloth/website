@@ -10,7 +10,12 @@
     import DrawerLayout from "./core/drawer-layout.vue";
     import PageLoaderMixin from "./mixins/page-loader";
 
-    interface DefaultLayoutData { _body?: HTMLElement; disable: boolean; }
+    interface DefaultLayoutData
+    {
+        _body?: HTMLElement;
+
+        disable: boolean;
+    }
 
     export default Vue.extend({
         name: "DefaultLayout",

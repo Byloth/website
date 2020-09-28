@@ -13,18 +13,26 @@
                 </h1>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <action-item class="mdc-top-app-bar__action-item"
-                             description="Download">
-                    file_download
-                </action-item>
-                <action-item class="mdc-top-app-bar__action-item"
-                             description="Print this page">
-                    print
-                </action-item>
-                <action-item class="mdc-top-app-bar__action-item"
-                             description="Bookmark this page">
-                    bookmark
-                </action-item>
+                <template v-if="condensed">
+                    <action-item class="mdc-top-app-bar__action-item"
+                                 description="Download">
+                        more_vert
+                    </action-item>
+                </template>
+                <template v-else>
+                    <action-item class="mdc-top-app-bar__action-item"
+                                 description="Download">
+                        file_download
+                    </action-item>
+                    <action-item class="mdc-top-app-bar__action-item"
+                                 description="Print this page">
+                        print
+                    </action-item>
+                    <action-item class="mdc-top-app-bar__action-item"
+                                 description="Bookmark this page">
+                        bookmark
+                    </action-item>
+                </template>
             </section>
         </div>
     </header>
@@ -39,7 +47,15 @@
     import ScrollAnimation from "@byloth/vue-scroll-animator/animations";
     import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/classes";
 
-    interface NavigationBarData { _resizingAnimation?: ScrollAnimation; _movingAnimation?: ScrollAnimation; }
+    import { MOBILE_SIZE } from "@/core/constants";
+
+    interface NavigationBarData
+    {
+        _resizingAnimation?: ScrollAnimation;
+        _movingAnimation?: ScrollAnimation;
+
+        condensed: boolean;
+    }
 
     export default Vue.extend({
         name: "NavigationBar",
@@ -50,12 +66,14 @@
             }
         },
 
-        data: (): NavigationBarData => ({}),
+        data: (): NavigationBarData => ({ condensed: false }),
 
         computed: mapState("config", { title: "title" }),
 
         mounted: function(): void
         {
+            window.addEventListener("resize", this.onResizeEvent, { capture: true, passive: true });
+
             this._resizingAnimation = this.$initScrollAnimation({
                 startingValue: 0,
                 endingValue: 128,
@@ -103,11 +121,31 @@
                     }
                 ]
             });
+
+            this.onResizeEvent();
         },
         destroyed: function(): void
         {
-            this.$destroyScrollAnimation(this._resizingAnimation!);
             this.$destroyScrollAnimation(this._movingAnimation!);
+            this.$destroyScrollAnimation(this._resizingAnimation!);
+
+            window.removeEventListener("resize", this.onResizeEvent);
+        },
+
+        methods: {
+            onResizeEvent(evt?: Event): void
+            {
+                const windowWidth = window.innerWidth;
+
+                if (windowWidth < MOBILE_SIZE)
+                {
+                    this.condensed = true;
+                }
+                else
+                {
+                    this.condensed = false;
+                }
+            }
         }
     });
 </script>
