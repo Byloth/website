@@ -37,6 +37,7 @@
         DISMISSABLE = 1,
         PERMANENT = 2
     }
+
     export interface DrawerLayoutData
     {
         modal: boolean;

@@ -12,10 +12,7 @@
 
     import { MDCRipple } from "@material/ripple";
 
-    export interface RippleAnchorData
-    {
-        _ripple?: MDCRipple;
-    }
+    interface RippleAnchorData { _ripple?: MDCRipple; }
 
     export default Vue.extend({
         name: "RippleAnchor",

@@ -1,4 +1,7 @@
-const state = () => ({
+interface Page { id: number; name: string; path: string; title: string; icon: string; }
+interface ConfigState { title: string; author: string; pages: Page[]; version: string; }
+
+const state = (): ConfigState => ({
     title: "Byloth's Website",
     author: "Matteo Bilotta",
     pages: [

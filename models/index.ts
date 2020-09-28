@@ -1,3 +1,3 @@
-import { DailyMessage } from "./daily-message";
+import DailyMessage from "./daily-message";
 
 export { DailyMessage };

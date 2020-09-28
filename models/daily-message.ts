@@ -19,7 +19,7 @@ export interface DailyMessageData
     url: string | null;
 }
 
-export class DailyMessage extends Model implements DailyMessageData
+export default class DailyMessage extends Model implements DailyMessageData
 {
     public static get Empty(): DailyMessage
     {

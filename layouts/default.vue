@@ -10,19 +10,14 @@
     import DrawerLayout from "./core/drawer-layout.vue";
     import PageLoaderMixin from "./mixins/page-loader";
 
-    export interface AppData
-    {
-        _body?: HTMLElement;
-
-        disable: boolean;
-    }
+    interface DefaultLayoutData { _body?: HTMLElement; disable: boolean; }
 
     export default Vue.extend({
         name: "DefaultLayout",
         components: { "drawer-layout": DrawerLayout },
         mixins: [PageLoaderMixin],
 
-        data: (): AppData => ({ disable: false }),
+        data: (): DefaultLayoutData => ({ disable: false }),
 
         watch: {
             disable(value: boolean, oldValue: boolean)

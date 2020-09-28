@@ -13,10 +13,7 @@
 
     import { MDCRipple } from "@material/ripple";
 
-    export interface ActionItemData
-    {
-        _ripple?: MDCRipple;
-    }
+    interface ActionItemData { _ripple?: MDCRipple; }
 
     export default Vue.extend({
         name: "ActionItem",

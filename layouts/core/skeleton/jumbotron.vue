@@ -81,10 +81,7 @@
 
     import { DailyMessage } from "@/models";
 
-    export interface JumbotronData
-    {
-        dailyMessage: DailyMessage;
-    }
+    interface JumbotronData { dailyMessage: DailyMessage; }
 
     export default Vue.extend({
         name: "Jumbotron",

@@ -1,12 +1,9 @@
-const removeElement = (element: HTMLElement) =>
-{
-    element.setAttribute("disabled", "");
+import Vue from "vue";
 
-    setTimeout(() => element.remove(), 200);
-};
+export const FADEOUT_TIMEOUT = 200;
 
-export default {
-    mounted()
+export default Vue.extend({
+    mounted: function()
     {
         if (process.browser)
         {
@@ -14,8 +11,17 @@ export default {
 
             if (pageLoader !== null)
             {
-                setTimeout(() => removeElement(pageLoader), 200);
+                setTimeout(() => this.fadeOutElement(pageLoader), FADEOUT_TIMEOUT);
             }
         }
+    },
+
+    methods: {
+        fadeOutElement(element: HTMLElement): void
+        {
+            element.setAttribute("disabled", "");
+
+            setTimeout(() => element.remove(), FADEOUT_TIMEOUT);
+        }
     }
-};
+});
