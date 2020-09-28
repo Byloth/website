@@ -64,13 +64,14 @@
 
 <script lang="ts">
     import Vue from "vue";
+    import { mapState } from "vuex";
 
     export default Vue.extend({
         name: "Flooter",
-        computed: {
-            author(): string { return this.$store.state.config.author; },
-            pages(): string { return this.$store.state.config.pages; }
-        }
+        computed: mapState("config", {
+            author: "author",
+            pages: "pages"
+        })
     });
 </script>
 

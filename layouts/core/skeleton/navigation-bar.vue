@@ -8,7 +8,9 @@
                              @click="$emit('drawer-toggle', $event)">
                     menu
                 </action-item>
-                <h1 ref="title" class="mdc-top-app-bar__title">{{ title }}</h1>
+                <h1 ref="title" class="mdc-top-app-bar__title">
+                    {{ title }}
+                </h1>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                 <action-item class="mdc-top-app-bar__action-item"
@@ -30,17 +32,14 @@
 
 <script lang="ts">
     import Vue from "vue";
+    import { mapState } from "vuex";
 
     import { cssClasses } from "@material/top-app-bar";
 
     import ScrollAnimation from "@byloth/vue-scroll-animator/animations";
     import { ClassAnimatorBehavior } from "@byloth/vue-scroll-animator/animators/classes";
 
-    export interface NavigationBarData
-    {
-        _resizingAnimation?: ScrollAnimation;
-        _movingAnimation?: ScrollAnimation;
-    }
+    interface NavigationBarData { _resizingAnimation?: ScrollAnimation; _movingAnimation?: ScrollAnimation; }
 
     export default Vue.extend({
         name: "NavigationBar",
@@ -53,7 +52,7 @@
 
         data: (): NavigationBarData => ({}),
 
-        computed: { title(): string { return this.$store.state.config.title; } },
+        computed: mapState("config", { title: "title" }),
 
         mounted: function(): void
         {

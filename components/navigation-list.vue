@@ -9,10 +9,7 @@
 
     import { MDCList } from "@material/list";
 
-    export interface NavigationListData
-    {
-        _list?: MDCList;
-    }
+    interface NavigationListData { _list?: MDCList; }
 
     export default Vue.extend({
         name: "NavigationList",

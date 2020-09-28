@@ -44,6 +44,7 @@
 
 <script lang="ts">
     import Vue from "vue";
+    import { mapState } from "vuex";
 
     import { cssClasses } from "@material/drawer";
 
@@ -67,8 +68,11 @@
                     [cssClasses.OPEN]: this.value
                 };
             },
-            pages(): string { return this.$store.state.config.pages; },
-            version(): string { return this.$store.state.config.version; }
+
+            ...mapState("config", {
+                pages: "pages",
+                version: "version"
+            })
         }
     });
 </script>
