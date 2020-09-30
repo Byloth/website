@@ -533,7 +533,7 @@
   {
     "id": 60,
     "typeId": 1,
-    "text": "<q>La calma è la virtù dei morti, i forti perdono la pazienza e ti picchiano.</q>",
+    "text": "<q>La calma è la virtù dei morti; i forti perdono la pazienza e ti picchiano.</q>",
     "script": null,
     "author": "Anonimo",
     "source": null,
@@ -823,7 +823,7 @@
     "typeId": 1,
     "text": "<q>Nella vita c’è chi ha il cazzo cacato!</q>",
     "script": null,
-    "author": "Filippo ...",
+    "author": "Filippo [...]",
     "source": null,
     "url": null
   },
@@ -925,5 +925,23 @@
     "author": "marchese Onofrio del Grillo",
     "source": "Il marchese del Grillo",
     "url": null
+  },
+  {
+    "id": 104,
+    "typeId": 0,
+    "text": "It’s not a bug… It’s a feature!",
+    "script": null,
+    "author": null,
+    "source": null,
+    "url": null
+  },
+  {
+    "id": 105,
+    "typeId": 1,
+    "text": "<q>Italians code better. Mica pizza e fichi!</q>",
+    "script": null,
+    "author": "slogan di “Codeflow 2020” by Bending Spoons",
+    "source": null,
+    "url": "https://bendingspoons.com/"
   }
 ]
