@@ -100,6 +100,20 @@
                         name: "font-size",
                         startValue: 34,
                         endValue: 20
+                    },
+                    {
+                        target: this.$refs.title as HTMLElement,
+                        name: "margin-left",
+                        startValue: -48,
+                        endValue: 0,
+                        maxWidth: 1279
+                    },
+                    {
+                        target: this.$refs.title as HTMLElement,
+                        name: "margin-left",
+                        startValue: 0,
+                        endValue: 0,
+                        minWidth: 1280
                     }
                 ]
             });

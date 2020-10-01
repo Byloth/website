@@ -1,49 +1,49 @@
 @-webkit-keyframes fade_out
 {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 @-moz-keyframes fade_out
 {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 @keyframes fade_out
 {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 @-webkit-keyframes rotation_clockwise
 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
 }
 @-moz-keyframes rotation_clockwise
 {
-    from { -moz-transform: rotate(0deg); }
-    to { -moz-transform: rotate(360deg); }
+    0% { -moz-transform: rotate(0deg); }
+    100% { -moz-transform: rotate(360deg); }
 }
 @keyframes rotation_clockwise
 {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @-webkit-keyframes zoom_in-out
 {
-    from { -webkit-transform: scale(0.5); }
-    to { -webkit-transform: scale(1.25); }
+    0% { -webkit-transform: scale(0.5); }
+    100% { -webkit-transform: scale(1.25); }
 }
 @-moz-keyframes zoom_in-out
 {
-    from { -moz-transform: scale(0.5); }
-    to { -moz-transform: scale(1.25); }
+    0% { -moz-transform: scale(0.5); }
+    100% { -moz-transform: scale(1.25); }
 }
 @keyframes zoom_in-out
 {
-    from { transform: scale(0.5); }
-    to { transform: scale(1.5); }
+    0% { transform: scale(0.5); }
+    100% { transform: scale(1.5); }
 }
 
 html,
