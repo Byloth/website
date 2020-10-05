@@ -37,7 +37,7 @@
         PERMANENT = 2
     }
 
-    export interface DrawerLayoutData
+    interface DrawerLayoutData
     {
         modal: boolean;
         open: boolean;
