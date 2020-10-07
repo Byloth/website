@@ -88,18 +88,14 @@
 
         data: (): JumbotronData => ({ dailyMessage: DailyMessage.Empty }),
 
-        created: function(): void
+        created: async function(): void
         {
-            DailyMessage.GetRandomOne()
-                .then((dailyMessage) =>
-                {
-                    this.dailyMessage = dailyMessage;
+            this.dailyMessage = await DailyMessage.GetRandomOne();
 
-                    if (this.dailyMessage.canBeExecuted === true)
-                    {
-                        this.$nextTick(() => this.dailyMessage.execute());
-                    }
-                });
+            if (this.dailyMessage.canBeExecuted === true)
+            {
+                this.$nextTick(() => this.dailyMessage.execute());
+            }
         }
     });
 </script>
