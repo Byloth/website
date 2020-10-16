@@ -15,12 +15,12 @@ module.exports = {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
     "comma-dangle": DYNAMIC_LEVEL,
-    "indent": ["error", 4],
+    "indent": ["error", 4, { SwitchCase: 1 }],
     "lines-between-class-members": "off",
     "newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
     "no-console": DYNAMIC_LEVEL,
     "no-debugger": DYNAMIC_LEVEL,
-    "no-unused-vars": "off",
+    "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
     "object-shorthand": ["error", "consistent"],
     "quote-props": ["error", "consistent"],
     "quotes": ["error", "double", { allowTemplateLiterals: true, avoidEscape: true }],
@@ -36,21 +36,23 @@ module.exports = {
     "vue/script-indent": ["error", 4, { baseIndent: 1 }],
 
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }]
+    "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "@typescript-eslint/semi": ["error"]
   },
   overrides: [
     {
-      files: ["*.js"],
+      files: [".eslintrc.js", "*.config.js"],
       rules: {
-        "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }]
+        "indent": ["error", 2, { SwitchCase: 1 }],
+
+        "@typescript-eslint/no-var-requires": "off"
       }
     },
     {
-      files: [".eslintrc.js", "*.config.js"],
+      files: ["*.ts"],
       rules: {
-        "indent": ["error", 2],
-
-        "@typescript-eslint/no-var-requires": "off"
+        "no-unused-vars": "off",
+        "semi": "off"
       }
     },
     {
