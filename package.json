@@ -30,7 +30,7 @@
     "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@byloth/vue-scroll-animator": "^2.2.0",
+    "@byloth/vue-scroll-animator": "^2.3.0-rc1",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@material/card": "^7.0.0",
     "@material/drawer": "^7.0.0",
