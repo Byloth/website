@@ -88,7 +88,7 @@
 
         data: (): JumbotronData => ({ dailyMessage: DailyMessage.Empty }),
 
-        created: async function(): void
+        created: async function(): Promise<void>
         {
             this.dailyMessage = await DailyMessage.GetRandomOne();
 
