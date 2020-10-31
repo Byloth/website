@@ -3,7 +3,7 @@
 //
 
 import Vue from "vue";
-import ScrollAnimation, { AnimationOptions } from "@byloth/vue-scroll-animator/animations";
+import { ScrollAnimation, AnimationOptions } from "@byloth/vue-scroll-animator";
 
 declare module "vue/types/vue"
 {

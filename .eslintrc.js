@@ -49,6 +49,15 @@ module.exports = {
       }
     },
     {
+      files: ["*.json"],
+      rules: {
+        "indent": ["error", 2],
+        "no-unused-expressions": "off",
+        "semi": ["error", "never"],
+        "@typescript-eslint/semi": ["error", "never"]
+      }
+    },
+    {
       files: ["*.ts"],
       rules: {
         "no-unused-vars": "off",
