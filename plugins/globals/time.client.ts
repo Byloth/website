@@ -1,7 +1,5 @@
 import Time from "@/core/time";
 
-const _global = global.window || global.globalThis;
-
 declare global
 {
     interface Window
@@ -10,4 +8,4 @@ declare global
     }
 }
 
-_global.Time = Time;
+window.Time = Time;

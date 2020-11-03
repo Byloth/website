@@ -42,8 +42,8 @@
     import Vue from "vue";
     import { mapState } from "vuex";
 
-    import { ScrollAnimation, ClassAnimatorBehavior } from "@byloth/vue-scroll-animator";
     import { cssClasses } from "@material/top-app-bar";
+    import { ScrollAnimation, ClassAnimatorBehavior } from "@byloth/vue-scroll-animator";
 
     import { MOBILE_SIZE } from "@/core/constants";
 

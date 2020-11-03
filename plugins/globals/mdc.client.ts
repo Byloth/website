@@ -1,7 +1,5 @@
 import { MDCTextField as _MDCTextField } from "@material/textfield";
 
-const _global = global.window || global.globalThis;
-
 declare global
 {
     interface Window
@@ -13,4 +11,4 @@ declare global
     }
 }
 
-_global.mdc = { textfield: { MDCTextField: _MDCTextField } };
+window.mdc = { textfield: { MDCTextField: _MDCTextField } };
