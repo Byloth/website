@@ -85,7 +85,7 @@ samp *
 
 html
 {
-    background-color: #35363A;
+    background-color: variables.$chrome-incognito-color;
 }
 
 q
@@ -119,7 +119,7 @@ q
     cursor: pointer;
     font-family: sans-serif;
     font-weight: bolder;
-    margin: 0px 0.25em;
+    margin: 0.2em 0.25em 0px;
     outline: none;
     padding: 0.75em 0.5em;
     vertical-align: top;
@@ -132,7 +132,23 @@ q
     &:active
     {
         box-shadow: 0px 0px 2px 1px rgba(#45361F, 0.5), inset 2px 0px 2px #CDC1A9, inset -2px 0px 2px #F5E9D3;
-        margin-top: 3px;
+        margin-top: 0.4em;
+    }
+}
+
+.mdc-text-field.mdc-text-field--outlined.mdc-text-field--daily-message
+{
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 4px #FFFFFF;
+    font-size: 1em;
+    height: 48px;
+    margin-left: 4px;
+    margin-top: 0.2em;
+
+    .mdc-floating-label
+    {
+        text-shadow: 0px 0px 2px #FFFFFF;
     }
 }
 
@@ -150,6 +166,8 @@ q
     border-top: 1px solid #1F1F1F;
     border-radius: 6px;
     box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.75);
+    display: inline-block;
+    margin-top: 0.2em;
     padding: 6px 14px 6px 12px;
     text-shadow: 0px 0px 2px;
 

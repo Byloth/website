@@ -163,6 +163,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use "~@/assets/scss/variables";
+
     @import "~@material/animation/variables";
     @import "~@material/drawer/variables";
 
@@ -182,7 +184,7 @@
 
         & > #main-content
         {
-            box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em #35363A;
+            box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em variables.$chrome-incognito-color;
         }
 
         &.mdc-drawer-app-content--open

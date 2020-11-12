@@ -65,7 +65,7 @@ export default {
       start_url: "/",
 
       background_color: "#35363A",
-      theme_color: "#DEE1E6",
+      theme_color: "#004BA0",
 
       lang: "it"
     }

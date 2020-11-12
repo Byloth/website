@@ -123,7 +123,7 @@ body
             -moz-animation-delay: 0s;
             animation-delay: 0s;
 
-            background-color: #5bc0de;
+            background-color: #5BC0DE;
         }
 
     #page-loader > #spinner-red
@@ -141,7 +141,7 @@ body
             -moz-animation-delay: -0.3s;
             animation-delay: -0.3s;
 
-            background-color: #d9534f;
+            background-color: #D9534F;
         }
 
     #page-loader > #spinner-green
@@ -159,7 +159,7 @@ body
             -moz-animation-delay: -0.6s;
             animation-delay: -0.6s;
 
-            background-color: #5cb85c;
+            background-color: #5CB85C;
         }
 
     #page-loader > #spinner-blue
@@ -177,7 +177,7 @@ body
             -moz-animation-delay: -0.9s;
             animation-delay: -0.9s;
 
-            background-color: #337ab7;
+            background-color: #337AB7;
         }
 
     #page-loader > #spinner-yellow
@@ -195,5 +195,5 @@ body
             -moz-animation-delay: -1.2s;
             animation-delay: -1.2s;
 
-            background-color: #f0ad4c;
+            background-color: #F0AD4C;
         }

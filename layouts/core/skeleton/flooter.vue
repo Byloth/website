@@ -80,7 +80,7 @@
 
     .mdc-flooter
     {
-        background-color: #35363A;
+        background-color: variables.$chrome-incognito-color;
         bottom: 0px;
         color: #FFFFFF;
         position: fixed;
