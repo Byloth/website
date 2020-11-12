@@ -13,12 +13,14 @@
 </script>
 
 <style lang="scss" scoped>
+    @use "~@/assets/scss/variables";
+
     @import "~@material/animation/variables";
     @import "~@material/drawer/variables";
 
     .mdc-card-layout
     {
-        background-color: #F1F1F1;
+        background-color: variables.$chrome-scrollbar-color;
         padding: 8px;
 
         & > .container.mdc-card

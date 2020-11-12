@@ -78,6 +78,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @use "~@/assets/scss/variables";
+
     @import "~@material/animation/variables";
     @import "~@material/drawer/variables";
 
@@ -118,7 +120,7 @@
 
         & > .mdc-drawer__footer
         {
-            background-color: #DEE1E6;
+            background-color: variables.$chrome-link-preview-color;
             border-right: 1px solid rgba(0, 0, 0, 0.075);
             border-top: 1px solid rgba(0, 0, 0, 0.075);
             color: #5F5F5F;

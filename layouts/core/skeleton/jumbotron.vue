@@ -5,66 +5,62 @@
             <template v-if="dailyMessage.isLoaded">
                 <template v-if="dailyMessage.typeId === 0">
                     <template v-if="dailyMessage.url">
-                        <h2>
-                            <a :href="dailyMessage.url"
-                               target="_blank"
-                               v-html="dailyMessage.text">
-                            </a>
-                        </h2>
+                        <a :href="dailyMessage.url"
+                           target="_blank"
+                           v-html="dailyMessage.text">
+                        </a>
                     </template>
                     <template v-else>
-                        <h2 v-html="dailyMessage.text"></h2>
+                        <span v-html="dailyMessage.text"></span>
                     </template>
                 </template>
                 <template v-else-if="dailyMessage.typeId === 1">
                     <template v-if="dailyMessage.url">
-                        <h2 v-html="dailyMessage.text"></h2>
-                        <footer>
+                        <span v-html="dailyMessage.text"></span>
+                        <small>
                             <a :href="dailyMessage.url" target="_blank">
                                 <cite>{{ dailyMessage.author }}</cite>
                                 <template v-if="dailyMessage.source">
                                     di “{{ dailyMessage.source }}”
                                 </template>
                             </a>
-                        </footer>
+                        </small>
                     </template>
                     <template v-else>
-                        <h2 v-html="dailyMessage.text"></h2>
-                        <footer>
+                        <span v-html="dailyMessage.text"></span>
+                        <small>
                             <cite>{{ dailyMessage.author }}</cite>
                             <template v-if="dailyMessage.source">
                                 di “{{ dailyMessage.source }}”
                             </template>
-                        </footer>
+                        </small>
                     </template>
                 </template>
                 <template v-else-if="dailyMessage.typeId === 2">
                     <template v-if="dailyMessage.url">
-                        <h2 v-html="dailyMessage.text"></h2>
-                        <footer>
+                        <span v-html="dailyMessage.text"></span>
+                        <small>
                             <a :href="dailyMessage.url" target="_blank">
                                 traduzione di “{{ dailyMessage.source }}”
                             </a>
-                        </footer>
+                        </small>
                     </template>
                     <template v-else>
-                        <h2 v-html="dailyMessage.text"></h2>
-                        <footer>
+                        <span v-html="dailyMessage.text"></span>
+                        <small>
                             traduzione di “{{ dailyMessage.source }}”
-                        </footer>
+                        </small>
                     </template>
                 </template>
                 <template v-else-if="dailyMessage.typeId === 3">
                     <template v-if="dailyMessage.url">
-                        <h2>
-                            <a :href="dailyMessage.url"
-                               target="_blank"
-                               v-html="dailyMessage.text">
-                            </a>
-                        </h2>
+                        <a :href="dailyMessage.url"
+                           target="_blank"
+                           v-html="dailyMessage.text">
+                        </a>
                     </template>
                     <template v-else>
-                        <h2 v-html="dailyMessage.text"></h2>
+                        <span v-html="dailyMessage.text"></span>
                     </template>
                 </template>
             </template>
@@ -108,38 +104,42 @@
         background: #004BA0;
         color: #FFFFFF;
         display: flex;
-        padding: 200px 8px 8px 16px;
+        padding-top: 192px;
         position: relative;
 
         & > blockquote
         {
-            border-left: 0.333em solid lighten(variables.$primary-color, 15);
-            padding: 0px 20px;
-            min-height: 82px;
+            border-left: 0.2em solid lighten(variables.$primary-color, 15);
+            padding: 0.2em 1em;
+            min-height: 64px;
+            position: relative;
             width: 100%;
 
             &::before
             {
                 color: lighten(variables.$primary-color, 20);
                 content: "“";
-                font-size: 3em;
-                left: 18px;
+                font-size: 2em;
+                left: -30px;
                 position: absolute;
             }
 
-            & > h2
+            & > a,
+            & > span:not(:last-child)
             {
-                margin-top: 0px;
+                display: block;
+                margin-bottom: 0.75em;
             }
 
-            & > footer
+            & > small
             {
+                display: block;
                 font-style: italic;
-                padding: 0px 0px 1em 1em;
+                padding: 0px 0px 0.75em 0.75em;
 
-                &::before
+                & > cite::before
                 {
-                    content: "— ";
+                    content: "- cit. ";
                 }
             }
 
@@ -164,19 +164,14 @@
                     position: absolute;
                 }
             }
-        }
 
-        @media (max-width: 599px)
-        {
-            padding: 200px 8px 8px 10px;
-
-            & > blockquote
+            @media (max-width: 599px)
             {
-                padding: 0px 18px;
+                margin-left: 2em;
 
                 &::before
                 {
-                    left: 15px;
+                    left: -26px;
                 }
             }
         }
