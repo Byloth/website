@@ -2,7 +2,8 @@
     <div>
         <drawer id="drawer"
                 v-model="open"
-                :modal="modal" />
+                :modal="modal"
+                @navigate="onNavigateEvent" />
         <div class="mdc-drawer-app-content" :class="classes">
             <navigation-bar id="navigation-bar"
                             :toggle="toggle"
@@ -21,6 +22,7 @@
 
 <script lang="ts">
     import Vue from "vue";
+    import { Route } from "vue-router";
 
     import { MOBILE_SIZE, TABLET_SIZE } from "@/core/constants";
 
@@ -80,7 +82,6 @@
                 return { "mdc-drawer-app-content--open": (this.open && !this.modal) };
             }
         },
-
         watch: {
             open(value: boolean, oldValue: boolean): void
             {
@@ -134,6 +135,13 @@
                 }
             },
 
+            onNavigateEvent(route: Route): void
+            {
+                if (this.status === DrawerStatus.MODAL)
+                {
+                    this.open = false;
+                }
+            },
             onResizeEvent(evt?: Event): void
             {
                 const windowWidth = window.innerWidth;

@@ -6,7 +6,7 @@
                 <ul>
                     <router-link v-for="page in pages"
                                  :key="page.id"
-                                 v-slot="{ href, route, navigate, isActive, isExactActive }"
+                                 v-slot="{ href, navigate, isActive }"
                                  :exact="page.path === '/'"
                                  :to="page">
                         <li :class="[isActive && 'active']">
