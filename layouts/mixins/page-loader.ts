@@ -11,7 +11,7 @@ export default Vue.extend({
 
             if (pageLoader !== null)
             {
-                setTimeout(() => this.fadeOutElement(pageLoader), FADEOUT_TIMEOUT);
+                setTimeout((): void => this.fadeOutElement(pageLoader), FADEOUT_TIMEOUT);
             }
         }
     },
@@ -21,7 +21,7 @@ export default Vue.extend({
         {
             element.setAttribute("disabled", "");
 
-            setTimeout(() => element.remove(), FADEOUT_TIMEOUT);
+            setTimeout((): void => element.remove(), FADEOUT_TIMEOUT);
         }
     }
 });
