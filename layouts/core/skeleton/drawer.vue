@@ -13,14 +13,14 @@
             <navigation-list>
                 <router-link v-for="page in pages"
                              :key="page.id"
-                             v-slot="{ href, route, navigate, isActive, isExactActive }"
+                             v-slot="{ href, route, navigate, isActive }"
                              :exact="page.path === '/'"
                              :to="page">
                     <list-item :active="isActive"
                                :icon="page.icon"
                                :description="`Naviga a ${page.title}`"
                                :href="href"
-                               @click="navigate">
+                               @click="onClickEvent(route, navigate, $event)">
                         {{ page.title }}
                     </list-item>
                 </router-link>
@@ -45,6 +45,7 @@
 <script lang="ts">
     import Vue from "vue";
     import { mapState } from "vuex";
+    import { Route } from "vue-router";
 
     import { cssClasses } from "@material/drawer";
 
@@ -73,6 +74,14 @@
                 pages: "pages",
                 version: "version"
             })
+        },
+        methods: {
+            onClickEvent(route: Route, navigate: (e: Event) => void, evt: MouseEvent): void
+            {
+                this.$emit("navigate", route);
+
+                navigate(evt);
+            }
         }
     });
 </script>
