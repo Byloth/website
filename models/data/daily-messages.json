@@ -372,7 +372,7 @@
     "id": 42,
     "typeId": 3,
     "text": "Oggi è <span id=\"main-header-daily-message-date\">Giovedì 1 Gennaio 1970</span> e sono le <span id=\"main-header-daily-message-time\">00:00:00</span>.",
-    "script": "let _i = setInterval(function() { try { let _n = new Date(), _d = document.getElementById('main-header-daily-message-date'), _t = document.getElementById('main-header-daily-message-time'); _d.innerHTML = Time.DateAsString(_n); _t.innerHTML = Time.TimeAsString(_n); } catch (_e) { console.error(_e); clearInterval(_i); } }, 1000);",
+    "script": "const d = document.getElementById('main-header-daily-message-date'), t = document.getElementById('main-header-daily-message-time'), i = setInterval(function() { try { const n = new Date(); d.innerHTML = Time.DateAsString(n); t.innerHTML = Time.TimeAsString(n); } catch (e) { console.error(e); clearInterval(i); } }, 1000);",
     "author": null,
     "source": null,
     "url": null
@@ -435,7 +435,7 @@
     "id": 49,
     "typeId": 3,
     "text": "Questo sito esiste da <span id=\"main-header-daily-message-elapsed-time\" title=\"Dal 30/09/2015 alle 17:16:41\">0 anni, 0 mesi, 0 settimane, 0 giorni, 0 ore, 0 minuti e 0 secondi</span>.",
-    "script": "let _i = setInterval(function() { try { document.getElementById('main-header-daily-message-elapsed-time').innerHTML = Time.TimeDifferenceAsString(new Date('2015-09-30T17:16:41'), new Date(), false); } catch (_e) { console.error(_e); clearInterval(_i); } }, 1000);",
+    "script": "const d = document.getElementById('main-header-daily-message-elapsed-time'), i = setInterval(function() { try { d.innerHTML = Time.TimeDifferenceAsString(new Date('2015-09-30T17:16:41'), new Date(), false); } catch (e) { console.error(e); clearInterval(i); } }, 1000);",
     "author": null,
     "source": null,
     "url": null

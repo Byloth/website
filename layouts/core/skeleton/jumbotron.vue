@@ -65,8 +65,8 @@
                 </template>
             </template>
             <template v-else>
-                <subtitle-loader />
                 <text-loader />
+                <text-loader class="small" />
             </template>
         </blockquote>
     </div>
@@ -90,7 +90,7 @@
 
             if (this.dailyMessage.canBeExecuted === true)
             {
-                this.$nextTick(() => this.dailyMessage.execute());
+                this.$nextTick((): Promise<unknown> => this.dailyMessage.execute());
             }
         }
     });
@@ -140,6 +140,18 @@
                 & > cite::before
                 {
                     content: "- cit. ";
+                }
+            }
+
+            & > .skeleton-loader.text-loader
+            {
+                margin: 0px;
+                margin-bottom: 0.75em;
+
+                &.small
+                {
+                    font-size: smaller;
+                    margin-bottom: 0px;
                 }
             }
 
