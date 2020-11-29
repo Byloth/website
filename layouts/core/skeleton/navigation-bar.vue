@@ -15,7 +15,7 @@
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                 <template v-if="condensed">
                     <action-item class="mdc-top-app-bar__action-item"
-                                 description="Download">
+                                 description="Actions">
                         more_vert
                     </action-item>
                 </template>
