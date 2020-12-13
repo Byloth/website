@@ -1,22 +1,22 @@
 <template>
     <div>
-        <drawer id="drawer"
+        <Drawer id="drawer"
                 v-model="open"
                 :modal="modal"
                 @navigate="onNavigateEvent" />
         <div class="mdc-drawer-app-content" :class="classes">
-            <navigation-bar id="navigation-bar"
-                            :toggle="toggle"
-                            @drawer-toggle="toggleDrawer" />
-            <jumbotron id="jumbotron" />
+            <NavigationBar id="navigation-bar"
+                           :toggle="toggle"
+                           @drawer-toggle="toggleDrawer" />
+            <Jumbotron id="jumbotron" />
             <div id="main-content" :style="{ 'margin-bottom': `${height}px` }">
                 <slot></slot>
             </div>
-            <flooter id="flooter" ref="flooter" />
+            <Flooter id="flooter" ref="flooter" />
         </div>
-        <drawer-scrim id="drawer-scrim"
-                      :value="modal && open"
-                      @input="open = $event" />
+        <DrawerScrim id="drawer-scrim"
+                     :value="modal && open"
+                     @input="open = $event" />
     </div>
 </template>
 
@@ -53,11 +53,11 @@
     export default Vue.extend({
         name: "DrawerLayout",
         components: {
-            "drawer": Drawer,
-            "drawer-scrim": DrawerScrim,
-            "flooter": Flooter,
-            "navigation-bar": NavigationBar,
-            "jumbotron": Jumbotron
+            Drawer,
+            DrawerScrim,
+            Flooter,
+            NavigationBar,
+            Jumbotron
         },
         props: {
             value: {

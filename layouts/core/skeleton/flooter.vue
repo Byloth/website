@@ -4,46 +4,46 @@
             <div class="col-md-6">
                 <h3>Mappa del sito</h3>
                 <ul>
-                    <router-link v-for="page in pages"
-                                 :key="page.id"
-                                 v-slot="{ href, navigate, isActive }"
-                                 :exact="page.path === '/'"
-                                 :to="page">
+                    <RouterLink v-for="page in pages"
+                                :key="page.id"
+                                v-slot="{ href, navigate, isActive }"
+                                :exact="page.path === '/'"
+                                :to="page">
                         <li :class="[isActive && 'active']">
                             <a :href="href" @click="navigate">
                                 {{ page.title }}
                             </a>
                         </li>
-                    </router-link>
+                    </RouterLink>
                 </ul>
             </div>
             <div class="col-md-6">
                 <h3>Contatti e social</h3>
-                <ripple-anchor description="Matteo Bilotta su Facebook"
-                               href="//www.facebook.com/matteo.bilotta"
-                               target="_blank">
+                <RippleAnchor description="Matteo Bilotta su Facebook"
+                              href="//www.facebook.com/matteo.bilotta"
+                              target="_blank">
                     <span class="fab fa-facebook"></span>
-                </ripple-anchor>
-                <ripple-anchor description="Matteo Bilotta su GitHub"
-                               href="//github.com/Byloth"
-                               target="_blank">
+                </RippleAnchor>
+                <RippleAnchor description="Matteo Bilotta su GitHub"
+                              href="//github.com/Byloth"
+                              target="_blank">
                     <span class="fab fa-github"></span>
-                </ripple-anchor>
-                <ripple-anchor description="Matteo Bilotta su Instagram"
-                               href="//www.instagram.com/i.byloth/"
-                               target="_blank">
+                </RippleAnchor>
+                <RippleAnchor description="Matteo Bilotta su Instagram"
+                              href="//www.instagram.com/i.byloth/"
+                              target="_blank">
                     <span class="fab fa-instagram"></span>
-                </ripple-anchor>
-                <ripple-anchor description="Matteo Bilotta su LinkedIn"
-                               href="//www.linkedin.com/in/byloth/"
-                               target="_blank">
+                </RippleAnchor>
+                <RippleAnchor description="Matteo Bilotta su LinkedIn"
+                              href="//www.linkedin.com/in/byloth/"
+                              target="_blank">
                     <span class="fab fa-linkedin-in"></span>
-                </ripple-anchor>
-                <ripple-anchor description="Matteo Bilotta su Twitter"
-                               href="//twitter.com/iByloth"
-                               target="_blank">
+                </RippleAnchor>
+                <RippleAnchor description="Matteo Bilotta su Twitter"
+                              href="//twitter.com/iByloth"
+                              target="_blank">
                     <span class="fab fa-twitter"></span>
-                </ripple-anchor>
+                </RippleAnchor>
             </div>
         </div>
         <div class="license-info">
@@ -52,7 +52,7 @@
                    href="http://creativecommons.org/licenses/by-sa/4.0/"
                    target="_blank"
                    title="Creative Commons Attribution-ShareAlike 4.0">
-                    <creative-commons-icon />
+                    <CreativeCommonsIcon />
                 </a>
             </div>
             <p>

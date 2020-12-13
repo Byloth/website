@@ -1,7 +1,7 @@
 <template>
-    <drawer-layout id="drawer-layout" v-model="disable">
-        <nuxt />
-    </drawer-layout>
+    <DrawerLayout id="drawer-layout" v-model="disable">
+        <Nuxt />
+    </DrawerLayout>
 </template>
 
 <script lang="ts">
@@ -19,7 +19,7 @@
 
     export default Vue.extend({
         name: "DefaultLayout",
-        components: { "drawer-layout": DrawerLayout },
+        components: { DrawerLayout },
         mixins: [PageLoaderMixin],
 
         data: (): DefaultLayoutData => ({ disable: false }),

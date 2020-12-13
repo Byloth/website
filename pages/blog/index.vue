@@ -1,9 +1,9 @@
 <template>
-    <card-layout id="blog-page">
+    <CardLayout id="blog-page">
         <main>
             <h1>This is the main BLog page.</h1>
         </main>
-    </card-layout>
+    </CardLayout>
 </template>
 
 <script lang="ts">
@@ -13,7 +13,7 @@
 
     export default Vue.extend({
         name: "BlogPage",
-        components: { "card-layout": CardLayout },
+        components: { CardLayout },
 
         head: { title: "BLog" }
     });

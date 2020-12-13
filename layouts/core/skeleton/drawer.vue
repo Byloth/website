@@ -10,30 +10,30 @@
             </h6>
         </div>
         <div class="mdc-drawer__content">
-            <navigation-list>
-                <router-link v-for="page in pages"
-                             :key="page.id"
-                             v-slot="{ href, route, navigate, isActive }"
-                             :exact="page.path === '/'"
-                             :to="page">
-                    <list-item :active="isActive"
-                               :icon="page.icon"
-                               :description="`Naviga a ${page.title}`"
-                               :href="href"
-                               @click="onClickEvent(route, navigate, $event)">
+            <NavigationList>
+                <RouterLink v-for="page in pages"
+                            :key="page.id"
+                            v-slot="{ href, route, navigate, isActive }"
+                            :exact="page.path === '/'"
+                            :to="page">
+                    <ListItem :active="isActive"
+                              :icon="page.icon"
+                              :description="`Naviga a ${page.title}`"
+                              :href="href"
+                              @click="onClickEvent(route, navigate, $event)">
                         {{ page.title }}
-                    </list-item>
-                </router-link>
+                    </ListItem>
+                </RouterLink>
                 <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
                     Link utili
                 </h6>
-                <list-item icon="mail"
-                           description="Contattami"
-                           @click.stop>
+                <ListItem icon="mail"
+                          description="Contattami"
+                          @click.stop>
                     Contattami
-                </list-item>
-            </navigation-list>
+                </ListItem>
+            </NavigationList>
         </div>
         <div class="mdc-drawer__footer">
             <i>Vue</i>rsione corrente:

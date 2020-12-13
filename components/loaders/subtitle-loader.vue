@@ -1,5 +1,5 @@
 <template>
-    <skeleton-loader class="subtitle-loader" />
+    <SkeletonLoader class="subtitle-loader" />
 </template>
 
 <script lang="ts">

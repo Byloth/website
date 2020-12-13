@@ -1,9 +1,9 @@
 <template>
-    <card-layout id="about-page">
+    <CardLayout id="about-page">
         <main>
             <h1>This is the about page.</h1>
         </main>
-    </card-layout>
+    </CardLayout>
 </template>
 
 <script lang="ts">
@@ -13,7 +13,7 @@
 
     export default Vue.extend({
         name: "AboutPage",
-        components: { "card-layout": CardLayout },
+        components: { CardLayout },
 
         head: { title: "Chi sono" }
     });

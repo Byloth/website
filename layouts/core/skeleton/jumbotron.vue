@@ -65,8 +65,8 @@
                 </template>
             </template>
             <template v-else>
-                <text-loader />
-                <text-loader class="small" />
+                <TextLoader />
+                <TextLoader class="small" />
             </template>
         </blockquote>
     </div>

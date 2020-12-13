@@ -1,8 +1,8 @@
 <template>
-    <card-layout id="home-page">
+    <CardLayout id="home-page">
         <main>
-            <vue-icon />
-            <nuxt-icon />
+            <VueIcon />
+            <NuxtIcon />
             <h1 class="title">
                 Byloth's Website
             </h1>
@@ -24,7 +24,7 @@
                 </a>
             </div>
         </main>
-    </card-layout>
+    </CardLayout>
 </template>
 
 <script lang="ts">
@@ -34,7 +34,7 @@
 
     export default Vue.extend({
         name: "HomePage",
-        components: { "card-layout": CardLayout },
+        components: { CardLayout },
 
         head: {
             title: "Home"

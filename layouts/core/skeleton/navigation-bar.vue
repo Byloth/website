@@ -2,36 +2,32 @@
     <header class="mdc-top-app-bar mdc-top-app-bar--prominent">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <action-item v-if="toggle"
-                             class="mdc-top-app-bar__navigation-icon"
-                             description="Toggle navigation drawer"
-                             @click="$emit('drawer-toggle', $event)">
+                <ActionItem v-if="toggle"
+                            class="mdc-top-app-bar__navigation-icon"
+                            description="Toggle navigation drawer"
+                            @click="$emit('drawer-toggle', $event)">
                     menu
-                </action-item>
+                </ActionItem>
                 <h1 ref="title" class="mdc-top-app-bar__title">
                     {{ title }}
                 </h1>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                 <template v-if="condensed">
-                    <action-item class="mdc-top-app-bar__action-item"
-                                 description="Actions">
+                    <ActionItem class="mdc-top-app-bar__action-item" description="Actions">
                         more_vert
-                    </action-item>
+                    </ActionItem>
                 </template>
                 <template v-else>
-                    <action-item class="mdc-top-app-bar__action-item"
-                                 description="Download">
+                    <ActionItem class="mdc-top-app-bar__action-item" description="Download">
                         file_download
-                    </action-item>
-                    <action-item class="mdc-top-app-bar__action-item"
-                                 description="Print this page">
+                    </ActionItem>
+                    <ActionItem class="mdc-top-app-bar__action-item" description="Print this page">
                         print
-                    </action-item>
-                    <action-item class="mdc-top-app-bar__action-item"
-                                 description="Bookmark this page">
+                    </ActionItem>
+                    <ActionItem class="mdc-top-app-bar__action-item" description="Bookmark this page">
                         bookmark
-                    </action-item>
+                    </ActionItem>
                 </template>
             </section>
         </div>
