@@ -73,7 +73,10 @@ module.exports = {
     },
     {
       files: ["*.vue"],
-      rules: { indent: "off" }
+      rules: {
+        "indent": "off",
+        "no-unused-vars": "off"
+      }
     }
   ]
 };

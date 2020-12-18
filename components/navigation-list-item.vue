@@ -1,12 +1,14 @@
 <template>
     <a class="mdc-list-item"
        :class="classes"
-       :alt="description"
-       :title="description"
-       :aria-label="description"
+       :alt="title"
+       :title="title"
+       :aria-label="title"
        @click="$emit('click', $event)">
         <span class="mdc-list-item__ripple"></span>
-        <span class="material-icons mdc-list-item__graphic" aria-hidden="true">{{ icon }}</span>
+        <span class="material-icons mdc-list-item__graphic" aria-hidden="true">
+            {{ icon }}
+        </span>
         <span class="mdc-list-item__text">
             <slot></slot>
         </span>
@@ -17,7 +19,7 @@
     import Vue from "vue";
 
     export default Vue.extend({
-        name: "ListItem",
+        name: "NavigationListItem",
         props: {
             active: {
                 default: false,
@@ -27,7 +29,7 @@
                 default: "label",
                 type: String
             },
-            description: {
+            title: {
                 required: true,
                 type: String
             }

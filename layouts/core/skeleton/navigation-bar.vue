@@ -4,7 +4,7 @@
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 <ActionItem v-if="toggle"
                             class="mdc-top-app-bar__navigation-icon"
-                            description="Toggle navigation drawer"
+                            title="Toggle navigation drawer"
                             @click="$emit('drawer-toggle', $event)">
                     menu
                 </ActionItem>
@@ -12,24 +12,10 @@
                     {{ title }}
                 </h1>
             </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <template v-if="condensed">
-                    <ActionItem class="mdc-top-app-bar__action-item" description="Actions">
-                        more_vert
-                    </ActionItem>
-                </template>
-                <template v-else>
-                    <ActionItem class="mdc-top-app-bar__action-item" description="Download">
-                        file_download
-                    </ActionItem>
-                    <ActionItem class="mdc-top-app-bar__action-item" description="Print this page">
-                        print
-                    </ActionItem>
-                    <ActionItem class="mdc-top-app-bar__action-item" description="Bookmark this page">
-                        bookmark
-                    </ActionItem>
-                </template>
-            </section>
+            <NavigationActions :actions="[{ id: 0, icon: 'file_download', title: 'Download' },
+                                          { id: 1, icon: 'print', title: 'Print this page' },
+                                          { id: 2, icon: 'bookmark', title: 'Bookmark this page' }]"
+                               @click="$emit('select', $event)" />
         </div>
     </header>
 </template>

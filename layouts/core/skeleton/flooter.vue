@@ -19,28 +19,28 @@
             </div>
             <div class="col-md-6">
                 <h3>Contatti e social</h3>
-                <RippleAnchor description="Matteo Bilotta su Facebook"
-                              href="//www.facebook.com/matteo.bilotta"
+                <RippleAnchor href="//www.facebook.com/matteo.bilotta"
+                              title="Matteo Bilotta su Facebook"
                               target="_blank">
                     <span class="fab fa-facebook"></span>
                 </RippleAnchor>
-                <RippleAnchor description="Matteo Bilotta su GitHub"
-                              href="//github.com/Byloth"
+                <RippleAnchor href="//github.com/Byloth"
+                              title="Matteo Bilotta su GitHub"
                               target="_blank">
                     <span class="fab fa-github"></span>
                 </RippleAnchor>
-                <RippleAnchor description="Matteo Bilotta su Instagram"
+                <RippleAnchor title="Matteo Bilotta su Instagram"
                               href="//www.instagram.com/i.byloth/"
                               target="_blank">
                     <span class="fab fa-instagram"></span>
                 </RippleAnchor>
-                <RippleAnchor description="Matteo Bilotta su LinkedIn"
+                <RippleAnchor title="Matteo Bilotta su LinkedIn"
                               href="//www.linkedin.com/in/byloth/"
                               target="_blank">
                     <span class="fab fa-linkedin-in"></span>
                 </RippleAnchor>
-                <RippleAnchor description="Matteo Bilotta su Twitter"
-                              href="//twitter.com/iByloth"
+                <RippleAnchor href="//twitter.com/iByloth"
+                              title="Matteo Bilotta su Twitter"
                               target="_blank">
                     <span class="fab fa-twitter"></span>
                 </RippleAnchor>

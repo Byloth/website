@@ -3,7 +3,7 @@ import Vue from "vue";
 import { FADEOUT_TIMEOUT } from "@/core/constants";
 
 export default Vue.extend({
-    mounted: function()
+    mounted: function(): void
     {
         if (process.browser)
         {

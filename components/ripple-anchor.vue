@@ -1,8 +1,8 @@
 <template>
     <a class="mdc-icon-button mdc-ripple-radius-unbounded mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
-       :alt="description"
-       :title="description"
-       :aria-label="description">
+       :alt="title"
+       :title="title"
+       :aria-label="title">
         <slot></slot>
     </a>
 </template>
@@ -17,7 +17,7 @@
     export default Vue.extend({
         name: "RippleAnchor",
         props: {
-            description: {
+            title: {
                 required: true,
                 type: String
             }

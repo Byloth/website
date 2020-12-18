@@ -1,8 +1,8 @@
 <template>
     <button class="material-icons mdc-icon-button mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
-            :alt="description"
-            :title="description"
-            :aria-label="description"
+            :alt="title"
+            :title="title"
+            :aria-label="title"
             @click="$emit('click', $event)">
         <slot></slot>
     </button>
@@ -18,7 +18,7 @@
     export default Vue.extend({
         name: "ActionItem",
         props: {
-            description: {
+            title: {
                 required: true,
                 type: String
             }

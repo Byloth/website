@@ -4,9 +4,6 @@ declare global
 {
     interface Window
     {
-        // SMELLS: It's a false positive! 😒
-        //
-        // eslint-disable-next-line no-undef
         mdc: { textfield: { MDCTextField: typeof _MDCTextField } };
     }
 }

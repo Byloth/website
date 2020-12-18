@@ -16,23 +16,23 @@
                             v-slot="{ href, route, navigate, isActive }"
                             :exact="page.path === '/'"
                             :to="page">
-                    <ListItem :active="isActive"
-                              :icon="page.icon"
-                              :description="`Naviga a ${page.title}`"
-                              :href="href"
-                              @click="onClickEvent(route, navigate, $event)">
+                    <NavigationListItem :active="isActive"
+                                        :icon="page.icon"
+                                        :title="`Naviga a ${page.title}`"
+                                        :href="href"
+                                        @click="onClickEvent(route, navigate, $event)">
                         {{ page.title }}
-                    </ListItem>
+                    </NavigationListItem>
                 </RouterLink>
                 <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
                     Link utili
                 </h6>
-                <ListItem icon="mail"
-                          description="Contattami"
-                          @click.stop>
+                <NavigationListItem icon="mail"
+                                    title="Contattami"
+                                    @click.stop>
                     Contattami
-                </ListItem>
+                </NavigationListItem>
             </NavigationList>
         </div>
         <div class="mdc-drawer__footer">

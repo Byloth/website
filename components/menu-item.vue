@@ -1,0 +1,29 @@
+<template>
+    <li class="mdc-list-item"
+        role="menuitem"
+        @click="$emit('click', $event)">
+        <span class="mdc-list-item__ripple"></span>
+        <!--span v-if="icon"
+              class="material-icons mdc-list-item__graphic"
+              aria-hidden="true">
+            {{ icon }}
+        </span-->
+        <span class="mdc-list-item__graphic mdc-menu__selection-group-icon">
+            ...
+        </span>
+        <span class="mdc-list-item__text">
+            <slot></slot>
+        </span>
+    </li>
+</template>
+
+<script lang="ts">
+    import Vue from "vue";
+
+    export default Vue.extend({
+        name: "MenuItem"
+    });
+</script>
+
+<style lang="scss" scoped>
+</style>
