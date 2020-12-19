@@ -36,9 +36,7 @@
         name: "HomePage",
         components: { CardLayout },
 
-        head: {
-            title: "Home"
-        }
+        head: { title: "Home" }
     });
 </script>
 

@@ -1,0 +1,37 @@
+FallbackResource /index.html
+Options +FollowSymLinks -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{HTTPS} !^on$
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf|x-html|css|xml|js|woff|woff2|ttf|svg|eot)(\.gz)?$">
+    <IfModule mod_expires.c>
+        AddType application/font-woff2 .woff2
+        ExpiresActive On
+        ExpiresDefault A0
+
+        ExpiresByType image/webp A2592000
+        ExpiresByType image/gif A2592000
+        ExpiresByType image/png A2592000
+        ExpiresByType image/jpg A2592000
+        ExpiresByType image/jpeg A2592000
+        ExpiresByType image/ico A2592000
+        ExpiresByType image/svg+xml A2592000
+        ExpiresByType text/css A2592000
+        ExpiresByType text/javascript A2592000
+        ExpiresByType application/javascript A2592000
+        ExpiresByType application/x-javascript A2592000
+        ExpiresByType application/font-woff2 A2592000
+    </IfModule>
+    <IfModule mod_headers.c>
+        Header set Expires "max-age=2592000, public"
+        Header unset ETag
+        Header set Connection keep-alive
+
+        FileETag None
+    </IfModule>
+</FilesMatch>

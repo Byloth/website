@@ -1,15 +1,13 @@
 <template>
     <li class="mdc-list-item"
         role="menuitem"
-        @click="$emit('click', $event)">
+        @click="$emit('click', $event)"
+        @keydown.enter="$emit('click', $event)">
         <span class="mdc-list-item__ripple"></span>
-        <!--span v-if="icon"
+        <span v-if="icon"
               class="material-icons mdc-list-item__graphic"
               aria-hidden="true">
             {{ icon }}
-        </span-->
-        <span class="mdc-list-item__graphic mdc-menu__selection-group-icon">
-            ...
         </span>
         <span class="mdc-list-item__text">
             <slot></slot>
@@ -21,7 +19,13 @@
     import Vue from "vue";
 
     export default Vue.extend({
-        name: "MenuItem"
+        name: "MenuItem",
+        props: {
+            icon: {
+                default: "",
+                type: String
+            }
+        }
     });
 </script>
 

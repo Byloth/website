@@ -11,11 +11,11 @@
         </div>
         <div class="mdc-drawer__content">
             <NavigationList>
-                <RouterLink v-for="page in pages"
-                            :key="page.id"
-                            v-slot="{ href, route, navigate, isActive }"
-                            :exact="page.path === '/'"
-                            :to="page">
+                <NuxtLink v-for="page in pages"
+                          :key="page.id"
+                          v-slot="{ href, route, navigate, isActive }"
+                          :exact="page.path === '/'"
+                          :to="page">
                     <NavigationListItem :active="isActive"
                                         :icon="page.icon"
                                         :title="`Naviga a ${page.title}`"
@@ -23,7 +23,7 @@
                                         @click="onClickEvent(route, navigate, $event)">
                         {{ page.title }}
                     </NavigationListItem>
-                </RouterLink>
+                </NuxtLink>
                 <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
                     Link utili

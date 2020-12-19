@@ -23,8 +23,8 @@
                 type: String
             }
         },
-        data: (): ActionItemData => ({ }),
 
+        data: (): ActionItemData => ({ }),
         mounted: function(): void
         {
             this._ripple = new MDCRipple(this.$el);

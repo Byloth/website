@@ -27,14 +27,10 @@
     import { cssClasses } from "@material/top-app-bar";
     import { ScrollAnimation, ClassAnimatorBehavior } from "@byloth/vue-scroll-animator";
 
-    import { MOBILE_SIZE } from "@/core/constants";
-
     interface NavigationBarData
     {
         _resizingAnimation?: ScrollAnimation;
         _movingAnimation?: ScrollAnimation;
-
-        condensed: boolean;
     }
 
     export default Vue.extend({
@@ -46,14 +42,12 @@
             }
         },
 
-        data: (): NavigationBarData => ({ condensed: false }),
+        data: (): NavigationBarData => ({ }),
 
         computed: mapState("config", { title: "title" }),
 
         mounted: function(): void
         {
-            window.addEventListener("resize", this.onResizeEvent, { capture: true, passive: true });
-
             this._resizingAnimation = this.$initScrollAnimation({
                 startingValue: 0,
                 endingValue: 128,
@@ -115,31 +109,11 @@
                     }
                 ]
             });
-
-            this.onResizeEvent();
         },
         destroyed: function(): void
         {
             this.$destroyScrollAnimation(this._movingAnimation!);
             this.$destroyScrollAnimation(this._resizingAnimation!);
-
-            window.removeEventListener("resize", this.onResizeEvent);
-        },
-
-        methods: {
-            onResizeEvent(evt?: Event): void
-            {
-                const windowWidth = window.innerWidth;
-
-                if (windowWidth < MOBILE_SIZE)
-                {
-                    this.condensed = true;
-                }
-                else
-                {
-                    this.condensed = false;
-                }
-            }
         }
     });
 </script>

@@ -4,17 +4,17 @@
             <div class="col-md-6">
                 <h3>Mappa del sito</h3>
                 <ul>
-                    <RouterLink v-for="page in pages"
-                                :key="page.id"
-                                v-slot="{ href, navigate, isActive }"
-                                :exact="page.path === '/'"
-                                :to="page">
+                    <NuxtLink v-for="page in pages"
+                              :key="page.id"
+                              v-slot="{ href, navigate, isActive }"
+                              :exact="page.path === '/'"
+                              :to="page">
                         <li :class="[isActive && 'active']">
                             <a :href="href" @click="navigate">
                                 {{ page.title }}
                             </a>
                         </li>
-                    </RouterLink>
+                    </NuxtLink>
                 </ul>
             </div>
             <div class="col-md-6">
