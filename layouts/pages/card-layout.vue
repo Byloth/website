@@ -20,9 +20,6 @@
 
     .mdc-card-layout
     {
-        background-color: variables.$chrome-scrollbar-color;
-        padding: 8px;
-
         & > .container.mdc-card
         {
             padding: 32px;

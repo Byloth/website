@@ -192,7 +192,9 @@
 
         & > #main-content
         {
+            background-color: variables.$chrome-scrollbar-color;
             box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em variables.$chrome-incognito-color;
+            padding: 8px;
         }
 
         &.mdc-drawer-app-content--open

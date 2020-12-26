@@ -21,26 +21,31 @@
                 <h3>Contatti e social</h3>
                 <RippleAnchor href="//www.facebook.com/matteo.bilotta"
                               title="Matteo Bilotta su Facebook"
+                              rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-facebook"></span>
                 </RippleAnchor>
                 <RippleAnchor href="//github.com/Byloth"
                               title="Matteo Bilotta su GitHub"
+                              rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-github"></span>
                 </RippleAnchor>
                 <RippleAnchor title="Matteo Bilotta su Instagram"
                               href="//www.instagram.com/i.byloth/"
+                              rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-instagram"></span>
                 </RippleAnchor>
                 <RippleAnchor title="Matteo Bilotta su LinkedIn"
                               href="//www.linkedin.com/in/byloth/"
+                              rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-linkedin-in"></span>
                 </RippleAnchor>
                 <RippleAnchor href="//twitter.com/iByloth"
                               title="Matteo Bilotta su Twitter"
+                              rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-twitter"></span>
                 </RippleAnchor>
@@ -48,8 +53,8 @@
         </div>
         <div class="license-info">
             <div>
-                <a rel="license"
-                   href="http://creativecommons.org/licenses/by-sa/4.0/"
+                <a href="//creativecommons.org/licenses/by-sa/4.0/"
+                   rel="license nofollow noopener noreferrer"
                    target="_blank"
                    title="Creative Commons Attribution-ShareAlike 4.0">
                     <CreativeCommonsIcon />
