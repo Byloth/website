@@ -18,18 +18,33 @@
 
         mounted: function(): void
         {
+            this.$forceUpdate();
+        },
+        updated: function(): void
+        {
             const children: VNode[] = this.$slots?.default?.filter((child) => child.componentOptions) || [];
+
+            const heights = Array(this.columns).reduce((obj, _, index) =>
+            {
+                if (index === 1)
+                {
+                    obj = { 0: 0 };
+                }
+
+                obj[index] = 0;
+
+                return obj;
+            });
 
             const width = 100 / this.columns;
 
             children.forEach((child, index) =>
             {
-                const props: Record<string, any> = child.componentOptions!.propsData || { };
+                const props: Record<string, any> = child.componentOptions!.propsData!;
 
                 props.width = width;
-                props.x = index % this.columns;
+                props.x = (index % this.columns) * 100;
 
-                child.componentOptions!.propsData = props;
                 child.data!.hook!.prepatch(child, child);
             });
         }

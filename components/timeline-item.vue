@@ -36,10 +36,8 @@
         computed: {
             styles(): Record<string, string>
             {
-                const x = 100 * this.x;
-
                 return {
-                    transform: `translateX(${x}%) translateY(${this.y}px)`,
+                    transform: `translateX(${this.x}%) translateY(${this.y}px)`,
                     width: `${this.width}%`
                 };
             }

@@ -49,16 +49,7 @@
         methods: {
             onResizeEvent(evt?: Event): void
             {
-                const windowWidth = window.innerWidth;
-
-                if (windowWidth < MOBILE_SIZE)
-                {
-                    this.condensed = true;
-                }
-                else
-                {
-                    this.condensed = false;
-                }
+                this.condensed = (window.innerWidth < MOBILE_SIZE);
             }
         }
     });
