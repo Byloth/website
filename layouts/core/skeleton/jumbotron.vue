@@ -1,6 +1,6 @@
 <template>
     <!-- eslint-disable vue/no-v-html -->
-    <div class="mdc-jumbotron">
+    <div class="jumbotron">
         <blockquote>
             <template v-if="dailyMessage.isLoaded">
                 <template v-if="dailyMessage.typeId === 0">
@@ -98,9 +98,9 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
-    .mdc-jumbotron
+    .jumbotron
     {
-        background: #004BA0;
+        background-color: variables.$primary-dark-color;
         color: #FFFFFF;
         display: flex;
         padding-top: 192px;
@@ -129,7 +129,6 @@
                 display: block;
                 margin-bottom: 0.75em;
             }
-
             & > small
             {
                 display: block;
@@ -176,7 +175,7 @@
                 }
             }
 
-            @media (max-width: 599px)
+            @media (max-width: variables.$max-mobile-size)
             {
                 margin-left: 2em;
 

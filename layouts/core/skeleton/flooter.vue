@@ -126,6 +126,7 @@
                             left: -1.125em;
                             top: -1px;
                         }
+
                         & > a
                         {
                             color: $active-color;

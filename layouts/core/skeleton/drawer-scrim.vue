@@ -31,8 +31,8 @@
 
     .mdc-drawer-scrim
     {
-        backdrop-filter: blur(2px); // saturate(180%);
-        background-color: rgba(0, 0, 0, 0.35); // $mdc-drawer-modal-scrim-color;
+        backdrop-filter: blur(2px);
+        background-color: rgba(0, 0, 0, 0.35);
         display: block;
         opacity: 0;
         transition-duration: $mdc-drawer-animation-enter;
@@ -42,7 +42,7 @@
 
         &.mdc-drawer-scrim--open
         {
-            opacity: 1; // $mdc-drawer-modal-scrim-opacity;
+            opacity: 1;
             transition-duration: $mdc-drawer-animation-exit;
             visibility: visible;
         }

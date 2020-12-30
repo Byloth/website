@@ -1,3 +1,5 @@
+// Colors...
+//
 $primary-color: #1976D2;
 $primary-dark-color: #004BA0;
 $primary-light-color: #63A4FF;
@@ -12,4 +14,19 @@ $chrome-scrollbar-color: #F1F1F1;
 $chrome-link-preview-color: #DEE1E6;
 $chrome-incognito-color: #35363A;
 
+// Fonts...
+//
 $font-family: unquote("Ubuntu, Roboto, Helvetica, sans-serif");
+
+// Sizes...
+//
+$xs-size: 0;
+$sm-size: 600px;
+$md-size: 960px;
+$lg-size: 1280px;
+$xl-size: 1600px;
+
+$max-mobile-size: $sm-size - 1px;
+$min-tablet-size: $sm-size;
+$max-tablet-size: $lg-size - 1px;
+$min-desktop-size: $lg-size;

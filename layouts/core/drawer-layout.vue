@@ -189,7 +189,6 @@
             transition-property: width;
             transition-timing-function: $mdc-animation-standard-curve-timing-function;
         }
-
         & > #main-content
         {
             background-color: variables.$chrome-scrollbar-color;

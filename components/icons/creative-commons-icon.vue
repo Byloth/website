@@ -79,7 +79,8 @@
                 }
                 &.creative-commons-sa
                 {
-                    margin: 0px 0.666em;
+                    margin-left: 1.2em;
+                    margin-right: 0.6em;
                 }
             }
         }

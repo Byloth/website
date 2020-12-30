@@ -1,10 +1,12 @@
+@use "../variables";
+
 $grid-breakpoints:
 (
-    xs: 0,
-    sm: 600px,
-    md: 960px,
-    lg: 1280px,
-    xl: 1600px
+    xs: variables.$xs-size,
+    sm: variables.$sm-size,
+    md: variables.$md-size,
+    lg: variables.$lg-size,
+    xl: variables.$xl-size
 );
 $grid-gutter-width: 0px;
 

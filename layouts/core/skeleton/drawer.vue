@@ -101,32 +101,12 @@
         transition-property: box-shadow, margin;
         transition-timing-function: $mdc-animation-standard-curve-timing-function;
 
-        &.mdc-drawer--modal
-        {
-            box-shadow: none;
-            display: flex;
-
-            &.mdc-drawer--open
-            {
-                box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
-                            0px 16px 24px 2px rgba(0, 0, 0, 0.14),
-                            0px 6px 30px 5px rgba(0, 0, 0, 0.12);
-            }
-        }
-
-        &.mdc-drawer--open
-        {
-            margin-left: 0px;
-            transition-duration: $mdc-drawer-animation-exit;
-        }
-
         & > .mdc-drawer__header,
         & > .mdc-drawer__content
         {
             border-bottom: none;
             border-right: 1px solid rgba(0, 0, 0, 0.12);
         }
-
         & > .mdc-drawer__footer
         {
             background-color: variables.$chrome-link-preview-color;
@@ -146,6 +126,24 @@
             {
                 font-size: larger;
             }
+        }
+
+        &.mdc-drawer--modal
+        {
+            box-shadow: none;
+            display: flex;
+
+            &.mdc-drawer--open
+            {
+                box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2),
+                            0px 16px 24px 2px rgba(0, 0, 0, 0.14),
+                            0px 6px 30px 5px rgba(0, 0, 0, 0.12);
+            }
+        }
+        &.mdc-drawer--open
+        {
+            margin-left: 0px;
+            transition-duration: $mdc-drawer-animation-exit;
         }
     }
 </style>
