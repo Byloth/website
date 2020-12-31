@@ -66,6 +66,7 @@ a
 body
 {
     background-color: #FFFFFF;
+    color: variables.$not-quite-black;
     margin: 0px;
     overflow-y: scroll;
 
@@ -86,6 +87,11 @@ samp *
 html
 {
     background-color: variables.$chrome-incognito-color;
+}
+
+img
+{
+    width: 100%;
 }
 
 q
@@ -149,6 +155,18 @@ q
     .mdc-floating-label
     {
         text-shadow: 0px 0px 2px #FFFFFF;
+    }
+}
+
+.nuxt-content-container > .nuxt-content
+{
+    & > :first-child
+    {
+        margin-top: 0px;
+    }
+    & > :last-child
+    {
+        margin-bottom: 0px;
     }
 }
 

@@ -1,7 +1,7 @@
 <template>
     <footer class="mdc-flooter">
         <div class="row">
-            <div class="col-md-6">
+            <div class="column col-sm-4 col-md-6">
                 <h3>Mappa del sito</h3>
                 <ul>
                     <NuxtLink v-for="page in pages"
@@ -17,7 +17,7 @@
                     </NuxtLink>
                 </ul>
             </div>
-            <div class="col-md-6">
+            <div class="column col-sm-8 col-md-6">
                 <h3>Contatti e social</h3>
                 <RippleAnchor href="//www.facebook.com/matteo.bilotta"
                               title="Matteo Bilotta su Facebook"
@@ -93,7 +93,7 @@
         width: 100%;
         z-index: -1;
 
-        & > .row > .col-md-6
+        & > .row > .column
         {
             padding: 0px 16px;
 
@@ -149,6 +149,7 @@
         }
         & > .license-info
         {
+            padding: 0px 1em;
             margin-top: 1em;
             text-align: center;
         }

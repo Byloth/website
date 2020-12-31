@@ -2,7 +2,7 @@
     <!-- eslint-disable vue/no-v-html -->
     <div class="jumbotron">
         <blockquote>
-            <template v-if="dailyMessage.isLoaded">
+            <template v-if="dailyMessage">
                 <template v-if="dailyMessage.typeId === 0">
                     <template v-if="dailyMessage.url">
                         <a :href="dailyMessage.url"
@@ -77,19 +77,19 @@
 
     import { DailyMessage } from "@/models";
 
-    interface JumbotronData { dailyMessage: DailyMessage; }
+    interface JumbotronData { dailyMessage: DailyMessage | null; }
 
     export default Vue.extend({
         name: "Jumbotron",
 
-        data: (): JumbotronData => ({ dailyMessage: DailyMessage.Empty }),
+        data: (): JumbotronData => ({ dailyMessage: null }),
         created: async function(): Promise<void>
         {
             this.dailyMessage = await DailyMessage.GetRandomOne();
 
             if (this.dailyMessage.canBeExecuted === true)
             {
-                this.$nextTick((): Promise<unknown> => this.dailyMessage.execute());
+                this.$nextTick((): Promise<unknown> => this.dailyMessage!.execute());
             }
         }
     });

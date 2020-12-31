@@ -1,5 +1,3 @@
-import Model from "./core";
-
 export enum DailyMessageType
 {
     Subtitle = 0,
@@ -19,13 +17,8 @@ export interface DailyMessageData
     url: string | null;
 }
 
-export default class DailyMessage extends Model implements DailyMessageData
+export default class DailyMessage implements DailyMessageData
 {
-    public static get Empty(): DailyMessage
-    {
-        return new DailyMessage({ id: -1, typeId: 3, text: "" } as DailyMessageData);
-    }
-
     public static async GetAll(): Promise<DailyMessage[]>
     {
         const messages = (await import(/* webpackChunkName: "daily-messages" */ "./data/daily-messages.json")).default;
@@ -52,8 +45,6 @@ export default class DailyMessage extends Model implements DailyMessageData
 
     public constructor({ id, typeId, text, author, source, script, url }: DailyMessageData)
     {
-        super(id !== -1);
-
         this.id = id;
         this.typeId = typeId;
         this.text = text;

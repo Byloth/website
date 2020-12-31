@@ -1,25 +1,27 @@
 <template>
     <main id="home-page">
-        <Timeline :items="[{'title': 'First', 'subtitle': 'Lorem ipsum dolor sit amet.'},
-                           {'title': 'Second'},
-                           {'title': 'Third', 'subtitle': 'Lorem ipsum dolor sit amet.'},
-                           {'title': 'Fourth'},
-                           {'title': 'Fifth'},
-                           {'title': 'Sixth'},
-                           {'title': 'Seventh', 'subtitle': 'Lorem ipsum dolor sit amet.'},
-                           {'title': 'Eighth'},
-                           {'title': 'Ninth', 'subtitle': 'Lorem ipsum dolor sit amet.'},
-                           {'title': 'Tenth', 'subtitle': 'Lorem ipsum dolor sit amet.'}]" />
+        <Timeline :items="posts" />
     </main>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
+    import { Post } from "@/models";
+
+    interface HomePageData { posts: Post[]; }
+
     export default Vue.extend({
         name: "HomePage",
 
-        head: { title: "Home" }
+        data: (): HomePageData => ({ posts: [] }),
+
+        head: { title: "Home" },
+
+        created: async function(): Promise<void>
+        {
+            this.posts = await Post.GetAll(this);
+        }
     });
 </script>
 
