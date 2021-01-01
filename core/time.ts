@@ -110,25 +110,34 @@ export default abstract class Time
         return undefined;
     }
 
-    public static DateAsString(date: Date): string
+    public static DateAsString(date: Date, showDayOfWeek = true): string
     {
-        const day = `${Time._DAYS[date.getDay()]} ${date.getDate()}`;
-        const month = Time._MONTHS[date.getMonth()];
-        const year = date.getFullYear();
+        const dateStrings: string[] = [];
 
-        return [day, month, year].join(" ");
+        if (showDayOfWeek)
+        {
+            dateStrings.push(`${Time._DAYS[date.getDay()]}`);
+        }
+
+        dateStrings.push(`${date.getDate()}`);
+        dateStrings.push(Time._MONTHS[date.getMonth()]);
+        dateStrings.push(`${date.getFullYear()}`);
+
+        return dateStrings.join(" ");
     }
-    public static TimeAsString(time: Date): string
+    public static TimeAsString(time: Date, showSeconds = true): string
     {
-        const hours = time.getHours();
-        const minutes = time.getMinutes();
-        const seconds = time.getSeconds();
+        const timeStrings: string[] = [];
 
-        const hoursString = (hours < 10) ? `0${hours}` : `${hours}`;
-        const minutesString = (minutes < 10) ? `0${minutes}` : `${minutes}`;
-        const secondsString = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+        timeStrings.push(`${time.getHours()}`.padStart(2, "0"));
+        timeStrings.push(`${time.getMinutes()}`.padStart(2, "0"));
 
-        return [hoursString, minutesString, secondsString].join(":");
+        if (showSeconds)
+        {
+            timeStrings.push(`${time.getSeconds()}`.padStart(2, "0"));
+        }
+
+        return timeStrings.join(":");
     }
 
     public static TimeDifferenceAsString(firstTime: Date, secondTime: Date, stopAtFirst = true)

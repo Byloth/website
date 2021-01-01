@@ -20,6 +20,7 @@ module.exports = {
     "newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
     "no-console": DYNAMIC_LEVEL,
     "no-debugger": DYNAMIC_LEVEL,
+    "no-unreachable": DYNAMIC_LEVEL,
     "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
     "object-shorthand": ["error", "consistent"],
     "quote-props": ["error", "consistent"],

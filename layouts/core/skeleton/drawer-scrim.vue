@@ -46,5 +46,10 @@
             transition-duration: $mdc-drawer-animation-exit;
             visibility: visible;
         }
+
+        @media print
+        {
+            display: none;
+        }
     }
 </style>

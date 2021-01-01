@@ -1,9 +1,16 @@
 <template>
     <div class="container timeline">
-        <TimelineItem v-for="item, index in items"
-                      :key="index"
-                      :item="item"
-                      :reverse="index % 2 === 1" />
+        <template v-if="items.length > 0">
+            <TimelineItem v-for="item, index in items"
+                          :key="index"
+                          :item="item"
+                          :reverse="index % 2 === 1" />
+        </template>
+        <template v-else>
+            <TimelineItemLoader />
+            <TimelineItemLoader image reverse />
+            <TimelineItemLoader />
+        </template>
     </div>
 </template>
 

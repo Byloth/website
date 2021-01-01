@@ -66,7 +66,9 @@
             </template>
             <template v-else>
                 <TextLoader />
-                <TextLoader class="small" />
+                <TextLoader class="small"
+                            :delay="50"
+                            :width="95" />
             </template>
         </blockquote>
     </div>
@@ -108,7 +110,7 @@
 
         & > blockquote
         {
-            border-left: 0.2em solid lighten(variables.$primary-color, 15);
+            border-left: 0.2em solid lighten($color: variables.$primary-color, $amount: 15);
             padding: 0.2em 1em;
             min-height: 64px;
             position: relative;
@@ -116,7 +118,7 @@
 
             &::before
             {
-                color: lighten(variables.$primary-color, 20);
+                color: lighten($color: variables.$primary-color, $amount: 20);
                 content: "“";
                 font-size: 2em;
                 left: -30px;
@@ -141,7 +143,7 @@
                 }
             }
 
-            & > .skeleton-loader.text-loader
+            & > .text-loader
             {
                 margin: 0px;
                 margin-bottom: 0.75em;
@@ -184,6 +186,11 @@
                     left: -26px;
                 }
             }
+        }
+
+        @media print
+        {
+            display: none;
         }
     }
 </style>

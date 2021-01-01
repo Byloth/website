@@ -145,5 +145,10 @@
             margin-left: 0px;
             transition-duration: $mdc-drawer-animation-exit;
         }
+
+        @media print
+        {
+            display: none;
+        }
     }
 </style>

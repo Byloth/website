@@ -1,5 +1,7 @@
 ---
 title: Il sito web è finalmente online!
+subtitle: 😍
+author: Matteo Bilotta
 date: 2020-12-30T18:32:00
 icon:
 image:

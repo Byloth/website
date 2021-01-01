@@ -74,6 +74,11 @@ body
     {
         overflow: hidden;
     }
+
+    @media print
+    {
+        color: #000000;
+    }
 }
 
 code,
@@ -87,6 +92,11 @@ samp *
 html
 {
     background-color: variables.$chrome-incognito-color;
+
+    @media print
+    {
+        background-color: #FFFFFF;
+    }
 }
 
 img
@@ -158,7 +168,7 @@ q
     }
 }
 
-.nuxt-content-container > .nuxt-content
+.nuxt-content
 {
     & > :first-child
     {

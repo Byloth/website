@@ -12,10 +12,8 @@
                     {{ title }}
                 </h1>
             </section>
-            <NavigationActions :actions="[{ id: 0, icon: 'file_download', title: 'Download' },
-                                          { id: 1, icon: 'print', title: 'Print this page' },
-                                          { id: 2, icon: 'bookmark', title: 'Bookmark this page' }]"
-                               @click="$emit('select', $event)" />
+            <NavigationActions :actions="actions"
+                               @select="onSelectEvent" />
         </div>
     </header>
 </template>
@@ -27,10 +25,20 @@
     import { cssClasses } from "@material/top-app-bar";
     import { ScrollAnimation, ClassAnimatorBehavior } from "@byloth/vue-scroll-animator";
 
+    interface Action
+    {
+        id: string;
+        icon: string;
+        title: string;
+
+        callback: () => void;
+    }
     interface NavigationBarData
     {
         _resizingAnimation?: ScrollAnimation;
         _movingAnimation?: ScrollAnimation;
+
+        actions: Action[];
     }
 
     export default Vue.extend({
@@ -42,7 +50,47 @@
             }
         },
 
-        data: (): NavigationBarData => ({ }),
+        data: (): NavigationBarData => ({
+            actions: [
+                {
+                    id: "share",
+                    icon: "share",
+                    title: "Condividi",
+
+                    callback: (): void =>
+                    {
+                        if (navigator.share)
+                        {
+                            navigator.share({
+                                title: document.title,
+                                text: "This is an example text.",
+                                url: window.location.href
+                            });
+                        }
+                    }
+                },
+                {
+                    id: "print",
+                    icon: "print",
+                    title: "Stampa",
+
+                    callback: (): void =>
+                    {
+                        window.print();
+                    }
+                },
+                {
+                    id: "clone",
+                    icon: "file_download",
+                    title: "Download",
+
+                    callback: (): void =>
+                    {
+                        window.open("https://github.com/Byloth/website", "_blank");
+                    }
+                }
+            ]
+        }),
 
         computed: mapState("config", { title: "title" }),
 
@@ -114,6 +162,15 @@
         {
             this.$destroyScrollAnimation(this._movingAnimation!);
             this.$destroyScrollAnimation(this._resizingAnimation!);
+        },
+
+        methods: {
+            onSelectEvent(selectedId: string)
+            {
+                const action = this.actions.filter((action) => action.id === selectedId)[0];
+
+                action.callback();
+            }
         }
     });
 </script>
@@ -134,10 +191,14 @@
 
             .mdc-top-app-bar__title
             {
-                font-size: 34px;
                 margin: 0px;
                 padding-bottom: 0.4em;
             }
+        }
+
+        @media print
+        {
+            display: none;
         }
     }
 </style>

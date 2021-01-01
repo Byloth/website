@@ -26,6 +26,13 @@
             transition-duration: $mdc-drawer-animation-enter;
             transition-property: max-width;
             transition-timing-function: $mdc-animation-standard-curve-timing-function;
+
+            @media print
+            {
+                border-radius: 0px;
+                box-shadow: none;
+                padding: 0px;
+            }
         }
     }
 </style>

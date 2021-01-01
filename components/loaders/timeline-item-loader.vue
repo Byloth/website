@@ -3,29 +3,27 @@
         <div class="content mdc-card">
             <div class="header">
                 <div class="avatar">
-                    <div class="icon">
-                        <span class="fas" :class="`fa-${item.icon}`"></span>
-                    </div>
+                    <SkeletonLoader class="icon-loader" />
                 </div>
                 <div class="details">
-                    <h2 class="title">
-                        {{ item.title }}
-                    </h2>
-                    <h4 v-if="item.subtitle" class="subtitle">
-                        {{ item.subtitle }}
-                    </h4>
+                    <TextLoader class="title-loader" />
+                    <TextLoader class="subtitle-loader"
+                                :delay="50"
+                                :width="87.5" />
                 </div>
             </div>
-            <div v-if="item.image" class="image">
-                <img :src="item.image.source" :alt="item.image.description" />
+            <div v-if="image" class="image">
+                <ImageLoader />
             </div>
-            <div v-if="item.hasBody" class="body">
-                <NuxtContent :document="item" />
+            <div class="body">
+                <TextLoader :delay="0" :width="100" />
+                <TextLoader :delay="50" :width="70" />
+                <TextLoader :delay="100" :width="50" />
+                <TextLoader :delay="150" :width="100" />
+                <TextLoader :delay="200" :width="33.333" />
             </div>
             <div class="footer">
-                <small class="details">
-                    {{ item.author }}, il {{ item.date | date }}
-                </small>
+                <TextLoader class="date-loader" :width="20" />
             </div>
         </div>
         <div class="divider">
@@ -38,20 +36,12 @@
 <script lang="ts">
     import Vue from "vue";
 
-    import Time from "@/core/time";
-
     export default Vue.extend({
-        name: "TimelineItem",
-        filters: {
-            date(value: Date): string
-            {
-                return Time.DateAsString(value, false);
-            }
-        },
+        name: "TimelineItemLoader",
         props: {
-            item: {
-                required: true,
-                type: Object
+            image: {
+                default: false,
+                type: Boolean
             },
             reverse: {
                 default: false,
@@ -97,43 +87,27 @@
                 {
                     padding-right: 1em;
 
-                    & > .icon
+                    & > .icon-loader
                     {
-                        align-items: center;
-                        background-color: variables.$primary-color;
-                        border: 1px solid darken($color: variables.$primary-color, $amount: 10);
+                        border: 1px solid rgba(0, 0, 0, 0.1);
                         border-radius: 50%;
-                        color: #FFFFFF;
-                        display: flex;
-                        font-size: 1.2em;
                         height: 40px;
-                        justify-content: center;
-                        overflow: hidden;
                         width: 40px;
-
-                        @media print
-                        {
-                            background-color: #FFFFFF;
-                            border-color: #E5E5E5;
-                            color: #000000;
-                        }
                     }
                 }
                 & > .details
                 {
                     flex: 1;
 
-                    & > .title
+                    & > .title-loader
                     {
                         font-size: 20px;
                         margin: 0px;
                     }
-                    & > .subtitle
+                    & > .subtitle-loader
                     {
-                        color: variables.$somewhat-gray;
                         font-size: 14px;
-                        font-weight: normal;
-                        margin: 0px;
+                        margin-bottom: 0px;
                         margin-top: 0.5em;
                     }
                 }
@@ -151,11 +125,6 @@
                     top: 1em;
                     transform: rotate(45deg);
                     width: 1em;
-
-                    @media print
-                    {
-                        display: none;
-                    }
                 }
             }
             & > .image
@@ -165,31 +134,34 @@
             & > .body
             {
                 padding: 0.5em 1em;
+
+                & > .text-loader
+                {
+                    font-size: 1em;
+                    margin: 0px;
+
+                    &:not(:last-child)
+                    {
+                        margin-bottom: 0.25em;
+                    }
+                }
             }
             & > .footer
             {
                 padding: 0.5em 1em;
                 padding-top: 0px;
-                text-align: right;
 
-                & > .details
+                & > .date-loader
                 {
-                    color: variables.$somewhat-gray;
                     font-size: 10px;
+                    margin-left: auto;
+                    margin-right: 0px;
                 }
             }
 
             @media (min-width: variables.$md-size)
             {
                 width: calc(50% - 1.5em - 1px);
-            }
-            @media print
-            {
-                border-radius: 0px;
-                box-shadow: none;
-                margin: 0px;
-                padding: 0px;
-                width: 100%;
             }
         }
         & > .divider
@@ -209,7 +181,7 @@
 
             & > .circle
             {
-                background-color: variables.$primary-color;
+                background-color: #D3D3D3;
                 border: 2.5px solid #FFFFFF;
                 border-radius: 50%;
                 box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
@@ -234,10 +206,6 @@
                 {
                     left: calc(-0.1666em + 1px);
                 }
-            }
-            @media print
-            {
-                display: none;
             }
         }
 
@@ -285,7 +253,6 @@
                 {
                     margin-left: 0px;
                     margin-right: 1em;
-                    text-align: right;
 
                     & > .header
                     {
@@ -304,9 +271,16 @@
                             padding-right: 0px;
                         }
                     }
-                    & > .footer
+                    & > .footer > .date-loader
                     {
-                        text-align: left;
+                        margin-left: 0px;
+                        margin-right: auto;
+                    }
+
+                    .skeleton-loader
+                    {
+                        margin-right: 0px;
+                        margin-left: auto;
                     }
                 }
             }

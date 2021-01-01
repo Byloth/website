@@ -16,6 +16,8 @@ export default class Post extends Document
     protected readonly _icon?: string;
 
     public readonly title: string;
+    public readonly subtitle?: string;
+    public readonly author: string;
     public readonly date: Date;
     public readonly image?: { source: string, description: string };
 
@@ -34,6 +36,8 @@ export default class Post extends Document
         super(document);
 
         this.title = document.title;
+        this.subtitle = document.subtitle;
+        this.author = document.author;
         this.date = new Date(document.date);
 
         this.image = document.image;

@@ -116,7 +116,7 @@
 
                     &.active
                     {
-                        $active-color: lighten(variables.$primary-color, 30);
+                        $active-color: lighten($color: variables.$primary-color, $amount: 25);
 
                         &::before
                         {
@@ -152,6 +152,11 @@
             padding: 0px 1em;
             margin-top: 1em;
             text-align: center;
+        }
+
+        @media print
+        {
+            display: none;
         }
     }
 </style>

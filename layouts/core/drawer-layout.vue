@@ -212,5 +212,20 @@
         {
             margin-left: 0px;
         }
+
+        @media print
+        {
+            & > #main-content
+            {
+                background-color: #FFFFFF;
+                box-shadow: none;
+                padding: 0px;
+            }
+
+            .mdc-drawer.mdc-drawer--open + &
+            {
+                margin-left: 0px;
+            }
+        }
     }
 </style>

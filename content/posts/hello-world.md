@@ -1,5 +1,6 @@
 ---
-title: Questa è una news di prova.
+title: Hello, world!
+author: Matteo Bilotta
 date: 2020-12-28T18:32:00
 image:
     source: https://www.napolitan.it/wp-content/uploads/2017/10/ssimg_235-1024x683.jpg

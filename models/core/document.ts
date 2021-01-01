@@ -26,6 +26,15 @@ export default abstract class Document implements IContentDocument
     public readonly createdAt: Date;
     public readonly updatedAt: Date;
 
+    public get hasExcerpt(): boolean
+    {
+        return !!this.excerpt?.children?.length;
+    }
+    public get hasBody(): boolean
+    {
+        return !!this.body.children?.length;
+    }
+
     public constructor({ dir, path, extension, slug, createdAt, updatedAt, body, excerpt, toc }: IContentDocument)
     {
         this.dir = dir;

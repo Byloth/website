@@ -1,11 +1,50 @@
 <template>
-    <div class="skeleton-loader"></div>
+    <div class="skeleton-loader" :style="skeletonStyles">
+        <slot></slot>
+        <div class="wave" :style="waveStyles"></div>
+    </div>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
-    export default Vue.extend({ name: "SkeletonLoader" });
+    export default Vue.extend({
+        name: "SkeletonLoader",
+        props: {
+            delay: {
+                default: 0,
+                type: Number
+            },
+            width: {
+                default: 0,
+                type: Number
+            }
+        },
+        computed: {
+            skeletonStyles(): Record<string, string>
+            {
+                const styles: Record<string, string> = { };
+
+                if (this.width)
+                {
+                    styles.width = `${this.width}%`;
+                }
+
+                return styles;
+            },
+            waveStyles(): Record<string, string>
+            {
+                const styles: Record<string, string> = { };
+
+                if (this.delay)
+                {
+                    styles["animation-delay"] = `${this.delay}ms`;
+                }
+
+                return styles;
+            }
+        }
+    });
 </script>
 
 <style lang="scss" scoped>
@@ -22,9 +61,9 @@
         position: relative;
         width: 100%;
 
-        &:after
+        & > .wave
         {
-            animation: loading 1.5s infinite;
+            animation: loading 1500ms infinite;
             background: linear-gradient(90deg,
                                       hsla(0, 0%, 100%, 0),
                                       hsla(0, 0%, 100%, 0.3),
