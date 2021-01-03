@@ -12,7 +12,7 @@
                     {{ title }}
                 </h1>
             </section>
-            <NavigationActions :actions="actions" />
+            <NavigationActions :actions="actions" @select="onSelectEvent" />
         </div>
     </header>
 </template>
@@ -23,6 +23,8 @@
 
     import { cssClasses } from "@material/top-app-bar";
     import { ScrollAnimation, ClassAnimatorBehavior } from "@byloth/vue-scroll-animator";
+
+    import { Action } from "@/core/types";
 
     interface NavigationBarData
     {
@@ -114,6 +116,14 @@
         {
             this.$destroyScrollAnimation(this._movingAnimation!);
             this.$destroyScrollAnimation(this._resizingAnimation!);
+        },
+
+        methods: {
+            onSelectEvent(action: Action): void
+            {
+                this.$store.dispatch(action.name);
+                console.log("Nope?");
+            }
         }
     });
 </script>

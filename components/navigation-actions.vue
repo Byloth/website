@@ -21,7 +21,7 @@
                     <ActionItem :key="action.id"
                                 class="mdc-top-app-bar__action-item"
                                 :title="action.title"
-                                @click="$emit('select', action.id)">
+                                @click="$emit('select', action)">
                         {{ action.icon }}
                     </ActionItem>
                 </template>

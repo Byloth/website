@@ -1,5 +1,6 @@
 <template>
     <div class="mdc-menu mdc-menu-surface"
+         title=""
          @click.stop>
         <ul class="mdc-list"
             role="menu"
@@ -63,4 +64,8 @@
 </script>
 
 <style lang="scss" scoped>
+    .mdc-menu
+    {
+        text-decoration: none;
+    }
 </style>

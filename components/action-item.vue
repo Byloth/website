@@ -3,7 +3,7 @@
             :alt="title"
             :title="title"
             :aria-label="title"
-            @click="$emit('click', $event)">
+            @click.passive="onClickEvent">
         <slot></slot>
     </button>
 </template>
@@ -29,6 +29,13 @@
         {
             this._ripple = new MDCRipple(this.$el);
             this._ripple.unbounded = true;
+        },
+
+        methods: {
+            onClickEvent(evt?: MouseEvent)
+            {
+                this.$emit("click", evt);
+            }
         }
     });
 </script>

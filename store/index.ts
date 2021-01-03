@@ -1,17 +1,8 @@
-interface Action
-{
-    id: number;
-    name: string;
-    icon: string;
-    title: string;
+import { ActionContext } from "vuex";
 
-    path?: string;
-}
-interface Link extends Action
-{
-    path: string;
-}
-interface ConfigState
+import { Action, Link } from "@/core/types";
+
+interface IndexState
 {
     title: string;
     author: string;
@@ -20,7 +11,7 @@ interface ConfigState
     version: string;
 }
 
-const state = (): ConfigState => ({
+const state = (): IndexState => ({
     title: "Byloth's Website",
     author: "Matteo Bilotta",
     actions: [
@@ -32,16 +23,16 @@ const state = (): ConfigState => ({
         },
         {
             id: 2,
-            name: "print",
-            icon: "print",
-            title: "Stampa"
-        },
-        {
-            id: 3,
             name: "download",
             path: "//github.com/Byloth/website",
             icon: "github",
             title: "Download"
+        },
+        {
+            id: 3,
+            name: "print",
+            icon: "print",
+            title: "Stampa"
         }
     ],
     pages: [
@@ -70,4 +61,22 @@ const state = (): ConfigState => ({
     version: "5.0.0α"
 });
 
-export { state };
+const actions = {
+    print(context: ActionContext<IndexState, IndexState>): void
+    {
+        window.print();
+    },
+    share(context: ActionContext<IndexState, IndexState>): void
+    {
+        if (navigator.share)
+        {
+            navigator.share({
+                title: document.title,
+                text: "Questo è un testo di prova.",
+                url: window.location.href
+            });
+        }
+    }
+};
+
+export { state, actions };

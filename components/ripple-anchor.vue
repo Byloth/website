@@ -22,8 +22,8 @@
                 type: String
             }
         },
-        data: (): RippleAnchorData => ({ }),
 
+        data: (): RippleAnchorData => ({ }),
         mounted: function(): void
         {
             this._ripple = new MDCRipple(this.$el);

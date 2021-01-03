@@ -9,14 +9,15 @@
                     <NuxtLink :key="action.id"
                               v-slot="{ href }"
                               :to="action.path">
-                        <MenuAnchor :href="href">
+                        <MenuAnchor :href="href"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
                             {{ action.title }}
                         </MenuAnchor>
                     </NuxtLink>
                 </template>
                 <template v-else>
-                    <MenuItem :key="action.id"
-                              @click="$emit('select', action.id)">
+                    <MenuItem :key="action.id" @click="$emit('select', action)">
                         {{ action.title }}
                     </MenuItem>
                 </template>
