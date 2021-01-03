@@ -35,6 +35,13 @@
 <style lang="scss" scoped>
     a
     {
-        text-align: center;
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+
+        &:hover
+        {
+            text-decoration: none;
+        }
     }
 </style>

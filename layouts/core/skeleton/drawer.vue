@@ -70,7 +70,7 @@
                 };
             },
 
-            ...mapState("config", {
+            ...mapState({
                 pages: "pages",
                 version: "version"
             })

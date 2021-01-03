@@ -1,5 +1,17 @@
-type Element = { children?: Element[], props?: Record<string, number | string | string[]>, tag?: string, type: string, value?: string };
-type TableOfContent = { id: string, depth: number, text: string };
+interface Element
+{
+    children?: Element[];
+    props?: Record<string, number | string | string[]>;
+    tag?: string;
+    type: string;
+    value?: string;
+}
+interface TableOfContent
+{
+    id: string;
+    depth: number;
+    text: string;
+}
 
 export interface IContentDocument extends Record<string, any> // from "@nuxt/content";
 {

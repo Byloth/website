@@ -4,11 +4,23 @@
                 @click="toggleMenu">
         more_vert
         <Menu v-model="open">
-            <MenuItem v-for="action in actions"
-                      :key="action.id"
-                      @click="$emit('select', action.id)">
-                {{ action.title }}
-            </MenuItem>
+            <template v-for="action in actions">
+                <template v-if="action.path">
+                    <NuxtLink :key="action.id"
+                              v-slot="{ href }"
+                              :to="action.path">
+                        <MenuAnchor :href="href">
+                            {{ action.title }}
+                        </MenuAnchor>
+                    </NuxtLink>
+                </template>
+                <template v-else>
+                    <MenuItem :key="action.id"
+                              @click="$emit('select', action.id)">
+                        {{ action.title }}
+                    </MenuItem>
+                </template>
+            </template>
         </Menu>
     </ActionItem>
 </template>

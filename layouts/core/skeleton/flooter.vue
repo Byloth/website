@@ -73,7 +73,7 @@
 
     export default Vue.extend({
         name: "Flooter",
-        computed: mapState("config", {
+        computed: mapState({
             author: "author",
             pages: "pages"
         })

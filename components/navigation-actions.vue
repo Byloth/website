@@ -6,13 +6,26 @@
                           @select="$emit('select', $event)" />
         </template>
         <template v-else>
-            <ActionItem v-for="action in actions"
-                        :key="action.id"
-                        class="mdc-top-app-bar__action-item"
-                        :title="action.title"
-                        @click="$emit('select', action.id)">
-                {{ action.icon }}
-            </ActionItem>
+            <template v-for="action in actions">
+                <template v-if="action.path">
+                    <RippleAnchor :key="action.id"
+                                  class="mdc-top-app-bar__action-item"
+                                  :href="action.path"
+                                  :title="action.title"
+                                  rel="nofollow noopener noreferrer"
+                                  target="_blank">
+                        <span class="fab" :class="`fa-${action.icon}`"></span>
+                    </RippleAnchor>
+                </template>
+                <template v-else>
+                    <ActionItem :key="action.id"
+                                class="mdc-top-app-bar__action-item"
+                                :title="action.title"
+                                @click="$emit('select', action.id)">
+                        {{ action.icon }}
+                    </ActionItem>
+                </template>
+            </template>
         </template>
     </section>
 </template>

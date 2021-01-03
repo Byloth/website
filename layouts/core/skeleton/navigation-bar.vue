@@ -12,8 +12,7 @@
                     {{ title }}
                 </h1>
             </section>
-            <NavigationActions :actions="actions"
-                               @select="onSelectEvent" />
+            <NavigationActions :actions="actions" />
         </div>
     </header>
 </template>
@@ -25,20 +24,10 @@
     import { cssClasses } from "@material/top-app-bar";
     import { ScrollAnimation, ClassAnimatorBehavior } from "@byloth/vue-scroll-animator";
 
-    interface Action
-    {
-        id: string;
-        icon: string;
-        title: string;
-
-        callback: () => void;
-    }
     interface NavigationBarData
     {
         _resizingAnimation?: ScrollAnimation;
         _movingAnimation?: ScrollAnimation;
-
-        actions: Action[];
     }
 
     export default Vue.extend({
@@ -50,49 +39,12 @@
             }
         },
 
-        data: (): NavigationBarData => ({
-            actions: [
-                {
-                    id: "share",
-                    icon: "share",
-                    title: "Condividi",
+        data: (): NavigationBarData => ({ }),
 
-                    callback: (): void =>
-                    {
-                        if (navigator.share)
-                        {
-                            navigator.share({
-                                title: document.title,
-                                text: "This is an example text.",
-                                url: window.location.href
-                            });
-                        }
-                    }
-                },
-                {
-                    id: "print",
-                    icon: "print",
-                    title: "Stampa",
-
-                    callback: (): void =>
-                    {
-                        window.print();
-                    }
-                },
-                {
-                    id: "clone",
-                    icon: "file_download",
-                    title: "Download",
-
-                    callback: (): void =>
-                    {
-                        window.open("https://github.com/Byloth/website", "_blank");
-                    }
-                }
-            ]
+        computed: mapState({
+            title: "title",
+            actions: "actions"
         }),
-
-        computed: mapState("config", { title: "title" }),
 
         mounted: function(): void
         {
@@ -162,15 +114,6 @@
         {
             this.$destroyScrollAnimation(this._movingAnimation!);
             this.$destroyScrollAnimation(this._resizingAnimation!);
-        },
-
-        methods: {
-            onSelectEvent(selectedId: string)
-            {
-                const action = this.actions.filter((action) => action.id === selectedId)[0];
-
-                action.callback();
-            }
         }
     });
 </script>
