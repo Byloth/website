@@ -1,5 +1,5 @@
 <template>
-    <button class="material-icons mdc-icon-button mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
+    <button class="material-icons mdc-icon-button"
             :alt="title"
             :title="title"
             :aria-label="title"

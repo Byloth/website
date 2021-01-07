@@ -6,9 +6,17 @@
        :aria-label="title"
        @click="$emit('click', $event)">
         <span class="mdc-list-item__ripple"></span>
-        <span class="material-icons mdc-list-item__graphic" aria-hidden="true">
-            {{ icon }}
-        </span>
+        <template v-if="fa">
+            <span class="fab mdc-list-item__graphic"
+                  :class="`fa-${icon}`"
+                  aria-hidden="true">
+            </span>
+        </template>
+        <template v-else>
+            <span class="material-icons mdc-list-item__graphic" aria-hidden="true">
+                {{ icon }}
+            </span>
+        </template>
         <span class="mdc-list-item__text">
             <slot></slot>
         </span>
@@ -22,6 +30,10 @@
         name: "NavigationListItem",
         props: {
             active: {
+                default: false,
+                type: Boolean
+            },
+            fa: {
                 default: false,
                 type: Boolean
             },
@@ -44,8 +56,16 @@
 </script>
 
 <style lang="scss" scoped>
-    a[title]:hover
+    .mdc-list-item
     {
-        text-decoration: none;
+        & > .fab
+        {
+            font-size: 24px;
+        }
+
+        &[title]:hover
+        {
+            text-decoration: none;
+        }
     }
 </style>

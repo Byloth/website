@@ -26,12 +26,20 @@
                 </NuxtLink>
                 <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
-                    Link utili
-                </h6>
-                <NavigationListItem icon="mail"
-                                    title="Contattami"
-                                    @click.stop>
                     Contattami
+                </h6>
+                <NavigationListItem fa
+                                    href="//discord.gg/5QvHTwzvqW"
+                                    icon="discord"
+                                    target="_blank"
+                                    title="Unisciti alla community su Discord">
+                    Chatta
+                    <sup class="badge">new</sup>
+                </NavigationListItem>
+                <NavigationListItem icon="mail"
+                                    title="Scrivimi un messaggio privatamente"
+                                    @click.stop>
+                    Scrivi
                 </NavigationListItem>
             </NavigationList>
         </div>
@@ -106,6 +114,19 @@
         {
             border-bottom: none;
             border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+            & > .mdc-list > .mdc-list-item .badge
+            {
+                background-color: variables.$primary-color;
+                border-radius: 0.5em;
+                color: #FFFFFF;
+                display: inline-block;
+                font-style: italic;
+                height: 1em;
+                line-height: 0.875em;
+                padding: 0px 0.5em;
+                padding-left: 0.4em;
+            }
         }
         & > .mdc-drawer__footer
         {

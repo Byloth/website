@@ -14,7 +14,9 @@
                                   :title="action.title"
                                   rel="nofollow noopener noreferrer"
                                   target="_blank">
-                        <span class="fab" :class="`fa-${action.icon}`"></span>
+                        <span class="material-icons">
+                            {{ action.icon }}
+                        </span>
                     </RippleAnchor>
                 </template>
                 <template v-else>

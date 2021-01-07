@@ -23,16 +23,16 @@ const state = (): IndexState => ({
         },
         {
             id: 2,
-            name: "download",
-            path: "//github.com/Byloth/website",
-            icon: "github",
-            title: "Download"
-        },
-        {
-            id: 3,
             name: "print",
             icon: "print",
             title: "Stampa"
+        },
+        {
+            id: 3,
+            name: "fork",
+            path: "//github.com/Byloth/website",
+            icon: "alt_route",
+            title: "Forka"
         }
     ],
     pages: [
