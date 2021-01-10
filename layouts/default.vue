@@ -8,7 +8,6 @@
     import Vue from "vue";
 
     import DrawerLayout from "./core/drawer-layout.vue";
-    import PageLoaderMixin from "./mixins/page-loader";
 
     interface DefaultLayoutData
     {
@@ -20,7 +19,6 @@
     export default Vue.extend({
         name: "DefaultLayout",
         components: { DrawerLayout },
-        mixins: [PageLoaderMixin],
 
         data: (): DefaultLayoutData => ({ disable: false }),
 

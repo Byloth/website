@@ -11,3 +11,8 @@ export interface Link extends Action
 {
     path: string;
 }
+
+export interface DialogPayload
+{
+    isFullscreen: boolean;
+}

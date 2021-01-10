@@ -9,12 +9,12 @@
 
     import { MDCList } from "@material/list";
 
-    interface NavigationListData { _list?: MDCList; }
+    interface ListData { _list?: MDCList; }
 
     export default Vue.extend({
-        name: "NavigationList",
+        name: "List",
 
-        data: (): NavigationListData => ({ }),
+        data: (): ListData => ({ }),
 
         mounted: function(): void
         {

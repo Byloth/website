@@ -3,7 +3,7 @@
         <Drawer id="drawer"
                 v-model="open"
                 :modal="modal"
-                @navigate="onNavigateEvent" />
+                @select="onSelectEvent" />
         <div class="mdc-drawer-app-content" :class="classes">
             <NavigationBar id="navigation-bar"
                            :toggle="toggle"
@@ -17,6 +17,7 @@
         <DrawerScrim id="drawer-scrim"
                      :value="modal && open"
                      @input="open = $event" />
+        <ContactDialog id="contact-dialog" />
     </div>
 </template>
 
@@ -25,12 +26,6 @@
     import { Route } from "vue-router";
 
     import { MOBILE_SIZE, TABLET_SIZE } from "@/core/constants";
-
-    import Drawer from "./skeleton/drawer.vue";
-    import DrawerScrim from "./skeleton/drawer-scrim.vue";
-    import Flooter from "./skeleton/flooter.vue";
-    import NavigationBar from "./skeleton/navigation-bar.vue";
-    import Jumbotron from "./skeleton/jumbotron.vue";
 
     export enum DrawerStatus
     {
@@ -52,13 +47,6 @@
 
     export default Vue.extend({
         name: "DrawerLayout",
-        components: {
-            Drawer,
-            DrawerScrim,
-            Flooter,
-            NavigationBar,
-            Jumbotron
-        },
         props: {
             value: {
                 default: false,
@@ -135,13 +123,6 @@
                 }
             },
 
-            onNavigateEvent(route: Route): void
-            {
-                if (this.status === DrawerStatus.MODAL)
-                {
-                    this.open = false;
-                }
-            },
             onResizeEvent(evt?: Event): void
             {
                 const windowWidth = window.innerWidth;
@@ -160,6 +141,13 @@
                 }
 
                 this.height = (this.$refs.flooter as Vue).$el.clientHeight;
+            },
+            onSelectEvent(evt?: MouseEvent): void
+            {
+                if (this.status === DrawerStatus.MODAL)
+                {
+                    this.open = false;
+                }
             },
 
             toggleDrawer(evt?: Event): void
@@ -193,7 +181,7 @@
         {
             background-color: variables.$chrome-scrollbar-color;
             box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em variables.$chrome-incognito-color;
-            padding: 8px;
+            padding: 0.5em;
         }
 
         &.mdc-drawer-app-content--open

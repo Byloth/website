@@ -13,10 +13,10 @@
 
     import { MDCRipple } from "@material/ripple";
 
-    interface ActionItemData { _ripple?: MDCRipple; }
+    interface ActionButtonData { _ripple?: MDCRipple; }
 
     export default Vue.extend({
-        name: "ActionItem",
+        name: "ActionButton",
         props: {
             title: {
                 required: true,
@@ -24,7 +24,7 @@
             }
         },
 
-        data: (): ActionItemData => ({ }),
+        data: (): ActionButtonData => ({ }),
         mounted: function(): void
         {
             this._ripple = new MDCRipple(this.$el);

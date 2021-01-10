@@ -10,38 +10,39 @@
             </h6>
         </div>
         <div class="mdc-drawer__content">
-            <NavigationList>
+            <List>
                 <NuxtLink v-for="page in pages"
                           :key="page.id"
                           v-slot="{ href, route, navigate, isActive }"
                           :exact="page.path === '/'"
                           :to="page">
-                    <NavigationListItem :active="isActive"
-                                        :icon="page.icon"
-                                        :title="`Naviga a ${page.title}`"
-                                        :href="href"
-                                        @click="onClickEvent(route, navigate, $event)">
+                    <ListItem :active="isActive"
+                              :icon="page.icon"
+                              :title="`Naviga a ${page.title}`"
+                              :href="href"
+                              @click="onClickEvent(route, navigate, $event)">
                         {{ page.title }}
-                    </NavigationListItem>
+                    </ListItem>
                 </NuxtLink>
                 <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
                     Contattami
                 </h6>
-                <NavigationListItem fa
-                                    href="//discord.gg/5QvHTwzvqW"
-                                    icon="discord"
-                                    target="_blank"
-                                    title="Unisciti alla community su Discord">
+                <ListItem fa
+                          href="//discord.gg/5QvHTwzvqW"
+                          icon="discord"
+                          target="_blank"
+                          title="Unisciti alla community su Discord"
+                          @click="emitSelectEvent">
                     Chatta
                     <sup class="badge">new</sup>
-                </NavigationListItem>
-                <NavigationListItem icon="mail"
-                                    title="Scrivimi un messaggio privatamente"
-                                    @click.stop>
+                </ListItem>
+                <ListItem icon="mail"
+                          title="Scrivimi un messaggio privatamente"
+                          @click="openContactDialog">
                     Scrivi
-                </NavigationListItem>
-            </NavigationList>
+                </ListItem>
+            </List>
         </div>
         <div class="mdc-drawer__footer">
             <i>Vue</i>rsione corrente:
@@ -84,11 +85,22 @@
             })
         },
         methods: {
+            emitSelectEvent(evt?: MouseEvent): void
+            {
+                this.$emit("select", evt);
+            },
+            openContactDialog(evt?: MouseEvent): void
+            {
+                this.$store.dispatch("dialog");
+
+                this.emitSelectEvent(evt);
+            },
+
             onClickEvent(route: Route, navigate: (e: Event) => void, evt: MouseEvent): void
             {
-                this.$emit("navigate", route);
-
                 navigate(evt);
+
+                this.emitSelectEvent(evt);
             }
         }
     });
@@ -123,7 +135,7 @@
                 display: inline-block;
                 font-style: italic;
                 height: 1em;
-                line-height: 0.875em;
+                line-height: 0.8333em;
                 padding: 0px 0.5em;
                 padding-left: 0.4em;
             }

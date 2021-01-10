@@ -1,20 +1,18 @@
 <template>
-    <header class="mdc-top-app-bar mdc-top-app-bar--prominent">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <ActionItem v-if="toggle"
-                            class="mdc-top-app-bar__navigation-icon"
-                            title="Toggle navigation drawer"
-                            @click="$emit('drawer-toggle', $event)">
-                    menu
-                </ActionItem>
-                <h1 ref="title" class="mdc-top-app-bar__title">
-                    {{ title }}
-                </h1>
-            </section>
-            <NavigationActions :actions="actions" @select="onSelectEvent" />
-        </div>
-    </header>
+    <TopAppBar class="mdc-top-app-bar--prominent">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <ActionButton v-if="toggle"
+                          class="mdc-top-app-bar__navigation-icon"
+                          title="Toggle navigation drawer"
+                          @click="$emit('drawer-toggle', $event)">
+                menu
+            </ActionButton>
+            <h1 ref="title" class="mdc-top-app-bar__title">
+                {{ title }}
+            </h1>
+        </section>
+        <NavigationActions :actions="actions" @select="onSelectEvent" />
+    </TopAppBar>
 </template>
 
 <script lang="ts">
@@ -122,36 +120,10 @@
             onSelectEvent(action: Action): void
             {
                 this.$store.dispatch(action.name);
-                console.log("Nope?");
             }
         }
     });
 </script>
 
 <style lang="scss" scoped>
-    @use "~@/assets/scss/variables";
-
-    .mdc-top-app-bar
-    {
-        backdrop-filter: blur(20px) saturate(180%);
-        background-color: rgba(variables.$primary-color, 0.75);
-        transition: box-shadow 200ms linear;
-        width: 100%;
-
-        &.mdc-top-app-bar--prominent > .mdc-top-app-bar__row
-        {
-            height: 100%;
-
-            .mdc-top-app-bar__title
-            {
-                margin: 0px;
-                padding-bottom: 0.4em;
-            }
-        }
-
-        @media print
-        {
-            display: none;
-        }
-    }
 </style>

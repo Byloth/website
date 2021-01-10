@@ -8,7 +8,7 @@
         <template v-else>
             <template v-for="action in actions">
                 <template v-if="action.path">
-                    <RippleAnchor :key="action.id"
+                    <ActionAnchor :key="action.id"
                                   class="mdc-top-app-bar__action-item"
                                   :href="action.path"
                                   :title="action.title"
@@ -17,15 +17,15 @@
                         <span class="material-icons">
                             {{ action.icon }}
                         </span>
-                    </RippleAnchor>
+                    </ActionAnchor>
                 </template>
                 <template v-else>
-                    <ActionItem :key="action.id"
-                                class="mdc-top-app-bar__action-item"
-                                :title="action.title"
-                                @click="$emit('select', action)">
+                    <ActionButton :key="action.id"
+                                  class="mdc-top-app-bar__action-item"
+                                  :title="action.title"
+                                  @click="$emit('select', action)">
                         {{ action.icon }}
-                    </ActionItem>
+                    </ActionButton>
                 </template>
             </template>
         </template>

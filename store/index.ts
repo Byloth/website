@@ -1,17 +1,8 @@
 import { ActionContext } from "vuex";
 
-import { Action, Link } from "@/core/types";
+import { RootState } from "./types";
 
-interface IndexState
-{
-    title: string;
-    author: string;
-    actions: Action[];
-    pages: Link[];
-    version: string;
-}
-
-const state = (): IndexState => ({
+const state = (): RootState => ({
     title: "Byloth's Website",
     author: "Matteo Bilotta",
     actions: [
@@ -62,11 +53,13 @@ const state = (): IndexState => ({
 });
 
 const actions = {
-    print(context: ActionContext<IndexState, IndexState>): void
+    dialog(context: ActionContext<RootState, RootState>): void { },
+
+    print(context: ActionContext<RootState, RootState>): void
     {
         window.print();
     },
-    share(context: ActionContext<IndexState, IndexState>): void
+    share(context: ActionContext<RootState, RootState>): void
     {
         if (navigator.share)
         {

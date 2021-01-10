@@ -19,36 +19,36 @@
             </div>
             <div class="column col-sm-8 col-md-6">
                 <h3>Contatti e social</h3>
-                <RippleAnchor href="//www.facebook.com/matteo.bilotta"
+                <ActionAnchor href="//www.facebook.com/matteo.bilotta"
                               title="Matteo Bilotta su Facebook"
                               rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-facebook"></span>
-                </RippleAnchor>
-                <RippleAnchor href="//github.com/Byloth"
+                </ActionAnchor>
+                <ActionAnchor href="//github.com/Byloth"
                               title="Matteo Bilotta su GitHub"
                               rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-github"></span>
-                </RippleAnchor>
-                <RippleAnchor title="Matteo Bilotta su Instagram"
+                </ActionAnchor>
+                <ActionAnchor title="Matteo Bilotta su Instagram"
                               href="//www.instagram.com/i.byloth/"
                               rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-instagram"></span>
-                </RippleAnchor>
-                <RippleAnchor title="Matteo Bilotta su LinkedIn"
+                </ActionAnchor>
+                <ActionAnchor title="Matteo Bilotta su LinkedIn"
                               href="//www.linkedin.com/in/byloth/"
                               rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-linkedin-in"></span>
-                </RippleAnchor>
-                <RippleAnchor href="//twitter.com/iByloth"
+                </ActionAnchor>
+                <ActionAnchor href="//twitter.com/iByloth"
                               title="Matteo Bilotta su Twitter"
                               rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-twitter"></span>
-                </RippleAnchor>
+                </ActionAnchor>
             </div>
         </div>
         <div class="license-info">

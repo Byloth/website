@@ -1,7 +1,7 @@
 <template>
-    <ActionItem class="mdc-top-app-bar__action-item mdc-menu-surface--anchor"
-                :title="title"
-                @click="toggleMenu">
+    <ActionButton class="mdc-top-app-bar__action-item mdc-menu-surface--anchor"
+                  :title="title"
+                  @click="toggleMenu">
         more_vert
         <Menu v-model="open">
             <template v-for="action in actions">
@@ -23,7 +23,7 @@
                 </template>
             </template>
         </Menu>
-    </ActionItem>
+    </ActionButton>
 </template>
 
 <script lang="ts">

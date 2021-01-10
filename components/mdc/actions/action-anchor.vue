@@ -12,10 +12,10 @@
 
     import { MDCRipple } from "@material/ripple";
 
-    interface RippleAnchorData { _ripple?: MDCRipple; }
+    interface ActionAnchorData { _ripple?: MDCRipple; }
 
     export default Vue.extend({
-        name: "RippleAnchor",
+        name: "ActionAnchor",
         props: {
             title: {
                 required: true,
@@ -23,7 +23,7 @@
             }
         },
 
-        data: (): RippleAnchorData => ({ }),
+        data: (): ActionAnchorData => ({ }),
         mounted: function(): void
         {
             this._ripple = new MDCRipple(this.$el);
@@ -33,7 +33,7 @@
 </script>
 
 <style lang="scss" scoped>
-    a
+    .mdc-icon-button
     {
         align-items: center;
         display: inline-flex;

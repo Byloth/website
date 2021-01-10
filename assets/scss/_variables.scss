@@ -35,3 +35,8 @@ $max-mobile-size: $sm-size - 1px;
 $min-tablet-size: $sm-size;
 $max-tablet-size: $lg-size - 1px;
 $min-desktop-size: $lg-size;
+
+// Transitions...
+//
+$mdc-transition-duration: 280ms;
+$mdc-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
