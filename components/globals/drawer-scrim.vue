@@ -1,7 +1,7 @@
 <template>
     <div class="mdc-drawer-scrim"
          :class="classes"
-         @click="$emit('input', false)">
+         @click="onClickEvent">
     </div>
 </template>
 
@@ -20,6 +20,12 @@
             classes(): Record<string, boolean>
             {
                 return { "mdc-drawer-scrim--open": this.value };
+            }
+        },
+        methods: {
+            onClickEvent(evt?: MouseEvent): void
+            {
+                this.$emit("click", evt);
             }
         }
     });

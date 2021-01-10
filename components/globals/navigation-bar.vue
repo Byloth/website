@@ -1,11 +1,13 @@
 <template>
     <TopAppBar class="mdc-top-app-bar--prominent">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            <ActionButton v-if="toggle"
+            <ActionButton v-if="toggler"
                           class="mdc-top-app-bar__navigation-icon"
                           title="Toggle navigation drawer"
                           @click="$emit('drawer-toggle', $event)">
-                menu
+                <span class="material-icons">
+                    menu
+                </span>
             </ActionButton>
             <h1 ref="title" class="mdc-top-app-bar__title">
                 {{ title }}
@@ -33,7 +35,7 @@
     export default Vue.extend({
         name: "NavigationBar",
         props: {
-            toggle: {
+            toggler: {
                 default: true,
                 type: Boolean
             }

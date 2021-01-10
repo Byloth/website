@@ -2,7 +2,9 @@
     <ActionButton class="mdc-top-app-bar__action-item mdc-menu-surface--anchor"
                   :title="title"
                   @click="toggleMenu">
-        more_vert
+        <span class="material-icons">
+            more_vert
+        </span>
         <Menu v-model="open">
             <template v-for="action in actions">
                 <template v-if="action.path">

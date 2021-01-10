@@ -3,27 +3,26 @@
         <Drawer id="drawer"
                 v-model="open"
                 :modal="modal"
-                @select="onSelectEvent" />
+                @select="closeDrawer" />
         <div class="mdc-drawer-app-content" :class="classes">
             <NavigationBar id="navigation-bar"
-                           :toggle="toggle"
+                           :toggler="toggler"
                            @drawer-toggle="toggleDrawer" />
             <Jumbotron id="jumbotron" />
-            <div id="main-content" :style="{ 'margin-bottom': `${height}px` }">
+            <div id="main-content" :style="styles">
                 <slot></slot>
             </div>
             <Flooter id="flooter" ref="flooter" />
         </div>
         <DrawerScrim id="drawer-scrim"
                      :value="modal && open"
-                     @input="open = $event" />
-        <ContactDialog id="contact-dialog" />
+                     @click="closeDrawer" />
+        <ContactDialog id="contact-dialog" @open="onDialogOpenEvent" />
     </div>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
-    import { Route } from "vue-router";
 
     import { MOBILE_SIZE, TABLET_SIZE } from "@/core/constants";
 
@@ -36,11 +35,12 @@
 
     interface DrawerLayoutData
     {
+        dialog: boolean;
         modal: boolean;
         open: boolean;
-        toggle: boolean;
+        toggler: boolean;
 
-        height: number;
+        margin: number;
 
         status: DrawerStatus;
     }
@@ -55,11 +55,12 @@
         },
 
         data: (): DrawerLayoutData => ({
+            dialog: false,
             modal: false,
             open: false,
-            toggle: true,
+            toggler: true,
 
-            height: 0,
+            margin: 0,
 
             status: DrawerStatus.DISMISSABLE
         }),
@@ -67,13 +68,21 @@
         computed: {
             classes(): Record<string, boolean>
             {
-                return { "mdc-drawer-app-content--open": (this.open && !this.modal) };
+                return { "mdc-drawer-app-content--open": !this.modal && this.open };
+            },
+            styles(): Record<string, string>
+            {
+                return { "margin-bottom": `${this.margin}px` };
             }
         },
         watch: {
             open(value: boolean, oldValue: boolean): void
             {
-                this.$emit("input", (this.modal === true) && this.open);
+                this.$emit("disable", !(this.modal && value) && !this.dialog);
+            },
+            dialog(value: boolean, oldValue: boolean): void
+            {
+                this.$emit("disable", !(this.modal && this.open) && !value);
             }
         },
 
@@ -97,7 +106,7 @@
 
                     this.modal = true;
                     this.open = false;
-                    this.toggle = true;
+                    this.toggler = true;
                 }
             },
             setDismissable(): void
@@ -108,7 +117,7 @@
 
                     this.modal = false;
                     this.open = false;
-                    this.toggle = true;
+                    this.toggler = true;
                 }
             },
             setPermanent(): void
@@ -119,7 +128,7 @@
 
                     this.modal = false;
                     this.open = true;
-                    this.toggle = false;
+                    this.toggler = false;
                 }
             },
 
@@ -140,16 +149,20 @@
                     this.setPermanent();
                 }
 
-                this.height = (this.$refs.flooter as Vue).$el.clientHeight;
+                this.margin = (this.$refs.flooter as Vue).$el.clientHeight;
             },
-            onSelectEvent(evt?: MouseEvent): void
+            onDialogOpenEvent(value: boolean): void
+            {
+                this.dialog = value;
+            },
+
+            closeDrawer(evt?: MouseEvent): void
             {
                 if (this.status === DrawerStatus.MODAL)
                 {
                     this.open = false;
                 }
             },
-
             toggleDrawer(evt?: Event): void
             {
                 this.open = !this.open;

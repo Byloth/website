@@ -5,7 +5,9 @@
                 <ActionButton class="mdc-top-app-bar__action-item"
                               :title="cancelTitle"
                               @click="$emit('input', false)">
-                    close
+                    <span class="material-icons">
+                        close
+                    </span>
                 </ActionButton>
                 <h1 ref="title" class="mdc-top-app-bar__title">
                     {{ title }}
@@ -15,7 +17,9 @@
                 <ActionButton class="mdc-top-app-bar__action-item"
                               :title="doneTitle"
                               @click="$emit('input', false)">
-                    done
+                    <span class="material-icons">
+                        done
+                    </span>
                 </ActionButton>
             </section>
         </TopAppBar>

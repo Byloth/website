@@ -57,7 +57,7 @@
                    rel="license nofollow noopener noreferrer"
                    target="_blank"
                    title="Creative Commons Attribution-ShareAlike 4.0">
-                    <CreativeCommonsIcon />
+                    <CreativeCommonsIcon by sa />
                 </a>
             </div>
             <p>

@@ -1,5 +1,5 @@
 <template>
-    <button class="material-icons mdc-icon-button"
+    <button class="mdc-icon-button"
             :alt="title"
             :title="title"
             :aria-label="title"

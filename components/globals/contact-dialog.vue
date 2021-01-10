@@ -25,6 +25,14 @@
         name: "ContactDialog",
 
         data: (): ContactDialogData => ({ open: false }),
+
+        watch: {
+            open(value: boolean, oldValue: boolean): void
+            {
+                this.$emit("open", value);
+            }
+        },
+
         mounted: function(): void
         {
             this.stopListening = this.$store.subscribeAction(this.onDialogAction);

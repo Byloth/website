@@ -24,7 +24,9 @@
                                   class="mdc-top-app-bar__action-item"
                                   :title="action.title"
                                   @click="$emit('select', action)">
-                        {{ action.icon }}
+                        <span class="material-icons">
+                            {{ action.icon }}
+                        </span>
                     </ActionButton>
                 </template>
             </template>
