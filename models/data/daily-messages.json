@@ -200,7 +200,7 @@
   {
     "id": 23,
     "typeId": 3,
-    "text": "<label id=\"main-header-daily-message-text-field\" class=\"mdc-text-field mdc-text-field--outlined mdc-text-field--daily-message\"><span class=\"mdc-notched-outline\"><span class=\"mdc-notched-outline__leading\"></span><span class=\"mdc-notched-outline__notch\"><span id=\"main-header-daily-message-text-field-input\" class=\"mdc-floating-label\">Inserire un sottotitolo…</span></span><span class=\"mdc-notched-outline__trailing\"></span></span><input type=\"text\" class=\"mdc-text-field__input\" aria-labelledby=\"main-header-daily-message-text-field-input\" /></label>",
+    "text": "<label id=\"main-header-daily-message-text-field\" class=\"mdc-text-field mdc-text-field--outlined\"><span class=\"mdc-notched-outline\"><span class=\"mdc-notched-outline__leading\"></span><span class=\"mdc-notched-outline__notch\"><span id=\"main-header-daily-message-text-field-input\" class=\"mdc-floating-label\">Inserire un sottotitolo…</span></span><span class=\"mdc-notched-outline__trailing\"></span></span><input type=\"text\" class=\"mdc-text-field__input\" aria-labelledby=\"main-header-daily-message-text-field-input\" /></label>",
     "script": "return new mdc.textfield.MDCTextField(document.getElementById(\"main-header-daily-message-text-field\"));",
     "author": null,
     "source": null,

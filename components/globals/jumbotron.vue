@@ -177,6 +177,23 @@
                 }
             }
 
+            &::v-deep .mdc-text-field.mdc-text-field--outlined
+            {
+                background-color: #FFFFFF;
+                border-radius: 4px;
+                box-shadow: 0px 0px 4px 4px #FFFFFF;
+                font-size: 1em;
+                height: 48px;
+                margin-left: 4px;
+                margin-top: 0.2em;
+
+                .mdc-floating-label
+                {
+                    text-shadow: 0px -1px 2px #FFFFFF, 1px -1px 2px #FFFFFF, 1px 0px 2px #FFFFFF, 1px 1px 2px #FFFFFF,
+                                 0px 1px 2px #FFFFFF, -1px 1px 2px #FFFFFF, -1px 0px 2px #FFFFFF, -1px -1px 2px #FFFFFF;
+                }
+            }
+
             @media (max-width: variables.$max-mobile-size)
             {
                 margin-left: 2em;

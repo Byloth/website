@@ -1,17 +1,15 @@
 <template>
     <CardLayout id="error-page">
         <main>
-            <h1>
-                Error {{ error.statusCode }}!
-                <span class="fas fa-frown-open"></span>
-            </h1>
-            <h2>
+            <h1>Error {{ error.statusCode }}!</h1>
+            <span class="fas fa-frown-open"></span>
+            <h3>
                 <code>{{ error.message }}.</code>
-            </h2>
+            </h3>
             <hr />
-            <p>
-                Ritorna alla
-                <NuxtLink to="/">
+            <p class="text-right">
+                Torna alla
+                <NuxtLink :to="{ name: 'index' }">
                     home
                 </NuxtLink>
             </p>
@@ -48,17 +46,24 @@
 
         main
         {
-            & > h1 > .fa-frown-open
+            & > h3
             {
-                color: #FFFFFF;
-                margin-left: 0.25em;
-                text-shadow: 0px -1px 0px #000000, 1px -1px 0px #000000, 1px 0px 0px #000000, 1px 1px 0px #000000,
-                            0px 1px 0px #000000, -1px 1px 0px #000000, -1px 0px 0px #000000, -1px -1px 0px #000000;
+                font-weight: normal;
+            }
+            & > hr
+            {
+                border: none;
+                border-top: 1px solid rgba(0, 0, 0, 0.2);
             }
             & > p
             {
                 margin-bottom: 0px;
                 text-align: right;
+            }
+
+            & > .fa-frown-open
+            {
+                font-size: 10em;
             }
         }
     }

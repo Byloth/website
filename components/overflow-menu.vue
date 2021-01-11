@@ -42,7 +42,7 @@
                 type: Array
             },
             title: {
-                default: "",
+                required: true,
                 type: String
             }
         },

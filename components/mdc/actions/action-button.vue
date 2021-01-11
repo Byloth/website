@@ -3,7 +3,7 @@
             :alt="title"
             :title="title"
             :aria-label="title"
-            @click.passive="onClickEvent">
+            @click="onClickEvent">
         <slot></slot>
     </button>
 </template>

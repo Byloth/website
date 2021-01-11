@@ -1,27 +1,19 @@
 <template>
-    <CardLayout id="about-page">
-        <main>
-            <h1>This is the about page.</h1>
-        </main>
-    </CardLayout>
+    <UnderConstruction title="Questa è la pagina principale di informazioni." />
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
-    import CardLayout from "@/layouts/pages/card-layout.vue";
+    import UnderConstruction from "@/layouts/pages/under-construction.vue";
 
     export default Vue.extend({
         name: "AboutPage",
-        components: { CardLayout },
+        components: { UnderConstruction },
 
         head: { title: "Chi sono" }
     });
 </script>
 
 <style lang="scss" scoped>
-    #about-page
-    {
-        text-align: center;
-    }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <FullscreenDialog v-model="open"
-                      confirm-title="Invia"
+                      done-title="Invia"
                       title="Scrivi il tuo messaggio">
         <div class="container">
             Questo è un messaggio di prova.

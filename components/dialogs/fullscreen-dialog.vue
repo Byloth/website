@@ -1,32 +1,30 @@
 <template>
-    <div class="fullscreen-dialog" :class="classes">
-        <TopAppBar>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <ActionButton class="mdc-top-app-bar__action-item"
-                              :title="cancelTitle"
-                              @click="$emit('input', false)">
-                    <span class="material-icons">
-                        close
-                    </span>
-                </ActionButton>
-                <h1 ref="title" class="mdc-top-app-bar__title">
-                    {{ title }}
-                </h1>
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <ActionButton class="mdc-top-app-bar__action-item"
-                              :title="doneTitle"
-                              @click="$emit('input', false)">
-                    <span class="material-icons">
-                        done
-                    </span>
-                </ActionButton>
-            </section>
-        </TopAppBar>
-        <div class="content">
-            <slot></slot>
+    <transition name="slide-up">
+        <div v-if="value" class="fullscreen-dialog">
+            <TopAppBar>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <ActionButton class="mdc-top-app-bar__action-item"
+                                  :title="cancelTitle"
+                                  @click="onCancelClick">
+                        <span class="material-icons">
+                            close
+                        </span>
+                    </ActionButton>
+                    <h1 ref="title" class="mdc-top-app-bar__title">
+                        {{ title }}
+                    </h1>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                    <Button unelevated @click="onDoneClick">
+                        {{ doneTitle }}
+                    </Button>
+                </section>
+            </TopAppBar>
+            <div class="content">
+                <slot></slot>
+            </div>
         </div>
-    </div>
+    </transition>
 </template>
 
 <script lang="ts">
@@ -44,7 +42,7 @@
                 type: String
             },
             title: {
-                default: "",
+                required: true,
                 type: String
             },
             value: {
@@ -52,10 +50,16 @@
                 type: Boolean
             }
         },
-        computed: {
-            classes(): Record<string, boolean>
+        methods: {
+            onCancelClick(evt?: MouseEvent): void
             {
-                return { "open": this.value };
+                this.$emit("cancel", evt);
+                this.$emit("input", false);
+            },
+            onDoneClick(evt?: MouseEvent): void
+            {
+                this.$emit("done", evt);
+                this.$emit("input", false);
             }
         }
     });
@@ -63,6 +67,12 @@
 
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
+
+    @keyframes slide-up
+    {
+        0% { transform: translateY(100%); }
+        100% { transform: translateY(0px); }
+    }
 
     .fullscreen-dialog
     {
@@ -73,8 +83,6 @@
         position: fixed;
         right: 0px;
         top: 0px;
-        transform: translateY(100%);
-        transition: transform variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
         z-index: 6;
 
         & > .mdc-top-app-bar
@@ -85,6 +93,21 @@
                         0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
             position: static;
+
+            .mdc-top-app-bar__section > .mdc-button
+            {
+                height: calc(100% + 8px);
+
+                &::v-deep > .mdc-button__ripple
+                {
+                    border-radius: 0px;
+                }
+
+                @media (min-width: 600px)
+                {
+                    height: calc(100% + 16px);
+                }
+            }
         }
         & > .content
         {
@@ -94,9 +117,13 @@
             padding: 0.5em;
         }
 
-        &.open
+        &.slide-up-enter-active
         {
-            transform: translateY(0px);
+            animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+        }
+        &.slide-up-leave-active
+        {
+            animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function reverse;
         }
 
         @media print

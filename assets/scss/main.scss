@@ -152,22 +152,6 @@ q
     }
 }
 
-.mdc-text-field.mdc-text-field--outlined.mdc-text-field--daily-message
-{
-    background-color: #FFFFFF;
-    border-radius: 4px;
-    box-shadow: 0px 0px 4px 4px #FFFFFF;
-    font-size: 1em;
-    height: 48px;
-    margin-left: 4px;
-    margin-top: 0.2em;
-
-    .mdc-floating-label
-    {
-        text-shadow: 0px 0px 2px #FFFFFF;
-    }
-}
-
 .nuxt-content
 {
     & > :first-child
