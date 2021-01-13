@@ -61,11 +61,11 @@
     export default Vue.extend({
         name: "Drawer",
         props: {
-            modal: {
+            value: {
                 default: false,
                 type: Boolean
             },
-            value: {
+            modal: {
                 default: false,
                 type: Boolean
             }
@@ -147,7 +147,7 @@
             border-top: 1px solid rgba(0, 0, 0, 0.075);
             color: #5F5F5F;
             font-size: smaller;
-            padding: 12px 16px;
+            padding: 0.75em 1em;
             text-align: right;
             text-shadow: 1px 1px 1px #FFFFFF;
 

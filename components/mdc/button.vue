@@ -27,6 +27,10 @@
     export default Vue.extend({
         name: "Button",
         props: {
+            title: {
+                default: "",
+                type: String
+            },
             icon: {
                 default: "",
                 type: String
@@ -38,10 +42,6 @@
             raised: {
                 default: false,
                 type: Boolean
-            },
-            title: {
-                default: "",
-                type: String
             },
             unelevated: {
                 default: false,

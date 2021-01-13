@@ -95,7 +95,7 @@
 
         & > .row > .column
         {
-            padding: 0px 16px;
+            padding: 0px 1em;
 
             & > ul
             {

@@ -1,38 +1,58 @@
 <template>
-    <transition name="slide-up">
-        <div v-if="value" class="fullscreen-dialog">
-            <TopAppBar>
-                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                    <ActionButton class="mdc-top-app-bar__action-item"
-                                  :title="cancelTitle"
-                                  @click="onCancelClick">
-                        <span class="material-icons">
-                            close
-                        </span>
-                    </ActionButton>
-                    <h1 ref="title" class="mdc-top-app-bar__title">
-                        {{ title }}
-                    </h1>
-                </section>
-                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                    <Button unelevated @click="onDoneClick">
-                        {{ doneTitle }}
-                    </Button>
-                </section>
-            </TopAppBar>
-            <div class="content">
-                <slot></slot>
-            </div>
+    <div v-if="value"
+         class="fullscreen-dialog"
+         :class="classes">
+        <TopAppBar>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <ActionButton class="mdc-top-app-bar__action-item"
+                              :title="cancelTitle"
+                              @click="onCancelClick">
+                    <span class="material-icons">
+                        close
+                    </span>
+                </ActionButton>
+                <h1 ref="title" class="mdc-top-app-bar__title">
+                    {{ title }}
+                </h1>
+            </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                <Button unelevated @click="onDoneClick">
+                    {{ doneTitle }}
+                </Button>
+            </section>
+        </TopAppBar>
+        <div class="content">
+            <slot></slot>
         </div>
-    </transition>
+    </div>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
+    import { TRANSITION_DURATION } from "@/core/constants";
+
+    interface FullscreenDialogData
+    {
+        // SMELLS: False positive!
+        //
+        // eslint-disable-next-line no-undef
+        _timeoutId?: NodeJS.Timeout;
+
+        closing: boolean;
+    }
+
     export default Vue.extend({
         name: "FullscreenDialog",
         props: {
+            value: {
+                default: false,
+                type: Boolean
+            },
+            title: {
+                required: true,
+                type: String
+            },
             cancelTitle: {
                 default: "Annulla",
                 type: String
@@ -40,26 +60,51 @@
             doneTitle: {
                 default: "Conferma",
                 type: String
-            },
-            title: {
-                required: true,
-                type: String
-            },
-            value: {
-                default: false,
-                type: Boolean
             }
         },
+
+        data: (): FullscreenDialogData => ({ closing: false }),
+
+        computed: {
+            classes(): Record<string, boolean>
+            {
+                return { "closing": this.closing };
+            }
+        },
+        watch: {
+            value(value: boolean, oldValue: boolean)
+            {
+                this.closing = !value;
+            }
+        },
+
+        destroyed: function(): void
+        {
+            if (this._timeoutId)
+            {
+                clearTimeout(this._timeoutId);
+            }
+        },
+
         methods: {
+            emitDelayed(event: string, payload?: MouseEvent)
+            {
+                this.closing = true;
+
+                this._timeoutId = setTimeout(() =>
+                {
+                    this.$emit(event, payload);
+                    this.$emit("input", false);
+                }, TRANSITION_DURATION);
+            },
+
             onCancelClick(evt?: MouseEvent): void
             {
-                this.$emit("cancel", evt);
-                this.$emit("input", false);
+                this.emitDelayed("cancel", evt);
             },
             onDoneClick(evt?: MouseEvent): void
             {
-                this.$emit("done", evt);
-                this.$emit("input", false);
+                this.emitDelayed("done", evt);
             }
         }
     });
@@ -73,9 +118,15 @@
         0% { transform: translateY(100%); }
         100% { transform: translateY(0px); }
     }
+    @keyframes slide-down
+    {
+        0% { transform: translateY(0px); }
+        100% { transform: translateY(100%); }
+    }
 
     .fullscreen-dialog
     {
+        animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
         bottom: 0px;
         display: flex;
         flex-direction: column;
@@ -117,13 +168,9 @@
             padding: 0.5em;
         }
 
-        &.slide-up-enter-active
+        &.closing
         {
-            animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
-        }
-        &.slide-up-leave-active
-        {
-            animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function reverse;
+            animation: slide-down variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
         }
 
         @media print

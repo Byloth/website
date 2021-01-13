@@ -22,10 +22,7 @@
     {
         & > .container.mdc-card
         {
-            padding: 32px;
-            transition-duration: $mdc-drawer-animation-enter;
-            transition-property: max-width;
-            transition-timing-function: $mdc-animation-standard-curve-timing-function;
+            padding: 2em;
 
             @media print
             {

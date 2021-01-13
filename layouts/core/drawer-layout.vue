@@ -47,12 +47,6 @@
 
     export default Vue.extend({
         name: "DrawerLayout",
-        props: {
-            value: {
-                default: false,
-                type: Boolean
-            }
-        },
 
         data: (): DrawerLayoutData => ({
             dialog: false,
