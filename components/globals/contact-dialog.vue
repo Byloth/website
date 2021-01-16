@@ -3,54 +3,25 @@
                       done-title="Invia"
                       title="Scrivi il tuo messaggio">
         <div class="container mdc-card">
-            <label class="mdc-text-field mdc-text-field--outlined">
-                <span class="mdc-notched-outline">
-                    <span class="mdc-notched-outline__leading"></span>
-                    <span class="mdc-notched-outline__notch">
-                        <span id="my-label-id" class="mdc-floating-label">Your Name</span>
-                    </span>
-                    <span class="mdc-notched-outline__trailing"></span>
-                </span>
-                <input type="text"
-                       class="mdc-text-field__input"
-                       aria-labelledby="my-label-id" />
-            </label>
-            <label class="mdc-text-field mdc-text-field--outlined">
-                <span class="mdc-notched-outline">
-                    <span class="mdc-notched-outline__leading"></span>
-                    <span class="mdc-notched-outline__notch">
-                        <span id="my-label-id" class="mdc-floating-label">Your Name</span>
-                    </span>
-                    <span class="mdc-notched-outline__trailing"></span>
-                </span>
-                <input type="text"
-                       class="mdc-text-field__input"
-                       aria-labelledby="my-label-id" />
-            </label>
-            <label class="mdc-text-field mdc-text-field--outlined">
-                <span class="mdc-notched-outline">
-                    <span class="mdc-notched-outline__leading"></span>
-                    <span class="mdc-notched-outline__notch">
-                        <span id="my-label-id" class="mdc-floating-label">Your Name</span>
-                    </span>
-                    <span class="mdc-notched-outline__trailing"></span>
-                </span>
-                <input type="text"
-                       class="mdc-text-field__input"
-                       aria-labelledby="my-label-id" />
-            </label>
-            <label class="mdc-text-field mdc-text-field--outlined mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-notched-outline">
-                    <span class="mdc-notched-outline__leading"></span>
-                    <span class="mdc-notched-outline__trailing"></span>
-                </span>
-                <span class="mdc-text-field__resizer">
-                    <textarea class="mdc-text-field__input"
-                              rows="8"
-                              cols="40"
-                              aria-label="Label"></textarea>
-                </span>
-            </label>
+            <div class="row">
+                <div class="col-6">
+                    <TextField id="contact-dialog-field-name"
+                               label="Nome e cognome"
+                               leading-icon="person"
+                               outlined />
+                </div>
+                <div class="col-6">
+                    <TextField id="contact-dialog-field-email"
+                               label="Indirizzo e-mail"
+                               leading-icon="alternate_email"
+                               type="email"
+                               outlined />
+                </div>
+            </div>
+            <TextField id="contact-dialog-field-email"
+                       label="Oggetto del messaggio"
+                       outlined />
+            <TextareaField label="Messaggio" outlined />
         </div>
     </FullscreenDialog>
 </template>

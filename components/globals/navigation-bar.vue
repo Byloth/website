@@ -3,7 +3,7 @@
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <ActionButton v-if="toggler"
                           class="mdc-top-app-bar__navigation-icon"
-                          title="Toggle navigation drawer"
+                          title="Apri / Chiudi la barra di navigazione"
                           @click="$emit('drawer-toggle', $event)">
                 <span class="material-icons">
                     menu
