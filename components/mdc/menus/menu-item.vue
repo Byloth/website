@@ -17,7 +17,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-
     import { MDCRipple } from "@material/ripple";
 
     interface MenuItemData { _ripple?: MDCRipple; }

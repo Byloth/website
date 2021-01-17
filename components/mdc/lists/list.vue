@@ -6,7 +6,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-
     import { MDCList } from "@material/list";
 
     interface ListData { _list?: MDCList; }

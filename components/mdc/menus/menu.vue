@@ -14,7 +14,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-
     import { MDCMenu } from "@material/menu";
     import { strings } from "@material/menu-surface";
 

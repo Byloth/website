@@ -11,7 +11,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-
     import { MDCTooltip } from "@material/tooltip";
 
     interface TooltipData { _tooltip?: MDCTooltip; }

@@ -1,46 +1,35 @@
 <template>
-    <div v-if="value"
-         class="fullscreen-dialog"
+    <div class="fullscreen-dialog"
          :class="classes">
-        <TopAppBar>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <ActionButton class="mdc-top-app-bar__action-item"
-                              :title="cancelTitle"
-                              @click="onCancelClick">
-                    <span class="material-icons">
-                        close
-                    </span>
-                </ActionButton>
-                <h1 ref="title" class="mdc-top-app-bar__title">
-                    {{ title }}
-                </h1>
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <Button unelevated @click="onDoneClick">
-                    {{ doneTitle }}
-                </Button>
-            </section>
-        </TopAppBar>
-        <div class="content">
-            <slot></slot>
+        <div class="dialog">
+            <TopAppBar>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <ActionButton class="mdc-top-app-bar__action-item"
+                                  :title="cancelTitle"
+                                  @click="onCancelClick">
+                        <span class="material-icons">
+                            close
+                        </span>
+                    </ActionButton>
+                    <h1 ref="title" class="mdc-top-app-bar__title">
+                        {{ title }}
+                    </h1>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                    <Button unelevated @click="onDoneClick">
+                        {{ doneTitle }}
+                    </Button>
+                </section>
+            </TopAppBar>
+            <div class="content">
+                <slot></slot>
+            </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
-
-    import { TRANSITION_DURATION } from "@/core/constants";
-
-    interface FullscreenDialogData
-    {
-        // SMELLS: False positive!
-        //
-        // eslint-disable-next-line no-undef
-        _timeoutId?: NodeJS.Timeout;
-
-        closing: boolean;
-    }
 
     export default Vue.extend({
         name: "FullscreenDialog",
@@ -62,49 +51,22 @@
                 type: String
             }
         },
-
-        data: (): FullscreenDialogData => ({ closing: false }),
-
         computed: {
             classes(): Record<string, boolean>
             {
-                return { "closing": this.closing };
+                return { "open": this.value };
             }
         },
-        watch: {
-            value(value: boolean, oldValue: boolean)
-            {
-                this.closing = !value;
-            }
-        },
-
-        destroyed: function(): void
-        {
-            if (this._timeoutId)
-            {
-                clearTimeout(this._timeoutId);
-            }
-        },
-
         methods: {
-            emitDelayed(event: string, payload?: MouseEvent)
+            onCancelClick(evt: MouseEvent): void
             {
-                this.closing = true;
-
-                this._timeoutId = setTimeout(() =>
-                {
-                    this.$emit(event, payload);
-                    this.$emit("input", false);
-                }, TRANSITION_DURATION);
+                this.$emit("cancel", evt);
+                this.$emit("input", false);
             },
-
-            onCancelClick(evt?: MouseEvent): void
+            onDoneClick(evt: MouseEvent): void
             {
-                this.emitDelayed("cancel", evt);
-            },
-            onDoneClick(evt?: MouseEvent): void
-            {
-                this.emitDelayed("done", evt);
+                this.$emit("done", evt);
+                this.$emit("input", false);
             }
         }
     });
@@ -113,66 +75,73 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
-    @keyframes slide-up
-    {
-        0% { transform: translateY(100%); }
-        100% { transform: translateY(0px); }
-    }
-    @keyframes slide-down
-    {
-        0% { transform: translateY(0px); }
-        100% { transform: translateY(100%); }
-    }
-
     .fullscreen-dialog
     {
-        animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
         bottom: 0px;
         display: flex;
         flex-direction: column;
         left: 0px;
+        opacity: 0;
         position: fixed;
         right: 0px;
         top: 0px;
         z-index: 6;
 
-        & > .mdc-top-app-bar
+        & > .dialog
         {
-            background-color: variables.$primary-color;
-            box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-                        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
-                        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
 
-            position: static;
-
-            .mdc-top-app-bar__section > .mdc-button
+            & > .mdc-top-app-bar
             {
-                height: calc(100% + 8px);
+                backdrop-filter: none;
+                background-color: variables.$primary-color;
+                box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+                            0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+                            0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
-                &::v-deep > .mdc-button__ripple
-                {
-                    border-radius: 0px;
-                }
+                position: static;
 
-                @media (min-width: 600px)
+                .mdc-top-app-bar__section > .mdc-button
                 {
-                    height: calc(100% + 16px);
+                    height: calc(100% + 8px);
+
+                    &::v-deep > .mdc-button__ripple
+                    {
+                        border-radius: 0px;
+                    }
+
+                    @media (min-width: 600px)
+                    {
+                        height: calc(100% + 16px);
+                    }
                 }
             }
-        }
-        & > .content
-        {
-            background-color: variables.$chrome-scrollbar-color;
-            backdrop-filter: blur(20px) saturate(180%);
-            flex: 1;
-            padding: 0.5em;
-        }
-
-        &.closing
-        {
-            animation: slide-down variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+            & > .content
+            {
+                background-color: variables.$chrome-scrollbar-color;
+                flex: 1;
+                padding: 0.5em;
+            }
         }
 
+        &.open
+        {
+            opacity: 1;
+
+            & > .dialog
+            {
+                transform: translateY(0px);
+            }
+        }
+
+        @media (min-width: variables.$min-tablet-size)
+        {
+            transition: opacity variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+        }
         @media print
         {
             display: none;

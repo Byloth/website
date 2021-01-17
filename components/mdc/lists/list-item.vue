@@ -53,7 +53,7 @@
             }
         },
         methods: {
-            emitClickEvent(evt?: MouseEvent)
+            emitClickEvent(evt: MouseEvent)
             {
                 this.$emit("click", evt);
             }

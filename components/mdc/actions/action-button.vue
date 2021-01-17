@@ -10,7 +10,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-
     import { MDCRipple } from "@material/ripple";
 
     interface ActionButtonData { _ripple?: MDCRipple; }
@@ -32,7 +31,7 @@
         },
 
         methods: {
-            onClickEvent(evt?: MouseEvent)
+            onClickEvent(evt: MouseEvent)
             {
                 this.$emit("click", evt);
             }

@@ -9,7 +9,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-
     import { MDCTextFieldIcon } from "@material/textfield";
 
     interface TextFieldIconData { _textFieldIcon?: MDCTextFieldIcon; }

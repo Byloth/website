@@ -85,11 +85,11 @@
             })
         },
         methods: {
-            emitSelectEvent(evt?: MouseEvent): void
+            emitSelectEvent(evt: MouseEvent): void
             {
                 this.$emit("select", evt);
             },
-            openContactDialog(evt?: MouseEvent): void
+            openContactDialog(evt: MouseEvent): void
             {
                 this.$store.dispatch("dialog");
 

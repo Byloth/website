@@ -23,7 +23,7 @@
             }
         },
         methods: {
-            onClickEvent(evt?: MouseEvent): void
+            onClickEvent(evt: MouseEvent): void
             {
                 this.$emit("click", evt);
             }

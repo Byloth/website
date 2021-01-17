@@ -6,21 +6,28 @@
             <template v-if="outlined">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
-                    <span class="mdc-notched-outline__notch">
-                        <span :id="id" class="mdc-floating-label">{{ label }}</span>
+                    <span v-if="label" class="mdc-notched-outline__notch">
+                        <span :id="`${id}-label`" class="mdc-floating-label">
+                            {{ label }}
+                        </span>
                     </span>
                     <span class="mdc-notched-outline__trailing"></span>
                 </span>
             </template>
             <template v-else>
                 <span class="mdc-text-field__ripple"></span>
-                <span :id="id" class="mdc-floating-label">{{ label }}</span>
+                <span v-if="label"
+                      :id="`${id}-label`"
+                      class="mdc-floating-label">
+                    {{ label }}
+                </span>
             </template>
             <TextFieldIcon v-if="leadingIcon" leading>
                 {{ leadingIcon }}
             </TextFieldIcon>
-            <input class="mdc-text-field__input"
-                   :aria-labelledby="id"
+            <input :id="id"
+                   class="mdc-text-field__input"
+                   :aria-labelledby="label ? `${id}-label` : ''"
                    :aria-controls="help ? `${id}-helper` : ''"
                    :aria-describedby="help ? `${id}-helper` : ''"
                    :disabled="disabled"
@@ -44,7 +51,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-
     import { MDCTextField } from "@material/textfield";
 
     interface TextFieldData { _textField?: MDCTextField; }
@@ -69,7 +75,7 @@
                 type: String
             },
             label: {
-                required: true,
+                default: "",
                 type: String
             },
             help: {
@@ -98,6 +104,7 @@
                 return {
                     "mdc-text-field--disabled": this.disabled,
                     "mdc-text-field--filled": !this.outlined,
+                    "mdc-text-field--no-label": !this.label,
                     "mdc-text-field--outlined": this.outlined,
                     "mdc-text-field--with-leading-icon": !!this.leadingIcon,
                     "mdc-text-field--with-trailing-icon": !!this.trailingIcon

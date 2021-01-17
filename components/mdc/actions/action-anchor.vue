@@ -9,7 +9,6 @@
 
 <script lang="ts">
     import Vue from "vue";
-
     import { MDCRipple } from "@material/ripple";
 
     interface ActionAnchorData { _ripple?: MDCRipple; }

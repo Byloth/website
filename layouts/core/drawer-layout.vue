@@ -143,21 +143,21 @@
                     this.setPermanent();
                 }
 
-                this.margin = (this.$refs.flooter as Vue).$el.clientHeight;
+                this.margin = (this.$refs.flooter as Element).clientHeight;
             },
             onDialogOpenEvent(value: boolean): void
             {
                 this.dialog = value;
             },
 
-            closeDrawer(evt?: MouseEvent): void
+            closeDrawer(evt: MouseEvent): void
             {
                 if (this.status === DrawerStatus.MODAL)
                 {
                     this.open = false;
                 }
             },
-            toggleDrawer(evt?: Event): void
+            toggleDrawer(evt: Event): void
             {
                 this.open = !this.open;
             }
