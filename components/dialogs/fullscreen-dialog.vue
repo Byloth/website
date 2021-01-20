@@ -1,5 +1,6 @@
 <template>
-    <div class="fullscreen-dialog"
+    <div v-if="value"
+         class="fullscreen-dialog"
          :class="classes">
         <div class="dialog">
             <TopAppBar>
@@ -31,6 +32,10 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import { TRANSITION_DURATION } from "@/core/constants";
+
+    interface FullscreenDialogData { closing: boolean; }
+
     export default Vue.extend({
         name: "FullscreenDialog",
         props: {
@@ -51,22 +56,40 @@
                 type: String
             }
         },
+
+        data: (): FullscreenDialogData => ({ closing: false }),
+
         computed: {
             classes(): Record<string, boolean>
             {
-                return { "open": this.value };
+                return { "closing": this.closing };
             }
         },
         methods: {
+            close(): Promise<void>
+            {
+                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
+                {
+                    this.closing = true;
+
+                    setTimeout(() =>
+                    {
+                        this.$emit("input", false);
+
+                        this.closing = false;
+
+                        resolve();
+                    }, TRANSITION_DURATION);
+                });
+            },
+
             onCancelClick(evt: MouseEvent): void
             {
-                this.$emit("cancel", evt);
-                this.$emit("input", false);
+                this.$emit("cancel", this.close, evt);
             },
             onDoneClick(evt: MouseEvent): void
             {
-                this.$emit("done", evt);
-                this.$emit("input", false);
+                this.$emit("done", this.close, evt);
             }
         }
     });
@@ -75,13 +98,50 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
+    @keyframes fade-in
+    {
+        0%
+        {
+            backdrop-filter: blur(0px);
+            opacity: 0;
+        }
+        100%
+        {
+            backdrop-filter: blur(2.5px);
+            opacity: 1;
+        }
+    }
+    @keyframes fade-out
+    {
+        0%
+        {
+            backdrop-filter: blur(2.5px);
+            opacity: 1;
+        }
+        100%
+        {
+            backdrop-filter: blur(0px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slide-up
+    {
+        0% { transform: translateY(100%); }
+        100% { transform: translateY(0%); }
+    }
+    @keyframes slide-down
+    {
+        0% { transform: translateY(0%); }
+        100% { transform: translateY(100%); }
+    }
+
     .fullscreen-dialog
     {
         bottom: 0px;
         display: flex;
         flex-direction: column;
         left: 0px;
-        opacity: 0;
         position: fixed;
         right: 0px;
         top: 0px;
@@ -89,11 +149,10 @@
 
         & > .dialog
         {
+            animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
             display: flex;
             flex: 1;
             flex-direction: column;
-            transform: translateY(100%);
-            transition: transform variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
 
             & > .mdc-top-app-bar
             {
@@ -122,25 +181,59 @@
             }
             & > .content
             {
-                background-color: variables.$chrome-scrollbar-color;
+                background-color: #FFFFFF;
                 flex: 1;
-                padding: 0.5em;
+                overflow-y: auto;
+                padding: 1em;
+                padding-bottom: 0px;
             }
         }
 
-        &.open
+        &.closing
         {
-            opacity: 1;
+            & > .dialog
+            {
+                animation: slide-down variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+            }
+        }
+
+        @media (min-width: variables.$md-size)
+        {
+            @keyframes slide-up
+            {
+                0% { transform: translateY(25%); }
+                100% { transform: translateY(0%); }
+            }
+            @keyframes slide-down
+            {
+                0% { transform: translateY(0%); }
+                100% { transform: translateY(25%); }
+            }
+
+            align-items: center;
+            animation: fade-in variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+            backdrop-filter: blur(2.5px);
+            background-color: rgba(0, 0, 0, 0.35);
+            display: inline-flex;
+            justify-content: center;
 
             & > .dialog
             {
-                transform: translateY(0px);
-            }
-        }
+                border-radius: 4px;
+                box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+                            0px 24px 38px 3px rgba(0, 0, 0, 0.14),
+                            0px 9px 46px 8px rgba(0, 0, 0, 0.12);
 
-        @media (min-width: variables.$min-tablet-size)
-        {
-            transition: opacity variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+                flex: unset;
+                height: max-content;
+                overflow: hidden;
+                width: max-content;
+            }
+
+            &.closing
+            {
+                animation: fade-out variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+            }
         }
         @media print
         {

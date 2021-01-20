@@ -1,10 +1,10 @@
 <template>
-    <FullscreenDialog title="Scrivi il tuo messaggio"
+    <FullscreenDialog v-model="open"
+                      title="Scrivi il tuo messaggio"
                       done-title="Invia"
-                      :value="open"
                       @cancel="onCancelEvent"
                       @done="onDoneEvent">
-        <div class="container mdc-card">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <TextField id="contact-dialog-field-name"
@@ -34,7 +34,6 @@
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { TRANSITION_DURATION } from "@/core/constants";
     import { RootState } from "@/store/types";
 
     interface ContactDialogData
@@ -58,21 +57,6 @@
         },
 
         methods: {
-            close(): Promise<void>
-            {
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
-                {
-                    this.open = false;
-
-                    setTimeout(() =>
-                    {
-                        this.$emit("open", false);
-
-                        resolve();
-                    }, TRANSITION_DURATION);
-                });
-            },
-
             onDialogAction(action: ActionPayload, state: RootState): void
             {
                 if (action.type === "dialog")
@@ -83,24 +67,42 @@
                 }
             },
 
-            onCancelEvent(evt: MouseEvent)
+            async onCancelEvent(close: () => Promise<void>, evt: MouseEvent)
             {
-                this.close();
+                await close();
+
+                this.$emit("open", false);
             },
-            onDoneEvent(evt: MouseEvent)
+            async onDoneEvent(close: () => Promise<void>, evt: MouseEvent)
             {
-                this.close();
+                await close();
+
+                this.$emit("open", false);
             }
         }
     });
 </script>
 
 <style lang="scss" scoped>
-    .fullscreen-dialog
+    @use "~@/assets/scss/variables";
+
+    @media (min-width: variables.$md-size)
     {
-        .container.mdc-card
+        .container > .row
         {
-            padding: 2em;
+            & > .col-md-6
+            {
+                padding: 0px 0.5em;
+
+                &:first-child
+                {
+                    padding-left: 0px;
+                }
+                &:last-child
+                {
+                    padding-right: 0px;
+                }
+            }
         }
     }
 </style>

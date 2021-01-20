@@ -116,6 +116,7 @@
     .textarea-field
     {
         display: inline-block;
+        margin-bottom: 1em;
         width: 100%;
 
         & > .mdc-text-field.mdc-text-field--textarea

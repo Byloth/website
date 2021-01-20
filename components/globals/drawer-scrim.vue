@@ -37,7 +37,7 @@
 
     .mdc-drawer-scrim
     {
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(2.5px);
         background-color: rgba(0, 0, 0, 0.35);
         display: block;
         opacity: 0;
