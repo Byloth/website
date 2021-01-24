@@ -1,6 +1,6 @@
 <template>
     <div v-if="value"
-         class="fullscreen-dialog"
+         class="fullscreen-dialog overlay"
          :class="classes">
         <div class="dialog">
             <TopAppBar>
@@ -138,13 +138,10 @@
 
     .fullscreen-dialog
     {
-        bottom: 0px;
+        backdrop-filter: none;
+        background: none;
         display: flex;
         flex-direction: column;
-        left: 0px;
-        position: fixed;
-        right: 0px;
-        top: 0px;
         z-index: 6;
 
         & > .dialog
@@ -214,7 +211,6 @@
             animation: fade-in variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
             backdrop-filter: blur(2.5px);
             background-color: rgba(0, 0, 0, 0.35);
-            display: inline-flex;
             justify-content: center;
 
             & > .dialog

@@ -1,5 +1,5 @@
 <template>
-    <div class="mdc-drawer-scrim"
+    <div class="mdc-drawer-scrim overlay"
          :class="classes"
          @click="onClickEvent">
     </div>
@@ -37,8 +37,6 @@
 
     .mdc-drawer-scrim
     {
-        backdrop-filter: blur(2.5px);
-        background-color: rgba(0, 0, 0, 0.35);
         display: block;
         opacity: 0;
         transition-duration: $mdc-drawer-animation-enter;
@@ -51,11 +49,6 @@
             opacity: 1;
             transition-duration: $mdc-drawer-animation-exit;
             visibility: visible;
-        }
-
-        @media print
-        {
-            display: none;
         }
     }
 </style>

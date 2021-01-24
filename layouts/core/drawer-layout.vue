@@ -17,6 +17,7 @@
         <DrawerScrim id="drawer-scrim"
                      :value="modal && open"
                      @click="closeDrawer" />
+        <BottomDialog />
         <ContactDialog id="contact-dialog" @open="onDialogOpenEvent" />
     </div>
 </template>
@@ -143,7 +144,7 @@
                     this.setPermanent();
                 }
 
-                this.margin = (this.$refs.flooter as Element).clientHeight;
+                this.margin = (this.$refs.flooter as Vue).$el.clientHeight;
             },
             onDialogOpenEvent(value: boolean): void
             {
