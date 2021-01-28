@@ -21,15 +21,7 @@
                                       title="Matteo Bilotta su Facebook"
                                       rel="nofollow noopener noreferrer"
                                       target="_blank">
-                            <span class="fab fa-facebook"></span>
-                        </ActionAnchor>
-                    </div>
-                    <div class="col-3">
-                        <ActionAnchor href="//www.facebook.com/matteo.bilotta"
-                                      title="Matteo Bilotta su Facebook"
-                                      rel="nofollow noopener noreferrer"
-                                      target="_blank">
-                            <span class="fab fa-twitter"></span>
+                            <span class="fab fa-envelope"></span>
                         </ActionAnchor>
                     </div>
                     <div class="col-3">
@@ -61,7 +53,7 @@
                                       title="Matteo Bilotta su Facebook"
                                       rel="nofollow noopener noreferrer"
                                       target="_blank">
-                            <span class="fab fa-facebook"></span>
+                            <span class="fab fa-linkedin"></span>
                         </ActionAnchor>
                     </div>
                     <div class="col-3">
@@ -69,7 +61,15 @@
                                       title="Matteo Bilotta su Facebook"
                                       rel="nofollow noopener noreferrer"
                                       target="_blank">
-                            <span class="fab fa-facebook"></span>
+                            <span class="fab fa-pinterest"></span>
+                        </ActionAnchor>
+                    </div>
+                    <div class="col-3">
+                        <ActionAnchor href="//www.facebook.com/matteo.bilotta"
+                                      title="Matteo Bilotta su Facebook"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-twitter"></span>
                         </ActionAnchor>
                     </div>
                 </div>
