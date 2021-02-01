@@ -24,12 +24,14 @@
             </template>
             <span class="mdc-text-field__resizer">
                 <textarea :id="id"
+                          ref="textarea"
                           class="mdc-text-field__input"
                           :aria-labelledby="label ? `${id}-label` : ''"
                           :aria-controls="help ? `${id}-helper` : ''"
                           :aria-describedby="help ? `${id}-helper` : ''"
                           :rows="rows"
                           :disabled="disabled"
+                          :readonly="readonly"
                           :value="value"
                           @input="onInputEvent"></textarea>
             </span>
@@ -63,6 +65,10 @@
                 type: Boolean
             },
             outlined: {
+                default: false,
+                type: Boolean
+            },
+            readonly: {
                 default: false,
                 type: Boolean
             },

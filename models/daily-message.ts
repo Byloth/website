@@ -61,7 +61,7 @@ export default class DailyMessage implements DailyMessageData
             throw new Error("This daily message cannot be executed. It hasn't a valid script to run.");
         }
 
-        return new Promise((resolve, reject) =>
+        return new Promise<unknown>((resolve: (value: unknown) => void, reject: (reason?: any) => void) =>
         {
             try
             {

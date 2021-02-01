@@ -5,11 +5,12 @@
         <span class="material-icons">
             more_vert
         </span>
-        <Menu v-model="open">
+        <Menu v-model="isOpen">
             <template v-for="action in actions">
                 <template v-if="action.path">
                     <NuxtLink :key="action.id"
                               v-slot="{ href }"
+                              custom
                               :to="action.path">
                         <MenuAnchor :href="href"
                                     rel="nofollow noopener noreferrer"
@@ -31,7 +32,7 @@
 <script lang="ts">
     import Vue from "vue";
 
-    interface OverflowMenuData { open: boolean; }
+    interface OverflowMenuData { isOpen: boolean; }
 
     export default Vue.extend({
         name: "OverflowMenu",
@@ -47,12 +48,12 @@
             }
         },
 
-        data: (): OverflowMenuData => ({ open: false }),
+        data: (): OverflowMenuData => ({ isOpen: false }),
 
         methods: {
             toggleMenu(): void
             {
-                this.open = !this.open;
+                this.isOpen = !this.isOpen;
             }
         }
     });

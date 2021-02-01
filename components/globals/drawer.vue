@@ -14,6 +14,7 @@
                 <NuxtLink v-for="page in pages"
                           :key="page.id"
                           v-slot="{ href, route, navigate, isActive }"
+                          custom
                           :exact="page.path === '/'"
                           :to="page">
                     <ListItem :active="isActive"

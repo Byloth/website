@@ -4,7 +4,7 @@
             :alt="title"
             :title="title"
             :aria-label="title"
-            @click="onClickEvent">
+            @click="$emit('click', $event)">
         <div class="mdc-button__ripple"></div>
         <span v-if="icon"
               class="material-icons mdc-button__icon"
@@ -65,13 +65,6 @@
         {
             this._ripple = new MDCRipple(this.$el);
             this._ripple.unbounded = true;
-        },
-
-        methods: {
-            onClickEvent(evt: MouseEvent)
-            {
-                this.$emit("click", evt);
-            }
         }
     });
 </script>

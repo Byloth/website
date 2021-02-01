@@ -1,5 +1,5 @@
 <template>
-    <FullscreenDialog v-model="open"
+    <FullscreenDialog v-model="isOpen"
                       title="Scrivi il tuo messaggio"
                       done-title="Invia"
                       @cancel="onCancelEvent"
@@ -38,7 +38,7 @@
 
     interface ContactDialogData
     {
-        open: boolean;
+        isOpen: boolean;
 
         stopListening?: () => void;
     }
@@ -46,7 +46,7 @@
     export default Vue.extend({
         name: "ContactDialog",
 
-        data: (): ContactDialogData => ({ open: false }),
+        data: (): ContactDialogData => ({ isOpen: false }),
         mounted: function(): void
         {
             this.stopListening = this.$store.subscribeAction(this.onDialogAction);
@@ -61,7 +61,7 @@
             {
                 if (action.type === "dialog")
                 {
-                    this.open = true;
+                    this.isOpen = true;
 
                     this.$emit("open", true);
                 }

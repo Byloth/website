@@ -1,8 +1,8 @@
 <template>
     <div>
         <Drawer id="drawer"
-                v-model="open"
-                :modal="modal"
+                v-model="isOpen"
+                :modal="isModal"
                 @select="closeDrawer" />
         <div class="mdc-drawer-app-content" :class="classes">
             <NavigationBar id="navigation-bar"
@@ -15,7 +15,7 @@
             <Flooter id="flooter" ref="flooter" />
         </div>
         <DrawerScrim id="drawer-scrim"
-                     :value="modal && open"
+                     :value="isModal && isOpen"
                      @click="closeDrawer" />
         <BottomDialog />
         <ContactDialog id="contact-dialog" @open="onDialogOpenEvent" />
@@ -37,8 +37,8 @@
     interface DrawerLayoutData
     {
         dialog: boolean;
-        modal: boolean;
-        open: boolean;
+        isModal: boolean;
+        isOpen: boolean;
         toggler: boolean;
 
         margin: number;
@@ -51,8 +51,8 @@
 
         data: (): DrawerLayoutData => ({
             dialog: false,
-            modal: false,
-            open: false,
+            isModal: false,
+            isOpen: false,
             toggler: true,
 
             margin: 0,
@@ -63,7 +63,7 @@
         computed: {
             classes(): Record<string, boolean>
             {
-                return { "mdc-drawer-app-content--open": !this.modal && this.open };
+                return { "mdc-drawer-app-content--open": !this.isModal && this.isOpen };
             },
             styles(): Record<string, string>
             {
@@ -71,13 +71,13 @@
             }
         },
         watch: {
-            open(value: boolean, oldValue: boolean): void
+            isOpen(value: boolean, oldValue: boolean): void
             {
-                this.$emit("disable", !(this.modal && value) && !this.dialog);
+                this.$emit("disable", !(this.isModal && value) && !this.dialog);
             },
             dialog(value: boolean, oldValue: boolean): void
             {
-                this.$emit("disable", !(this.modal && this.open) && !value);
+                this.$emit("disable", !(this.isModal && this.isOpen) && !value);
             }
         },
 
@@ -99,8 +99,8 @@
                 {
                     this.status = DrawerStatus.MODAL;
 
-                    this.modal = true;
-                    this.open = false;
+                    this.isModal = true;
+                    this.isOpen = false;
                     this.toggler = true;
                 }
             },
@@ -110,8 +110,8 @@
                 {
                     this.status = DrawerStatus.DISMISSABLE;
 
-                    this.modal = false;
-                    this.open = false;
+                    this.isModal = false;
+                    this.isOpen = false;
                     this.toggler = true;
                 }
             },
@@ -121,8 +121,8 @@
                 {
                     this.status = DrawerStatus.PERMANENT;
 
-                    this.modal = false;
-                    this.open = true;
+                    this.isModal = false;
+                    this.isOpen = true;
                     this.toggler = false;
                 }
             },
@@ -155,12 +155,12 @@
             {
                 if (this.status === DrawerStatus.MODAL)
                 {
-                    this.open = false;
+                    this.isOpen = false;
                 }
             },
             toggleDrawer(evt: Event): void
             {
-                this.open = !this.open;
+                this.isOpen = !this.isOpen;
             }
         }
     });

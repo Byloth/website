@@ -7,6 +7,7 @@
                     <NuxtLink v-for="page in pages"
                               :key="page.id"
                               v-slot="{ href, navigate, isActive }"
+                              custom
                               :exact="page.path === '/'"
                               :to="page">
                         <li :class="[isActive && 'active']">

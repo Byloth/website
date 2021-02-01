@@ -34,7 +34,7 @@
 
     import { TRANSITION_DURATION } from "@/core/constants";
 
-    interface FullscreenDialogData { closing: boolean; }
+    interface FullscreenDialogData { isClosing: boolean; }
 
     export default Vue.extend({
         name: "FullscreenDialog",
@@ -57,12 +57,12 @@
             }
         },
 
-        data: (): FullscreenDialogData => ({ closing: false }),
+        data: (): FullscreenDialogData => ({ isClosing: false }),
 
         computed: {
             classes(): Record<string, boolean>
             {
-                return { "closing": this.closing };
+                return { "closing": this.isClosing };
             }
         },
         methods: {
@@ -70,13 +70,13 @@
             {
                 return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
                 {
-                    this.closing = true;
+                    this.isClosing = true;
 
                     setTimeout(() =>
                     {
                         this.$emit("input", false);
 
-                        this.closing = false;
+                        this.isClosing = false;
 
                         resolve();
                     }, TRANSITION_DURATION);

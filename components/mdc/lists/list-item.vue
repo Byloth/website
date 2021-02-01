@@ -4,7 +4,7 @@
        :alt="title"
        :title="title"
        :aria-label="title"
-       @click="emitClickEvent">
+       @click="$emit('click', $event)">
         <span class="mdc-list-item__ripple"></span>
         <template v-if="fa">
             <span class="fab mdc-list-item__graphic"
@@ -50,12 +50,6 @@
             classes(): Record<string, boolean>
             {
                 return { "mdc-list-item--activated": this.active };
-            }
-        },
-        methods: {
-            emitClickEvent(evt: MouseEvent)
-            {
-                this.$emit("click", evt);
             }
         }
     });

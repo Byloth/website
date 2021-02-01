@@ -1,4 +1,6 @@
 <?php
+    require_once(__DIR__ . "/environment.php");
+
     function json_response($responseCode = 204, $responseData = null)
     {
         http_response_code($responseCode);
@@ -6,23 +8,23 @@
         die(json_encode($responseData));
     }
 
-    if (!isSet($_SERVER["RECIPIENT"]))
+    $recipient = __RECIPIENT__;
+    if (!isSet($recipient))
     {
         json_response(500, [
             "type" => "env_error_recipient",
             "text" => "Sorry... An error has occurred. Please, try contact me in some other way."
         ]);
     }
-    $recipient = $_SERVER["RECIPIENT"];
 
-    if (!isSet($_SERVER["SENDER"]))
+    $sender = __SENDER__;
+    if (!isSet($sender))
     {
         json_response(500, [
             "type" => "env_error_sender",
             "text" => "Sorry... An error has occurred. Please, try contact me in some other way."
         ]);
     }
-    $sender = $_SERVER["SENDER"];
 
     if (empty($_POST))
     {
@@ -63,7 +65,7 @@
     $boundary = "=_NextPart_" . md5(uniqid(time()));
 
     $headers = null;
-    $headers .= "From: " . $sender . "\r\n";
+    $headers .= "From: \"Byloth's Website\" <website@byloth.net>\r\n";
     $headers .= "Reply-To: \"" . $name . "\" <" . $email . ">\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: multipart/alternative;\n\tboundary=\"" . $boundary . "\"\r\n";
@@ -77,19 +79,15 @@
     $message_body .= $message . "\r\n\r\n";
     $message_body .= "\r\n--" . $boundary . "--\r\n";
 
-    $hasSent = mail($recipient, $subject, $message_body, $headers);
-
-    if ($hasSent)
+    if (mail($recipient, $subject, $message_body, $headers))
     {
         json_response(200, [
             "type" => "success",
             "text" => "Thanks " . $name . " for your message! I'll get back to you as soon as possible."
         ]);
     }
-    else
-    {
-        json_response(500, [
-            "type" => "unknown_error",
-            "text" => "Sorry... An unexpected and unknown error has occurred."
-        ]);
-    }
+
+    json_response(500, [
+        "type" => "unknown_error",
+        "text" => "Sorry... An unexpected and unknown error has occurred."
+    ]);

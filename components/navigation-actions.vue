@@ -1,6 +1,6 @@
 <template>
     <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-        <template v-if="condensed">
+        <template v-if="isCondensed">
             <OverflowMenu :actions="actions"
                           title="Altre opzioni"
                           @select="$emit('select', $event)" />
@@ -39,7 +39,7 @@
 
     import { MOBILE_SIZE } from "@/core/constants";
 
-    interface NavigationActionsData { condensed: boolean; }
+    interface NavigationActionsData { isCondensed: boolean; }
 
     export default Vue.extend({
         name: "NavigationActions",
@@ -51,7 +51,7 @@
             }
         },
 
-        data: (): NavigationActionsData => ({ condensed: false }),
+        data: (): NavigationActionsData => ({ isCondensed: false }),
         mounted: function(): void
         {
             window.addEventListener("resize", this.onResizeEvent, { capture: true, passive: true });
@@ -66,7 +66,7 @@
         methods: {
             onResizeEvent(evt?: Event): void
             {
-                this.condensed = (window.innerWidth < MOBILE_SIZE);
+                this.isCondensed = (window.innerWidth < MOBILE_SIZE);
             }
         }
     });

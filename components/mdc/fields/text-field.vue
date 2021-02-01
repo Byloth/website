@@ -26,11 +26,13 @@
                 {{ leadingIcon }}
             </TextFieldIcon>
             <input :id="id"
+                   ref="input"
                    class="mdc-text-field__input"
                    :aria-labelledby="label ? `${id}-label` : ''"
                    :aria-controls="help ? `${id}-helper` : ''"
                    :aria-describedby="help ? `${id}-helper` : ''"
                    :disabled="disabled"
+                   :readonly="readonly"
                    :value="value"
                    :type="type"
                    @input="onInputEvent" />
@@ -67,6 +69,10 @@
                 type: Boolean
             },
             outlined: {
+                default: false,
+                type: Boolean
+            },
+            readonly: {
                 default: false,
                 type: Boolean
             },
