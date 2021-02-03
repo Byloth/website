@@ -44,6 +44,12 @@
                               target="_blank">
                     <span class="fab fa-linkedin-in"></span>
                 </ActionAnchor>
+                <ActionAnchor title="Matteo Bilotta su Spotify"
+                              href="//open.spotify.com/user/21q4g5zjmgfv5qctquiqawkgq"
+                              rel="nofollow noopener noreferrer"
+                              target="_blank">
+                    <span class="fab fa-spotify"></span>
+                </ActionAnchor>
                 <ActionAnchor href="//twitter.com/iByloth"
                               title="Matteo Bilotta su Twitter"
                               rel="nofollow noopener noreferrer"
