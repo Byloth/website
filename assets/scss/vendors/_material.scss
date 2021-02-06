@@ -11,7 +11,7 @@
     $font-family: variables.$font-family
 );
 
-@use "~@material/button";
+@use "~@material/button/button";
 @use "~@material/card";
 @use "~@material/drawer";
 @use "~@material/floating-label/mdc-floating-label";

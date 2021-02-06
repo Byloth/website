@@ -219,6 +219,7 @@
             display: flex;
             height: max-content;
             flex-direction: column;
+            max-width: 100%;
             padding-top: 1em;
             width: max-content;
 
