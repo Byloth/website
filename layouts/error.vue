@@ -23,7 +23,7 @@
     import CardLayout from "./pages/card-layout.vue";
 
     export default Vue.extend({
-        name: "ErrorLayout",
+        name: "ErrorPage",
         components: { CardLayout },
         props: {
             error: {

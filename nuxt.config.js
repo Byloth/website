@@ -47,10 +47,10 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: { },
 
   // Content module configuration (https://go.nuxtjs.dev/content-config)
-  content: {},
+  content: { },
 
   // PWA module configuration (https://pwa.nuxtjs.org/setup)
   pwa: {
@@ -68,7 +68,7 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: { },
 
   server: {
     port: 8080,
