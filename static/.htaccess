@@ -1,4 +1,4 @@
-FallbackResource /index.html
+ErrorDocument 404 /200.html
 Options +FollowSymLinks -Indexes
 
 <IfModule mod_rewrite.c>
