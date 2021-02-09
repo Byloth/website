@@ -17,7 +17,7 @@
         <DrawerScrim id="drawer-scrim"
                      :value="isModal && isOpen"
                      @click="closeDrawer" />
-        <BottomDialog />
+        <ShareDialog />
         <ContactDialog id="contact-dialog" @open="onDialogOpenEvent" />
     </div>
 </template>

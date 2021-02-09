@@ -93,7 +93,7 @@
             },
             openContactDialog(evt: MouseEvent): void
             {
-                this.$store.dispatch("dialog");
+                this.$store.dispatch("contact");
 
                 this.emitSelectEvent(evt);
             },

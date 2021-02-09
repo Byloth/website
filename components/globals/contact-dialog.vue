@@ -1,7 +1,9 @@
 <template>
-    <FullscreenDialog v-model="isOpen"
+    <FullscreenDialog id="contact-dialog"
                       title="Scrivi il tuo messaggio"
                       done-title="Invia"
+                      :value="isOpen"
+                      @input="onInputEvent"
                       @cancel="onCancelEvent"
                       @done="onDoneEvent">
         <div class="container">
@@ -34,7 +36,7 @@
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { RootState } from "@/store/types";
+    import { RootState } from "@/core/types";
 
     interface ContactDialogData
     {
@@ -59,25 +61,25 @@
         methods: {
             onDialogAction(action: ActionPayload, state: RootState): void
             {
-                if (action.type === "dialog")
+                if (action.type === "contact")
                 {
                     this.isOpen = true;
-
-                    this.$emit("open", true);
                 }
             },
-
-            async onCancelEvent(close: () => Promise<void>, evt: MouseEvent)
+            onInputEvent(isOpen: boolean): void
             {
-                await close();
+                this.isOpen = isOpen;
 
-                this.$emit("open", false);
+                this.$emit("open", isOpen);
             },
-            async onDoneEvent(close: () => Promise<void>, evt: MouseEvent)
-            {
-                await close();
 
-                this.$emit("open", false);
+            onCancelEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            {
+                return close();
+            },
+            onDoneEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            {
+                return close();
             }
         }
     });
@@ -86,21 +88,24 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
-    @media (min-width: variables.$md-size)
+    #contact-dialog
     {
-        .container > .row
+        @media (min-width: variables.$md-size)
         {
-            & > .col-md-6
+            .container > .row
             {
-                padding: 0px 0.5em;
+                & > .col-md-6
+                {
+                    padding: 0px 0.5em;
 
-                &:first-child
-                {
-                    padding-left: 0px;
-                }
-                &:last-child
-                {
-                    padding-right: 0px;
+                    &:first-child
+                    {
+                        padding-left: 0px;
+                    }
+                    &:last-child
+                    {
+                        padding-right: 0px;
+                    }
                 }
             }
         }

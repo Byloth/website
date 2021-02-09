@@ -1,6 +1,6 @@
 import { ActionContext } from "vuex";
 
-import { RootState } from "./types";
+import { RootState } from "@/core/types";
 
 const state = (): RootState => ({
     title: "Byloth's Website",
@@ -53,22 +53,12 @@ const state = (): RootState => ({
 });
 
 const actions = {
-    dialog(context: ActionContext<RootState, RootState>): void { },
+    contact(context: ActionContext<RootState, RootState>): void { },
+    share(context: ActionContext<RootState, RootState>): void { },
 
     print(context: ActionContext<RootState, RootState>): void
     {
         window.print();
-    },
-    share(context: ActionContext<RootState, RootState>): void
-    {
-        if (navigator.share)
-        {
-            navigator.share({
-                title: document.title,
-                text: "Questo è un testo di prova.",
-                url: window.location.href
-            });
-        }
     }
 };
 

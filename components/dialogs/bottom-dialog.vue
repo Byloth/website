@@ -1,71 +1,15 @@
 <template>
-    <div class="bottom-dialog overlay">
+    <div v-if="value"
+         class="bottom-dialog fullscreen"
+         :class="classes">
+        <div class="fullscreen overlay" @click="close"></div>
         <div class="dialog">
             <div class="handler"></div>
             <div class="content">
-                <h4 class="title">
-                    Condividi
+                <h4 v-if="title" class="title">
+                    {{ title }}
                 </h4>
-                <TextField id="share-dialog-field-url"
-                           ref="text-field"
-                           leading-icon="link"
-                           readonly
-                           :value="url" />
-                <hr class="divider" />
-                <div class="row">
-                    <div class="col-3">
-                        <ActionButton title="Copia negli Appunti" @click="onCopyClick">
-                            <span class="fas fa-copy"></span>
-                        </ActionButton>
-                    </div>
-                    <div class="col-3">
-                        <ActionAnchor :href="`mailto:?subject=${encodedTitle}&body=${encodedTextUrl}`"
-                                      title="Invia tramite e-mail"
-                                      rel="nofollow noopener noreferrer"
-                                      target="_blank">
-                            <span class="fas fa-envelope"></span>
-                        </ActionAnchor>
-                    </div>
-                    <div class="col-3">
-                        <ActionAnchor :href="`//wa.me/?text=${encodedTextUrl}`"
-                                      title="Invia tramite WhatsApp"
-                                      rel="nofollow noopener noreferrer"
-                                      target="_blank">
-                            <span class="fab fa-whatsapp"></span>
-                        </ActionAnchor>
-                    </div>
-                    <div class="col-3">
-                        <ActionAnchor :href="`//t.me/share/?url=${url}&text=%0A${encodedText}`"
-                                      title="Invia tramite Telegram"
-                                      rel="nofollow noopener noreferrer"
-                                      target="_blank">
-                            <span class="fab fa-telegram"></span>
-                        </ActionAnchor>
-                    </div>
-                    <div class="col-3">
-                        <ActionButton title="Condividi su Facebook" @click="shareOnFacebook">
-                            <span class="fab fa-facebook"></span>
-                        </ActionButton>
-                    </div>
-                    <div class="col-3">
-                        <ActionButton title="Condividi su LinkedIn" @click="shareOnLinkedIn">
-                            <span class="fab fa-linkedin"></span>
-                        </ActionButton>
-                    </div>
-                    <div class="col-3">
-                        <ActionButton title="Condividi su Pinterest" @click="shareOnPinterest">
-                            <span class="fab fa-pinterest"></span>
-                        </ActionButton>
-                    </div>
-                    <div class="col-3">
-                        <ActionAnchor :href="`//twitter.com/intent/tweet?url=${url}&text=${encodedText}%0A%0A`"
-                                      title="Condividi su Twitter"
-                                      rel="nofollow noopener noreferrer"
-                                      target="_blank">
-                            <span class="fab fa-twitter"></span>
-                        </ActionAnchor>
-                    </div>
-                </div>
+                <slot></slot>
             </div>
         </div>
     </div>
@@ -74,130 +18,93 @@
 <script lang="ts">
     import Vue from "vue";
 
-    interface BottomDialogData
-    {
-        url: string;
-        title: string;
-        description: string;
-    }
+    import { TRANSITION_DURATION } from "@/core/constants";
+
+    interface BottomDialogData { isClosing: boolean; }
 
     export default Vue.extend({
         name: "BottomDialog",
-
-        data: (): BottomDialogData => ({
-            url: "",
-            title: "",
-            description: ""
-        }),
-
-        computed: {
-            text(): string
-            {
-                return `Hey! Dai un'occhiata a "${this.title}":\n${this.description}`;
+        props: {
+            value: {
+                default: false,
+                type: Boolean
             },
-            textUrl(): string
-            {
-                return `${this.text}\n\n${this.url}`;
-            },
-
-            encodedTitle(): string
-            {
-                return encodeURIComponent(this.title);
-            },
-            encodedDescription(): string
-            {
-                return encodeURIComponent(this.description);
-            },
-            encodedText(): string
-            {
-                return encodeURIComponent(this.text);
-            },
-            encodedTextUrl(): string
-            {
-                return encodeURIComponent(this.textUrl);
+            title: {
+                default: "",
+                type: String
             }
         },
 
-        mounted: function()
-        {
-            const _getMeta = (property: string, name: string): string =>
+        data: (): BottomDialogData => ({ isClosing: false }),
+
+        computed: {
+            classes(): Record<string, boolean>
             {
-                return (document.head.querySelector(`[${property}=${name}]`) as HTMLMetaElement)?.content || "";
-            };
-
-            this.url = window.location.href;
-            this.title = document.title;
-            this.description = _getMeta("name", "description");
+                return { "closing": this.isClosing };
+            }
         },
-
         methods: {
-            _openPopup(url: string, target?: string, features?: string, replace?: boolean): Promise<void>
+            close(): Promise<void>
             {
                 return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
                 {
-                    const popup = window.open(url, target, features, replace);
+                    this.isClosing = true;
 
-                    if (popup)
+                    setTimeout(() =>
                     {
-                        const interval = setInterval(() =>
-                        {
-                            if (popup!.closed)
-                            {
-                                clearInterval(interval);
-                                resolve();
-                            }
-                        }, 500);
-                    }
-                    else
-                    {
-                        reject(new Error("Sharing popup didn't open properly. Maybe due to some popup blocker?"));
-                    }
+                        this.$emit("input", false);
+
+                        this.isClosing = false;
+
+                        resolve();
+                    }, TRANSITION_DURATION);
                 });
-            },
-
-            async onCopyClick(): Promise<void>
-            {
-                const urlField: HTMLInputElement = (this.$refs["text-field"] as Vue).$refs.input as HTMLInputElement;
-
-                urlField.select();
-                urlField.setSelectionRange(0, 1024);
-
-                if (navigator.clipboard)
-                {
-                    await navigator.clipboard.writeText(this.textUrl);
-                }
-                else
-                {
-                    document.execCommand("copy");
-                }
-            },
-
-            shareOnFacebook(): Promise<void>
-            {
-                const url = `https://www.facebook.com/sharer.php?display=popup&u=${this.url}`;
-                const options = "toolbar=0,status=0,resizable=1,width=626,height=436";
-
-                return this._openPopup(url, "sharer", options);
-            },
-            shareOnLinkedIn(): Promise<void>
-            {
-                const url = `https://www.linkedin.com/sharing/share-offsite/?url=${this.url}`;
-                const options = "toolbar=0,status=0,resizable=1,width=500,height=400";
-
-                return this._openPopup(url, "sharer", options);
-            },
-            shareOnPinterest(): Promise<void>
-            {
-                const url = `https://www.pinterest.com/pin/create/button/?url=${this.url}`;
-                const options = "toolbar=0,status=0,resizable=1,width=800,height=900";
-
-                return this._openPopup(url, "sharer", options);
             }
         }
     });
 </script>
 
 <style lang="scss" scoped>
+    @use "~@/assets/scss/variables";
+
+    @keyframes fade-in
+    {
+        0%
+        {
+            backdrop-filter: blur(0px);
+            opacity: 0;
+        }
+        100%
+        {
+            backdrop-filter: blur(2.5px);
+            opacity: 1;
+        }
+    }
+    @keyframes fade-out
+    {
+        0%
+        {
+            backdrop-filter: blur(2.5px);
+            opacity: 1;
+        }
+        100%
+        {
+            backdrop-filter: blur(0px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slide-up
+    {
+        0% { transform: translateY(100%); }
+        100% { transform: translateY(0%); }
+    }
+    @keyframes slide-down
+    {
+        0% { transform: translateY(0%); }
+        100% { transform: translateY(100%); }
+    }
+
     .bottom-dialog
     {
         align-items: center;
@@ -206,9 +113,14 @@
         justify-content: flex-end;
         z-index: 6;
 
+        & > .overlay
+        {
+            animation: fade-in variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+        }
         & > .dialog
         {
             align-items: center;
+            animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
             background-color: #FFFFFF;
             border-top-left-radius: 16px;
             border-top-right-radius: 16px;
@@ -221,6 +133,7 @@
             flex-direction: column;
             max-width: 100%;
             padding-top: 1em;
+            position: relative;
             width: max-content;
 
             & > .handler
@@ -239,22 +152,21 @@
                 {
                     margin: 1em;
                 }
-                & > .text-field
-                {
-                    margin: 0px;
-                    padding: 0px 1em;
-                }
+            }
+        }
 
-                & > .divider
-                {
-                    border: none;
-                    border-top: 1px solid #CDCDCD;
-                    margin: 1em 0px;
-                }
-                & > .row
-                {
-                    margin: 1em;
-                }
+        &.closing
+        {
+            & > .overlay
+            {
+                animation: fade-out variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+                backdrop-filter: blur(0px);
+                opacity: 0;
+            }
+            & > .dialog
+            {
+                animation: slide-down variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+                transform: translateY(100%);
             }
         }
     }

@@ -1,7 +1,8 @@
 <template>
     <div v-if="value"
-         class="fullscreen-dialog overlay"
+         class="fullscreen fullscreen-dialog"
          :class="classes">
+        <div class="fullscreen overlay"></div>
         <div class="dialog">
             <TopAppBar>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
@@ -98,33 +99,6 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
-    @keyframes fade-in
-    {
-        0%
-        {
-            backdrop-filter: blur(0px);
-            opacity: 0;
-        }
-        100%
-        {
-            backdrop-filter: blur(2.5px);
-            opacity: 1;
-        }
-    }
-    @keyframes fade-out
-    {
-        0%
-        {
-            backdrop-filter: blur(2.5px);
-            opacity: 1;
-        }
-        100%
-        {
-            backdrop-filter: blur(0px);
-            opacity: 0;
-        }
-    }
-
     @keyframes slide-up
     {
         0% { transform: translateY(100%); }
@@ -144,12 +118,17 @@
         flex-direction: column;
         z-index: 6;
 
+        & > .overlay
+        {
+            display: none;
+        }
         & > .dialog
         {
             animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
             display: flex;
             flex: 1;
             flex-direction: column;
+            position: relative;
 
             & > .mdc-top-app-bar
             {
@@ -196,6 +175,33 @@
 
         @media (min-width: variables.$md-size)
         {
+            @keyframes fade-in
+            {
+                0%
+                {
+                    backdrop-filter: blur(0px);
+                    opacity: 0;
+                }
+                100%
+                {
+                    backdrop-filter: blur(2.5px);
+                    opacity: 1;
+                }
+            }
+            @keyframes fade-out
+            {
+                0%
+                {
+                    backdrop-filter: blur(2.5px);
+                    opacity: 1;
+                }
+                100%
+                {
+                    backdrop-filter: blur(0px);
+                    opacity: 0;
+                }
+            }
+
             @keyframes slide-up
             {
                 0% { transform: translateY(25%); }
@@ -209,10 +215,12 @@
 
             align-items: center;
             animation: fade-in variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
-            backdrop-filter: blur(2.5px);
-            background-color: rgba(0, 0, 0, 0.35);
             justify-content: center;
 
+            & > .overlay
+            {
+                display: block;
+            }
             & > .dialog
             {
                 border-radius: 4px;
