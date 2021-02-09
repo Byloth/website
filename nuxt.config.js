@@ -33,17 +33,18 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    "@nuxt/typescript-build"
+    "@nuxt/typescript-build",
+    "@nuxtjs/google-analytics",
+    // https://go.nuxtjs.dev/pwa
+    "@nuxtjs/pwa"
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
     // https://go.nuxtjs.dev/content
     "@nuxt/content",
-    // https://go.nuxtjs.dev/pwa
-    "@nuxtjs/pwa"
+    // https://go.nuxtjs.dev/axios
+    "@nuxtjs/axios"
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -51,6 +52,13 @@ export default {
 
   // Content module configuration (https://go.nuxtjs.dev/content-config)
   content: { },
+
+  googleAnalytics: {
+    id: "UA-55278628-1",
+    autoTracking: {
+      screenview: true
+    }
+  },
 
   // PWA module configuration (https://pwa.nuxtjs.org/setup)
   pwa: {

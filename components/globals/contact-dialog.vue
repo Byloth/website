@@ -85,6 +85,8 @@
             },
             onDoneEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
             {
+                alert("Questo form di contatto non funziona ancora. Torna tra un po'! 😊");
+
                 return close();
             }
         }
