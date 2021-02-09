@@ -49,6 +49,14 @@
         name: "ContactDialog",
 
         data: (): ContactDialogData => ({ isOpen: false }),
+
+        watch: {
+            isOpen(value: boolean, oldValue: boolean): void
+            {
+                this.$emit("open", value);
+            }
+        },
+
         mounted: function(): void
         {
             this.stopListening = this.$store.subscribeAction(this.onDialogAction);
@@ -69,8 +77,6 @@
             onInputEvent(isOpen: boolean): void
             {
                 this.isOpen = isOpen;
-
-                this.$emit("open", isOpen);
             },
 
             onCancelEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>

@@ -100,6 +100,12 @@
                 return `Hey! Dai un'occhiata a "${this.title}":\n${this.description}`;
             }
         },
+        watch: {
+            isOpen(value: boolean, oldValue: boolean): void
+            {
+                this.$emit("open", value);
+            }
+        },
 
         mounted: function(): void
         {
@@ -146,8 +152,6 @@
             onInputEvent(isOpen: boolean): void
             {
                 this.isOpen = isOpen;
-
-                this.$emit("open", isOpen);
             },
 
             _openPopup(url: string, target?: string, features?: string, replace?: boolean): Promise<void>

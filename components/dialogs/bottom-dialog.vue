@@ -169,5 +169,10 @@
                 transform: translateY(100%);
             }
         }
+
+        @media print
+        {
+            display: none;
+        }
     }
 </style>
