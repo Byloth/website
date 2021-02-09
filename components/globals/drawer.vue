@@ -34,6 +34,7 @@
                           icon="discord"
                           target="_blank"
                           title="Unisciti alla community su Discord"
+                          rel="nofollow noopener noreferrer"
                           @click="emitSelectEvent">
                     Chatta
                     <sup class="badge">new</sup>
