@@ -44,7 +44,8 @@ export default {
     // https://go.nuxtjs.dev/content
     "@nuxt/content",
     // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "@nuxtjs/sitemap"
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -55,7 +56,6 @@ export default {
 
   googleAnalytics: { id: "UA-55278628-1" },
 
-  // PWA module configuration (https://pwa.nuxtjs.org/setup)
   pwa: {
     manifest: {
       name: "Byloth's Website",
@@ -69,6 +69,8 @@ export default {
       lang: "it"
     }
   },
+
+  sitemap: { hostname: "https://www.byloth.net" },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: { },
