@@ -53,12 +53,7 @@ export default {
   // Content module configuration (https://go.nuxtjs.dev/content-config)
   content: { },
 
-  googleAnalytics: {
-    id: "UA-55278628-1",
-    autoTracking: {
-      screenview: true
-    }
-  },
+  googleAnalytics: { id: "UA-55278628-1" },
 
   // PWA module configuration (https://pwa.nuxtjs.org/setup)
   pwa: {
