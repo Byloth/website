@@ -1,9 +1,8 @@
 <template>
     <FullscreenDialog id="contact-dialog"
+                      v-model="isOpen"
                       title="Scrivi il tuo messaggio"
                       done-title="Invia"
-                      :value="isOpen"
-                      @input="onInputEvent"
                       @cancel="onCancelEvent"
                       @done="onDoneEvent">
         <div class="container">
@@ -73,10 +72,6 @@
                 {
                     this.isOpen = true;
                 }
-            },
-            onInputEvent(isOpen: boolean): void
-            {
-                this.isOpen = isOpen;
             },
 
             onCancelEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>

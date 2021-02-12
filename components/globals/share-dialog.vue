@@ -1,8 +1,7 @@
 <template>
     <BottomDialog id="share-dialog"
-                  title="Condividi"
-                  :value="isOpen"
-                  @input="onInputEvent">
+                  v-model="isOpen"
+                  title="Condividi">
         <TextField id="share-dialog-field-url"
                    ref="text-field"
                    leading-icon="link"
@@ -148,10 +147,6 @@
                         this.isOpen = true;
                     }
                 }
-            },
-            onInputEvent(isOpen: boolean): void
-            {
-                this.isOpen = isOpen;
             },
 
             _openPopup(url: string, target?: string, features?: string, replace?: boolean): Promise<void>

@@ -46,14 +46,14 @@
 
         data: (): NavigationBarData => ({ }),
 
-        computed: mapState({
+        computed: mapState("config", {
             title: "title",
             actions: "actions"
         }),
 
         mounted: function(): void
         {
-            const topAppBar: HTMLElement = this.$refs["top-app-bar"].$el as HTMLElement;
+            const topAppBar: HTMLElement = (this.$refs["top-app-bar"] as Vue).$el as HTMLElement;
             const title: HTMLElement = this.$refs.title as HTMLElement;
 
             this._resizingAnimation = this.$initScrollAnimation({
@@ -141,21 +141,23 @@
 
     .navigation-bar
     {
-        backdrop-filter: blur(20px) saturate(180%);
         position: fixed;
         width: 100%;
         z-index: 2;
 
         & > .mdc-top-app-bar
         {
+            backdrop-filter: blur(20px) saturate(180%);
             background-color: rgba(variables.$primary-color, 0.75);
-            position: static;
+            position: relative;
         }
 
         & > .cookie-banner
         {
+            backdrop-filter: blur(20px) saturate(180%);
             background-color: rgba(#FFFFFF, 0.75);
             padding-top: calc(1em + 10px);
+            position: relative;
         }
     }
 </style>

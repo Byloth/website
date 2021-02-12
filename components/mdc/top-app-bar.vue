@@ -18,7 +18,7 @@
     .mdc-top-app-bar
     {
         background-color: variables.$primary-color;
-        transition: box-shadow 200ms linear;
+        transition: box-shadow variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
         width: 100%;
 
         &.mdc-top-app-bar--prominent > .mdc-top-app-bar__row

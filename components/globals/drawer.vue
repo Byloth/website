@@ -81,7 +81,7 @@
                 };
             },
 
-            ...mapState({
+            ...mapState("config", {
                 pages: "pages",
                 version: "version"
             })
@@ -132,12 +132,13 @@
             & > .mdc-list > .mdc-list-item .badge
             {
                 background-color: variables.$primary-color;
+                border: 1px solid #145ca4;
                 border-radius: 0.5em;
                 color: #FFFFFF;
                 display: inline-block;
                 font-style: italic;
                 height: 1em;
-                line-height: 0.8333em;
+                line-height: 0.666em;
                 padding: 0px 0.5em;
                 padding-left: 0.4em;
             }

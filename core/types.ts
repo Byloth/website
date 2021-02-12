@@ -12,11 +12,20 @@ export interface Link extends Action
     path: string;
 }
 
-export interface RootState
+export interface IndexState
+{
+    cookie: boolean;
+}
+export interface ConfigState
 {
     title: string;
     author: string;
     actions: Action[];
     pages: Link[];
     version: string;
+}
+
+export interface RootState extends IndexState
+{
+    config: ConfigState;
 }
