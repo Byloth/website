@@ -33,6 +33,9 @@
 
 a
 {
+    color: variables.$primary-dark-color;
+    transition: color 150ms ease-in-out;
+
     &[title]
     {
         cursor: pointer;
@@ -50,6 +53,12 @@ a
     &:hover [title]
     {
         text-decoration: none;
+    }
+
+    &:active,
+    &:focus
+    {
+        color: variables.$secondary-dark-color;
     }
 }
 

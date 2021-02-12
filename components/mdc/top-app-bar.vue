@@ -17,8 +17,7 @@
 
     .mdc-top-app-bar
     {
-        backdrop-filter: blur(20px) saturate(180%);
-        background-color: rgba(variables.$primary-color, 0.75);
+        background-color: variables.$primary-color;
         transition: box-shadow 200ms linear;
         width: 100%;
 

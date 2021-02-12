@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="drawer-layout">
         <Drawer id="drawer"
                 v-model="isOpen"
                 :modal="isModal"
