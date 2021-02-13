@@ -89,7 +89,7 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
 
                             resolve();
                         }, enterTransitionDuration);
-                    }, 0);
+                    }, 32);
                 });
             },
             close(): Promise<void>

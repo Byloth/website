@@ -1,13 +1,16 @@
 import { ActionContext } from "vuex";
 
+import { localStorage } from "@/core/utils";
 import { IndexState, RootState } from "@/core/types";
 
 const state = (): IndexState => ({ cookieAck: false });
 
 const mutations = {
-    acknowledgeCookie(state: IndexState): void
+    acknowledgeCookie(state: IndexState, ack = true): void
     {
-        state.cookieAck = true;
+        state.cookieAck = ack;
+
+        localStorage.set("cookie:ack", ack);
     }
 };
 const actions = {

@@ -16,7 +16,7 @@
             </section>
             <NavigationActions :actions="actions" @select="onSelectEvent" />
         </TopAppBar>
-        <CookieBanner />
+        <CookieBanner id="cookie-banner" />
     </div>
 </template>
 
