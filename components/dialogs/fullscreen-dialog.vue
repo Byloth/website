@@ -1,5 +1,5 @@
 <template>
-    <div v-if="value"
+    <div v-if="isShown"
          class="fullscreen fullscreen-dialog"
          :class="classes">
         <div class="fullscreen overlay"></div>
@@ -8,7 +8,7 @@
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                     <ActionButton class="mdc-top-app-bar__action-item"
                                   :title="cancelTitle"
-                                  @click="onCancelClick">
+                                  @click="$emit('cancel', close, $event)">
                         <span class="material-icons">
                             close
                         </span>
@@ -18,7 +18,7 @@
                     </h1>
                 </section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                    <Button unelevated @click="onDoneClick">
+                    <Button unelevated @click="$emit('done', close, $event)">
                         {{ doneTitle }}
                     </Button>
                 </section>
@@ -33,17 +33,12 @@
 <script lang="ts">
     import Vue from "vue";
 
-    import { TRANSITION_DURATION } from "@/core/constants";
-
-    interface FullscreenDialogData { isClosing: boolean; }
+    import TransientMixin from "@/mixins/transient";
 
     export default Vue.extend({
         name: "FullscreenDialog",
+        mixins: [TransientMixin()],
         props: {
-            value: {
-                default: false,
-                type: Boolean
-            },
             title: {
                 required: true,
                 type: String
@@ -56,59 +51,12 @@
                 default: "Conferma",
                 type: String
             }
-        },
-
-        data: (): FullscreenDialogData => ({ isClosing: false }),
-
-        computed: {
-            classes(): Record<string, boolean>
-            {
-                return { "closing": this.isClosing };
-            }
-        },
-        methods: {
-            close(): Promise<void>
-            {
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
-                {
-                    this.isClosing = true;
-
-                    setTimeout(() =>
-                    {
-                        this.$emit("input", false);
-
-                        this.isClosing = false;
-
-                        resolve();
-                    }, TRANSITION_DURATION);
-                });
-            },
-
-            onCancelClick(evt: MouseEvent): void
-            {
-                this.$emit("cancel", this.close, evt);
-            },
-            onDoneClick(evt: MouseEvent): void
-            {
-                this.$emit("done", this.close, evt);
-            }
         }
     });
 </script>
 
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
-
-    @keyframes slide-up
-    {
-        0% { transform: translateY(100%); }
-        100% { transform: translateY(0%); }
-    }
-    @keyframes slide-down
-    {
-        0% { transform: translateY(0%); }
-        100% { transform: translateY(100%); }
-    }
 
     .fullscreen-dialog
     {
@@ -124,11 +72,12 @@
         }
         & > .dialog
         {
-            animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
             display: flex;
             flex: 1;
             flex-direction: column;
             position: relative;
+            transform: translateY(100%);
+            transition: transform variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
 
             & > .mdc-top-app-bar
             {
@@ -163,57 +112,22 @@
             }
         }
 
-        &.closing
+        &.open
         {
             & > .dialog
             {
-                animation: slide-down variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+                transform: translateY(0%);
             }
         }
 
         @media (min-width: variables.$md-size)
         {
-            @keyframes fade-in
-            {
-                0%
-                {
-                    backdrop-filter: blur(0px);
-                    opacity: 0;
-                }
-                100%
-                {
-                    backdrop-filter: blur(2.5px);
-                    opacity: 1;
-                }
-            }
-            @keyframes fade-out
-            {
-                0%
-                {
-                    backdrop-filter: blur(2.5px);
-                    opacity: 1;
-                }
-                100%
-                {
-                    backdrop-filter: blur(0px);
-                    opacity: 0;
-                }
-            }
-
-            @keyframes slide-up
-            {
-                0% { transform: translateY(25%); }
-                100% { transform: translateY(0%); }
-            }
-            @keyframes slide-down
-            {
-                0% { transform: translateY(0%); }
-                100% { transform: translateY(25%); }
-            }
-
             align-items: center;
-            animation: fade-in variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+            backdrop-filter: blur(0px);
             justify-content: center;
+            opacity: 0;
+            transition: backdrop-filter variables.$mdc-transition-duration variables.$mdc-transition-timing-function,
+                        opacity variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
 
             & > .overlay
             {
@@ -229,12 +143,14 @@
                 flex: unset;
                 height: max-content;
                 overflow: hidden;
+                transform: translateY(25%);
                 width: max-content;
             }
 
-            &.closing
+            &.open
             {
-                animation: fade-out variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
+                backdrop-filter: blur(2.5px);
+                opacity: 1;
             }
         }
         @media print

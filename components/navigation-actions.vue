@@ -23,7 +23,7 @@
                     <ActionButton :key="action.id"
                                   class="mdc-top-app-bar__action-item"
                                   :title="action.title"
-                                  @click="$emit('select', action)">
+                                  @click="$emit('select', action, $event)">
                         <span class="material-icons">
                             {{ action.icon }}
                         </span>

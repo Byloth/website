@@ -20,7 +20,7 @@
                     </NuxtLink>
                 </template>
                 <template v-else>
-                    <MenuItem :key="action.id" @click="$emit('select', action)">
+                    <MenuItem :key="action.id" @click="$emit('select', action, $event)">
                         {{ action.title }}
                     </MenuItem>
                 </template>

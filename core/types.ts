@@ -14,7 +14,7 @@ export interface Link extends Action
 
 export interface IndexState
 {
-    cookie: boolean;
+    cookieAck: boolean;
 }
 export interface ConfigState
 {

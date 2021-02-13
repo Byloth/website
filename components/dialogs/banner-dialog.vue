@@ -1,5 +1,5 @@
 <template>
-    <div v-if="value"
+    <div v-if="isShown"
          class="banner-dialog"
          :class="classes">
         <div class="content">
@@ -21,17 +21,12 @@
 <script lang="ts">
     import Vue from "vue";
 
-    import { TRANSITION_DURATION } from "@/core/constants";
-
-    interface BannerDialogData { isClosing: boolean; }
+    import TransientMixin from "@/mixins/transient";
 
     export default Vue.extend({
         name: "BannerDialog",
+        mixins: [TransientMixin()],
         props: {
-            value: {
-                default: false,
-                type: Boolean
-            },
             icon: {
                 default: "exclamation",
                 type: String
@@ -41,33 +36,6 @@
 
                 type: Array
             }
-        },
-
-        data: (): BannerDialogData => ({ isClosing: false }),
-
-        computed: {
-            classes(): Record<string, boolean>
-            {
-                return { "closing": this.isClosing };
-            }
-        },
-        methods: {
-            close(): Promise<void>
-            {
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
-                {
-                    this.isClosing = true;
-
-                    setTimeout(() =>
-                    {
-                        this.$emit("input", false);
-
-                        this.isClosing = false;
-
-                        resolve();
-                    }, TRANSITION_DURATION);
-                });
-            }
         }
     });
 </script>
@@ -75,40 +43,16 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
-    @keyframes slide-up
-    {
-        0%
-        {
-            opacity: 1;
-            transform: translateY(0%);
-        }
-        100%
-        {
-            opacity: 0;
-            transform: translateY(-100%);
-        }
-    }
-    @keyframes slide-down
-    {
-        0%
-        {
-            opacity: 0;
-            transform: translateY(-100%);
-        }
-        100%
-        {
-            opacity: 1;
-            transform: translateY(0%);
-        }
-    }
-
     .banner-dialog
     {
-        animation: slide-down variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
         background-color: #FFFFFF;
         border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         color: #000000;
+        opacity: 0;
         padding: 1em;
+        transform: translateY(-100%);
+        transition: opacity variables.$mdc-transition-duration variables.$mdc-transition-timing-function,
+                    transform variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
 
         & > .content
         {
@@ -139,12 +83,10 @@
             }
         }
 
-        &.closing
+        &.open
         {
-            animation: slide-up variables.$mdc-transition-duration variables.$mdc-transition-timing-function;
-            opacity: 0;
-            transform: translateY(-100px);
-            transition-delay: 1.5s;
+            opacity: 1;
+            transform: translateY(0%);
         }
     }
 </style>

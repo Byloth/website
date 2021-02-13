@@ -3,7 +3,7 @@
                   class="cookie-banner"
                   icon="cookie-bite"
                   :actions="[{ id: 'close', text: 'Ho capito' }]"
-                  @close="close">
+                  @close="onCloseEvent">
         <span>
             Questo sito utilizza i cookie per offrire un'esperienza di utilizzo ottimale.<br />
             Per avere ulteriori informazioni a riguardo, puoi visitare
@@ -24,23 +24,29 @@
         data: (): CookieBannerData => ({ isOpen: false }),
 
         computed: {
-            classes(): Record<string, boolean>
+            ...mapState({ cookieAck: "cookieAck" })
+        },
+        watch: {
+            cookieAck(value: boolean, oldValue: boolean): void
             {
-                return { "open": this.isOpen };
-            },
-
-            ...mapState({ cookie: "cookie" })
+                this.isOpen = !value;
+            }
         },
 
         mounted: function(): void
         {
-            this.isOpen = this.cookie;
+            if (!this.cookieAck)
+            {
+                setTimeout(() => { this.isOpen = true; }, 1500);
+            }
         },
 
         methods: {
-            close(close: () => Promise<void>, evt: MouseEvent): void
+            async onCloseEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
             {
-                this.$store.state.cookie = true;
+                await close();
+
+                this.$store.commit("acknowledgeCookie");
             }
         }
     });
