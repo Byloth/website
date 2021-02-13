@@ -40,7 +40,7 @@ export default class DailyMessage implements DailyMessageData
     public readonly script: string | null;
     public readonly url: string | null;
 
-    public get canBeExecuted(): boolean { return (this.script !== null); }
+    public get canBeExecuted(): boolean { return (process.client && this.script !== null); }
     public get type(): DailyMessageType { return this.typeId as DailyMessageType; }
 
     public constructor({ id, typeId, text, author, source, script, url }: DailyMessageData)
