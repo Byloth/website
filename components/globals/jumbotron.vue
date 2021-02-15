@@ -6,6 +6,7 @@
                 <template v-if="dailyMessage.typeId === 0">
                     <template v-if="dailyMessage.url">
                         <a :href="dailyMessage.url"
+                           rel="nofollow noopener noreferrer"
                            target="_blank"
                            v-html="dailyMessage.text">
                         </a>
@@ -18,7 +19,9 @@
                     <template v-if="dailyMessage.url">
                         <span v-html="dailyMessage.text"></span>
                         <small>
-                            <a :href="dailyMessage.url" target="_blank">
+                            <a :href="dailyMessage.url"
+                               rel="nofollow noopener noreferrer"
+                               target="_blank">
                                 <cite>{{ dailyMessage.author }}</cite>
                                 <template v-if="dailyMessage.source">
                                     di “{{ dailyMessage.source }}”
@@ -40,7 +43,9 @@
                     <template v-if="dailyMessage.url">
                         <span v-html="dailyMessage.text"></span>
                         <small>
-                            <a :href="dailyMessage.url" target="_blank">
+                            <a :href="dailyMessage.url"
+                               rel="nofollow noopener noreferrer"
+                               target="_blank">
                                 traduzione di “{{ dailyMessage.source }}”
                             </a>
                         </small>
@@ -55,6 +60,7 @@
                 <template v-else-if="dailyMessage.typeId === 3">
                     <template v-if="dailyMessage.url">
                         <a :href="dailyMessage.url"
+                           rel="nofollow noopener noreferrer"
                            target="_blank"
                            v-html="dailyMessage.text">
                         </a>
