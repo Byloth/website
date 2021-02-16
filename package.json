@@ -1,6 +1,6 @@
 {
   "name": "@byloth/website",
-  "version": "0.1.0",
+  "version": "5.0.0",
   "description": "My personal website as a Nuxt.js application, written in TypeScript and based on Material Design.",
   "keywords": [
     "Vue.js",

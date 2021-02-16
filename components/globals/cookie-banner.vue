@@ -7,7 +7,7 @@
         <span>
             Questo sito utilizza i cookie per offrire un'esperienza di utilizzo ottimale.<br />
             Per avere ulteriori informazioni a riguardo, puoi visitare
-            la pagina <a href="#">Privacy &amp; Cookie</a>.
+            la pagina <a href="/privacy">Privacy &amp; Cookie</a>.
         </span>
     </BannerDialog>
 </template>

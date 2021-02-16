@@ -23,6 +23,7 @@
 @use "~@material/notched-outline/mdc-notched-outline";
 @use "~@material/textfield";
 @use "~@material/textfield/icon";
+@use "~@material/textfield/helper-text";
 @use "~@material/tooltip/styles";
 @use "~@material/top-app-bar/mdc-top-app-bar";
 
@@ -31,6 +32,7 @@
 @include drawer.core-styles;
 @include drawer.dismissible-core-styles;
 @include drawer.modal-core-styles;
+@include helper-text.helper-text-core-styles;
 @include icon.icon-core-styles;
 @include icon-button.core-styles;
 @include list.core-styles;

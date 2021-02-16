@@ -26,25 +26,19 @@
         ]);
     }
 
-    if (empty($_POST))
+    $input = json_decode(file_get_contents("php://input"), true);
+    if (empty($input))
     {
         json_response(400, [
             "type" => "empty_request",
-            "text" => "You request is empty. It must be in AJAX POST format."
-        ]);
-    }
-    if ((!isSet($_SERVER["HTTP_X_REQUESTED_WITH"])) and (strToLower($_SERVER["HTTP_X_REQUESTED_WITH"]) != "xmlhttprequest"))
-    {
-        json_response(400, [
-            "type" => "invalid_format",
-            "text" => "The format of your request isn't valid. It must must be in AJAX POST format."
+            "text" => "You request is empty. It must be in AJAX JSON POST format."
         ]);
     }
 
-    $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-    $subject =  filter_var($_POST["subject"], FILTER_SANITIZE_STRING);
-    $message = filter_var($_POST["message"], FILTER_SANITIZE_STRING);
+    $name = filter_var($input["name"], FILTER_SANITIZE_STRING);
+    $email = filter_var($input["email"], FILTER_SANITIZE_EMAIL);
+    $subject =  filter_var($input["subject"], FILTER_SANITIZE_STRING);
+    $message = filter_var($input["message"], FILTER_SANITIZE_STRING);
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
     {

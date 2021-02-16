@@ -31,6 +31,7 @@
                           :aria-describedby="help ? `${id}-helper` : ''"
                           :rows="rows"
                           :disabled="disabled"
+                          :required="required"
                           :readonly="readonly"
                           :value="value"
                           @input="onInputEvent"></textarea>
@@ -65,6 +66,10 @@
                 type: Boolean
             },
             outlined: {
+                default: false,
+                type: Boolean
+            },
+            required: {
                 default: false,
                 type: Boolean
             },

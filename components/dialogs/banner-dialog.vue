@@ -88,5 +88,10 @@
             opacity: 1;
             transform: translateY(0%);
         }
+
+        @media print
+        {
+            display: none;
+        }
     }
 </style>

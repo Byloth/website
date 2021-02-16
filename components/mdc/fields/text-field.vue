@@ -32,6 +32,7 @@
                    :aria-controls="help ? `${id}-helper` : ''"
                    :aria-describedby="help ? `${id}-helper` : ''"
                    :disabled="disabled"
+                   :required="required"
                    :readonly="readonly"
                    :value="value"
                    :type="type"
@@ -39,14 +40,20 @@
             <TextFieldIcon v-if="trailingIcon" trailing>
                 {{ trailingIcon }}
             </TextFieldIcon>
+            <!--TextFieldIcon v-else-if="validation" trailing>
+                error
+            </TextFieldIcon-->
             <span v-if="!outlined" class="mdc-line-ripple"></span>
         </label>
         <div v-if="help" class="mdc-text-field-helper-line">
-            <div :id="`${id}-helper`"
-                 class="mdc-text-field-helper-text"
-                 aria-hidden="true">
+            <TextFieldHelperText :id="`${id}-helper`" persistent>
                 {{ help }}
-            </div>
+            </TextFieldHelperText>
+        </div>
+        <div v-else-if="validation" class="mdc-text-field-helper-line">
+            <TextFieldHelperText :id="`${id}-helper`" validation>
+                {{ validation }}
+            </TextFieldHelperText>
         </div>
     </div>
 </template>
@@ -69,6 +76,10 @@
                 type: Boolean
             },
             outlined: {
+                default: false,
+                type: Boolean
+            },
+            required: {
                 default: false,
                 type: Boolean
             },
@@ -98,6 +109,10 @@
             },
             type: {
                 default: "text",
+                type: String
+            },
+            validation: {
+                default: "",
                 type: String
             }
         },

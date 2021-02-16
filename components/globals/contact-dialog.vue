@@ -9,22 +9,27 @@
             <div class="row">
                 <div class="col-md-6">
                     <TextField id="contact-dialog-field-name"
+                               v-model="name"
                                label="Nome e cognome"
                                leading-icon="person"
                                outlined />
                 </div>
                 <div class="col-md-6">
                     <TextField id="contact-dialog-field-email"
+                               v-model="email"
                                label="Indirizzo e-mail"
                                leading-icon="alternate_email"
                                type="email"
+                               validation="Inserisci un indirizzo e-mail valido"
                                outlined />
                 </div>
             </div>
             <TextField id="contact-dialog-field-subject"
+                       v-model="subject"
                        label="Oggetto"
                        outlined />
             <TextareaField id="contact-dialog-field-message"
+                           v-model="message"
                            label="Messaggio"
                            outlined />
         </div>
@@ -41,13 +46,25 @@
     {
         isOpen: boolean;
 
+        name: string;
+        email: string;
+        subject: string;
+        message: string;
+
         stopListening?: () => void;
     }
 
     export default Vue.extend({
         name: "ContactDialog",
 
-        data: (): ContactDialogData => ({ isOpen: false }),
+        data: (): ContactDialogData => ({
+            isOpen: false,
+
+            name: "",
+            email: "",
+            subject: "",
+            message: ""
+        }),
 
         watch: {
             isOpen(value: boolean, oldValue: boolean): void
@@ -74,15 +91,52 @@
                 }
             },
 
-            onCancelEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            async onCancelEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
             {
-                return close();
-            },
-            onDoneEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
-            {
-                alert("Questo form di contatto non funziona ancora. Torna tra un po'! 😊");
+                await close();
 
-                return close();
+                this.name = "";
+                this.email = "";
+                this.subject = "";
+                this.message = "";
+            },
+            async onDoneEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            {
+                if ((this.name) && (this.email) && (this.subject) && (this.message))
+                {
+                    try
+                    {
+                        await this.$axios.post("/api/send-message.php", {
+                            name: this.name,
+                            email: this.email,
+                            subject: this.subject,
+                            message: this.message
+                        });
+
+                        alert(`Grazie per il tuo messaggio, ${this.name}.\n` +
+                            `Ti risponderò il prima possibile!`);
+                    }
+                    catch (err)
+                    {
+                        // eslint-disable-next-line no-console
+                        console.error(err);
+
+                        alert("Sono spiacente ma si è verificato un errore sconosciuto.\n" +
+                            "Riprova oppure contattami in qualche altro modo.");
+                    }
+
+                    await close();
+
+                    this.name = "";
+                    this.email = "";
+                    this.subject = "";
+                    this.message = "";
+                }
+                else
+                {
+                    alert("Tutti i campi sono obbligatori.\n" +
+                        "Compilali correttamente prima di proseguire.");
+                }
             }
         }
     });
