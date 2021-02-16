@@ -78,6 +78,8 @@
         color: #FFFFFF;
         display: inline-block;
         height: 1.975em;
+        letter-spacing: normal;
+        line-height: normal;
         overflow: hidden;
         position: relative;
         text-decoration: none;

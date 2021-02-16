@@ -42,7 +42,7 @@ const state = (): ConfigState => ({
         {
             id: 3,
             name: "about",
-            path: "/about-me",
+            path: "/about",
             icon: "info",
             title: "Chi sono"
         }

@@ -145,7 +145,7 @@
             & a
             {
                 color: #FFFFFF;
-                margin-right: 0.5em;
+                margin-right: 0.25em;
 
                 &::before,
                 &::after

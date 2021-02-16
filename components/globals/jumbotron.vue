@@ -116,19 +116,14 @@
 
         & > blockquote
         {
-            border-left: 0.2em solid lighten($color: variables.$primary-color, $amount: 15);
+            border-left-color: lighten($color: variables.$primary-color, $amount: 15);
             padding: 0.2em 1em;
             min-height: 64px;
-            position: relative;
             width: 100%;
 
             &::before
             {
                 color: lighten($color: variables.$primary-color, $amount: 20);
-                content: "“";
-                font-size: 2em;
-                left: -30px;
-                position: absolute;
             }
 
             & > a,

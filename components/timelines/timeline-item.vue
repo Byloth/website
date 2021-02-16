@@ -174,8 +174,8 @@
             & > hr
             {
                 border-bottom: none;
-                border-left: 1px solid #CDCDCD;
-                border-right: 1px solid #CDCDCD;
+                border-left: 2px solid #CDCDCD;
+                border-right: none;
                 border-top: none;
                 margin: 0px 0.5em;
                 margin-left: 1em;
