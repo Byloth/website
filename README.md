@@ -1,6 +1,6 @@
 # Byloth's Website 🌐 #
 
-### My personal website as a Vue.js application, written in TypeScript and based on Material Design. ###
+### My personal website as a Nuxt.js application, written in TypeScript and based on Material Design. ###
 
 Actually, yet another attempt to develop my personal website, to be precise...
 
@@ -26,40 +26,48 @@ At last but not least, this website will be:
 Some of the technologies I used:
 
 * [Vue.js](https://vuejs.org/)
+* [Nuxt.js](https://nuxtjs.org/)
 * [TypeScript](https://www.typescriptlang.org/)
+* [Sass](https://sass-lang.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [Font Awesome](https://fontawesome.com/)
 * [Material Design](https://material.io/)
+* [Vue Scroll Animator](https://github.com/Byloth/vue-scroll-animator)
 
 ---
 
-> ## Project setup ##
+> ### Project setup ###
 >
 > ```bash
-> npm install
+> # Install dependencies...
+> $ yarn install
+>
+> # Update dependencies...
+> $ yarn upgrade
 > ```
 >
 > ---
 >
-> ### Compiles and hot-reloads for development ###
+> ### Project up & running ###
 >
 > ```bash
-> npm run serve
-> ```
+> # Serve with hot reload at `localhost:8080`...
+> $ yarn dev
 >
-> ### Compiles and minifies for production ###
+> # Build for production and launch server...
+> $ yarn build
+> $ yarn start
+> 
+> # Generate static project files...
+> $ yarn generate
 >
-> ```bash
-> npm run build
-> ```
->
-> ### Lints and fixes files ###
->
-> ```bash
-> npm run lint
+> # Lint project...
+> $ yarn lint
 > ```
 >
 > ---
 >
-> ### Customize configuration ###
+> ### Documentation ###
 >
-> See [Configuration Reference](https://cli.vuejs.org/config/).
+> For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 >

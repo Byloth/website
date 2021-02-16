@@ -12,7 +12,9 @@ Desktop.ini
 
 # Generated & compiled files
 #
-/dist/*
+/.nuxt/
+/dist/
+/static/sw.js
 
 # Downloadable & installable modules & components
 #

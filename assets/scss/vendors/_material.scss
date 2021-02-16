@@ -1,0 +1,39 @@
+@use "../variables";
+
+@use "~@material/theme" with
+(
+    $primary: variables.$primary-color,
+    $secondary: variables.$secondary-color,
+    $background: variables.$background-color
+);
+@use "~@material/typography" with
+(
+    $font-family: variables.$font-family
+);
+
+@use "~@material/button/button";
+@use "~@material/card";
+@use "~@material/drawer";
+@use "~@material/floating-label/mdc-floating-label";
+@use "~@material/icon-button";
+@use "~@material/line-ripple/mdc-line-ripple";
+@use "~@material/list";
+@use "~@material/menu-surface/mdc-menu-surface";
+@use "~@material/menu/mdc-menu";
+@use "~@material/notched-outline/mdc-notched-outline";
+@use "~@material/textfield";
+@use "~@material/textfield/icon";
+@use "~@material/textfield/helper-text";
+@use "~@material/tooltip/styles";
+@use "~@material/top-app-bar/mdc-top-app-bar";
+
+@include button.core-styles;
+@include card.core-styles;
+@include drawer.core-styles;
+@include drawer.dismissible-core-styles;
+@include drawer.modal-core-styles;
+@include helper-text.helper-text-core-styles;
+@include icon.icon-core-styles;
+@include icon-button.core-styles;
+@include list.core-styles;
+@include textfield.core-styles;
