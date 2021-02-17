@@ -1,0 +1,74 @@
+name: Publish on DEV environment
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build process
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 15
+
+      - run: npm install -g yarn
+      - run: yarn ci
+      - run: yarn lint:prod
+      # - run: yarn test
+      - run: yarn build
+      - run: yarn generate
+      - run: yarn pack
+      - shell: bash
+        run: |
+          PACKAGE_VERSION=`node -e "console.log(require('./package.json').version);"`
+          PACKAGE_NAME="byloth-website-v${PACKAGE_VERSION}.tgz"
+          tar -xzvf "${PACKAGE_NAME}" -C "."
+      - uses: actions/upload-artifact@v2
+        with:
+          name: byloth-website
+          path: package
+
+  #
+  # test:
+  #   name: Test process
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - [...]
+  #
+
+  sync:
+    name: Synchronization process
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+
+    steps:
+      - run: apt install rsync curlftpfs
+      - run: mkdir -p "/mnt/byloth-website"
+      - run: curlftpfs "${FTP_HOST}" "/mnt/byloth-website" -o "${FTP_USER}:${FTP_PASS}"
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: byloth-website
+
+      - shell: bash
+        run: |
+          ENV_FILE="dist/api/env.php"
+          echo "<?php" > "${ENV_FILE}"
+          echo "define('__RECIPIENT__', '${EMAIL_RECIPIENT}');" >> "${ENV_FILE}"
+          echo "define('__SENDER__', '${EMAIL_SENDER}');" >> "${ENV_FILE}"
+
+        env:
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+
+      - run: rsync -quarlz --delete "dist/" "/mnt/byloth-website/"
