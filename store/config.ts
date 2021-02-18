@@ -47,7 +47,7 @@ const state = (): ConfigState => ({
             title: "Chi sono"
         }
     ],
-    version: "5.0.0"
+    version: "5.0.1"
 });
 
 export { state };

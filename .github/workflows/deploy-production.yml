@@ -24,8 +24,8 @@ jobs:
         run: yarn lint:prod
       # - name: Run tests
       #   run: yarn test
-      - name: Build server files
-        run: yarn build
+      # - name: Build server files
+      #   run: yarn build
       - name: Generate static files
         run: yarn generate
       - name: Create artifact
@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: byloth-website
-          path: package
+          path: package/dist
 
   #
   # test:
@@ -54,7 +54,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     environment:
-      name: staging
+      name: production
 
     steps:
       - name: Install CurlFtpFS
@@ -76,6 +76,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: byloth-website
+          path: dist
 
       - name: Compose `env.php` file
         shell: bash
