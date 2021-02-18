@@ -48,26 +48,28 @@ jobs:
       name: development
 
     steps:
-      - run: sudo apt install curlftpfs
-      - shell: bash
+      - name: Installing cUrlFtpFs...
+        run: sudo apt install curlftpfs
+      - name: Mounting the remove FTP directory as volume...
+        shell: bash
         run: |
           sudo mkdir -p "${VOLUME}"
           sudo chown $(id -u):$(id -g) "${VOLUME}"
+          curlftpfs "${FTP_HOST}" "${VOLUME}" -o "user=${FTP_USER}:${FTP_PASS}"
 
         env:
           VOLUME: /mnt/byloth-website
-
-      - run: curlftpfs "${FTP_HOST}" /mnt/byloth-website -o "user=${FTP_USER}:${FTP_PASS}"
-        env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
 
-      - uses: actions/download-artifact@v2
+      - name: Downloading artifact...
+        uses: actions/download-artifact@v2
         with:
           name: byloth-website
 
-      - shell: bash
+      - name: Writing the environment variables file...
+        shell: bash
         run: |
           echo "<?php" > "${ENV_FILE}"
           echo "define('__RECIPIENT__', '${EMAIL_RECIPIENT}');" >> "${ENV_FILE}"
@@ -78,5 +80,12 @@ jobs:
           EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
 
-      - run: rm -rf /mnt/byloth-website/{*,.*}
-      - run: cp -r dist/{*,.*} /mnt/byloth-website/
+      - name: Replacing directory content...
+        shell: bash
+        run: |
+          shopt -s dotglob
+          rm -rfv "${VOLUME}/*"
+          cp -r dist/* "${VOLUME}/"
+
+        env:
+          VOLUME: /mnt/byloth-website
