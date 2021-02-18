@@ -12,15 +12,20 @@ jobs:
       name: development
 
     steps:
+      - run: mkdir -p files/
       - shell: bash
         run: |
-          echo "${PIPPO}" > pippo.txt"
-          cat "pippo.txt"
+          echo "${PIPPO}" > files/pippo.txt
+          cat files/pippo.txt
         env:
           PIPPO: ${{ secrets.PIPPO }}
       - shell: bash
         run: |
-          echo "${PLUTO}" > "pluto.txt"
-          cat "pluto.txt"
+          echo "${PLUTO}" > files/pluto.txt
+          cat files/pluto.txt
         env:
           PLUTO: ${{ secrets.PLUTO }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: files
+          path: files
