@@ -12,20 +12,8 @@ jobs:
       name: development
 
     steps:
-      - run: mkdir -p files/
-      - shell: bash
-        run: |
-          echo "${PIPPO}" > files/pippo.txt
-          cat files/pippo.txt
+      - run: curl "ftp://${FTP_HOST}/" --user "${FTP_USER}:${FTP_PASS}"
         env:
-          PIPPO: ${{ secrets.PIPPO }}
-      - shell: bash
-        run: |
-          echo "${PLUTO}" > files/pluto.txt
-          cat files/pluto.txt
-        env:
-          PLUTO: ${{ secrets.PLUTO }}
-      - uses: actions/upload-artifact@v2
-        with:
-          name: files
-          path: files
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
