@@ -48,9 +48,16 @@ jobs:
       name: development
 
     steps:
-      - run: sudo apt install rsync curlftpfs
-      - run: sudo mkdir -p "/mnt/byloth-website"
-      - run: sudo curlftpfs "${FTP_HOST}" "/mnt/byloth-website" -o "user=${FTP_USER}:${FTP_PASS}"
+      - run: sudo apt install curlftpfs
+      - shell: bash
+        run: |
+          sudo mkdir -p "${VOLUME}"
+          sudo chown $(id -u):$(id -g) "${VOLUME}"
+
+        env:
+          VOLUME: /mnt/byloth-website
+
+      - run: curlftpfs "${FTP_HOST}" /mnt/byloth-website -o "user=${FTP_USER}:${FTP_PASS}"
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
@@ -62,13 +69,14 @@ jobs:
 
       - shell: bash
         run: |
-          ENV_FILE="dist/api/env.php"
           echo "<?php" > "${ENV_FILE}"
           echo "define('__RECIPIENT__', '${EMAIL_RECIPIENT}');" >> "${ENV_FILE}"
           echo "define('__SENDER__', '${EMAIL_SENDER}');" >> "${ENV_FILE}"
 
         env:
+          ENV_FILE: dist/api/env.php
           EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
 
-      - run: sudo rsync -qurlz --delete "dist/" "/mnt/byloth-website/"
+      - run: rm -rf /mnt/byloth-website/{*,.*}
+      - run: cp -r dist/{*,.*} /mnt/byloth-website/
