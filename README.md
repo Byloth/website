@@ -1,5 +1,8 @@
 # Byloth's Website 🌐 #
 
+[![Deploy to Staging](https://github.com/Byloth/website/actions/workflows/deploy-staging.yml/badge.svg)](https://github.com/Byloth/website/actions/workflows/deploy-staging.yml)
+[![Deploy to Production](https://github.com/Byloth/website/actions/workflows/deploy-production.yml/badge.svg)](https://github.com/Byloth/website/actions/workflows/deploy-production.yml)
+
 ### My personal website as a Nuxt.js application, written in TypeScript and based on Material Design. ###
 
 Actually, yet another attempt to develop my personal website, to be precise...
