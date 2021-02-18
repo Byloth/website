@@ -2,7 +2,7 @@ name: Publish on DEV environment
 on:
   push:
     branches:
-      - development
+      - master
 
 jobs:
   build:
@@ -50,7 +50,7 @@ jobs:
     steps:
       - run: sudo apt install rsync curlftpfs
       - run: sudo mkdir -p "/mnt/byloth-website"
-      - run: sudo curlftpfs "${FTP_HOST}" "/mnt/byloth-website" -o "${FTP_USER}:${FTP_PASS}"
+      - run: sudo curlftpfs "${FTP_HOST}" "/mnt/byloth-website" -o "user=${FTP_USER}:${FTP_PASS}"
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
@@ -71,4 +71,4 @@ jobs:
           EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
 
-      - run: sudo rsync -quarlz --delete "dist/" "/mnt/byloth-website/"
+      - run: sudo rsync -qurlz --delete "dist/" "/mnt/byloth-website/"
