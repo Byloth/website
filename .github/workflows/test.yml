@@ -1,0 +1,19 @@
+name: Test workflow
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Test process
+    runs-on: ubuntu-latest
+    environment:
+      name: development
+
+    steps:
+      - run: echo "${PIPPO}"
+      - run: echo "${PLUTO}"
+        env:
+          PIPPO: ${{ secrets.PIPPO }}
+          PLUTO: ${{ secrets.PLUTO }}

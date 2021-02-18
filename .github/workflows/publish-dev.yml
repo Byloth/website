@@ -2,7 +2,7 @@ name: Publish on DEV environment
 on:
   push:
     branches:
-      - master
+      - development
 
 jobs:
   build:
@@ -40,8 +40,8 @@ jobs:
   #     - [...]
   #
 
-  sync:
-    name: Synchronization process
+  deploy:
+    name: Deploy process
     needs: build
     runs-on: ubuntu-latest
     environment:
