@@ -1,8 +1,8 @@
-name: Publish on `staging` environment
+name: Deploy to Production
 on:
   push:
     branches:
-      - staging
+      - production
 
 jobs:
   build:
