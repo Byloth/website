@@ -12,7 +12,9 @@ jobs:
       name: development
 
     steps:
-      - run: curl "ftp://${FTP_HOST}/" --user "${FTP_USER}:${FTP_PASS}"
+      - run: sudo apt install curlftpfs
+      - run: sudo mkdir -p "/mnt/byloth-website"
+      - run: sudo curlftpfs "${FTP_HOST}" "/mnt/byloth-website" -o "user=${FTP_USER}:${FTP_PASS}"
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
