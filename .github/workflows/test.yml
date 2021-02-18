@@ -12,8 +12,15 @@ jobs:
       name: development
 
     steps:
-      - run: echo "${PIPPO}"
-      - run: echo "${PLUTO}"
+      - shell: bash
+        run: |
+          echo "${PIPPO}" > pippo.txt"
+          cat "pippo.txt"
         env:
           PIPPO: ${{ secrets.PIPPO }}
+      - shell: bash
+        run: |
+          echo "${PLUTO}" > "pluto.txt"
+          cat "pluto.txt"
+        env:
           PLUTO: ${{ secrets.PLUTO }}
