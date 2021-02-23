@@ -1,5 +1,5 @@
 <?php
-    require_once(__DIR__ . "/environment.php");
+    require_once(__DIR__ . "/env.php");
 
     function json_response($responseCode = 204, $responseData = null)
     {

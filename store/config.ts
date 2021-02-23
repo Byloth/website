@@ -42,12 +42,12 @@ const state = (): ConfigState => ({
         {
             id: 3,
             name: "about",
-            path: "/about-me",
+            path: "/about",
             icon: "info",
             title: "Chi sono"
         }
     ],
-    version: "5.0.0"
+    version: "5.0.1"
 });
 
 export { state };

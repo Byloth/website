@@ -7,6 +7,16 @@
     50% { opacity: 0; }
     100% { opacity: 0; }
 }
+@keyframes pulse
+{
+    0% { transform: scale(1); }
+    15% { transform: scale(1); }
+    30% { transform: scale(1.25); }
+    52% { transform: scale(1); }
+    68% { transform: scale(1.25); }
+    90% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
 
 *
 {
@@ -39,22 +49,27 @@ a
     &[title]
     {
         cursor: pointer;
-
-        &:hover
-        {
-            text-decoration: underline;
-        }
     }
 
     [title]
     {
         cursor: inherit;
     }
-    &:hover [title]
-    {
-        text-decoration: none;
-    }
 
+    &:hover
+    {
+        color: variables.$primary-color;
+
+        &[title]
+        {
+            text-decoration: underline;
+        }
+
+        [title]
+        {
+            text-decoration: none;
+        }
+    }
     &:active,
     &:focus
     {
@@ -62,10 +77,27 @@ a
     }
 }
 
+blockquote
+{
+    border-left: 0.2em solid #CDCDCD;
+    padding: 0px 1em;
+    position: relative;
+
+    &::before
+    {
+        color: #CDCDCD;
+        content: "“";
+        font-size: 2em;
+        left: -30px;
+        position: absolute;
+    }
+}
+
 body
 {
     background-color: #FFFFFF;
     color: variables.$not-quite-black;
+    letter-spacing: 0.0125em;
     margin: 0px;
     overflow-y: scroll;
 
@@ -88,6 +120,13 @@ samp *
     font-family: "Courier New", "Courier", monospace;
 }
 
+hr
+{
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: 2px solid #CDCDCD;
+}
 html
 {
     background-color: variables.$chrome-incognito-color;
@@ -118,6 +157,11 @@ q
 .fa-heart
 {
     color: #FF0000;
+
+    &:hover
+    {
+        animation: pulse 1.5s infinite;
+    }
 }
 
 .kbd-btn
@@ -152,6 +196,8 @@ q
 
 .nuxt-content
 {
+    line-height: 1.5em;
+
     & > :first-child
     {
         margin-top: 0px;
@@ -159,6 +205,101 @@ q
     & > :last-child
     {
         margin-bottom: 0px;
+    }
+
+    a
+    {
+        position: relative;
+        text-decoration: none;
+
+        &::after
+        {
+            border-top: 2px solid variables.$primary-dark-color;
+            bottom: 0px;
+            content: "";
+            cursor: pointer;
+            height: 0px;
+            left: 0px;
+            position: absolute;
+            transition: border-color 100ms ease-in-out,
+                        width 100ms ease-in-out;
+            user-select: none;
+            width: 0%;
+        }
+
+        &:hover
+        {
+            &::after
+            {
+                border-top-color: variables.$primary-color;
+                width: 100%;
+            }
+        }
+        &:active,
+        &:focus
+        {
+            &::after
+            {
+                border-top-color: variables.$secondary-dark-color;
+                width: 100%;
+            }
+        }
+    }
+    blockquote
+    {
+        color: lighten(#000000, 40);
+        margin: 0px;
+
+        &::before
+        {
+            display: none;
+        }
+    }
+    code
+    {
+        background-color: rgba(variables.$primary-light-color, 0.25);
+        border: 1px solid rgba(variables.$primary-dark-color, 0.25);
+        border-radius: 2.5px;
+        color: variables.$primary-dark-color;
+        display: inline-block;
+        height: 1.125em;
+        line-height: 1.1em;
+        padding: 0px 0.125em;
+        text-shadow: 1px 1px 1px rgba(#FFFFFF, 0.5);
+        white-space: nowrap;
+    }
+    del
+    {
+        color: rgba(#000000, 0.5);
+        position: relative;
+        text-decoration: none;
+        transition: color 100ms ease-in-out;
+
+        &::after
+        {
+            border-top: 2px solid #AF0000;
+            box-shadow: 0px 0px 1px rgba(#000000, 0.25);
+            content: "";
+            cursor: text;
+            height: 0px;
+            left: 0px;
+            position: absolute;
+            opacity: 1;
+            top: 0.5625em;
+            transition: opacity 100ms ease-in-out;
+            user-select: none;
+            width: 100%;
+        }
+
+        &:hover
+        {
+            color: #000000;
+
+            &::after
+            {
+                opacity: 0.5;
+            }
+        }
     }
 }
 

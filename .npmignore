@@ -12,21 +12,24 @@ Desktop.ini
 
 # Generated & compiled files
 #
-/.nuxt/
-/dist/
-
 /*.tgz
 /static/sw.js
+
+# Config files
+#
+/.editorconfig
+/.eslintrc.js
+
+/jsconfig.json
+/nuxt.config.js
+/tsconfig.json
 
 # Environmental files
 #
 .env
 env.php
 
-# Downloadable & installable modules & components
+# Useless files
 #
-/node_modules/
-
-# Not ignored
-#
-!.gitkeep
+README.md
+/.github/

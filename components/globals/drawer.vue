@@ -156,7 +156,7 @@
 
             & > i
             {
-                margin-right: 0.075em;
+                margin-right: 0.0875em;
             }
             & > strong
             {

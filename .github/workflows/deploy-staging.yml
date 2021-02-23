@@ -1,0 +1,101 @@
+name: Deploy to Staging
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build:
+    name: Build process
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Install Node.js 15
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Install dependencies
+        run: yarn ci
+      - name: Lint project
+        run: yarn lint:prod
+      # - name: Run tests
+      #   run: yarn test
+      # - name: Build server files
+      #   run: yarn build
+      - name: Generate static files
+        run: yarn generate
+      - name: Create artifact
+        run: |
+          PACKAGE_VERSION=`node -e "console.log(require('./package.json').version);"`
+          PACKAGE_NAME="byloth-website-v${PACKAGE_VERSION}.tgz"
+          yarn pack
+          tar -xzvf "${PACKAGE_NAME}" -C "."
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: byloth-website
+          path: package/dist
+
+  #
+  # test:
+  #   name: Test process
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - [...]
+  #
+
+  deploy:
+    name: Deploy process
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+
+    steps:
+      - name: Install CurlFtpFS
+        run: sudo apt install curlftpfs
+      - name: Mount remote FTP directory
+        shell: bash
+        run: |
+          sudo mkdir -p "${VOLUME}"
+          sudo chown $(id -u):$(id -g) "${VOLUME}"
+          curlftpfs "${FTP_HOST}" "${VOLUME}" -o "user=${FTP_USER}:${FTP_PASS}"
+
+        env:
+          VOLUME: /mnt/byloth-website
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: byloth-website
+          path: dist
+
+      - name: Compose `env.php` file
+        shell: bash
+        run: |
+          echo "<?php" > "${ENV_FILE}"
+          echo "define('__RECIPIENT__', '${EMAIL_RECIPIENT}');" >> "${ENV_FILE}"
+          echo "define('__SENDER__', '${EMAIL_SENDER}');" >> "${ENV_FILE}"
+
+        env:
+          ENV_FILE: dist/api/env.php
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+
+      - name: Replace directory content
+        shell: bash
+        run: |
+          shopt -s dotglob
+          rm -rfv "${VOLUME}/*"
+          cp -rfv dist/* "${VOLUME}/"
+
+        env:
+          VOLUME: /mnt/byloth-website
