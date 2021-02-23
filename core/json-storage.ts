@@ -20,18 +20,31 @@ export default class JsonStorage
         this._storage = storage || JsonStorage._FakeOne;
     }
 
-    public get<T extends unknown>(propertyName: string, defaultValue?: T): T | undefined
+    public get<T>(propertyName: string, defaultValue?: T): T | undefined
     {
         const propertyValue = this._storage.getItem(propertyName) || undefined;
 
         if (propertyValue)
         {
-            return JSON.parse(propertyValue);
+            try
+            {
+                return JSON.parse(propertyValue);
+            }
+            catch (err)
+            {
+                if (process.env.NODE_ENV !== "production")
+                {
+                    // eslint-disable-next-line no-console
+                    console.warn(`The "${propertyValue}" value for "${propertyName}" property cannot be parsed. Cleaning the storage...`);
+                }
+
+                this._storage.removeItem(propertyName);
+            }
         }
 
         return defaultValue;
     }
-    public set<T extends unknown>(propertyName: string, newValue?: T): void
+    public set<T>(propertyName: string, newValue?: T): void
     {
         const encodedValue = JSON.stringify(newValue);
 

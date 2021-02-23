@@ -27,6 +27,8 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
     }
 
     return Vue.extend({
+        name: "TransientMixin",
+
         props: {
             value: {
                 default: false,
