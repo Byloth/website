@@ -1,8 +1,8 @@
-name: Deploy to Staging
+name: Deploy
 on:
   push:
     branches:
-      - staging
+      - production
 
 jobs:
   build:
@@ -53,9 +53,6 @@ jobs:
     name: Deploy process
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: staging
-
     steps:
       - name: Install CurlFtpFS
         run: sudo apt install curlftpfs
