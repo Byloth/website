@@ -1,6 +1,6 @@
 {
   "name": "@byloth/website",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "My personal website as a Nuxt.js application, written in TypeScript and based on Material Design.",
   "keywords": [
     "Vue.js",
@@ -53,6 +53,8 @@
     "nuxt": "~2.14.12"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "~7.12.17",
     "@nuxt/types": "~2.14.12",
     "@nuxt/typescript-build": "^2.0.5",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
