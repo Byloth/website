@@ -38,8 +38,11 @@
         display: inline-flex;
         justify-content: center;
 
+        &:active,
+        &:focus,
         &:hover
         {
+            color: inherit;
             text-decoration: none;
         }
     }

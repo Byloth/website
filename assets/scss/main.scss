@@ -120,6 +120,59 @@ samp *
     font-family: "Courier New", "Courier", monospace;
 }
 
+del
+{
+    color: rgba(#000000, 0.5);
+    position: relative;
+    text-decoration: none;
+    transition: color 100ms ease-in-out;
+
+    &::after
+    {
+        border-top: 2px solid #AF0000;
+        box-shadow: 0px 0px 1px rgba(#000000, 0.25);
+        content: "";
+        cursor: text;
+        height: 0px;
+        left: 0px;
+        position: absolute;
+        opacity: 1;
+        top: 0.5625em;
+        transition: opacity 100ms ease-in-out;
+        user-select: none;
+        width: 100%;
+    }
+
+    &:hover
+    {
+        color: #000000;
+
+        &::after
+        {
+            opacity: 0.5;
+        }
+    }
+}
+
+dl
+{
+    dt
+    {
+        font-weight: bold;
+        margin-bottom: 0.5em;
+
+        &::after
+        {
+            content: ":";
+        }
+    }
+    dd
+    {
+        margin-bottom: 1em;
+        margin-left: 1em;
+    }
+}
+
 hr
 {
     border-bottom: none;
@@ -207,44 +260,6 @@ q
         margin-bottom: 0px;
     }
 
-    a
-    {
-        position: relative;
-        text-decoration: none;
-
-        &::after
-        {
-            border-top: 2px solid variables.$primary-dark-color;
-            bottom: 0px;
-            content: "";
-            cursor: pointer;
-            height: 0px;
-            left: 0px;
-            position: absolute;
-            transition: border-color 100ms ease-in-out,
-                        width 100ms ease-in-out;
-            user-select: none;
-            width: 0%;
-        }
-
-        &:hover
-        {
-            &::after
-            {
-                border-top-color: variables.$primary-color;
-                width: 100%;
-            }
-        }
-        &:active,
-        &:focus
-        {
-            &::after
-            {
-                border-top-color: variables.$secondary-dark-color;
-                width: 100%;
-            }
-        }
-    }
     blockquote
     {
         color: lighten(#000000, 40);
@@ -267,39 +282,6 @@ q
         padding: 0px 0.125em;
         text-shadow: 1px 1px 1px rgba(#FFFFFF, 0.5);
         white-space: nowrap;
-    }
-    del
-    {
-        color: rgba(#000000, 0.5);
-        position: relative;
-        text-decoration: none;
-        transition: color 100ms ease-in-out;
-
-        &::after
-        {
-            border-top: 2px solid #AF0000;
-            box-shadow: 0px 0px 1px rgba(#000000, 0.25);
-            content: "";
-            cursor: text;
-            height: 0px;
-            left: 0px;
-            position: absolute;
-            opacity: 1;
-            top: 0.5625em;
-            transition: opacity 100ms ease-in-out;
-            user-select: none;
-            width: 100%;
-        }
-
-        &:hover
-        {
-            color: #000000;
-
-            &::after
-            {
-                opacity: 0.5;
-            }
-        }
     }
 }
 

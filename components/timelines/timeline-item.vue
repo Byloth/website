@@ -12,9 +12,20 @@
                     </h4>
                 </div>
             </div>
-            <div v-if="item.image" class="image">
-                <img :src="item.image.source" :alt="item.image.description" />
-            </div>
+            <template v-if="item.thumbnail">
+                <div v-if="item.thumbnail.type === 'youtube'" class="video">
+                    <div class="wrapper">
+                        <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                frameborder="0"
+                                :src="item.thumbnail.source">
+                        </iframe>
+                    </div>
+                </div>
+                <div v-else class="image">
+                    <img :src="item.image.source" :alt="item.image.description" />
+                </div>
+            </template>
             <div v-if="item.hasBody" class="body">
                 <NuxtContent :document="item" />
             </div>
@@ -129,6 +140,26 @@
                     @media print
                     {
                         display: none;
+                    }
+                }
+            }
+            & > .video
+            {
+                padding: 0.5em 0px;
+
+                & > .wrapper
+                {
+                    height: 0px;
+                    position: relative;
+                    padding-bottom: 56.25%;
+
+                    & > iframe
+                    {
+                        height: 100%;
+                        left: 0px;
+                        position: absolute;
+                        width: 100%;
+                        top: 0px;
                     }
                 }
             }

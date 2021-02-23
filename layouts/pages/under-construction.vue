@@ -43,11 +43,6 @@
         {
             font-weight: normal;
         }
-        & > hr
-        {
-            border: none;
-            border-top: 1px solid rgba(0, 0, 0, 0.2);
-        }
         & > p
         {
             margin-bottom: 0px;

@@ -2,6 +2,13 @@ import Vue from "vue";
 
 import Document, { IContentDocument } from "./core/document";
 
+export interface Thumbnail
+{
+    type: string;
+    source: string,
+    description?: string;
+}
+
 export default class Post extends Document
 {
     public static async GetAll({ $content }: Vue): Promise<Post[]>
@@ -19,7 +26,8 @@ export default class Post extends Document
     public readonly subtitle?: string;
     public readonly author: string;
     public readonly date: Date;
-    public readonly image?: { source: string, description: string };
+
+    public readonly thumbnail?: Thumbnail;
 
     public get icon(): string
     {
@@ -35,12 +43,13 @@ export default class Post extends Document
     {
         super(document);
 
+        this._icon = document.icon;
+
         this.title = document.title;
         this.subtitle = document.subtitle;
         this.author = document.author;
         this.date = new Date(document.date);
 
-        this.image = document.image;
-        this._icon = document.icon;
+        this.thumbnail = document.thumbnail;
     }
 }
