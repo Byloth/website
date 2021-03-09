@@ -18,12 +18,13 @@
                         <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen
                                 frameborder="0"
+                                :title="item.thumbnail.description"
                                 :src="item.thumbnail.source">
                         </iframe>
                     </div>
                 </div>
                 <div v-else class="image">
-                    <img :src="item.image.source" :alt="item.image.description" />
+                    <img :src="item.thumbnail.source" :alt="item.thumbnail.description" />
                 </div>
             </template>
             <div v-if="item.hasBody" class="body">

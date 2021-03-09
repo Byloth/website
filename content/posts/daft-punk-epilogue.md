@@ -7,5 +7,8 @@ icon: compact-disc
 thumbnail:
     type: youtube
     source: //www.youtube.com/embed/zKSsP2084nU
-    description:
+    description: "Give Life Back to Music" by Daft Punk
+
+tags:
+    - music
 ---
