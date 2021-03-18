@@ -6,6 +6,9 @@ date: 2021-02-23T21:24:51
 icon: compact-disc
 thumbnail:
     type: youtube
-    source: //www.youtube.com/embed/zKSsP2084nU
-    description:
+    source: https://www.youtube.com/embed/zKSsP2084nU
+    description: Give Life Back to Music - Daft Punk
+
+tags:
+    - music
 ---

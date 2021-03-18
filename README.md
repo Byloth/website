@@ -1,5 +1,7 @@
 # Byloth's Website 🌐 #
 
+[![Deploy](https://github.com/Byloth/website/actions/workflows/deploy.yml/badge.svg)](https://github.com/Byloth/website/actions/workflows/deploy.yml)
+
 ### My personal website as a Nuxt.js application, written in TypeScript and based on Material Design. ###
 
 Actually, yet another attempt to develop my personal website, to be precise...

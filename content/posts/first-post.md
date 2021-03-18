@@ -4,6 +4,9 @@ subtitle: (include data di pubblicazione ufficiale)
 author: Matteo Bilotta
 date: 2021-02-15T11:34:26
 icon: award
+tags:
+    - goals
+    - news
 ---
 
 Eccoci qui: finalmente **online**!
