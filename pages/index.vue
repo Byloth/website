@@ -7,12 +7,15 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import Timeline from "@/components/timelines/timeline.vue";
+
     import { Post } from "@/models";
 
     interface HomePageData { posts: Post[]; }
 
     export default Vue.extend({
         name: "HomePage",
+        components: { Timeline },
 
         data: (): HomePageData => ({ posts: [] }),
 

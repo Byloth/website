@@ -29,6 +29,12 @@
 
     import { Action } from "@/core/types";
 
+    import ActionButton from "@/components/mdc/actions/action-button.vue";
+    import NavigationActions from "@/components/navigation-actions.vue";
+    import TopAppBar from "@/components/mdc/top-app-bar.vue";
+
+    import CookieBanner from "./cookie-banner.vue";
+
     interface NavigationBarData
     {
         _resizingAnimation?: ScrollAnimation;
@@ -37,6 +43,7 @@
 
     export default Vue.extend({
         name: "NavigationBar",
+        components: { ActionButton, CookieBanner, NavigationActions, TopAppBar },
         props: {
             toggler: {
                 default: true,

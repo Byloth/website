@@ -41,13 +41,20 @@ const state = (): ConfigState => ({
         },
         {
             id: 3,
+            name: "events",
+            path: "/events",
+            icon: "event",
+            title: "Eventi"
+        },
+        {
+            id: 4,
             name: "about",
             path: "/about",
             icon: "info",
             title: "Chi sono"
         }
     ],
-    version: "5.0.3"
+    version: "5.0.4"
 });
 
 export { state };

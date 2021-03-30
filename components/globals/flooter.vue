@@ -78,8 +78,12 @@
     import Vue from "vue";
     import { mapState } from "vuex";
 
+    import ActionAnchor from "@/components/mdc/actions/action-anchor.vue";
+    import CreativeCommonsIcon from "@/components/icons/creative-commons-icon.vue";
+
     export default Vue.extend({
         name: "Flooter",
+        components: { ActionAnchor, CreativeCommonsIcon },
         computed: mapState("config", {
             author: "author",
             pages: "pages"

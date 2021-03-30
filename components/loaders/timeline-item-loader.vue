@@ -36,8 +36,13 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import SkeletonLoader from "./core/skeleton-loader.vue";
+    import ImageLoader from "./image-loader.vue";
+    import TextLoader from "./text-loader.vue";
+
     export default Vue.extend({
         name: "TimelineItemLoader",
+        components: { SkeletonLoader, ImageLoader, TextLoader },
         props: {
             image: {
                 default: false,

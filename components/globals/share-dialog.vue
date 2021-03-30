@@ -71,6 +71,11 @@
 
     import { RootState } from "@/core/types";
 
+    import ActionAnchor from "@/components/mdc/actions/action-anchor.vue";
+    import ActionButton from "@/components/mdc/actions/action-button.vue";
+    import BottomDialog from "@/components/dialogs/bottom-dialog.vue";
+    import TextField from "@/components/mdc/fields/text-field.vue";
+
     interface ShareDialogData
     {
         isOpen: boolean;
@@ -84,6 +89,7 @@
 
     export default Vue.extend({
         name: "ShareDialog",
+        components: { ActionAnchor, ActionButton, BottomDialog, TextField },
 
         data: (): ShareDialogData => ({
             isOpen: false,

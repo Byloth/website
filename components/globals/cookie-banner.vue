@@ -16,10 +16,13 @@
     import Vue from "vue";
     import { mapState } from "vuex";
 
+    import BannerDialog from "@/components/dialogs/banner-dialog.vue";
+
     interface CookieBannerData { isOpen: boolean; }
 
     export default Vue.extend({
         name: "CookieBanner",
+        components: { BannerDialog },
 
         data: (): CookieBannerData => ({ isOpen: false }),
 

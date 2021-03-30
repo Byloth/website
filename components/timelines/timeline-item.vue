@@ -48,8 +48,11 @@
 
     import Time from "@/core/time";
 
+    import Avatar from "@/components/avatar.vue";
+
     export default Vue.extend({
         name: "TimelineItem",
+        components: { Avatar },
         filters: {
             date(value: Date): string
             {

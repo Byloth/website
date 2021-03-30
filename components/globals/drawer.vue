@@ -60,8 +60,12 @@
 
     import { cssClasses } from "@material/drawer";
 
+    import List from "@/components/mdc/lists/list.vue";
+    import ListItem from "@/components/mdc/lists/list-item.vue";
+
     export default Vue.extend({
         name: "Drawer",
+        components: { List, ListItem },
         props: {
             value: {
                 default: false,

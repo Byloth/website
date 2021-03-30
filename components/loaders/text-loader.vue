@@ -7,8 +7,11 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import SkeletonLoader from "./core/skeleton-loader.vue";
+
     export default Vue.extend({
         name: "TextLoader",
+        components: { SkeletonLoader },
         props: {
             delay: {
                 default: 0,

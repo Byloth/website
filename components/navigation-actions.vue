@@ -39,10 +39,15 @@
 
     import { MOBILE_SIZE } from "@/core/constants";
 
+    import ActionAnchor from "./mdc/actions/action-anchor.vue";
+    import ActionButton from "./mdc/actions/action-button.vue";
+    import OverflowMenu from "./overflow-menu.vue";
+
     interface NavigationActionsData { isCondensed: boolean; }
 
     export default Vue.extend({
         name: "NavigationActions",
+        components: { ActionAnchor, ActionButton, OverflowMenu },
         props: {
             actions: {
                 default: () => [],
