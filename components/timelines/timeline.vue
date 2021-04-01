@@ -17,8 +17,13 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import TimelineItemLoader from "@/components/loaders/timeline-item-loader.vue";
+
+    import TimelineItem from "./timeline-item.vue";
+
     export default Vue.extend({
         name: "Timeline",
+        components: { TimelineItemLoader, TimelineItem },
         props: {
             items: {
                 default: () => [],

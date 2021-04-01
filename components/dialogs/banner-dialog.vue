@@ -21,10 +21,14 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import Avatar from "@/components/avatar.vue";
+    import Button from "@/components/mdc/button.vue";
+
     import TransientMixin from "@/mixins/transient";
 
     export default Vue.extend({
         name: "BannerDialog",
+        components: { Avatar, Button },
         mixins: [TransientMixin()],
         props: {
             icon: {

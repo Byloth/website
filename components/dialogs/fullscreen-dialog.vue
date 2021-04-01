@@ -33,10 +33,15 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import ActionButton from "@/components/mdc/actions/action-button.vue";
+    import Button from "@/components/mdc/button.vue";
+    import TopAppBar from "@/components/mdc/top-app-bar.vue";
+
     import TransientMixin from "@/mixins/transient";
 
     export default Vue.extend({
         name: "FullscreenDialog",
+        components: { ActionButton, Button, TopAppBar },
         mixins: [TransientMixin()],
         props: {
             title: {

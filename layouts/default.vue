@@ -27,6 +27,14 @@
 
     import { MOBILE_SIZE, TABLET_SIZE } from "@/core/constants";
 
+    import ContactDialog from "@/components/globals/contact-dialog.vue";
+    import Drawer from "@/components/globals/drawer.vue";
+    import DrawerScrim from "@/components/globals/drawer-scrim.vue";
+    import Flooter from "@/components/globals/flooter.vue";
+    import Jumbotron from "@/components/globals/jumbotron.vue";
+    import NavigationBar from "@/components/globals/navigation-bar.vue";
+    import ShareDialog from "@/components/globals/share-dialog.vue";
+
     export enum DrawerStatus
     {
         MODAL = 0,
@@ -50,6 +58,15 @@
 
     export default Vue.extend({
         name: "DrawerLayout",
+        components: {
+            ContactDialog,
+            Drawer,
+            DrawerScrim,
+            Flooter,
+            Jumbotron,
+            NavigationBar,
+            ShareDialog
+        },
 
         data: (): DrawerLayoutData => ({
             dialog: false,

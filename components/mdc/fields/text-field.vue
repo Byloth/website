@@ -62,10 +62,14 @@
     import Vue from "vue";
     import { MDCTextField } from "@material/textfield";
 
+    import TextFieldHelperText from "./text-field-helper-text.vue";
+    import TextFieldIcon from "./text-field-icon.vue";
+
     interface TextFieldData { _textField?: MDCTextField; }
 
     export default Vue.extend({
         name: "TextField",
+        components: { TextFieldHelperText, TextFieldIcon },
         props: {
             value: {
                 default: "",

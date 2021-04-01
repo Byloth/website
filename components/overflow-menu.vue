@@ -32,10 +32,16 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import ActionButton from "./mdc/actions/action-button.vue";
+    import Menu from "./mdc/menus/menu.vue";
+    import MenuAnchor from "./mdc/menus/menu-anchor.vue";
+    import MenuItem from "./mdc/menus/menu-item.vue";
+
     interface OverflowMenuData { isOpen: boolean; }
 
     export default Vue.extend({
         name: "OverflowMenu",
+        components: { ActionButton, Menu, MenuAnchor, MenuItem },
         props: {
             actions: {
                 default: () => [],

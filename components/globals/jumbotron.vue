@@ -85,10 +85,13 @@
 
     import { DailyMessage } from "@/models";
 
+    import TextLoader from "@/components/loaders/text-loader.vue";
+
     interface JumbotronData { dailyMessage: DailyMessage | null; }
 
     export default Vue.extend({
         name: "Jumbotron",
+        components: { TextLoader },
 
         data: (): JumbotronData => ({ dailyMessage: null }),
         created: async function(): Promise<void>

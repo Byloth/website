@@ -42,6 +42,10 @@
 
     import { RootState } from "@/core/types";
 
+    import FullscreenDialog from "@/components/dialogs/fullscreen-dialog.vue";
+    import TextField from "@/components/mdc/fields/text-field.vue";
+    import TextareaField from "@/components/mdc/fields/textarea-field.vue";
+
     interface ContactDialogData
     {
         isOpen: boolean;
@@ -56,6 +60,7 @@
 
     export default Vue.extend({
         name: "ContactDialog",
+        components: { FullscreenDialog, TextField, TextareaField },
 
         data: (): ContactDialogData => ({
             isOpen: false,
