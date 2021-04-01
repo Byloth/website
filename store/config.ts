@@ -39,13 +39,13 @@ const state = (): ConfigState => ({
             icon: "library_books",
             title: "BLog"
         },
-        {
-            id: 3,
-            name: "events",
-            path: "/events",
-            icon: "event",
-            title: "Eventi"
-        },
+        // {
+        //     id: 3,
+        //     name: "events",
+        //     path: "/events",
+        //     icon: "event",
+        //     title: "Eventi"
+        // },
         {
             id: 4,
             name: "about",
