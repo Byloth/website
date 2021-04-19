@@ -1,6 +1,7 @@
 import Vue from "vue";
+import { IContentDocument } from "@nuxt/content/types/content";
 
-import Document, { IContentDocument } from "./core/document";
+import Document from "./core/document";
 
 export interface Thumbnail
 {

@@ -970,5 +970,14 @@
     "author": "proverbio Cinese",
     "source": null,
     "url": null
+  },
+  {
+    "id": 109,
+    "typeId": 1,
+    "text": "<q title=\"La risposta alla domanda fondamentale sulla vita, l'universo e tutto quanto\">42</q>",
+    "script": null,
+    "author": "Pensiero Profondo",
+    "source": "Guida galattica per gli autostoppisti",
+    "url": "https://it.wikipedia.org/wiki/Guida_galattica_per_gli_autostoppisti_(romanzo)"
   }
 ]
