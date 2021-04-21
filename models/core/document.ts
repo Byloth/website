@@ -1,3 +1,5 @@
+import { IContentDocument } from "@nuxt/content/types/content";
+
 interface Element
 {
     children?: Element[];
@@ -11,17 +13,6 @@ interface TableOfContent
     id: string;
     depth: number;
     text: string;
-}
-
-export interface IContentDocument extends Record<string, any> // from "@nuxt/content";
-{
-    dir: string;
-    path: string;
-    extension: string;
-    slug: string;
-
-    createdAt: Date;
-    updatedAt: Date;
 }
 
 export default abstract class Document implements IContentDocument

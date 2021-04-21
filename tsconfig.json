@@ -25,8 +25,8 @@
     },
     "types": [
       "@types/node",
-      "@nuxt/types",
       "@nuxt/content",
+      "@nuxt/types",
       "@nuxtjs/axios",
       "@nuxtjs/google-analytics"
     ]

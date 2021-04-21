@@ -137,9 +137,9 @@ del
         left: 0px;
         position: absolute;
         opacity: 1;
+        pointer-events: none;
         top: 0.5625em;
         transition: opacity 100ms ease-in-out;
-        user-select: none;
         width: 100%;
     }
 

@@ -4,7 +4,7 @@
         <main>
             <h1>Privacy &amp; Cookie</h1>
             <p>
-                Il presente sito web utilizza un insieme >minimale di cookie
+                Il presente sito web utilizza un insieme minimale di cookie
                 necessari per il corretto funzionamento dello stesso.<br />
                 Non traccia e non salva alcuna informazione personale dell'utente direttamente
                 altresì fa uso di servizi esterni di terze parti che, a loro volta,

@@ -2,7 +2,7 @@
     <FullscreenDialog id="contact-dialog"
                       v-model="isOpen"
                       title="Scrivi il tuo messaggio"
-                      done-title="Invia"
+                      done-text="Invia"
                       @cancel="onCancelEvent"
                       @done="onDoneEvent">
         <div class="container">

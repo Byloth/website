@@ -7,7 +7,7 @@
             <TopAppBar>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                     <ActionButton class="mdc-top-app-bar__action-item"
-                                  :title="cancelTitle"
+                                  :title="cancelText"
                                   @click="$emit('cancel', close, $event)">
                         <span class="material-icons">
                             close
@@ -19,7 +19,7 @@
                 </section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                     <Button unelevated @click="$emit('done', close, $event)">
-                        {{ doneTitle }}
+                        {{ doneText }}
                     </Button>
                 </section>
             </TopAppBar>
@@ -48,11 +48,11 @@
                 required: true,
                 type: String
             },
-            cancelTitle: {
+            cancelText: {
                 default: "Annulla",
                 type: String
             },
-            doneTitle: {
+            doneText: {
                 default: "Conferma",
                 type: String
             }
