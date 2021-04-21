@@ -7,7 +7,7 @@ icon: headphones
 thumbnail:
     type: youtube
     source: https://www.youtube.com/embed/UtF6Jej8yb4
-    description: "The Nights" by Avicii
+    description: \"The Nights\" by Avicii
 
 tags:
     - music
