@@ -12,6 +12,12 @@ export interface Thumbnail
 
 export default class Post extends Document
 {
+    public static async Get({ $content }: Vue, slug: string): Promise<Post>
+    {
+        const document = await $content("posts", slug).fetch();
+
+        return new Post(document as IContentDocument);
+    }
     public static async GetAll({ $content }: Vue): Promise<Post[]>
     {
         const documents = await $content("posts")

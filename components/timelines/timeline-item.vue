@@ -88,7 +88,7 @@
 
         & > .content
         {
-            margin: 0.5em 0px;
+            margin: 0.25em 0px;
             margin-left: 1em;
             text-align: left;
             width: calc(100% - 2.5em - 2px);
@@ -137,7 +137,7 @@
                     left: -0.5em;
                     position: absolute;
                     right: unset;
-                    top: 1em;
+                    top: 1.95em;
                     transform: rotate(45deg);
                     width: 1em;
 
@@ -228,8 +228,9 @@
                 height: 1.333em;
                 left: calc(0.333em + 1px);
                 position: absolute;
-                top: 1.333em;
+                top: 2em;
                 width: 1.333em;
+                z-index: 1;
             }
 
             @media (min-width: variables.$md-size)
@@ -254,11 +255,13 @@
         {
             & > .divider > hr
             {
-                margin-top: 2em;
+                margin-top: 3em;
             }
         }
         &:last-child
         {
+            margin-bottom: 0px;
+
             & > .divider > hr
             {
                 margin-bottom: 33.333%;
@@ -284,8 +287,22 @@
             }
         }
 
+        @media (min-width: variables.$sm-size)
+        {
+            & > .content
+            {
+                margin-bottom: 0.5em;
+                margin-top: 0.5em;
+            }
+            & > .divider > .circle
+            {
+                top: 2.25em;
+            }
+        }
         @media (min-width: variables.$md-size)
         {
+            margin-bottom: -50px;
+
             &.reverse
             {
                 flex-direction: row;
@@ -294,11 +311,11 @@
                 {
                     margin-left: 0px;
                     margin-right: 1em;
-                    text-align: right;
 
                     & > .header
                     {
                         flex-direction: row-reverse;
+                        text-align: right;
 
                         &::after
                         {
