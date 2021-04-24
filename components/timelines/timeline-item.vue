@@ -29,6 +29,11 @@
             </template>
             <div v-if="item.hasBody" class="body">
                 <NuxtContent :document="item" />
+                <div v-if="item.hasExcerpt" class="read-more">
+                    <NuxtLink :to="{ name: 'posts-slug', params: { slug: item.slug } }">
+                        continua…
+                    </NuxtLink>
+                </div>
             </div>
             <div class="footer">
                 <small class="details">
@@ -174,6 +179,13 @@
             & > .body
             {
                 padding: 0.5em 1em;
+
+                & > .read-more
+                {
+                    font-style: italic;
+                    margin: 1em 0px;
+                    text-align: right;
+                }
             }
             & > .footer
             {

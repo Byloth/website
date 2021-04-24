@@ -20,6 +20,8 @@ il cibo al tavolo- insieme ai miei 2 compagni d'avventura: **Andrea** e **Robert
 Dopo **10 giorni** passati in quel fantastico "Mondo", così differente e distante dal nostro, eravamo giunti
 -nostro malgrado- alla fine del viaggio: quello sarebbe stato il nostro **ultimo giorno** in Giappone.
 
+<!--more-->
+
 Non lo sapevo ancora ma, di lì a poco, mi sarei fatto decolorare e **tingere i capelli** di bianco, pagando -ahimè-
 una cifra folle, nel più bel [salone di parrucchieri](https://g.page/ash119?share) in cui io sia mai stato.  
 Scelta -chiaramente avventata ma di cui non mi pento affatto- che mi fece guadagnare
@@ -32,5 +34,3 @@ conosciuto un paio di giorni prima ai piedi del monte Fuji con cui, tra una cosa
 iniziammo a chiacchierare e finimmo con fissare un **colloquio di lavoro**.
 
 Ho rischiato seriamente di rimanere in Giappone, quella volta! 🤣
-
-<!--more-->

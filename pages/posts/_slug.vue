@@ -1,25 +1,36 @@
 <template>
     <CardLayout id="post-page">
-        <div v-if="post.thumbnail" class="image">
+        <div v-if="post.thumbnail && post.thumbnail.type === 'image'" class="image">
             <img :src="post.thumbnail.source" :alt="post.thumbnail.description" />
             <div class="header">
                 <h1 class="title">
                     {{ post.title }}
                 </h1>
-                <h3 class="subtitle">
+                <h3 v-if="post.subtitle" class="subtitle">
                     {{ post.subtitle }}
                 </h3>
             </div>
         </div>
         <div v-else class="header">
+            <Avatar :icon="post.icon" />
             <h1 class="title">
                 {{ post.title }}
             </h1>
-            <h3 class="subtitle">
+            <h3 v-if="post.subtitle" class="subtitle">
                 {{ post.subtitle }}
             </h3>
         </div>
-        <main class="content">
+        <div v-if="post.thumbnail && post.thumbnail.type === 'youtube'" class="video">
+            <div class="wrapper">
+                <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        frameborder="0"
+                        :title="post.thumbnail.description"
+                        :src="post.thumbnail.source">
+                </iframe>
+            </div>
+        </div>
+        <main v-if="post.body.children.length > 0" class="content">
             <NuxtContent :document="post" />
         </main>
     </CardLayout>
@@ -32,6 +43,7 @@
 
     import { Post } from "@/models";
 
+    import Avatar from "@/components/avatar.vue";
     import CardLayout from "@/layouts/pages/card-layout.vue";
 
     interface VariablePageAsyncData { post?: Post; }
@@ -39,7 +51,7 @@
 
     export default Vue.extend({
         name: "PostPage",
-        components: { CardLayout },
+        components: { Avatar, CardLayout },
 
         asyncData: async function(context: Context): Promise<VariablePageAsyncData>
         {
@@ -83,7 +95,6 @@
         }
         .image
         {
-            margin-bottom: -4px;
             overflow: hidden;
             position: relative;
 
@@ -102,6 +113,32 @@
                 & > .subtitle
                 {
                     margin-bottom: 1em;
+                }
+            }
+        }
+        .video
+        {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+                        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+                        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+
+            margin: 2em;
+
+            & > .wrapper
+            {
+                height: 0px;
+                position: relative;
+                padding-bottom: 56.25%;
+
+                & > iframe
+                {
+                    height: 100%;
+                    left: 0px;
+                    position: absolute;
+                    width: 100%;
+                    top: 0px;
                 }
             }
         }
