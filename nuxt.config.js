@@ -1,12 +1,30 @@
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: "static",
+  modern: "client",
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: "%s @ Byloth's Website",
     meta: [],
     link: [
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+        crossorigin: true
+      },
+
+      {
+        rel: "preload",
+        as: "style",
+        href: "https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      },
+      {
+        rel: "preload",
+        as: "style",
+        href: "https://fonts.googleapis.com/css2?family=Material+Icons"
+      },
+
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Material+Icons" },
 
