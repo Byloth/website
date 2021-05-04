@@ -30,7 +30,7 @@
                 </iframe>
             </div>
         </div>
-        <main v-if="post.body.children.length > 0" class="content">
+        <main v-if="post.hasBody" class="content">
             <NuxtContent :document="post" />
         </main>
     </CardLayout>

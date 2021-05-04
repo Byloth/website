@@ -28,12 +28,17 @@
                 </div>
             </template>
             <div v-if="item.hasBody" class="body">
-                <NuxtContent :document="item" />
-                <div v-if="item.hasExcerpt" class="read-more">
-                    <NuxtLink :to="{ name: 'posts-slug', params: { slug: item.slug } }">
-                        continua…
-                    </NuxtLink>
-                </div>
+                <template v-if="item.hasExcerpt">
+                    <NuxtContent :document="item.excerpt" />
+                    <div class="read-more">
+                        <NuxtLink :to="{ name: 'posts-slug', params: { slug: item.slug } }">
+                            continua…
+                        </NuxtLink>
+                    </div>
+                </template>
+                <template v-else>
+                    <NuxtContent :document="item" />
+                </template>
             </div>
             <div class="footer">
                 <small class="details">

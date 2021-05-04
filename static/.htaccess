@@ -24,8 +24,8 @@ Options +FollowSymLinks -Indexes
         ExpiresByType text/css A31536000
         ExpiresByType text/javascript A31536000
         ExpiresByType text/json A31536000
-        ExpiresByType application/json A31536000
         ExpiresByType application/javascript A31536000
+        ExpiresByType application/json A31536000
         ExpiresByType application/x-javascript A31536000
         ExpiresByType application/font-woff2 A31536000
     </IfModule>

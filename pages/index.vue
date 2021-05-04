@@ -24,7 +24,6 @@
         created: async function(): Promise<void>
         {
             this.posts = await Post.GetAll(this);
-            this.posts.forEach((post) => { post.body = post.hasExcerpt ? post.excerpt : post.body; });
         }
     });
 </script>

@@ -33,6 +33,7 @@ export default class DailyMessage implements DailyMessageData
     }
 
     public readonly id: number;
+    public readonly type: DailyMessageType;
     public readonly typeId: number;
     public readonly text: string;
     public readonly author: string | null;
@@ -40,18 +41,20 @@ export default class DailyMessage implements DailyMessageData
     public readonly script: string | null;
     public readonly url: string | null;
 
-    public get canBeExecuted(): boolean { return (process.client && this.script !== null); }
-    public get type(): DailyMessageType { return this.typeId as DailyMessageType; }
+    public readonly canBeExecuted: boolean;
 
     public constructor({ id, typeId, text, author, source, script, url }: DailyMessageData)
     {
         this.id = id;
+        this.type = typeId as DailyMessageType;
         this.typeId = typeId;
         this.text = text;
         this.author = author;
         this.source = source;
         this.script = script;
         this.url = url;
+
+        this.canBeExecuted = (process.client && script !== null);
     }
 
     public execute(): Promise<unknown>
