@@ -90,10 +90,5 @@ export default {
   sitemap: { hostname: "https://www.byloth.net" },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: { },
-
-  server: {
-    port: 8080,
-    host: "0.0.0.0"
-  }
+  build: { }
 };
