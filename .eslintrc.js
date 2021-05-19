@@ -4,13 +4,14 @@ module.exports = {
   root: true,
   env: {
     browser: true,
+    es2021: true,
     node: true
   },
   extends: [
     "@nuxtjs/eslint-config-typescript",
     "plugin:nuxt/recommended"
   ],
-  parserOptions: { ecmaVersion: 2020 },
+  parserOptions: { ecmaVersion: 2021 },
   rules: {
     "arrow-parens": ["error", "always"],
     "brace-style": ["error", "allman", { allowSingleLine: true }],
@@ -20,9 +21,15 @@ module.exports = {
     "newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],
     "no-console": DYNAMIC_LEVEL,
     "no-debugger": DYNAMIC_LEVEL,
+    "no-multi-spaces": ["error", { exceptions: { "Property": false } }],
+    "no-multiple-empty-lines": ["error", { max: 1 }],
     "no-unreachable": DYNAMIC_LEVEL,
+    "no-trailing-spaces": "error",
     "no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "no-useless-constructor": "error",
     "object-shorthand": ["error", "consistent"],
+    "operator-linebreak": ["error", "after"],
+    "prefer-rest-params": DYNAMIC_LEVEL,
     "quote-props": ["error", "consistent"],
     "quotes": ["error", "double", { allowTemplateLiterals: true, avoidEscape: true }],
     "semi": ["error", "always"],
@@ -38,11 +45,19 @@ module.exports = {
 
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-unused-vars": [DYNAMIC_LEVEL, { args: "none" }],
+    "@typescript-eslint/no-useless-constructor": "error",
     "@typescript-eslint/semi": ["error"]
   },
   overrides: [
     {
-      files: [".eslintrc.js", "*.config.js"],
+      files: ["*.js"],
+      rules: {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    },
+    {
+      files: [".babelrc", ".eslintrc.js", "*.config.js"],
       rules: {
         "indent": ["error", 2, { SwitchCase: 1 }],
 
@@ -54,7 +69,7 @@ module.exports = {
       rules: {
         "indent": ["error", 2],
         "no-unused-expressions": "off",
-        "semi": ["error", "never"],
+        "semi": "off",
         "@typescript-eslint/semi": ["error", "never"]
       }
     },
