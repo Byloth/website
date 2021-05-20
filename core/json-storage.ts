@@ -1,6 +1,6 @@
 export default class JsonStorage
 {
-    protected static get _FakeOne()
+    protected static get _FakeOne(): Storage
     {
         return {
             length: 0,
@@ -11,7 +11,7 @@ export default class JsonStorage
             removeItem: (key: string): void => undefined,
             clear: (): void => undefined
         };
-    };
+    }
 
     protected _storage: Storage;
 

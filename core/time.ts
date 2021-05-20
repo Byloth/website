@@ -140,7 +140,7 @@ export default abstract class Time
         return timeStrings.join(":");
     }
 
-    public static TimeDifferenceAsString(firstTime: Date, secondTime: Date, stopAtFirst = true)
+    public static TimeDifferenceAsString(firstTime: Date, secondTime: Date, stopAtFirst = true): string
     {
         const timeDifference = secondTime.getTime() - firstTime.getTime();
         const timeDifferences = Time._TimeDifferenceAsArray(timeDifference, stopAtFirst)!;
