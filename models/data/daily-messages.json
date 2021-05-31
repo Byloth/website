@@ -434,8 +434,8 @@
   {
     "id": 49,
     "typeId": 3,
-    "text": "Questo sito esiste da <span id=\"main-header-daily-message-elapsed-time\" title=\"Dal 30/09/2015 alle 17:16:41\">0 anni, 0 mesi, 0 settimane, 0 giorni, 0 ore, 0 minuti e 0 secondi</span>.",
-    "script": "const d = document.getElementById('main-header-daily-message-elapsed-time'), i = setInterval(function() { try { d.innerHTML = Time.TimeDifferenceAsString(new Date('2015-09-30T17:16:41'), new Date(), false); } catch (e) { console.error(e); clearInterval(i); } }, 1000);",
+    "text": "Questo sito esiste da <span id=\"main-header-daily-message-elapsed-time\" title=\"Dal 29/09/2014 alle 15:43:44\">0 anni, 0 mesi, 0 settimane, 0 giorni, 0 ore, 0 minuti e 0 secondi</span>.",
+    "script": "const d = document.getElementById('main-header-daily-message-elapsed-time'), i = setInterval(function() { try { d.innerHTML = Time.TimeDifferenceAsString(new Date('2014-09-29T15:43:44Z'), new Date(), false); } catch (e) { console.error(e); clearInterval(i); } }, 1000);",
     "author": null,
     "source": null,
     "url": null

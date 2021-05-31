@@ -12,3 +12,14 @@ thumbnail:
 tags:
     - music
 ---
+
+> *«Sprid glädje genom min musik, i budskapet. Och njut av framgången, men inte den materialistiska framgången.»*
+
+Così recita una nota, scritta dallo stesso Tim sul proprio telefono, 3 giorni prima della sua morte...  
+
+Una traduzione abbastanza fedele, può essere la seguente:  
+*«Diffondete gioia con la mia musica, attraverso il messaggio che contiene. E godetevi il successo, ma non quello materialistico.»*
+
+---
+
+E proprio con questa canzone, 4 anni prima, ha voluto trasmettere il medesimo messaggio...

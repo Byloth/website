@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue, { VueConstructor } from "vue";
 
 import { TRANSITION_DURATION } from "@/core/constants";
 
@@ -14,7 +14,7 @@ export interface TransientMixinData
     isOpen: boolean;
 }
 
-export default (enterTransitionDuration?: number, exitTransitionDuration?: number) =>
+export default (enterTransitionDuration?: number, exitTransitionDuration?: number): VueConstructor =>
 {
     if (enterTransitionDuration === undefined)
     {
@@ -78,7 +78,8 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
         methods: {
             open(): Promise<void>
             {
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => void, reject: (reason?: any) => void) =>
                 {
                     this.isShown = true;
 
@@ -96,7 +97,8 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
             },
             close(): Promise<void>
             {
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => void, reject: (reason?: any) => void) =>
                 {
                     this.isOpen = false;
                     this._closingTimeout = setTimeout(() =>

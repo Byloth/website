@@ -6,16 +6,25 @@ $grid-breakpoints:
     sm: variables.$sm-size,
     md: variables.$md-size,
     lg: variables.$lg-size,
-    xl: variables.$xl-size
+    xl: variables.$xl-size,
+    xxl: variables.$xxl-size
 );
 $grid-gutter-width: 0px;
 
 $container-max-widths:
 (
-    sm: 550px,
-    md: 800px,
-    lg: 960px,
-    xl: 1070px
+    sm: 565px,
+    md: 768px,
+    lg: 959px,
+    xl: 960px,
+    xxl: 1040px
 );
+
+// $xs-size: 0;
+// $sm-size: 600px;
+// $md-size: 854px;
+// $lg-size: 1024px;
+// $xl-size: 1280px;
+// $xxl-size: 1440px;
 
 @import "~bootstrap/scss/bootstrap-grid.scss";
