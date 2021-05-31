@@ -27,12 +27,13 @@ $font-family: unquote("Ubuntu, Roboto, Helvetica, sans-serif");
 //
 $xs-size: 0;
 $sm-size: 600px;
-$md-size: 960px;
-$lg-size: 1280px;
-$xl-size: 1600px;
+$md-size: 854px;
+$lg-size: 1024px;
+$xl-size: 1280px;
+$xxl-size: 1440px;
 
-$max-mobile-size: $sm-size - 1px;
-$min-tablet-size: $sm-size;
+$max-mobile-size: $md-size - 1px;
+$min-tablet-size: $md-size;
 $max-tablet-size: $lg-size - 1px;
 $min-desktop-size: $lg-size;
 

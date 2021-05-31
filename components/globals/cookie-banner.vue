@@ -7,7 +7,8 @@
         <span>
             Questo sito utilizza i cookie per offrire un'esperienza di utilizzo ottimale.<br />
             Per avere ulteriori informazioni a riguardo, puoi visitare
-            la pagina <a href="/privacy">Privacy &amp; Cookie</a>.
+            la pagina
+            <NuxtLink :to="{ name: 'privacy' }">Privacy &amp; Cookie</NuxtLink>.
         </span>
     </BannerDialog>
 </template>
