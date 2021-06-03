@@ -120,6 +120,13 @@
 
                         alert(`Grazie per il tuo messaggio, ${this.name}.\n` +
                             `Ti risponderò il prima possibile!`);
+
+                        await close();
+
+                        this.name = "";
+                        this.email = "";
+                        this.subject = "";
+                        this.message = "";
                     }
                     catch (err)
                     {
@@ -129,13 +136,6 @@
                         alert("Sono spiacente ma si è verificato un errore sconosciuto.\n" +
                             "Riprova oppure contattami in qualche altro modo.");
                     }
-
-                    await close();
-
-                    this.name = "";
-                    this.email = "";
-                    this.subject = "";
-                    this.message = "";
                 }
                 else
                 {
