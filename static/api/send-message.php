@@ -5,7 +5,6 @@
     require_once(BASE_URL . "/vendor/autoload.php");
 
     use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
     function json_response($responseCode = 204, $responseData = null)
@@ -26,7 +25,7 @@
 
     $name = filter_var($input["name"], FILTER_SANITIZE_STRING);
     $email = filter_var($input["email"], FILTER_SANITIZE_EMAIL);
-    $subject =  filter_var($input["subject"], FILTER_SANITIZE_STRING);
+    $subject = filter_var($input["subject"], FILTER_SANITIZE_STRING);
     $message = filter_var($input["message"], FILTER_SANITIZE_STRING);
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
