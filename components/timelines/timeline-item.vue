@@ -116,7 +116,7 @@
 
                 & > .avatar
                 {
-                    padding-right: 1em;
+                    margin-right: 1em;
                 }
                 & > .details
                 {
@@ -259,7 +259,7 @@
 
                 & > .circle
                 {
-                    left: calc(-0.1666em + 1px);
+                    left: calc(-0.1666em + 1.5px);
                 }
             }
             @media print
@@ -343,8 +343,8 @@
 
                         & > .avatar
                         {
-                            padding-left: 1em;
-                            padding-right: 0px;
+                            margin-left: 1em;
+                            margin-right: 0px;
                         }
                     }
                     & > .footer

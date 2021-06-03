@@ -90,7 +90,7 @@
 
                 & > .avatar
                 {
-                    padding-right: 1em;
+                    margin-right: 1em;
 
                     & > .icon-loader
                     {
@@ -290,8 +290,8 @@
 
                         & > .avatar
                         {
-                            padding-left: 1em;
-                            padding-right: 0px;
+                            margin-left: 1em;
+                            margin-right: 0px;
                         }
                     }
                     & > .footer > .date-loader

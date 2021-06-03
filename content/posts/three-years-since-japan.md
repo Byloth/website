@@ -15,7 +15,7 @@ tags:
 ---
 
 Esattamente a quest'ora, il **18 Marzo 2018**, mi stavo spaccando di sushi in un
-[ristorante a Tōkyō](https://goo.gl/maps/WRTeXsRWCeJUvVby9) -provvisto di uno di quei bellissimi trenini che ti portano
+[ristorante a Tōkyō](https://goo.gl/maps/xi2ifPJgxg5s8zHt7) -provvisto di uno di quei bellissimi trenini che ti portano
 il cibo al tavolo- insieme ai miei 2 compagni d'avventura: **Andrea** e **Roberto**.  
 Dopo **10 giorni** passati in quel fantastico "Mondo", così differente e distante dal nostro, eravamo giunti
 -nostro malgrado- alla fine del viaggio: quello sarebbe stato il nostro **ultimo giorno** in Giappone.
@@ -23,7 +23,7 @@ Dopo **10 giorni** passati in quel fantastico "Mondo", così differente e distan
 <!--more-->
 
 Non lo sapevo ancora ma, di lì a poco, mi sarei fatto decolorare e **tingere i capelli** di bianco, pagando -ahimè-
-una cifra folle, nel più bel [salone di parrucchieri](https://g.page/ash119?share) in cui io sia mai stato.  
+una cifra folle, nel più bel [salone di parrucchieri](https://g.page/ash119) in cui io sia mai stato.  
 Scelta -chiaramente avventata ma di cui non mi pento affatto- che mi fece guadagnare
 il fantastico appellativo di **Byloth "il Bianco"**, datomi goliardicamente dai miei "accompagnatori".
 

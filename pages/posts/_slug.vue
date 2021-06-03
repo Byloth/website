@@ -3,6 +3,20 @@
         <div v-if="post.thumbnail && post.thumbnail.type === 'image'" class="image">
             <img :src="post.thumbnail.source" :alt="post.thumbnail.description" />
             <div class="header">
+                <Avatar :icon="post.icon" />
+                <div class="details">
+                    <h1 class="title">
+                        {{ post.title }}
+                    </h1>
+                    <h3 v-if="post.subtitle" class="subtitle">
+                        {{ post.subtitle }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div v-else class="header">
+            <Avatar :icon="post.icon" />
+            <div class="details">
                 <h1 class="title">
                     {{ post.title }}
                 </h1>
@@ -10,15 +24,6 @@
                     {{ post.subtitle }}
                 </h3>
             </div>
-        </div>
-        <div v-else class="header">
-            <Avatar :icon="post.icon" />
-            <h1 class="title">
-                {{ post.title }}
-            </h1>
-            <h3 v-if="post.subtitle" class="subtitle">
-                {{ post.subtitle }}
-            </h3>
         </div>
         <div v-if="post.thumbnail && post.thumbnail.type === 'youtube'" class="video">
             <div class="wrapper">
@@ -47,6 +52,7 @@
     import CardLayout from "@/layouts/pages/card-layout.vue";
 
     interface VariablePageAsyncData { post?: Post; }
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
     interface VariablePageData extends VariablePageAsyncData { }
 
     export default Vue.extend({
@@ -83,14 +89,28 @@
     {
         .header
         {
-            & > .title
+            align-items: flex-end;
+            display: flex;
+
+            & > .avatar
             {
-                margin: 0.5em 0.75em;
+                font-size: 2em;
+                margin-bottom: 0.125em;
+                margin-left: 0.75em;
             }
-            & > .subtitle
+
+            & > .details
             {
-                margin: 1em 2.5em;
-                margin-bottom: 0px;
+                flex: 1;
+
+                & > .title
+                {
+                    margin: 0.5em 0.75em;
+                }
+                & > .subtitle
+                {
+                    margin: 1em 2.5em 0px;
+                }
             }
         }
         .image
@@ -100,6 +120,7 @@
 
             & > .header
             {
+                align-items: center;
                 background-color: rgba(0, 0, 0, 0.25);
                 background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
                 border-top: 1px solid rgba(0, 0, 0, 0.25);
@@ -110,7 +131,14 @@
                 right: 0px;
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
-                & > .subtitle
+                & > .avatar
+                {
+                    border: 1px solid darken($color: variables.$primary-color, $amount: 20);
+                    box-shadow: 2.5px 2.5px 10px rgba(0, 0, 0, 0.5);
+                    margin-bottom: 0px;
+                    text-shadow: none;
+                }
+                & > .details > .subtitle
                 {
                     margin-bottom: 1em;
                 }
@@ -124,7 +152,7 @@
                         0px 4px 5px 0px rgba(0, 0, 0, 0.14),
                         0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
-            margin: 2em;
+            margin: 2em 2em 0px;
 
             & > .wrapper
             {
@@ -141,6 +169,11 @@
                     top: 0px;
                 }
             }
+
+            &:last-child
+            {
+                margin-bottom: 2em;
+            }
         }
         .content
         {
@@ -153,6 +186,12 @@
             {
                 border-top-left-radius: 4px;
                 border-top-right-radius: 4px;
+
+                &:last-child
+                {
+                    border-bottom-left-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                }
             }
         }
         @media (min-width: variables.$md-size)

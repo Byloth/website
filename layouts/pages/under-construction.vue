@@ -37,6 +37,7 @@
 <style lang="scss" scoped>
     .under-construction
     {
+        margin: 2em;
         text-align: center;
 
         & > h3
