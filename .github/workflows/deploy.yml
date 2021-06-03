@@ -63,18 +63,6 @@ jobs:
           name: byloth-website
           path: dist
 
-      - name: Compose `env.php` file
-        shell: bash
-        run: |
-          echo "<?php" > "${ENV_FILE}"
-          echo "define('__RECIPIENT__', '${EMAIL_RECIPIENT}');" >> "${ENV_FILE}"
-          echo "define('__SENDER__', '${EMAIL_SENDER}');" >> "${ENV_FILE}"
-
-        env:
-          ENV_FILE: dist/api/env.php
-          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
-          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
-
       - name: Mirror remote FTP directory
         shell: bash
         run: |
