@@ -25,19 +25,21 @@
 
     .avatar
     {
+        background-color: variables.$primary-color;
+        border: 1px solid darken($color: variables.$primary-color, $amount: 10);
+        border-radius: 50%;
+        overflow: hidden;
+
         & > .icon
         {
             align-items: center;
-            background-color: variables.$primary-color;
-            border: 1px solid darken($color: variables.$primary-color, $amount: 10);
             border-radius: 50%;
             color: #FFFFFF;
             display: flex;
             font-size: 1.2em;
-            height: 40px;
+            height: calc(1.5em + 12.5px);
             justify-content: center;
-            overflow: hidden;
-            width: 40px;
+            width: calc(1.5em + 12.5px);
 
             @media print
             {

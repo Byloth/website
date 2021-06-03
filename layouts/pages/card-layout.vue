@@ -15,20 +15,20 @@
 <style lang="scss" scoped>
     @use "~@/assets/scss/variables";
 
-    @import "~@material/animation/variables";
-    @import "~@material/drawer/variables";
-
     .mdc-card-layout
     {
         & > .container.mdc-card
         {
-            padding: 2em;
+            border-radius: 0px;
 
+            @media (min-width: variables.$sm-size)
+            {
+                border-radius: 4px;
+            }
             @media print
             {
                 border-radius: 0px;
                 box-shadow: none;
-                padding: 0px;
             }
         }
     }

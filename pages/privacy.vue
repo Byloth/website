@@ -65,7 +65,6 @@
                     </NuxtLink>
                 </div>
             </div>
-            </p>
         </main>
     </CardLayout>
 </template>

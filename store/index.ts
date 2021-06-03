@@ -14,8 +14,8 @@ const mutations = {
     }
 };
 const actions = {
-    contact(context: ActionContext<RootState, RootState>): void { },
-    share(context: ActionContext<RootState, RootState>): void { },
+    contact(context: ActionContext<RootState, RootState>): void { /* */ },
+    share(context: ActionContext<RootState, RootState>): void { /* */ },
 
     print(context: ActionContext<RootState, RootState>): void
     {

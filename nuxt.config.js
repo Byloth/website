@@ -1,7 +1,9 @@
+const PRODUCTION = process.env.NODE_ENV === "production";
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: "static",
-  modern: "client",
+  modern: PRODUCTION ? "client" : false,
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -90,10 +92,5 @@ export default {
   sitemap: { hostname: "https://www.byloth.net" },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: { },
-
-  server: {
-    port: 8080,
-    host: "0.0.0.0"
-  }
+  build: { }
 };
