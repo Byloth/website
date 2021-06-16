@@ -73,7 +73,10 @@ export default {
   // Content module configuration (https://go.nuxtjs.dev/content-config)
   content: { },
 
-  googleAnalytics: { id: "UA-55278628-1" },
+  googleAnalytics: {
+    id: ["UA-55278628-1", "G-B7SZ4CRWXT"],
+    disabled: true
+  },
 
   pwa: {
     manifest: {

@@ -70,7 +70,7 @@
 
             & > .avatar
             {
-                padding-right: 1em;
+                margin-right: 1em;
             }
             & > .details
             {
