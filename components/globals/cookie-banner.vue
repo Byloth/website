@@ -43,6 +43,10 @@
             {
                 setTimeout(() => { this.isOpen = true; }, 1500);
             }
+            else
+            {
+                this.enableTracking();
+            }
         },
 
         methods: {
@@ -51,6 +55,12 @@
                 await close();
 
                 this.$store.commit("acknowledgeCookie");
+                this.enableTracking();
+            },
+
+            enableTracking(): void
+            {
+                this.$ga.enable();
             }
         }
     });
