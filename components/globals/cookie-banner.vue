@@ -39,14 +39,17 @@
 
         mounted: function(): void
         {
-            if (!this.cookieAck)
+            setTimeout(() =>
             {
-                setTimeout(() => { this.isOpen = true; }, 1500);
-            }
-            else
-            {
-                this.enableTracking();
-            }
+                if (!this.cookieAck)
+                {
+                    this.isOpen = true;
+                }
+                else
+                {
+                    this.enableTracking();
+                }
+            }, 1500);
         },
 
         methods: {
