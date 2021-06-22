@@ -3,7 +3,7 @@ import Vue, { VueConstructor } from "vue";
 import { TRANSITION_DURATION } from "@/core/constants";
 
 // eslint-disable-next-line no-undef
-type Timeout = NodeJS.Timeout | number;
+type Timeout = NodeJS.Timeout;
 
 export interface TransientMixinData
 {
@@ -67,11 +67,11 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
         {
             if (this._openingTimeout)
             {
-                clearTimeout(this._openingTimeout as number);
+                clearTimeout(this._openingTimeout);
             }
             if (this._closingTimeout)
             {
-                clearTimeout(this._closingTimeout as number);
+                clearTimeout(this._closingTimeout);
             }
         },
 
@@ -83,7 +83,7 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
                 {
                     this.isShown = true;
 
-                    this._openingTimeout = setTimeout(() =>
+                    requestAnimationFrame(() =>
                     {
                         this.isOpen = true;
                         this._openingTimeout = setTimeout(() =>
@@ -92,7 +92,7 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
 
                             resolve();
                         }, enterTransitionDuration);
-                    }, 32);
+                    });
                 });
             },
             close(): Promise<void>
