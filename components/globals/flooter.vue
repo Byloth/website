@@ -1,7 +1,7 @@
 <template>
     <footer class="mdc-flooter">
         <div class="row">
-            <div class="column col-sm-4 col-md-6">
+            <div class="column col-md-4 col-lg-6">
                 <h3>Mappa del sito</h3>
                 <ul>
                     <NuxtLink v-for="page in pages"
@@ -18,7 +18,7 @@
                     </NuxtLink>
                 </ul>
             </div>
-            <div class="column col-sm-8 col-md-6">
+            <div class="column col-md-8 col-lg-6">
                 <h3>Contatti e social</h3>
                 <ActionAnchor href="//www.facebook.com/matteo.bilotta"
                               title="Matteo Bilotta su Facebook"
@@ -32,23 +32,29 @@
                               target="_blank">
                     <span class="fab fa-github"></span>
                 </ActionAnchor>
-                <ActionAnchor title="Matteo Bilotta su Instagram"
-                              href="//www.instagram.com/i.byloth/"
+                <ActionAnchor href="//www.instagram.com/i.byloth/"
+                              title="Matteo Bilotta su Instagram"
                               rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-instagram"></span>
                 </ActionAnchor>
-                <ActionAnchor title="Matteo Bilotta su LinkedIn"
-                              href="//www.linkedin.com/in/byloth/"
+                <ActionAnchor href="//www.linkedin.com/in/byloth/"
+                              title="Matteo Bilotta su LinkedIn"
                               rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-linkedin-in"></span>
                 </ActionAnchor>
-                <ActionAnchor title="Matteo Bilotta su Spotify"
-                              href="//open.spotify.com/user/21q4g5zjmgfv5qctquiqawkgq"
+                <ActionAnchor href="//open.spotify.com/user/21q4g5zjmgfv5qctquiqawkgq"
+                              title="Matteo Bilotta su Spotify"
                               rel="nofollow noopener noreferrer"
                               target="_blank">
                     <span class="fab fa-spotify"></span>
+                </ActionAnchor>
+                <ActionAnchor href="//www.twitch.tv/bylo_th"
+                              title="Matteo Bilotta su Twitch"
+                              rel="nofollow noopener noreferrer"
+                              target="_blank">
+                    <span class="fab fa-twitch"></span>
                 </ActionAnchor>
                 <ActionAnchor href="//twitter.com/iByloth"
                               title="Matteo Bilotta su Twitter"

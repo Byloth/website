@@ -41,6 +41,7 @@
     "@material/icon-button": "^10.0.0",
     "@material/menu": "^10.0.0",
     "@material/ripple": "^10.0.0",
+    "@material/snackbar": "^10.0.0",
     "@material/textfield": "^10.0.0",
     "@material/tooltip": "^10.0.0",
     "@material/top-app-bar": "^10.0.0",

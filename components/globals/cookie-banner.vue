@@ -64,6 +64,7 @@
             enableTracking(): void
             {
                 this.$ga.enable();
+                this.$ga.page(this.$route.fullPath);
             }
         }
     });

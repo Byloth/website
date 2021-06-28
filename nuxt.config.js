@@ -73,6 +73,18 @@ export default {
   // Content module configuration (https://go.nuxtjs.dev/content-config)
   content: { },
 
+  generate: {
+    routes: async function()
+    {
+      const { $content } = require("@nuxt/content");
+      const files = await $content("posts")
+        .only(["path"])
+        .fetch();
+
+      return files.map((file) => file.path === "/index" ? "/" : file.path);
+    }
+  },
+
   googleAnalytics: {
     id: ["UA-55278628-1", "G-B7SZ4CRWXT"],
     disabled: true

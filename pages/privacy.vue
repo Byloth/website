@@ -96,6 +96,7 @@
 
             & > h1
             {
+                margin-top: 0px;
                 text-align: center;
             }
             & > hr
