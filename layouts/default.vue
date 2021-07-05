@@ -14,7 +14,7 @@
             </div>
             <Flooter id="flooter" ref="flooter" />
         </div>
-        <SnackbarDialog />
+        <MessagesHandler id="messages-handler" />
         <DrawerScrim id="drawer-scrim"
                      :value="isModal && isOpen"
                      @click="closeDrawer" />
@@ -33,10 +33,9 @@
     import DrawerScrim from "@/components/globals/drawer-scrim.vue";
     import Flooter from "@/components/globals/flooter.vue";
     import Jumbotron from "@/components/globals/jumbotron.vue";
+    import MessagesHandler from "@/components/globals/messages-handler.vue";
     import NavigationBar from "@/components/globals/navigation-bar.vue";
     import ShareDialog from "@/components/globals/share-dialog.vue";
-
-    import SnackbarDialog from "@/components/dialogs/snackbar-dialog.vue";
 
     export enum DrawerStatus
     {
@@ -67,10 +66,9 @@
             DrawerScrim,
             Flooter,
             Jumbotron,
+            MessagesHandler,
             NavigationBar,
-            ShareDialog,
-
-            SnackbarDialog
+            ShareDialog
         },
 
         data: (): DrawerLayoutData => ({

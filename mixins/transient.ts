@@ -14,17 +14,25 @@ export interface TransientMixinData
     isOpen: boolean;
 }
 
-export default (enterTransitionDuration?: number, exitTransitionDuration?: number): VueConstructor =>
+interface TransientMixinOptions
 {
-    if (enterTransitionDuration === undefined)
-    {
-        enterTransitionDuration = TRANSITION_DURATION;
-        exitTransitionDuration = TRANSITION_DURATION;
-    }
-    else if (exitTransitionDuration === undefined)
-    {
-        exitTransitionDuration = enterTransitionDuration;
-    }
+    openClass?: string;
+
+    enterTransitionDuration?: number;
+    exitTransitionDuration?: number;
+}
+
+const DEFAULT_OPTS: TransientMixinOptions = {
+    openClass: "open",
+
+    enterTransitionDuration: TRANSITION_DURATION,
+    exitTransitionDuration: TRANSITION_DURATION
+};
+
+// export default (enterTransitionDuration?: number, exitTransitionDuration?: number): VueConstructor =>
+export default (options: TransientMixinOptions = { }): VueConstructor =>
+{
+    options = { ...DEFAULT_OPTS, ...options };
 
     return Vue.extend({
         name: "TransientMixin",
@@ -43,7 +51,7 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
         computed: {
             classes(): Record<string, boolean>
             {
-                return { "open": this.isOpen };
+                return { [options.openClass!]: this.isOpen };
             }
         },
         watch: {
@@ -91,7 +99,7 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
                             this.$emit("input", true);
 
                             resolve();
-                        }, enterTransitionDuration);
+                        }, options.enterTransitionDuration);
                     });
                 });
             },
@@ -103,11 +111,11 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
                     this.isOpen = false;
                     this._closingTimeout = setTimeout(() =>
                     {
-                        this.isShown = false;
-                        this.$emit("input", false);
+                        // this.isShown = false;
+                        // this.$emit("input", false);
 
                         resolve();
-                    }, exitTransitionDuration);
+                    }, options.exitTransitionDuration);
                 });
             }
         }

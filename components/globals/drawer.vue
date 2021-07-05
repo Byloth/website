@@ -44,6 +44,9 @@
                           @click="openContactDialog">
                     Scrivi
                 </ListItem>
+                <ListItem title="Something" @click="emitMessage">
+                    Emetti messaggio
+                </ListItem>
             </List>
         </div>
         <div class="mdc-drawer__footer">
@@ -107,6 +110,44 @@
                 navigate(evt);
 
                 this.emitSelectEvent(evt);
+            },
+
+            // export interface Button
+            // {
+            //     type: "primary" | "secondary";
+            //     text: string;
+            //
+            //     action: () => void;
+            // }
+            // export interface Message
+            // {
+            //     type?: "success" | "info" | "warning" | "danger";
+            //     icon?: string;
+            //     title?: string;
+            //     text: string;
+            // }
+            // export interface Alert
+            // {
+            //     type: "banner" | "dialog" | "snackbar";
+            //     message: Message;
+            //     timeout?: number;
+            //     buttons?: Button[];
+            // }
+
+            emitMessage(): void
+            {
+                this.$store.dispatch("alert", {
+                    type: "snackbar",
+                    message: {
+                        text: "Questo è un messaggio di prova."
+                    },
+                    buttons: [{
+                        type: "primary",
+                        text: "Esplodi!",
+
+                        action: () => console.log("%cBOOOM! 💣💥", "font-size: 100px; color: red; font-weight: bold;")
+                    }]
+                });
             }
         }
     });

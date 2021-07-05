@@ -8,7 +8,7 @@ export interface Button
 
 export interface Message
 {
-    type: "success" | "info" | "warning" | "danger";
+    type?: "success" | "info" | "warning" | "danger";
     icon?: string;
     title?: string;
     text: string;

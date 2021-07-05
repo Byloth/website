@@ -1,6 +1,6 @@
 <template>
-    <FullscreenDialog id="contact-dialog"
-                      v-model="isOpen"
+    <FullscreenDialog v-model="isOpen"
+                      class="contact-dialog"
                       title="Scrivi il tuo messaggio"
                       done-text="Invia"
                       @cancel="onCancelEvent"
@@ -80,7 +80,7 @@
 
         mounted: function(): void
         {
-            this.stopListening = this.$store.subscribeAction(this.onDialogAction);
+            this.stopListening = this.$store.subscribeAction(this.onContactAction);
         },
         destroyed: function(): void
         {
@@ -88,7 +88,7 @@
         },
 
         methods: {
-            onDialogAction(action: ActionPayload, state: RootState): void
+            onContactAction(action: ActionPayload, state: RootState): void
             {
                 if (action.type === "contact")
                 {
