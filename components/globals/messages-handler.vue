@@ -1,16 +1,16 @@
 <template>
     <div class="messages-handler">
+        <!-- <SnackbarDialog v-model="isOpen" :dismissable="!alert.timeout"> -->
         <SnackbarDialog v-model="isOpen">
             <span v-if="alert">
                 {{ alert.message.text }}
             </span>
             <template v-if="alert" #actions>
-                <button v-if="alert.buttons.length > 0"
-                        class="mdc-button mdc-snackbar__action"
+                <Button v-if="alert.buttons.length > 0"
+                        class="mdc-snackbar__action"
                         @click="handleAction(alert.buttons[0].action)">
-                    <div class="mdc-button__ripple"></div>
-                    <span class="mdc-button__label">{{ alert.buttons[0].text }}</span>
-                </button>
+                    {{ alert.buttons[0].text }}
+                </Button>
             </template>
         </SnackbarDialog>
     </div>
@@ -22,6 +22,7 @@
 
     import { Alert, RootState } from "@/core/types";
 
+    import Button from "@/components/mdc/button.vue";
     import SnackbarDialog from "@/components/dialogs/snackbar-dialog.vue";
 
     interface MessagesHandlerData
@@ -34,7 +35,7 @@
 
     export default Vue.extend({
         name: "MessagesHandler",
-        components: { SnackbarDialog },
+        components: { Button, SnackbarDialog },
 
         data: (): MessagesHandlerData => ({
             alert: null,

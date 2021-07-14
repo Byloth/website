@@ -10,6 +10,12 @@
             </div>
             <div class="mdc-snackbar__actions" aria-atomic="true">
                 <slot name="actions"></slot>
+                <ActionButton v-if="dismissable"
+                              class="mdc-snackbar__dismiss material-icons"
+                              title="Dismiss"
+                              @click="close">
+                    close
+                </ActionButton>
             </div>
         </div>
     </div>
@@ -20,13 +26,22 @@
 
     import TransientMixin from "@/mixins/transient";
 
+    import ActionButton from "@/components/mdc/actions/action-button.vue";
+
     export default Vue.extend({
         name: "SnackbarDialog",
+        components: { ActionButton },
         mixins: [TransientMixin({
             openClass: "mdc-snackbar--open",
             enterTransitionDuration: 150,
             exitTransitionDuration: 150
-        })]
+        })],
+        props: {
+            dismissable: {
+                default: false,
+                type: Boolean
+            }
+        }
     });
 </script>
 
@@ -47,16 +62,37 @@
 
             // TODO: Capire se è una roba sensata dare i colori così...
             //
-            & > .mdc-snackbar__actions > .mdc-snackbar__action
+            & > .mdc-snackbar__label
             {
-                color: variables.$secondary-color;
-
-                & > .mdc-button__ripple
+                // TODO: Dopo aver eseguito l'aggiornamento di MDC alla versione 11,
+                //        testare ed eventualmente rimuovere questa regola.
+                //
+                position: relative;
+            }
+            & > .mdc-snackbar__actions
+            {
+                & > .mdc-snackbar__action
                 {
+                    color: variables.$secondary-color;
+
+                    &::v-deep > .mdc-button__ripple
+                    {
+                        &::before,
+                        &::after
+                        {
+                            background-color: variables.$secondary-color;
+                        }
+                    }
+                }
+
+                & > .mdc-snackbar__dismiss
+                {
+                    color: rgba(255, 255, 255, 0.87);
+
                     &::before,
                     &::after
                     {
-                        background-color: variables.$secondary-color;
+                        background-color: rgba(255, 255, 255, 0.87);
                     }
                 }
             }

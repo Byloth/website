@@ -111,8 +111,8 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
                     this.isOpen = false;
                     this._closingTimeout = setTimeout(() =>
                     {
-                        // this.isShown = false;
-                        // this.$emit("input", false);
+                        this.isShown = false;
+                        this.$emit("input", false);
 
                         resolve();
                     }, options.exitTransitionDuration);
