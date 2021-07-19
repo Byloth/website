@@ -34,6 +34,16 @@
                 default: "",
                 type: String
             },
+
+            // Colors
+            //
+            secondary: {
+                default: false,
+                type: Boolean
+            },
+
+            // Styles
+            //
             outlined: {
                 default: false,
                 type: Boolean
@@ -54,6 +64,8 @@
             classes(): Record<string, boolean>
             {
                 return {
+                    "mdc-button--secondary": this.secondary,
+
                     "mdc-button--outlined": this.outlined,
                     "mdc-button--raised": this.raised,
                     "mdc-button--unelevated": this.unelevated
@@ -70,4 +82,13 @@
 </script>
 
 <style lang="scss" scoped>
+    @use "~@/assets/scss/variables";
+
+    .mdc-button
+    {
+        &.mdc-button--secondary
+        {
+            --mdc-theme-primary: #{variables.$secondary-color};
+        }
+    }
 </style>

@@ -12,6 +12,7 @@
                 <slot name="actions"></slot>
                 <ActionButton v-if="dismissable"
                               class="mdc-snackbar__dismiss material-icons"
+                              dark
                               title="Dismiss"
                               @click="close">
                     close
@@ -60,41 +61,12 @@
             transition: opacity 150ms 0ms cubic-bezier(0, 0, 0.2, 1),
                         transform 150ms 0ms cubic-bezier(0, 0, 0.2, 1);
 
-            // TODO: Capire se è una roba sensata dare i colori così...
-            //
             & > .mdc-snackbar__label
             {
                 // TODO: Dopo aver eseguito l'aggiornamento di MDC alla versione 11,
                 //        testare ed eventualmente rimuovere questa regola.
                 //
                 position: relative;
-            }
-            & > .mdc-snackbar__actions
-            {
-                & > .mdc-snackbar__action
-                {
-                    color: variables.$secondary-color;
-
-                    &::v-deep > .mdc-button__ripple
-                    {
-                        &::before,
-                        &::after
-                        {
-                            background-color: variables.$secondary-color;
-                        }
-                    }
-                }
-
-                & > .mdc-snackbar__dismiss
-                {
-                    color: rgba(255, 255, 255, 0.87);
-
-                    &::before,
-                    &::after
-                    {
-                        background-color: rgba(255, 255, 255, 0.87);
-                    }
-                }
             }
         }
 

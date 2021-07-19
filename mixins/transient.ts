@@ -55,17 +55,21 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
             }
         },
         watch: {
-            value(value: boolean, oldValue: boolean): void
-            {
-                if (value !== oldValue)
+            value: {
+                immediate: true,
+
+                handler: function(value: boolean, oldValue: boolean): void
                 {
-                    if (value)
+                    if (value !== oldValue)
                     {
-                        this.open();
-                    }
-                    else
-                    {
-                        this.close();
+                        if (value)
+                        {
+                            this.open();
+                        }
+                        else
+                        {
+                            this.close();
+                        }
                     }
                 }
             }

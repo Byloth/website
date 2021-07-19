@@ -1,13 +1,15 @@
 <template>
     <div class="messages-handler">
-        <!-- <SnackbarDialog v-model="isOpen" :dismissable="!alert.timeout"> -->
-        <SnackbarDialog v-model="isOpen">
-            <span v-if="alert">
+        <SnackbarDialog v-if="alert"
+                        v-model="isOpen"
+                        :dismissable="!alert.timeout">
+            <span>
                 {{ alert.message.text }}
             </span>
-            <template v-if="alert" #actions>
+            <template #actions>
                 <Button v-if="alert.buttons.length > 0"
                         class="mdc-snackbar__action"
+                        secondary
                         @click="handleAction(alert.buttons[0].action)">
                     {{ alert.buttons[0].text }}
                 </Button>
@@ -61,6 +63,11 @@
                     {
                         this.alert = alert;
                         this.isOpen = true;
+
+                        if (this.alert.timeout)
+                        {
+                            setTimeout(() => { this.isOpen = false; }, this.alert.timeout);
+                        }
                     }
                 }
             },
