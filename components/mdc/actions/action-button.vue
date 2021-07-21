@@ -1,6 +1,5 @@
 <template>
     <button class="mdc-icon-button"
-            :class="classes"
             :alt="title"
             :title="title"
             :aria-label="title"
@@ -21,22 +20,10 @@
             title: {
                 required: true,
                 type: String
-            },
-            dark: {
-                default: false,
-                type: Boolean
             }
         },
 
         data: (): ActionButtonData => ({ }),
-
-        computed: {
-            classes(): Record<string, boolean>
-            {
-                return { "mdc-icon-button--dark": this.dark };
-            }
-        },
-
         mounted: function(): void
         {
             this._ripple = new MDCRipple(this.$el);
@@ -48,17 +35,6 @@
 <style lang="scss" scoped>
     .mdc-icon-button
     {
-        &.mdc-icon-button--dark
-        {
-            color: rgba(255, 255, 255, 0.87);
-
-            &::before,
-            &::after
-            {
-                background-color: rgba(255, 255, 255, 0.87);
-            }
-        }
-
         /*
          * Il codice che segue, risolve un problema di visualizzazione dovuto al mix
          *  dell'uso del MDCRipple insieme alle CSS Transitions (in particolare allo scaling).

@@ -12,7 +12,6 @@
                 <slot name="actions"></slot>
                 <ActionButton v-if="dismissable"
                               class="mdc-snackbar__dismiss material-icons"
-                              dark
                               title="Dismiss"
                               @click="close">
                     close
@@ -67,6 +66,16 @@
                 //        testare ed eventualmente rimuovere questa regola.
                 //
                 position: relative;
+            }
+            & > .mdc-snackbar__actions > .mdc-snackbar__dismiss
+            {
+                color: rgba(255, 255, 255, 0.87);
+
+                &::before,
+                &::after
+                {
+                    background-color: rgba(255, 255, 255, 0.87);
+                }
             }
         }
 
