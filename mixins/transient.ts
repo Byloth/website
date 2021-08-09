@@ -58,17 +58,20 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
             value: {
                 immediate: true,
 
-                handler: function(value: boolean, oldValue: boolean): void
+                handler: async function(value: boolean, oldValue: boolean): Promise<void>
                 {
                     if (value !== oldValue)
                     {
                         if (value)
                         {
-                            this.open();
+                            if (!this.isShown)
+                            {
+                                await this.open();
+                            }
                         }
-                        else
+                        else if (this.isShown)
                         {
-                            this.close();
+                            await this.close();
                         }
                     }
                 }
@@ -101,6 +104,7 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
                         this._openingTimeout = setTimeout(() =>
                         {
                             this.$emit("input", true);
+                            this.$emit("show");
 
                             resolve();
                         }, options.enterTransitionDuration);
@@ -113,10 +117,13 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
                 return new Promise<void>((resolve: (value: void | PromiseLike<void>) => void, reject: (reason?: any) => void) =>
                 {
                     this.isOpen = false;
+
                     this._closingTimeout = setTimeout(() =>
                     {
                         this.isShown = false;
+
                         this.$emit("input", false);
+                        this.$emit("dismiss");
 
                         resolve();
                     }, options.exitTransitionDuration);

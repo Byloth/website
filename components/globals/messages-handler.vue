@@ -2,7 +2,8 @@
     <div class="messages-handler">
         <SnackbarDialog v-if="alert"
                         v-model="isOpen"
-                        :dismissable="!alert.timeout">
+                        :dismissable="!alert.timeout"
+                        @dismiss="onSnackbarDismiss">
             <span>
                 {{ alert.message.text }}
             </span>
@@ -29,7 +30,7 @@
 
     interface MessagesHandlerData
     {
-        alert: Alert | null;
+        alerts: Alert[];
         isOpen: boolean;
 
         stopListening?: () => void;
@@ -40,9 +41,24 @@
         components: { Button, SnackbarDialog },
 
         data: (): MessagesHandlerData => ({
-            alert: null,
+            alerts: [],
             isOpen: false
         }),
+
+        computed: {
+            alert(): Alert | null
+            {
+                if (this.alerts.length)
+                {
+                    return this.alerts[0];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        },
+
         mounted: function(): void
         {
             this.stopListening = this.$store.subscribeAction(this.onAlertAction);
@@ -61,12 +77,12 @@
 
                     if (alert.type === "snackbar")
                     {
-                        this.alert = alert;
+                        this.alerts.push(alert);
                         this.isOpen = true;
 
-                        if (this.alert.timeout)
+                        if (alert.timeout)
                         {
-                            setTimeout(() => { this.isOpen = false; }, this.alert.timeout);
+                            setTimeout(() => { this.isOpen = false; }, alert.timeout);
                         }
                     }
                 }
@@ -76,6 +92,16 @@
                 action();
 
                 this.isOpen = false;
+            },
+
+            onSnackbarDismiss(): void
+            {
+                this.alerts.shift();
+
+                if (this.alerts.length)
+                {
+                    this.isOpen = true;
+                }
             }
         }
     });
