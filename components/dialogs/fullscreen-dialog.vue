@@ -77,6 +77,9 @@
         }
         & > .dialog
         {
+            // SMELLS: Perché questo `dialog` viene visualizzato come `flex`?
+            //         Che senso ha? Serve a qualcosa?
+            //
             display: flex;
             flex: 1;
             flex-direction: column;
@@ -117,12 +120,9 @@
             }
         }
 
-        &.open
+        &.open > .dialog
         {
-            & > .dialog
-            {
-                transform: translateY(0%);
-            }
+            transform: none;
         }
 
         @media (min-width: variables.$md-size)

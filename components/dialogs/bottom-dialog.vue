@@ -98,7 +98,7 @@
             }
             & > .dialog
             {
-                transform: translateY(0%);
+                transform: none;
             }
         }
 
