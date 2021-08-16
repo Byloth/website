@@ -146,7 +146,8 @@
                         text: "Esplodi!",
 
                         action: () => console.log("%cBOOOM! 💣💥", "font-size: 100px; color: red; font-weight: bold;")
-                    }]
+                    }],
+                    timeout: 1500
                 });
             }
         }

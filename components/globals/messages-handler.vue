@@ -3,6 +3,7 @@
         <SnackbarDialog v-if="alert"
                         v-model="isOpen"
                         :dismissable="!alert.timeout"
+                        @show="onSnackbarShow"
                         @dismiss="onSnackbarDismiss">
             <span>
                 {{ alert.message.text }}
@@ -79,11 +80,6 @@
                     {
                         this.alerts.push(alert);
                         this.isOpen = true;
-
-                        if (alert.timeout)
-                        {
-                            setTimeout(() => { this.isOpen = false; }, alert.timeout);
-                        }
                     }
                 }
             },
@@ -94,13 +90,20 @@
                 this.isOpen = false;
             },
 
+            onSnackbarShow(): void
+            {
+                if (this.alert!.timeout)
+                {
+                    setTimeout(() => { this.isOpen = false; }, this.alert!.timeout);
+                }
+            },
             onSnackbarDismiss(): void
             {
                 this.alerts.shift();
 
                 if (this.alerts.length)
                 {
-                    this.isOpen = true;
+                    this.$nextTick(() => { this.isOpen = true; });
                 }
             }
         }
