@@ -50,6 +50,12 @@
                               target="_blank">
                     <span class="fab fa-spotify"></span>
                 </ActionAnchor>
+                <ActionAnchor href="//steamcommunity.com/id/byloth/"
+                              title="Matteo Bilotta su Steam"
+                              rel="nofollow noopener noreferrer"
+                              target="_blank">
+                    <span class="fab fa-steam"></span>
+                </ActionAnchor>
                 <ActionAnchor href="//www.twitch.tv/bylo_th"
                               title="Matteo Bilotta su Twitch"
                               rel="nofollow noopener noreferrer"

@@ -17,6 +17,11 @@
                 </Button>
             </template>
         </SnackbarDialog>
+        <AlertDialog v-if="alert"
+                     v-model="isOpen"
+                     title="Alert dialog title">
+            This is the content of this alert dialog.
+        </AlertDialog>
     </div>
 </template>
 
@@ -26,6 +31,7 @@
 
     import { Alert, RootState } from "@/core/types";
 
+    import AlertDialog from "@/components/dialogs/alert-dialog.vue";
     import Button from "@/components/mdc/button.vue";
     import SnackbarDialog from "@/components/dialogs/snackbar-dialog.vue";
 
@@ -39,7 +45,7 @@
 
     export default Vue.extend({
         name: "MessagesHandler",
-        components: { Button, SnackbarDialog },
+        components: { AlertDialog, Button, SnackbarDialog },
 
         data: (): MessagesHandlerData => ({
             alerts: [],

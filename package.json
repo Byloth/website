@@ -36,6 +36,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@material/button": "^10.0.0",
     "@material/card": "^10.0.0",
+    "@material/dialog": "^10.0.0",
     "@material/drawer": "^10.0.0",
     "@material/icon-button": "^10.0.0",
     "@material/menu": "^10.0.0",
