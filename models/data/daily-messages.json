@@ -979,5 +979,23 @@
     "author": "Pensiero Profondo",
     "source": "Guida galattica per gli autostoppisti",
     "url": "https://it.wikipedia.org/wiki/Guida_galattica_per_gli_autostoppisti_(romanzo)"
+  },
+  {
+    "id": 110,
+    "typeId": 1,
+    "text": "<q>Ricordati, figlio, che tutto nasce dal dolore; dal benessere non nasce niente, solo il vizio.</q>",
+    "script": null,
+    "author": "Saturnino Manfredi",
+    "source": null,
+    "url": null
+  },
+  {
+    "id": 111,
+    "typeId": 1,
+    "text": "<q>Only half of programming is coding. The other 90% is debugging.</q>",
+    "script": null,
+    "author": "Anonimo",
+    "source": null,
+    "url": null
   }
 ]
