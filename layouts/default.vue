@@ -14,7 +14,7 @@
             </div>
             <Flooter id="flooter" ref="flooter" />
         </div>
-        <MessagesHandler id="messages-handler" />
+        <AlertsHandler id="alerts-handler" />
         <DrawerScrim id="drawer-scrim"
                      :value="isModal && isOpen"
                      @click="closeDrawer" />
@@ -33,7 +33,7 @@
     import DrawerScrim from "@/components/globals/drawer-scrim.vue";
     import Flooter from "@/components/globals/flooter.vue";
     import Jumbotron from "@/components/globals/jumbotron.vue";
-    import MessagesHandler from "@/components/globals/messages-handler.vue";
+    import AlertsHandler from "@/components/globals/alerts-handler.vue";
     import NavigationBar from "@/components/globals/navigation-bar.vue";
     import ShareDialog from "@/components/globals/share-dialog.vue";
 
@@ -66,7 +66,7 @@
             DrawerScrim,
             Flooter,
             Jumbotron,
-            MessagesHandler,
+            AlertsHandler,
             NavigationBar,
             ShareDialog
         },

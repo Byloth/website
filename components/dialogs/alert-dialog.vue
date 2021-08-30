@@ -14,11 +14,9 @@
                 </div>
                 <div class="mdc-dialog__actions">
                     <Button class="mdc-dialog__button" @click="close">
-                        Cancel
+                        {{ cancelText }}
                     </Button>
-                    <Button class="mdc-dialog__button" @click="close">
-                        Discard
-                    </Button>
+                    <slot name="actions"></slot>
                 </div>
             </div>
         </div>
@@ -47,6 +45,10 @@
                 type: String
             },
 
+            cancelText: {
+                default: "Annulla",
+                type: String
+            },
             scrollable: {
                 default: false,
                 type: Boolean
@@ -68,6 +70,7 @@
     .mdc-dialog
     {
         display: flex;
+        z-index: 8;
 
         & > .mdc-dialog__container
         {

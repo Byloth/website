@@ -136,9 +136,12 @@
 
             emitMessage(): void
             {
+                const type = ["dialog", "snackbar"][Math.floor(Math.random() * 2)];
+
                 this.$store.dispatch("alert", {
-                    type: "snackbar",
+                    type: type,
                     message: {
+                        title: "Attenzione!",
                         text: "Questo è un messaggio di prova."
                     },
                     buttons: [{
