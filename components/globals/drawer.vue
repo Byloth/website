@@ -27,8 +27,18 @@
                 </NuxtLink>
                 <hr class="mdc-list-divider" />
                 <h6 class="mdc-list-group__subheader">
-                    Contattami
+                    Link utili
                 </h6>
+                <ListItem fa
+                          href="//amazon.it?tag=byloth-21"
+                          icon="amazon"
+                          target="_blank"
+                          title="Acquista su Amazon tramite il link Affiliato"
+                          rel="nofollow noopener noreferrer"
+                          @click="emitSelectEvent">
+                    Compra su Amazon
+                    <sup class="badge">new</sup>
+                </ListItem>
                 <ListItem fa
                           href="//discord.gg/5QvHTwzvqW"
                           icon="discord"
@@ -36,14 +46,28 @@
                           title="Unisciti alla community su Discord"
                           rel="nofollow noopener noreferrer"
                           @click="emitSelectEvent">
-                    Chatta
+                    Entra in Discord
+                </ListItem>
+                <ListItem fa
+                          href="//t.me/bylothink"
+                          icon="telegram"
+                          target="_blank"
+                          title="Seguimi sul canale di Telegram"
+                          rel="nofollow noopener noreferrer"
+                          @click="emitSelectEvent">
+                    Seguimi su Telegram
                     <sup class="badge">new</sup>
                 </ListItem>
                 <ListItem icon="mail"
                           title="Scrivimi un messaggio privatamente"
                           @click="openContactDialog">
-                    Scrivi
+                    Scrivimi una e-mail
                 </ListItem>
+                <!-- TODO: Remove this section before publish to `production`! -->
+                <hr class="mdc-list-divider" />
+                <h6 class="mdc-list-group__subheader">
+                    Debug
+                </h6>
                 <ListItem title="Something" @click="emitMessage">
                     Emetti messaggio
                 </ListItem>
@@ -137,9 +161,11 @@
             emitMessage(): void
             {
                 const type = ["dialog", "snackbar"][Math.floor(Math.random() * 2)];
+                const timeout = [undefined, 1500][Math.floor(Math.random() * 2)];
 
                 this.$store.dispatch("alert", {
                     type: type,
+                    timeout: timeout,
                     message: {
                         title: "Attenzione!",
                         text: "Questo è un messaggio di prova."
