@@ -51,7 +51,6 @@
         props: {
             actions: {
                 default: () => [],
-
                 type: Array
             }
         },

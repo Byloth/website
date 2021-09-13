@@ -45,7 +45,6 @@
         props: {
             actions: {
                 default: () => [],
-
                 type: Array
             },
             title: {

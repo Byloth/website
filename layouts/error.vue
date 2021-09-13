@@ -28,7 +28,6 @@
         props: {
             error: {
                 default: () => ({ }),
-
                 type: Object
             }
         },

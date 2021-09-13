@@ -27,7 +27,6 @@
         props: {
             items: {
                 default: () => [],
-
                 type: Array
             }
         }

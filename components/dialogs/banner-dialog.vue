@@ -37,7 +37,6 @@
             },
             actions: {
                 default: () => [],
-
                 type: Array
             }
         }
