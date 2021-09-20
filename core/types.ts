@@ -13,9 +13,9 @@ export interface Message
     title?: string;
     text: string;
 }
-export interface Alert
+export interface Dialog
 {
-    type: "banner" | "dialog" | "snackbar";
+    type: "alert" | "banner" | "snackbar";
     message: Message;
     timeout?: number;
     buttons?: Button[];

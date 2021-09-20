@@ -29,16 +29,16 @@
                 <h6 class="mdc-list-group__subheader">
                     Link utili
                 </h6>
-                <ListItem fa
+                <!--ListItem fa
                           href="//amazon.it?tag=byloth-21"
                           icon="amazon"
                           target="_blank"
                           title="Acquista su Amazon tramite il link Affiliato"
                           rel="nofollow noopener noreferrer"
                           @click="emitSelectEvent">
-                    Compra su Amazon
+                    Compra
                     <sup class="badge">new</sup>
-                </ListItem>
+                </ListItem-->
                 <ListItem fa
                           href="//discord.gg/5QvHTwzvqW"
                           icon="discord"
@@ -46,7 +46,7 @@
                           title="Unisciti alla community su Discord"
                           rel="nofollow noopener noreferrer"
                           @click="emitSelectEvent">
-                    Entra in Discord
+                    Chatta
                 </ListItem>
                 <ListItem fa
                           href="//t.me/bylothink"
@@ -55,13 +55,13 @@
                           title="Seguimi sul canale di Telegram"
                           rel="nofollow noopener noreferrer"
                           @click="emitSelectEvent">
-                    Seguimi su Telegram
+                    Segui
                     <sup class="badge">new</sup>
                 </ListItem>
                 <ListItem icon="mail"
                           title="Scrivimi un messaggio privatamente"
                           @click="openContactDialog">
-                    Scrivimi una e-mail
+                    Scrivi
                 </ListItem>
                 <!-- TODO: Remove this section before publish to `production`! -->
                 <hr class="mdc-list-divider" />
@@ -150,9 +150,9 @@
             //     title?: string;
             //     text: string;
             // }
-            // export interface Alert
+            // export interface Dialog
             // {
-            //     type: "banner" | "dialog" | "snackbar";
+            //     type: "alert" | "banner" | "snackbar";
             //     message: Message;
             //     timeout?: number;
             //     buttons?: Button[];
@@ -160,10 +160,12 @@
 
             emitMessage(): void
             {
-                const type = ["dialog", "snackbar"][Math.floor(Math.random() * 2)];
-                const timeout = [undefined, 1500][Math.floor(Math.random() * 2)];
+                const type = ["alert", "snackbar"][Math.round(Math.random())];
+                const timeout = [undefined, 1500][Math.round(Math.random())];
 
-                this.$store.dispatch("alert", {
+                console.log(`Opening a ${type} with a duration of: ${timeout}`);
+
+                this.$store.dispatch("dialog", {
                     type: type,
                     timeout: timeout,
                     message: {

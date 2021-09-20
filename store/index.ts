@@ -1,7 +1,7 @@
 import { ActionContext } from "vuex";
 
 import { localStorage } from "@/core/utils";
-import { Alert, IndexState, RootState } from "@/core/types";
+import { Dialog, IndexState, RootState } from "@/core/types";
 
 const state = (): IndexState => ({ cookieAck: false });
 
@@ -14,7 +14,7 @@ const mutations = {
     }
 };
 const actions = {
-    alert(context: ActionContext<RootState, RootState>, payload: Alert): void { /*  */ },
+    dialog(context: ActionContext<RootState, RootState>, payload: Dialog): void { /*  */ },
 
     contact(context: ActionContext<RootState, RootState>): void { /* */ },
     share(context: ActionContext<RootState, RootState>): void { /* */ },

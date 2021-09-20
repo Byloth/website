@@ -31,6 +31,11 @@
 
     import Button from "@/components/mdc/button.vue";
 
+    interface AlertDialogData
+    {
+        isOpen: boolean;
+    }
+
     export default Vue.extend({
         name: "AlertDialog",
         components: { Button },
@@ -54,6 +59,9 @@
                 type: Boolean
             }
         },
+
+        data: (): AlertDialogData => ({ isOpen: false }),
+
         computed: {
             classes(): Record<string, boolean>
             {
