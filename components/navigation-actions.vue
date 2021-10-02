@@ -58,17 +58,17 @@
         data: (): NavigationActionsData => ({ isCondensed: false }),
         mounted: function(): void
         {
-            window.addEventListener("resize", this.onResizeEvent, { capture: true, passive: true });
+            window.addEventListener("resize", this.onResize, { capture: true, passive: true });
 
-            this.onResizeEvent();
+            this.onResize();
         },
         destroyed: function(): void
         {
-            window.removeEventListener("resize", this.onResizeEvent);
+            window.removeEventListener("resize", this.onResize);
         },
 
         methods: {
-            onResizeEvent(evt?: Event): void
+            onResize(evt?: Event): void
             {
                 this.isCondensed = (window.innerWidth < MOBILE_SIZE);
             }

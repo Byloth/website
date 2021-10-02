@@ -13,9 +13,11 @@
                     <slot></slot>
                 </div>
                 <div class="mdc-dialog__actions">
-                    <Button class="mdc-dialog__button" @click="close">
-                        {{ cancelText }}
-                    </Button>
+                    <ButtonItem v-if="dismissable"
+                                class="mdc-dialog__button"
+                                @click="close">
+                        {{ closeText }}
+                    </ButtonItem>
                     <slot name="actions"></slot>
                 </div>
             </div>
@@ -29,7 +31,7 @@
 
     import TransientMixin from "@/mixins/transient";
 
-    import Button from "@/components/mdc/button.vue";
+    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
 
     interface AlertDialogData
     {
@@ -38,7 +40,7 @@
 
     export default Vue.extend({
         name: "AlertDialog",
-        components: { Button },
+        components: { ButtonItem },
         mixins: [TransientMixin({
             openClass: "mdc-dialog--open",
             enterTransitionDuration: 150,
@@ -50,10 +52,15 @@
                 type: String
             },
 
-            cancelText: {
-                default: "Annulla",
+            dismissable: {
+                default: false,
+                type: Boolean
+            },
+            closeText: {
+                default: "Chiudi",
                 type: String
             },
+
             scrollable: {
                 default: false,
                 type: Boolean

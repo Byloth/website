@@ -9,11 +9,10 @@
             </div>
         </div>
         <div class="actions">
-            <Button v-for="action in actions"
-                    :key="action.id"
-                    @click="$emit(action.id, close, $event)">
-                {{ action.text }}
-            </Button>
+            <ButtonItem v-if="dismissable" @click="close">
+                {{ closeText }}
+            </ButtonItem>
+            <slot name="actions"></slot>
         </div>
     </div>
 </template>
@@ -22,22 +21,27 @@
     import Vue from "vue";
 
     import Avatar from "@/components/avatar.vue";
-    import Button from "@/components/mdc/button.vue";
+    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
 
     import TransientMixin from "@/mixins/transient";
 
     export default Vue.extend({
         name: "BannerDialog",
-        components: { Avatar, Button },
+        components: { Avatar, ButtonItem },
         mixins: [TransientMixin()],
         props: {
             icon: {
                 default: "exclamation",
                 type: String
             },
-            actions: {
-                default: () => [],
-                type: Array
+
+            dismissable: {
+                default: false,
+                type: Boolean
+            },
+            closeText: {
+                default: "Chiudi",
+                type: String
             }
         }
     });
@@ -48,7 +52,8 @@
 
     .banner-dialog
     {
-        background-color: #FFFFFF;
+        background-color: rgba(#FFFFFF, 0.75);
+        backdrop-filter: blur(20px) saturate(180%);
         border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         color: #000000;
         opacity: 0;

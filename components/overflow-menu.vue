@@ -9,12 +9,13 @@
             <template v-for="action in actions">
                 <template v-if="action.path">
                     <NuxtLink :key="action.id"
-                              v-slot="{ href }"
+                              v-slot="{ href, navigate }"
                               custom
                               :to="action.path">
                         <MenuAnchor :href="href"
                                     rel="nofollow noopener noreferrer"
-                                    target="_blank">
+                                    target="_blank"
+                                    @click="navigate">
                             {{ action.title }}
                         </MenuAnchor>
                     </NuxtLink>

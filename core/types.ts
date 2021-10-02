@@ -1,9 +1,18 @@
+import { Location } from "vue-router";
+
+export interface Anchor
+{
+    type: "primary" | "secondary";
+    text: string;
+
+    location: string | Location;
+}
 export interface Button
 {
     type: "primary" | "secondary";
     text: string;
 
-    action: () => void;
+    callback: () => void;
 }
 
 export interface Message
@@ -13,24 +22,38 @@ export interface Message
     title?: string;
     text: string;
 }
-export interface Dialog
+export interface Alert
 {
-    type: "alert" | "banner" | "snackbar";
+    type: "alert";
     message: Message;
+    actions?: (Anchor | Button)[];
+    blocking?: boolean;
+}
+export interface Banner
+{
+    type: "banner";
+    message: Message;
+    actions?: (Anchor | Button)[];
+    dismissable?: boolean;
+}
+export interface Snackbar
+{
+    type: "snackbar";
+    message: Message;
+    actions?: (Anchor | Button)[];
     timeout?: number;
-    buttons?: Button[];
 }
 
-export interface Action
+export type Dialog = Alert | Banner | Snackbar;
+
+export interface Action extends Location
 {
     id: number;
     name: string;
     icon: string;
     title: string;
-
-    path?: string;
 }
-export interface Link extends Action
+export interface Page extends Action
 {
     path: string;
 }
@@ -44,7 +67,7 @@ export interface ConfigState
     title: string;
     author: string;
     actions: Action[];
-    pages: Link[];
+    pages: Page[];
     version: string;
 }
 

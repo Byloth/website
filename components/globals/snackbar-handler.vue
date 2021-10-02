@@ -5,16 +5,13 @@
                         :dismissable="!snackbar.timeout"
                         @show="onShow"
                         @dismiss="onDismiss">
-            <span>
-                {{ snackbar.message.text }}
+            <span v-for="line, index in snackbarMessageLines" :key="index">
+                {{ line }}<br />
             </span>
-            <template #actions>
-                <Button v-if="snackbar.buttons.length > 0"
-                        class="mdc-snackbar__action"
-                        secondary
-                        @click="handleAction(snackbar.buttons[0].action)">
-                    {{ snackbar.buttons[0].text }}
-                </Button>
+            <template v-if="snackbar.actions" #actions>
+                <ButtonItem class="mdc-snackbar__action" @click="handleCallback(snackbar.actions[0].callback)">
+                    {{ snackbar.actions[0].text }}
+                </ButtonItem>
             </template>
         </SnackbarDialog>
     </div>
@@ -24,14 +21,14 @@
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { Dialog, RootState } from "@/core/types";
+    import { Snackbar, RootState } from "@/core/types";
 
-    import Button from "@/components/mdc/button.vue";
+    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
     import SnackbarDialog from "@/components/dialogs/snackbar-dialog.vue";
 
     interface SnackbarHandlerData
     {
-        snackbars: Dialog[];
+        snackbars: Snackbar[];
         isOpen: boolean;
 
         stopListening?: () => void;
@@ -39,7 +36,7 @@
 
     export default Vue.extend({
         name: "SnackbarHandler",
-        components: { Button, SnackbarDialog },
+        components: { ButtonItem, SnackbarDialog },
 
         data: (): SnackbarHandlerData => ({
             snackbars: [],
@@ -47,17 +44,25 @@
         }),
 
         computed: {
-            snackbar(): Dialog | null
+            snackbar(): Snackbar | null
             {
                 if (this.snackbars.length)
                 {
                     return this.snackbars[0];
                 }
-                else
+
+                return null;
+            },
+            snackbarMessageLines(): string[]
+            {
+                if (this.snackbar)
                 {
-                    return null;
+                    return this.snackbar.message.text.split("\n");
                 }
-            }
+
+                return [];
+            },
+            snackbarAction(): 
         },
 
         mounted: function(): void
@@ -74,7 +79,7 @@
             {
                 if (action.type === "dialog")
                 {
-                    const snackbar: Dialog = action.payload;
+                    const snackbar: Snackbar = action.payload;
 
                     if (snackbar.type === "snackbar")
                     {
@@ -83,9 +88,9 @@
                     }
                 }
             },
-            handleAction(action: () => void): void
+            handleCallback(callback: () => void): void
             {
-                action();
+                callback();
 
                 this.isOpen = false;
             },

@@ -21,7 +21,7 @@
                               :icon="page.icon"
                               :title="`Naviga a ${page.title}`"
                               :href="href"
-                              @click="onClickEvent(route, navigate, $event)">
+                              @click="onClick(route, navigate, $event)">
                         {{ page.title }}
                     </ListItem>
                 </NuxtLink>
@@ -35,7 +35,7 @@
                           target="_blank"
                           title="Acquista su Amazon tramite il link Affiliato"
                           rel="nofollow noopener noreferrer"
-                          @click="emitSelectEvent">
+                          @click="emitSelect">
                     Compra
                     <sup class="badge">new</sup>
                 </ListItem-->
@@ -45,7 +45,7 @@
                           target="_blank"
                           title="Unisciti alla community su Discord"
                           rel="nofollow noopener noreferrer"
-                          @click="emitSelectEvent">
+                          @click="emitSelect">
                     Chatta
                 </ListItem>
                 <ListItem fa
@@ -54,7 +54,7 @@
                           target="_blank"
                           title="Seguimi sul canale di Telegram"
                           rel="nofollow noopener noreferrer"
-                          @click="emitSelectEvent">
+                          @click="emitSelect">
                     Segui
                     <sup class="badge">new</sup>
                 </ListItem>
@@ -87,6 +87,8 @@
 
     import { cssClasses } from "@material/drawer";
 
+    import { Alert, Banner, Snackbar } from "@/core/types";
+
     import List from "@/components/mdc/lists/list.vue";
     import ListItem from "@/components/mdc/lists/list-item.vue";
 
@@ -118,7 +120,7 @@
             })
         },
         methods: {
-            emitSelectEvent(evt: MouseEvent): void
+            emitSelect(evt: MouseEvent): void
             {
                 this.$emit("select", evt);
             },
@@ -126,59 +128,83 @@
             {
                 this.$store.dispatch("contact");
 
-                this.emitSelectEvent(evt);
+                this.emitSelect(evt);
             },
 
-            onClickEvent(route: Route, navigate: (e: Event) => void, evt: MouseEvent): void
+            onClick(route: Route, navigate: (e: Event) => void, evt: MouseEvent): void
             {
                 navigate(evt);
 
-                this.emitSelectEvent(evt);
+                this.emitSelect(evt);
             },
-
-            // export interface Button
-            // {
-            //     type: "primary" | "secondary";
-            //     text: string;
-            //
-            //     action: () => void;
-            // }
-            // export interface Message
-            // {
-            //     type?: "success" | "info" | "warning" | "danger";
-            //     icon?: string;
-            //     title?: string;
-            //     text: string;
-            // }
-            // export interface Dialog
-            // {
-            //     type: "alert" | "banner" | "snackbar";
-            //     message: Message;
-            //     timeout?: number;
-            //     buttons?: Button[];
-            // }
 
             emitMessage(): void
             {
-                const type = ["alert", "snackbar"][Math.round(Math.random())];
-                const timeout = [undefined, 1500][Math.round(Math.random())];
-
-                console.log(`Opening a ${type} with a duration of: ${timeout}`);
-
-                this.$store.dispatch("dialog", {
-                    type: type,
-                    timeout: timeout,
+                const alert: Alert = {
+                    type: "alert",
                     message: {
                         title: "Attenzione!",
-                        text: "Questo è un messaggio di prova."
+                        text: "Questo è un testo di prova.\nChiudi per continuare."
                     },
-                    buttons: [{
-                        type: "primary",
-                        text: "Esplodi!",
+                    actions: [
+                        {
+                            type: "primary",
+                            text: "Continua",
 
-                        action: () => console.log("%cBOOOM! 💣💥", "font-size: 100px; color: red; font-weight: bold;")
-                    }]
-                });
+                            callback: () => console.log("Ok... L'utente ha continuato! ⏩")
+                        }
+                    ]
+                };
+                const banner: Banner = {
+                    type: "banner",
+                    message: {
+                        icon: "cookie",
+                        title: "Cookie banner!",
+                        text: "Questo sito salva dei cookie all'interno del tuo browser" +
+                            " per offrire un'esperienza di utilizzo ottimale.\n" +
+                            "Per avere ulteriori informazioni a riguardo, puoi visitare" +
+                            " la pagina relativa a questo genere di informazioni."
+                    },
+                    actions: [
+                        {
+                            type: "secondary",
+                            text: "Privacy & Cookie",
+                            location: { name: "privacy" }
+                        },
+                        {
+                            type: "primary",
+                            text: "Ho capito",
+
+                            callback: () => console.log("Cookie accettati! 🍪")
+                        }
+                    ]
+                };
+                const snackbar: Snackbar = {
+                    type: "snackbar",
+                    message: {
+                        text: "Sta a te decidere...\nScelte difficili!"
+                    },
+                    timeout: [undefined, 1500][Math.round(Math.random())],
+                    actions: [
+                        {
+                            type: "secondary",
+                            text: "Manuale",
+                            location: { name: "blog" }
+                        },
+                        {
+                            type: "primary",
+                            text: "Esplodi",
+                            callback: () => console.log("%cBOOOM! 💣💥", "font-size: 100px; color: red; font-weight: bold;")
+                        }
+                    ]
+
+                };
+
+                const dialog = [alert, banner, snackbar][Math.floor(Math.random() * 3)];
+
+                console.log("Opening the dialog:", dialog);
+
+                this.$store.dispatch("dialog", dialog);
             }
         }
     });

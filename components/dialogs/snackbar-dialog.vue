@@ -67,14 +67,27 @@
                 //
                 position: relative;
             }
-            & > .mdc-snackbar__actions > .mdc-snackbar__dismiss
+            & > .mdc-snackbar__actions
             {
-                color: rgba(255, 255, 255, 0.87);
-
-                &::before,
-                &::after
+                & > .mdc-snackbar__dismiss
                 {
-                    background-color: rgba(255, 255, 255, 0.87);
+                    color: rgba(255, 255, 255, 0.87);
+
+                    &::before,
+                    &::after
+                    {
+                        background-color: rgba(255, 255, 255, 0.87);
+                    }
+                }
+
+                &::v-deep > .mdc-button
+                {
+                    --mdc-theme-primary: #{variables.$secondary-color};
+
+                    &.mdc-button--secondary
+                    {
+                        --mdc-theme-primary: #FFFFFF;
+                    }
                 }
             }
         }

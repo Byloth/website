@@ -36,7 +36,7 @@
                    :readonly="readonly"
                    :value="value"
                    :type="type"
-                   @input="onInputEvent" />
+                   @input="onInput" />
             <TextFieldIcon v-if="trailingIcon" trailing>
                 {{ trailingIcon }}
             </TextFieldIcon>
@@ -143,7 +143,7 @@
         },
 
         methods: {
-            onInputEvent(evt: InputEvent)
+            onInput(evt: InputEvent)
             {
                 this.$emit("input", (evt.target as HTMLInputElement)!.value);
             }

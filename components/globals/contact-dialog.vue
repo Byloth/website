@@ -3,8 +3,8 @@
                       class="contact-dialog"
                       title="Scrivi il tuo messaggio"
                       done-text="Invia"
-                      @cancel="onCancelEvent"
-                      @done="onDoneEvent">
+                      @cancel="onCancel"
+                      @done="onDone">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -96,7 +96,7 @@
                 }
             },
 
-            async onCancelEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            async onCancel(close: () => Promise<void>, evt: MouseEvent): Promise<void>
             {
                 await close();
 
@@ -105,7 +105,7 @@
                 this.subject = "";
                 this.message = "";
             },
-            async onDoneEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            async onDone(close: () => Promise<void>, evt: MouseEvent): Promise<void>
             {
                 if ((this.name) && (this.email) && (this.subject) && (this.message))
                 {

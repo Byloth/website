@@ -2,8 +2,8 @@
     <BannerDialog v-model="isOpen"
                   class="cookie-banner"
                   icon="cookie-bite"
-                  :actions="[{ id: 'close', text: 'Ho capito' }]"
-                  @close="onCloseEvent">
+                  close-text="Ho capito"
+                  @close="onClose">
         <span>
             Questo sito utilizza i cookie per offrire un'esperienza di utilizzo ottimale.<br />
             Per avere ulteriori informazioni a riguardo, puoi visitare
@@ -53,7 +53,7 @@
         },
 
         methods: {
-            async onCloseEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            async onClose(close: () => Promise<void>, evt: MouseEvent): Promise<void>
             {
                 await close();
 

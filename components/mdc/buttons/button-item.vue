@@ -24,7 +24,7 @@
     interface ButtonData { _ripple?: MDCRipple; }
 
     export default Vue.extend({
-        name: "Button",
+        name: "ButtonItem",
         props: {
             title: {
                 default: "",
@@ -82,13 +82,4 @@
 </script>
 
 <style lang="scss" scoped>
-    @use "~@/assets/scss/variables";
-
-    .mdc-button
-    {
-        &.mdc-button--secondary
-        {
-            --mdc-theme-primary: #{variables.$secondary-color};
-        }
-    }
 </style>

@@ -3,17 +3,18 @@
         <AlertDialog v-if="alert"
                      v-model="isOpen"
                      :title="alert.message.title"
+                     dismissable
                      @show="onShow"
                      @dismiss="onDismiss">
-            <span>
-                {{ alert.message.text }}
+            <span v-for="line, index in alert.message.text.split('\n')" :key="index">
+                {{ line }}<br />
             </span>
             <template #actions>
-                <Button v-if="alert.buttons.length > 0"
-                        class="mdc-dialog__button"
-                        @click="handleAction(alert.buttons[0].action)">
-                    {{ alert.buttons[0].text }}
-                </Button>
+                <ButtonItem v-if="alert.actions.length > 0"
+                            class="mdc-dialog__button"
+                            @click="handleCallback(alert.actions[0].callback)">
+                    {{ alert.actions[0].text }}
+                </ButtonItem>
             </template>
         </AlertDialog>
     </div>
@@ -23,14 +24,14 @@
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { Dialog, RootState } from "@/core/types";
+    import { Alert, RootState } from "@/core/types";
 
     import AlertDialog from "@/components/dialogs/alert-dialog.vue";
-    import Button from "@/components/mdc/button.vue";
+    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
 
     interface AlertHandlerData
     {
-        alerts: Dialog[];
+        alerts: Alert[];
         isOpen: boolean;
 
         stopListening?: () => void;
@@ -38,7 +39,7 @@
 
     export default Vue.extend({
         name: "AlertHandler",
-        components: { AlertDialog, Button },
+        components: { AlertDialog, ButtonItem },
 
         data: (): AlertHandlerData => ({
             alerts: [],
@@ -46,7 +47,7 @@
         }),
 
         computed: {
-            alert(): Dialog | null
+            alert(): Alert | null
             {
                 if (this.alerts.length)
                 {
@@ -73,7 +74,7 @@
             {
                 if (action.type === "dialog")
                 {
-                    const alert: Dialog = action.payload;
+                    const alert: Alert = action.payload;
 
                     if (alert.type === "alert")
                     {
@@ -82,9 +83,9 @@
                     }
                 }
             },
-            handleAction(action: () => void): void
+            handleCallback(callback: () => void): void
             {
-                action();
+                callback();
 
                 this.isOpen = false;
             },

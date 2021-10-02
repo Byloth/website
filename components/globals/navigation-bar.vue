@@ -14,9 +14,9 @@
                     {{ title }}
                 </h1>
             </section>
-            <NavigationActions :actions="actions" @select="onSelectEvent" />
+            <NavigationActions :actions="actions" @select="onSelect" />
         </TopAppBar>
-        <CookieBanner id="cookie-banner" />
+        <BannerHandler id="banner-handler" />
     </div>
 </template>
 
@@ -33,7 +33,7 @@
     import NavigationActions from "@/components/navigation-actions.vue";
     import TopAppBar from "@/components/mdc/top-app-bar.vue";
 
-    import CookieBanner from "./cookie-banner.vue";
+    import BannerHandler from "./banner-handler.vue";
 
     interface NavigationBarData
     {
@@ -43,7 +43,7 @@
 
     export default Vue.extend({
         name: "NavigationBar",
-        components: { ActionButton, CookieBanner, NavigationActions, TopAppBar },
+        components: { ActionButton, BannerHandler, NavigationActions, TopAppBar },
         props: {
             toggler: {
                 default: true,
@@ -135,7 +135,7 @@
         },
 
         methods: {
-            onSelectEvent(action: Action): void
+            onSelect(action: Action): void
             {
                 this.$store.dispatch(action.name);
             }
@@ -159,10 +159,8 @@
             position: relative;
         }
 
-        & > .cookie-banner
+        & > #banner-handler::v-deep > .banner-dialog
         {
-            backdrop-filter: blur(20px) saturate(180%);
-            background-color: rgba(#FFFFFF, 0.75);
             padding-top: calc(1em + 10px);
             position: relative;
         }

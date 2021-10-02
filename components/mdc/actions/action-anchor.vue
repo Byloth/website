@@ -2,7 +2,8 @@
     <a class="mdc-icon-button"
        :alt="title"
        :title="title"
-       :aria-label="title">
+       :aria-label="title"
+       @click="$emit('click', $event)">
         <slot></slot>
     </a>
 </template>
