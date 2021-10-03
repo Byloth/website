@@ -1,3 +1,4 @@
+import Vue from "vue";
 import { ActionContext } from "vuex";
 
 import { localStorage } from "@/core/utils";
@@ -14,7 +15,54 @@ const mutations = {
     }
 };
 const actions = {
-    dialog(context: ActionContext<RootState, RootState>, payload: Dialog): void { /*  */ },
+    dialog(context: ActionContext<RootState, RootState>, dialog: Dialog): void { /*  */ },
+
+    loaded({ state, commit, dispatch }: ActionContext<RootState, RootState>, { $ga, $route }: Vue): void
+    {
+        const enableTracking = () =>
+        {
+            $ga.enable();
+            $ga.page($route.fullPath);
+        };
+
+        setTimeout(() =>
+        {
+            if (state.cookieAck)
+            {
+                enableTracking();
+            }
+            else
+            {
+                dispatch("dialog", {
+                    type: "banner",
+                    message: {
+                        icon: "cookie-bite",
+                        text: "Questo sito salva alcuni cookie all'interno del tuo browser" +
+                            " per offrirti un'esperienza di utilizzo ottimale.\n" +
+                            "Proseguendo con la navigazione all'interno del sito," +
+                            " accetti il salvataggio e l'uso di queste informazioni."
+                    },
+                    actions: [
+                        {
+                            type: "secondary",
+                            text: "Altre informazioni",
+                            location: { name: "privacy" }
+                        },
+                        {
+                            type: "primary",
+                            text: "Ho capito",
+
+                            callback: () =>
+                            {
+                                commit("acknowledgeCookie");
+                                enableTracking();
+                            }
+                        }
+                    ]
+                });
+            }
+        }, 1500);
+    },
 
     contact(context: ActionContext<RootState, RootState>): void { /* */ },
     share(context: ActionContext<RootState, RootState>): void { /* */ },

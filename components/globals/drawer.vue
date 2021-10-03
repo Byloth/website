@@ -29,16 +29,6 @@
                 <h5 class="mdc-list-group__subheader">
                     Link utili
                 </h5>
-                <!--ListItem fa
-                          href="//amazon.it?tag=byloth-21"
-                          icon="amazon"
-                          target="_blank"
-                          title="Acquista su Amazon tramite il link Affiliato"
-                          rel="nofollow noopener noreferrer"
-                          @click="emitSelect">
-                    Compra
-                    <sup class="badge">new</sup>
-                </ListItem-->
                 <ListItem fa
                           href="//discord.gg/5QvHTwzvqW"
                           icon="discord"
@@ -155,29 +145,6 @@
                         }
                     ]
                 };
-                const banner: Dialog = {
-                    type: "banner",
-                    message: {
-                        icon: "cookie-bite",
-                        text: "Questo sito salva alcuni cookie all'interno del tuo browser" +
-                            " per offrirti un'esperienza di utilizzo ottimale.\n" +
-                            "Proseguendo con la navigazione all'interno del sito," +
-                            " accetti il salvataggio e l'uso di queste informazioni."
-                    },
-                    actions: [
-                        {
-                            type: "secondary",
-                            text: "Altre informazioni",
-                            location: { name: "privacy" }
-                        },
-                        {
-                            type: "primary",
-                            text: "Ho capito",
-
-                            callback: () => console.log("Cookie accettati! 🍪")
-                        }
-                    ]
-                };
                 const snackbar: Dialog = {
                     type: "snackbar",
                     message: {
@@ -194,7 +161,7 @@
 
                 };
 
-                const dialog = [alert, banner, snackbar][Math.floor(Math.random() * 3)];
+                const dialog = [alert, snackbar][Math.floor(Math.random() * 2)];
 
                 this.$store.dispatch("dialog", dialog);
             }
