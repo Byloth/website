@@ -1011,7 +1011,7 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/button@^10.0.0":
+"@material/button@^10.0.0", "@material/button@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/button/-/button-10.0.0.tgz#0641e4b758e35821dcb88b62e918ca2a2a90bcbf"
   integrity sha512-OHIJtlyM+U+MqvPm0N0y9kHf+SFS0I7zE520MulQJywgZhHmU+mz2kwgy+tVxOTceVglQzRZP3KkrwUkf4U0bg==
@@ -1027,7 +1027,7 @@
     "@material/touch-target" "^10.0.0"
     "@material/typography" "^10.0.0"
 
-"@material/card@^10.0.0":
+"@material/card@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/card/-/card-10.0.0.tgz#8747871757c5a548977bee177fffe4eafbc7f9ad"
   integrity sha512-IwdmUdrMDKb27K6xUhRSafPNbrAmcrPSxM3E8ad1Hk55+9O8Tl9SnGfOQGNtocGa8O7qFr8jsiqdIrxJN85VEA==
@@ -1045,7 +1045,7 @@
   resolved "https://registry.yarnpkg.com/@material/density/-/density-10.0.0.tgz#24795406d092cf0e6422e1c9dc8bc2b978c46e7a"
   integrity sha512-nLf8N5e6tEYo+W762z3coTDl2b1FFKJv/uU+E5UsBYOL0ftXrOMtiYSwg9MJjfWtdG+uUBfb3VLcBvIl2x3C0w==
 
-"@material/dialog@^10.0.0":
+"@material/dialog@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/dialog/-/dialog-10.0.0.tgz#f0a9192081291767ec9517ff8cccd8320cb4cd53"
   integrity sha512-vAupxjKxP9iMCmFCkE0PuLCrePdBqdOvJBTv++JP1v+t/Vu+5FLu6rHYIWKwTivqrIgSrLS2L0Lyc1VlJzQqLg==
@@ -1073,7 +1073,7 @@
     "@material/feature-targeting" "^10.0.0"
     tslib "^1.9.3"
 
-"@material/drawer@^10.0.0":
+"@material/drawer@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/drawer/-/drawer-10.0.0.tgz#9f1e8a56bfb4e35c808c121710654f31040b3c0e"
   integrity sha512-x2B8Cqz8x3ecXU4gkFCZBzWNKC5q+oDc73dce/rPNoR87ndzLhMcu6P7mD/tBaNBJHypfQk1SBkbFrMYHAfncg==
@@ -1120,7 +1120,7 @@
     "@material/typography" "^10.0.0"
     tslib "^1.9.3"
 
-"@material/icon-button@^10.0.0":
+"@material/icon-button@^10.0.0", "@material/icon-button@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/icon-button/-/icon-button-10.0.0.tgz#ab6a18e2e18245ff59eac1bffe4310a258f7da80"
   integrity sha512-e7oQq2LlUA+UGGzlgvityPV+bTRJ7sFs8grlwM0C86adXzc/6nYBNmmgcqUpQDiCtBj5Dqo8oQSUVGRkHIqEiQ==
@@ -1174,7 +1174,7 @@
     "@material/theme" "^10.0.0"
     tslib "^1.9.3"
 
-"@material/menu@^10.0.0":
+"@material/menu@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/menu/-/menu-10.0.0.tgz#e0fc7553ddff0ceb18aad86ea51d4235192a5dbe"
   integrity sha512-UvutTmhENZc7j1XO14bL/jj0CFQV//8FiQT8hqnZ2/bisX4dyVkwJcs/iSj7ZumQ9KSqn62XMP+DiOothz55Ew==
@@ -1203,7 +1203,7 @@
     "@material/theme" "^10.0.0"
     tslib "^1.9.3"
 
-"@material/ripple@^10.0.0":
+"@material/ripple@^10.0.0", "@material/ripple@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/ripple/-/ripple-10.0.0.tgz#5c5e9da3720ad521e477d6b0ea2059e9351067ce"
   integrity sha512-KZPJ6YvLFJKkulUemKFq/Y3h9/Pbta+zOjBN1ZoeiP5++5thfsMJuL+L2bWa4GqUjSj66xW75LQrxX/ammCYzw==
@@ -1231,7 +1231,7 @@
     "@material/rtl" "^10.0.0"
     "@material/theme" "^10.0.0"
 
-"@material/snackbar@^10.0.0":
+"@material/snackbar@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/snackbar/-/snackbar-10.0.0.tgz#5409f67a0b632316998ebab248748a3906eebca4"
   integrity sha512-Cp/OpLZm6ze+/jxpyf2D1jUNvdyhn3MhYcH1EWUyJowJk0wc0DOvWWgrZcVmyqTCROJUmTlL+l35EQ3f7rkjxQ==
@@ -1250,7 +1250,7 @@
     "@material/typography" "^10.0.0"
     tslib "^1.9.3"
 
-"@material/textfield@^10.0.0":
+"@material/textfield@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/textfield/-/textfield-10.0.0.tgz#8a6df48cd9a1bb26ffb1256c4ba2f43886566bcd"
   integrity sha512-EqqG1c8J8pGTBV3ogXlEi3ZxGuG8qAGYw9Z3QI+r3FvYvrX4qp9Xl1ifDRweVF18eJ28DINXqBdL7XNmnCaZpw==
@@ -1277,7 +1277,7 @@
   dependencies:
     "@material/feature-targeting" "^10.0.0"
 
-"@material/tooltip@^10.0.0":
+"@material/tooltip@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/tooltip/-/tooltip-10.0.0.tgz#485b125555314635bab6044d6e34bb05df443ac7"
   integrity sha512-sH0c9ERNGZe+QaxRNQIFczKNu2y4IbDsuhb5MalY0XZ6jurpdm/1UxEBvrhquXkUUebJ0tPzbOJ214+LJVSh5A==
@@ -1293,7 +1293,7 @@
     "@material/typography" "^10.0.0"
     tslib "^1.9.3"
 
-"@material/top-app-bar@^10.0.0":
+"@material/top-app-bar@~10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@material/top-app-bar/-/top-app-bar-10.0.0.tgz#c9a1449453aa8d28d448e5eed46f788c882472b0"
   integrity sha512-9UKxshyQw/FYX+V5qpsNcyU+4Z+3bvxa415jZkorq+ffoaIzKjc30zBGYcpQSAs2wwobiSp5srMmrTuU/x9k7A==

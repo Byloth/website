@@ -1,34 +1,50 @@
 <template>
-    <div class="snackbar-handler">
-        <SnackbarDialog v-if="snackbar"
-                        v-model="isOpen"
-                        :dismissable="!snackbar.timeout"
-                        @show="onShow"
-                        @dismiss="onDismiss">
-            <span v-for="line, index in snackbarMessageLines" :key="index">
-                {{ line }}<br />
-            </span>
-            <template v-if="snackbar.actions" #actions>
-                <ButtonItem class="mdc-snackbar__action" @click="handleCallback(snackbar.actions[0].callback)">
-                    {{ snackbar.actions[0].text }}
-                </ButtonItem>
-            </template>
-        </SnackbarDialog>
-    </div>
+    <SnackbarDialog v-if="snackbar"
+                    v-model="isOpen"
+                    class="snackbar-handler"
+                    :dismissable="snackbar.dismissable"
+                    :icon="snackbar.message.icon"
+                    :title="snackbar.message.title"
+                    @show="onShow"
+                    @dismiss="onDismiss">
+        <pre>{{ snackbar.message.text }}</pre>
+        <template v-if="action" #actions>
+            <NuxtLink v-if="action.location"
+                      v-slot="{ href, navigate }"
+                      custom
+                      :to="action.location">
+                <ButtonAnchor class="mdc-snackbar__action"
+                              :href="href"
+                              :title="action.text"
+                              @click="navigate">
+                    {{ action.text }}
+                </ButtonAnchor>
+            </NuxtLink>
+            <ButtonItem v-else-if="action.callback"
+                        class="mdc-snackbar__action"
+                        @click="handleCallback(action.callback)">
+                {{ action.text }}
+            </ButtonItem>
+        </template>
+    </SnackbarDialog>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { Snackbar, RootState } from "@/core/types";
+    import { Action, Dialog, RootState } from "@/core/types";
 
+    import ButtonAnchor from "@/components/mdc/buttons/button-anchor.vue";
     import ButtonItem from "@/components/mdc/buttons/button-item.vue";
     import SnackbarDialog from "@/components/dialogs/snackbar-dialog.vue";
 
     interface SnackbarHandlerData
     {
-        snackbars: Snackbar[];
+        // eslint-disable-next-line no-undef
+        _timeout?: NodeJS.Timeout;
+
+        snackbars: Dialog[];
         isOpen: boolean;
 
         stopListening?: () => void;
@@ -36,7 +52,7 @@
 
     export default Vue.extend({
         name: "SnackbarHandler",
-        components: { ButtonItem, SnackbarDialog },
+        components: { ButtonAnchor, ButtonItem, SnackbarDialog },
 
         data: (): SnackbarHandlerData => ({
             snackbars: [],
@@ -44,7 +60,7 @@
         }),
 
         computed: {
-            snackbar(): Snackbar | null
+            snackbar(): Dialog | null
             {
                 if (this.snackbars.length)
                 {
@@ -53,16 +69,20 @@
 
                 return null;
             },
-            snackbarMessageLines(): string[]
+            action(): Action | null
             {
-                if (this.snackbar)
+                if ((this.snackbar?.actions?.length))
                 {
-                    return this.snackbar.message.text.split("\n");
+                    if (this.snackbar.actions.length > 1)
+                    {
+                        throw new Error("Multiple actions aren't supported for 'snackbar' type dialog. Use a single button.");
+                    }
+
+                    return this.snackbar.actions[0];
                 }
 
-                return [];
-            },
-            snackbarAction(): 
+                return null;
+            }
         },
 
         mounted: function(): void
@@ -79,7 +99,7 @@
             {
                 if (action.type === "dialog")
                 {
-                    const snackbar: Snackbar = action.payload;
+                    const snackbar: Dialog = action.payload;
 
                     if (snackbar.type === "snackbar")
                     {
@@ -97,15 +117,24 @@
 
             onShow(type: string): void
             {
-                if (this.snackbar!.timeout)
+                if (this.snackbar?.timeout)
                 {
-                    setTimeout(() => { this.isOpen = false; }, this.snackbar!.timeout);
+                    this._timeout = setTimeout(() =>
+                    {
+                        this._timeout = undefined;
+                        this.isOpen = false;
+                    }, this.snackbar.timeout);
                 }
             },
             onDismiss(type: string): void
             {
-                this.snackbars.shift();
+                if (this._timeout)
+                {
+                    clearTimeout(this._timeout);
+                    this._timeout = undefined;
+                }
 
+                this.snackbars.shift();
                 if (this.snackbars.length)
                 {
                     this.$nextTick(() => { this.isOpen = true; });
@@ -116,4 +145,11 @@
 </script>
 
 <style lang="scss" scoped>
+    .snackbar-handler
+    {
+        pre
+        {
+            margin: 0px;
+        }
+    }
 </style>

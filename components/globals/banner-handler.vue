@@ -1,40 +1,43 @@
 <template>
-    <div class="banner-handler">
-        <BannerDialog v-if="banner"
-                      v-model="isOpen"
-                      :icon="banner.message.icon"
-                      @dismiss="onDismiss">
-            <h4 v-if="banner.message.title" class="title">
-                {{ banner.message.title }}
-            </h4>
-            <div>
-                <span v-for="line, index in banner.message.text.split('\n')" :key="index">
-                    {{ line }}<br />
-                </span>
-            </div>
-            <template #actions>
-                <NuxtLink v-slot="{ href, navigate }"
+    <BannerDialog v-if="banner"
+                  v-model="isOpen"
+                  class="banner-handler"
+                  :dismissable="banner.dismissable"
+                  :icon="banner.message.icon"
+                  :title="banner.message.title"
+                  @show="onShow"
+                  @dismiss="onDismiss">
+        <pre>{{ banner.message.text }}</pre>
+        <template v-if="banner.actions && banner.actions.length" #actions>
+            <template v-for="action, index in banner.actions">
+                <NuxtLink v-if="action.location"
+                          v-slot="{ href, navigate }"
+                          :key="index"
                           custom
-                          :to="{ name: 'privacy' }">
+                          :raised="action.type === 'primary'"
+                          :to="action.location">
                     <ButtonAnchor :href="href"
-                                  title="Privacy & Cookie"
+                                  :title="action.text"
                                   @click="navigate">
-                        Privacy &amp; Cookie
+                        {{ action.text }}
                     </ButtonAnchor>
                 </NuxtLink>
-                <ButtonItem raised>
-                    Ok, accetto!
+                <ButtonItem v-else-if="action.callback"
+                            :key="index"
+                            :raised="action.type === 'primary'"
+                            @click="handleCallback(action.callback)">
+                    {{ action.text }}
                 </ButtonItem>
             </template>
-        </BannerDialog>
-    </div>
+        </template>
+    </BannerDialog>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { Banner, RootState } from "@/core/types";
+    import { Dialog, RootState } from "@/core/types";
 
     import BannerDialog from "@/components/dialogs/banner-dialog.vue";
     import ButtonAnchor from "@/components/mdc/buttons/button-anchor.vue";
@@ -42,7 +45,10 @@
 
     interface BannerHandlerData
     {
-        banners: Banner[];
+        // eslint-disable-next-line no-undef
+        _timeout?: NodeJS.Timeout;
+
+        banners: Dialog[];
         isOpen: boolean;
 
         stopListening?: () => void;
@@ -58,7 +64,7 @@
         }),
 
         computed: {
-            banner(): Banner | null
+            banner(): Dialog | null
             {
                 if (this.banners.length)
                 {
@@ -85,7 +91,7 @@
             {
                 if (action.type === "dialog")
                 {
-                    const banner: Banner = action.payload;
+                    const banner: Dialog = action.payload;
 
                     if (banner.type === "banner")
                     {
@@ -94,24 +100,33 @@
                     }
                 }
             },
-            handleAction(action: () => void): void
+            handleCallback(callback: () => void): void
             {
-                action();
+                callback();
 
                 this.isOpen = false;
             },
 
             onShow(type: string): void
             {
-                if (this.banner!.timeout)
+                if (this.banner?.timeout)
                 {
-                    setTimeout(() => { this.isOpen = false; }, this.banner!.timeout);
+                    this._timeout = setTimeout(() =>
+                    {
+                        this._timeout = undefined;
+                        this.isOpen = false;
+                    }, this.banner.timeout);
                 }
             },
             onDismiss(type: string): void
             {
-                this.banners.shift();
+                if (this._timeout)
+                {
+                    clearTimeout(this._timeout);
+                    this._timeout = undefined;
+                }
 
+                this.banners.shift();
                 if (this.banners.length)
                 {
                     this.$nextTick(() => { this.isOpen = true; });
@@ -124,10 +139,9 @@
 <style lang="scss" scoped>
     .banner-handler
     {
-        .title
+        pre
         {
             margin: 0px;
-            margin-bottom: 0.5em;
         }
     }
 </style>

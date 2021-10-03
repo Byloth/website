@@ -5,9 +5,9 @@
             <h3 class="mdc-drawer__title">
                 Benvenuto
             </h3>
-            <h6 class="mdc-drawer__subtitle">
+            <h4 class="mdc-drawer__subtitle">
                 Visitatore anonimo
-            </h6>
+            </h4>
         </div>
         <div class="mdc-drawer__content">
             <List>
@@ -26,9 +26,9 @@
                     </ListItem>
                 </NuxtLink>
                 <hr class="mdc-list-divider" />
-                <h6 class="mdc-list-group__subheader">
+                <h5 class="mdc-list-group__subheader">
                     Link utili
-                </h6>
+                </h5>
                 <!--ListItem fa
                           href="//amazon.it?tag=byloth-21"
                           icon="amazon"
@@ -65,9 +65,9 @@
                 </ListItem>
                 <!-- TODO: Remove this section before publish to `production`! -->
                 <hr class="mdc-list-divider" />
-                <h6 class="mdc-list-group__subheader">
+                <h5 class="mdc-list-group__subheader">
                     Debug
-                </h6>
+                </h5>
                 <ListItem title="Something" @click="emitMessage">
                     Emetti messaggio
                 </ListItem>
@@ -87,7 +87,7 @@
 
     import { cssClasses } from "@material/drawer";
 
-    import { Alert, Banner, Snackbar } from "@/core/types";
+    import { Dialog } from "@/core/types";
 
     import List from "@/components/mdc/lists/list.vue";
     import ListItem from "@/components/mdc/lists/list-item.vue";
@@ -140,7 +140,7 @@
 
             emitMessage(): void
             {
-                const alert: Alert = {
+                const alert: Dialog = {
                     type: "alert",
                     message: {
                         title: "Attenzione!",
@@ -149,26 +149,25 @@
                     actions: [
                         {
                             type: "primary",
-                            text: "Continua",
+                            text: "Chiudi",
 
-                            callback: () => console.log("Ok... L'utente ha continuato! ⏩")
+                            callback: () => console.log("YASSS!")
                         }
                     ]
                 };
-                const banner: Banner = {
+                const banner: Dialog = {
                     type: "banner",
                     message: {
-                        icon: "cookie",
-                        title: "Cookie banner!",
-                        text: "Questo sito salva dei cookie all'interno del tuo browser" +
-                            " per offrire un'esperienza di utilizzo ottimale.\n" +
-                            "Per avere ulteriori informazioni a riguardo, puoi visitare" +
-                            " la pagina relativa a questo genere di informazioni."
+                        icon: "cookie-bite",
+                        text: "Questo sito salva alcuni cookie all'interno del tuo browser" +
+                            " per offrirti un'esperienza di utilizzo ottimale.\n" +
+                            "Proseguendo con la navigazione all'interno del sito," +
+                            " accetti il salvataggio e l'uso di queste informazioni."
                     },
                     actions: [
                         {
                             type: "secondary",
-                            text: "Privacy & Cookie",
+                            text: "Altre informazioni",
                             location: { name: "privacy" }
                         },
                         {
@@ -179,18 +178,13 @@
                         }
                     ]
                 };
-                const snackbar: Snackbar = {
+                const snackbar: Dialog = {
                     type: "snackbar",
                     message: {
-                        text: "Sta a te decidere...\nScelte difficili!"
+                        text: "Questo sito è una bomba!"
                     },
-                    timeout: [undefined, 1500][Math.round(Math.random())],
+                    dismissable: true,
                     actions: [
-                        {
-                            type: "secondary",
-                            text: "Manuale",
-                            location: { name: "blog" }
-                        },
                         {
                             type: "primary",
                             text: "Esplodi",
@@ -201,8 +195,6 @@
                 };
 
                 const dialog = [alert, banner, snackbar][Math.floor(Math.random() * 3)];
-
-                console.log("Opening the dialog:", dialog);
 
                 this.$store.dispatch("dialog", dialog);
             }

@@ -14,7 +14,7 @@
                     {{ title }}
                 </h1>
             </section>
-            <NavigationActions :actions="actions" @select="onSelect" />
+            <NavigationActions :actions="menus" @select="onSelect" />
         </TopAppBar>
         <BannerHandler id="banner-handler" />
     </div>
@@ -27,7 +27,7 @@
     import { cssClasses } from "@material/top-app-bar";
     import { ScrollAnimation, ClassAnimatorBehavior } from "@byloth/vue-scroll-animator";
 
-    import { Action } from "@/core/types";
+    import { Menu } from "@/core/types";
 
     import ActionButton from "@/components/mdc/actions/action-button.vue";
     import NavigationActions from "@/components/navigation-actions.vue";
@@ -55,7 +55,7 @@
 
         computed: mapState("config", {
             title: "title",
-            actions: "actions"
+            menus: "menus"
         }),
 
         mounted: function(): void
@@ -135,9 +135,9 @@
         },
 
         methods: {
-            onSelect(action: Action): void
+            onSelect(menu: Menu): void
             {
-                this.$store.dispatch(action.name);
+                this.$store.dispatch(menu.name);
             }
         }
     });
@@ -159,7 +159,7 @@
             position: relative;
         }
 
-        & > #banner-handler::v-deep > .banner-dialog
+        & > #banner-handler
         {
             padding-top: calc(1em + 10px);
             position: relative;

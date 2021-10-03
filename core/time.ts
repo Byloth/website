@@ -61,7 +61,7 @@ export default abstract class Time
         {
             let value: number;
 
-            if ((applyModule === true) || (iterationCount > 0))
+            if ((applyModule) || (iterationCount))
             {
                 value = Math.floor(timeDifference / divisor) % Time._TIME_DEFINITIONS[iterationCount - 1].divisor;
             }
@@ -70,7 +70,7 @@ export default abstract class Time
                 value = Math.floor(timeDifference / divisor);
             }
 
-            if (value > 0)
+            if (value)
             {
                 let resultArray: string[];
 

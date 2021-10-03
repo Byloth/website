@@ -3,8 +3,11 @@
          class="banner-dialog"
          :class="classes">
         <div class="content">
-            <Avatar :icon="icon" />
+            <Avatar v-if="icon" :icon="icon" />
             <div class="details">
+                <h2 v-if="title" class="title">
+                    {{ title }}
+                </h2>
                 <slot></slot>
             </div>
         </div>
@@ -31,7 +34,11 @@
         mixins: [TransientMixin()],
         props: {
             icon: {
-                default: "exclamation",
+                default: "",
+                type: String
+            },
+            title: {
+                default: "",
                 type: String
             },
 
@@ -79,6 +86,13 @@
             & > .details
             {
                 flex: 1;
+
+                & > .title
+                {
+                    font-size: 1.25em;
+                    margin: 0px;
+                    margin-bottom: 0.5em;
+                }
             }
         }
         & > .actions

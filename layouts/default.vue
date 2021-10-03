@@ -14,13 +14,13 @@
             </div>
             <Flooter id="flooter" ref="flooter" />
         </div>
-        <AlertHandler id="alert-handler" />
         <SnackbarHandler id="snackbar-handler" />
         <DrawerScrim id="drawer-scrim"
                      :value="isModal && isOpen"
                      @click="closeDrawer" />
         <ShareDialog id="share-dialog" @open="onDialogOpen" />
         <ContactDialog id="contact-dialog" @open="onDialogOpen" />
+        <AlertHandler id="alert-handler" @open="onDialogOpen" />
     </div>
 </template>
 
@@ -122,7 +122,7 @@
         methods: {
             disable(disabled: boolean): void
             {
-                if (disabled === true)
+                if (disabled)
                 {
                     this._body!.removeAttribute("disabled");
                 }

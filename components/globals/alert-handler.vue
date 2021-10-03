@@ -1,37 +1,54 @@
 <template>
-    <div class="alert-handler">
-        <AlertDialog v-if="alert"
-                     v-model="isOpen"
-                     :title="alert.message.title"
-                     dismissable
-                     @show="onShow"
-                     @dismiss="onDismiss">
-            <span v-for="line, index in alert.message.text.split('\n')" :key="index">
-                {{ line }}<br />
-            </span>
-            <template #actions>
-                <ButtonItem v-if="alert.actions.length > 0"
+    <AlertDialog v-if="alert"
+                 v-model="isOpen"
+                 class="alert-handler"
+                 :dismissable="alert.dismissable"
+                 :icon="alert.message.icon"
+                 :title="alert.message.title"
+                 @show="onShow"
+                 @dismiss="onDismiss">
+        <pre>{{ alert.message.text }}</pre>
+        <template v-if="alert.actions && alert.actions.length" #actions>
+            <template v-for="action, index in alert.actions">
+                <NuxtLink v-if="action.location"
+                          v-slot="{ href, navigate }"
+                          :key="index"
+                          custom
+                          :to="action.location">
+                    <ButtonAnchor class="mdc-dialog__button"
+                                  :href="href"
+                                  :title="action.text"
+                                  @click="navigate">
+                        {{ action.text }}
+                    </ButtonAnchor>
+                </NuxtLink>
+                <ButtonItem v-else-if="action.callback"
+                            :key="index"
                             class="mdc-dialog__button"
-                            @click="handleCallback(alert.actions[0].callback)">
-                    {{ alert.actions[0].text }}
+                            @click="handleCallback(action.callback)">
+                    {{ action.text }}
                 </ButtonItem>
             </template>
-        </AlertDialog>
-    </div>
+        </template>
+    </AlertDialog>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { Alert, RootState } from "@/core/types";
+    import { Dialog, RootState } from "@/core/types";
 
     import AlertDialog from "@/components/dialogs/alert-dialog.vue";
+    import ButtonAnchor from "@/components/mdc/buttons/button-anchor.vue";
     import ButtonItem from "@/components/mdc/buttons/button-item.vue";
 
     interface AlertHandlerData
     {
-        alerts: Alert[];
+        // eslint-disable-next-line no-undef
+        _timeout?: NodeJS.Timeout;
+
+        alerts: Dialog[];
         isOpen: boolean;
 
         stopListening?: () => void;
@@ -39,7 +56,7 @@
 
     export default Vue.extend({
         name: "AlertHandler",
-        components: { AlertDialog, ButtonItem },
+        components: { AlertDialog, ButtonAnchor, ButtonItem },
 
         data: (): AlertHandlerData => ({
             alerts: [],
@@ -47,7 +64,7 @@
         }),
 
         computed: {
-            alert(): Alert | null
+            alert(): Dialog | null
             {
                 if (this.alerts.length)
                 {
@@ -57,6 +74,12 @@
                 {
                     return null;
                 }
+            }
+        },
+        watch: {
+            isOpen(value: boolean, oldValue: boolean): void
+            {
+                this.$emit("open", value);
             }
         },
 
@@ -74,7 +97,7 @@
             {
                 if (action.type === "dialog")
                 {
-                    const alert: Alert = action.payload;
+                    const alert: Dialog = action.payload;
 
                     if (alert.type === "alert")
                     {
@@ -92,15 +115,24 @@
 
             onShow(type: string): void
             {
-                if (this.alert!.timeout)
+                if (this.alert?.timeout)
                 {
-                    setTimeout(() => { this.isOpen = false; }, this.alert!.timeout);
+                    this._timeout = setTimeout(() =>
+                    {
+                        this._timeout = undefined;
+                        this.isOpen = false;
+                    }, this.alert.timeout);
                 }
             },
             onDismiss(type: string): void
             {
-                this.alerts.shift();
+                if (this._timeout)
+                {
+                    clearTimeout(this._timeout);
+                    this._timeout = undefined;
+                }
 
+                this.alerts.shift();
                 if (this.alerts.length)
                 {
                     this.$nextTick(() => { this.isOpen = true; });
@@ -111,4 +143,11 @@
 </script>
 
 <style lang="scss" scoped>
+    .alert-handler
+    {
+        pre
+        {
+            margin: 0px;
+        }
+    }
 </style>

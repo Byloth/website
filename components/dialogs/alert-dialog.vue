@@ -6,9 +6,15 @@
             <div class="mdc-dialog__surface"
                  role="alertdialog"
                  aria-modal="true">
-                <h2 v-if="title" class="mdc-dialog__title">
-                    {{ title }}
-                </h2>
+                <div class="header">
+                    <span v-if="icon"
+                          class="fas icon"
+                          :class="`fa-${icon}`">
+                    </span>
+                    <h2 v-if="title" class="mdc-dialog__title">
+                        {{ title }}
+                    </h2>
+                </div>
                 <div class="mdc-dialog__content">
                     <slot></slot>
                 </div>
@@ -22,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="mdc-dialog__scrim"></div>
+        <div class="mdc-dialog__scrim overlay"></div>
     </div>
 </template>
 
@@ -47,6 +53,10 @@
             exitTransitionDuration: 75
         })],
         props: {
+            icon: {
+                default: "",
+                type: String
+            },
             title: {
                 default: "",
                 type: String
@@ -57,7 +67,7 @@
                 type: Boolean
             },
             closeText: {
-                default: "Chiudi",
+                default: "Annulla",
                 type: String
             },
 
@@ -85,7 +95,7 @@
     .mdc-dialog
     {
         display: flex;
-        z-index: 8;
+        z-index: 6;
 
         & > .mdc-dialog__container
         {
@@ -96,14 +106,32 @@
             {
                 padding-top: 1.25em;
 
-                & > .mdc-dialog__title
+                & > .header
                 {
-                    &::before
+                    align-items: center;
+                    display: flex;
+
+                    & > .icon
                     {
-                        content: none;
+                        font-size: 1.25em;
+                        padding-bottom: 0.5em;
+                        padding-left: 1.125em;
+                    }
+                    & > .mdc-dialog__title
+                    {
+                        flex: 1;
+
+                        &::before
+                        {
+                            content: none;
+                        }
+
+                        &:not(:first-child)
+                        {
+                            padding-left: 0.75em;
+                        }
                     }
                 }
-
                 & > .mdc-dialog__content
                 {
                     padding-top: 0px;

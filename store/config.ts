@@ -3,7 +3,7 @@ import { ConfigState } from "@/core/types";
 const state = (): ConfigState => ({
     title: "Byloth's Website",
     author: "Matteo Bilotta",
-    actions: [
+    menus: [
         {
             id: 1,
             name: "share",

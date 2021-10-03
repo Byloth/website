@@ -1,6 +1,6 @@
 export default class JsonStorage
 {
-    protected static get _FakeOne(): Storage
+    protected static get _Fake(): Storage
     {
         return {
             length: 0,
@@ -17,7 +17,7 @@ export default class JsonStorage
 
     public constructor(storage?: Storage)
     {
-        this._storage = storage || JsonStorage._FakeOne;
+        this._storage = storage || JsonStorage._Fake;
     }
 
     public get<T>(propertyName: string, defaultValue?: T): T | undefined
@@ -35,7 +35,10 @@ export default class JsonStorage
                 if (process.env.NODE_ENV !== "production")
                 {
                     // eslint-disable-next-line no-console
-                    console.warn(`The "${propertyValue}" value for "${propertyName}" property cannot be parsed. Cleaning the storage...`);
+                    console.warn(
+                        `The "${propertyValue}" value for "${propertyName}" property cannot be parsed correctly. ` +
+                        `Removing this property from the storage...`
+                    );
                 }
 
                 this._storage.removeItem(propertyName);

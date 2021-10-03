@@ -13,8 +13,7 @@ export interface TransientMixinData
     isShown: boolean;
     isOpen: boolean;
 }
-
-interface TransientMixinOptions
+export interface TransientMixinOptions
 {
     openClass?: string;
 
@@ -83,10 +82,12 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
             if (this._openingTimeout)
             {
                 clearTimeout(this._openingTimeout);
+                this._openingTimeout = undefined;
             }
             if (this._closingTimeout)
             {
                 clearTimeout(this._closingTimeout);
+                this._closingTimeout = undefined;
             }
         },
 
@@ -103,6 +104,8 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
                         this.isOpen = true;
                         this._openingTimeout = setTimeout(() =>
                         {
+                            this._openingTimeout = undefined;
+
                             this.$emit("input", true);
                             this.$emit("show");
 
@@ -120,6 +123,7 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
 
                     this._closingTimeout = setTimeout(() =>
                     {
+                        this._closingTimeout = undefined;
                         this.isShown = false;
 
                         this.$emit("input", false);
