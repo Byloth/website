@@ -20,54 +20,60 @@
             </div>
             <div class="column col-md-8 col-lg-6">
                 <h3>Contatti e social</h3>
-                <ActionAnchor href="//www.facebook.com/matteo.bilotta"
-                              title="Matteo Bilotta su Facebook"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-facebook"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//github.com/Byloth"
-                              title="Matteo Bilotta su GitHub"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-github"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//www.instagram.com/i.byloth/"
-                              title="Matteo Bilotta su Instagram"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-instagram"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//www.linkedin.com/in/byloth/"
-                              title="Matteo Bilotta su LinkedIn"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-linkedin-in"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//open.spotify.com/user/21q4g5zjmgfv5qctquiqawkgq"
-                              title="Matteo Bilotta su Spotify"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-spotify"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//steamcommunity.com/id/byloth/"
-                              title="Matteo Bilotta su Steam"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-steam"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//www.twitch.tv/bylo_th"
-                              title="Matteo Bilotta su Twitch"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-twitch"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//twitter.com/iByloth"
-                              title="Matteo Bilotta su Twitter"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-twitter"></span>
-                </ActionAnchor>
+                <div class="row">
+                    <div class="column">
+                        <ActionAnchor href="//www.facebook.com/matteo.bilotta"
+                                      title="Matteo Bilotta su Facebook"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-facebook"></span>
+                        </ActionAnchor>
+                        <ActionAnchor href="//github.com/Byloth"
+                                      title="Matteo Bilotta su GitHub"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-github"></span>
+                        </ActionAnchor>
+                        <ActionAnchor href="//www.instagram.com/i.byloth/"
+                                      title="Matteo Bilotta su Instagram"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-instagram"></span>
+                        </ActionAnchor>
+                        <ActionAnchor href="//www.linkedin.com/in/byloth/"
+                                      title="Matteo Bilotta su LinkedIn"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-linkedin-in"></span>
+                        </ActionAnchor>
+                    </div>
+                    <div class="column">
+                        <ActionAnchor href="//open.spotify.com/user/21q4g5zjmgfv5qctquiqawkgq"
+                                      title="Matteo Bilotta su Spotify"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-spotify"></span>
+                        </ActionAnchor>
+                        <ActionAnchor href="//steamcommunity.com/id/byloth/"
+                                      title="Matteo Bilotta su Steam"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-steam"></span>
+                        </ActionAnchor>
+                        <ActionAnchor href="//www.twitch.tv/bylo_th"
+                                      title="Matteo Bilotta su Twitch"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-twitch"></span>
+                        </ActionAnchor>
+                        <ActionAnchor href="//twitter.com/iByloth"
+                                      title="Matteo Bilotta su Twitter"
+                                      rel="nofollow noopener noreferrer"
+                                      target="_blank">
+                            <span class="fab fa-twitter"></span>
+                        </ActionAnchor>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="license-info">
@@ -120,6 +126,18 @@
         {
             padding: 0px 1em;
 
+            & a
+            {
+                color: #FFFFFF;
+                margin-right: 0.25em;
+
+                &::before,
+                &::after
+                {
+                    background-color: #FFFFFF;
+                }
+            }
+
             & > ul
             {
                 list-style: none;
@@ -158,15 +176,13 @@
                 }
             }
 
-            & a
+            & > .row > .column
             {
-                color: #FFFFFF;
-                margin-right: 0.25em;
+                flex: unset;
 
-                &::before,
-                &::after
+                @media (min-width: 500px)
                 {
-                    background-color: #FFFFFF;
+                    width: auto;
                 }
             }
         }
