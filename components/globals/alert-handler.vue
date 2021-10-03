@@ -2,14 +2,15 @@
     <AlertDialog v-if="alert"
                  v-model="isOpen"
                  class="alert-handler"
+                 :close-text="actions ? 'Annulla' : 'Chiudi'"
                  :dismissable="alert.dismissable"
                  :icon="alert.message.icon"
                  :title="alert.message.title"
                  @show="onShow"
                  @dismiss="onDismiss">
         <pre>{{ alert.message.text }}</pre>
-        <template v-if="alert.actions && alert.actions.length" #actions>
-            <template v-for="action, index in alert.actions">
+        <template v-if="actions" #actions>
+            <template v-for="action, index in actions">
                 <NuxtLink v-if="action.location"
                           v-slot="{ href, navigate }"
                           :key="index"
@@ -37,7 +38,7 @@
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { Dialog, RootState } from "@/core/types";
+    import { Action, Dialog, RootState } from "@/core/types";
 
     import AlertDialog from "@/components/dialogs/alert-dialog.vue";
     import ButtonAnchor from "@/components/mdc/buttons/button-anchor.vue";
@@ -74,6 +75,15 @@
                 {
                     return null;
                 }
+            },
+            actions(): Action[] | null
+            {
+                if ((this.alert?.actions?.length))
+                {
+                    return this.alert.actions;
+                }
+
+                return null;
             }
         },
         watch: {

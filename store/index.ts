@@ -44,7 +44,6 @@ const actions = {
                     },
                     actions: [
                         {
-                            type: "secondary",
                             text: "Altre informazioni",
                             location: { name: "privacy" }
                         },

@@ -8,8 +8,8 @@
                   @show="onShow"
                   @dismiss="onDismiss">
         <pre>{{ banner.message.text }}</pre>
-        <template v-if="banner.actions && banner.actions.length" #actions>
-            <template v-for="action, index in banner.actions">
+        <template v-if="actions" #actions>
+            <template v-for="action, index in actions">
                 <NuxtLink v-if="action.location"
                           v-slot="{ href, navigate }"
                           :key="index"
@@ -35,7 +35,7 @@
     import Vue from "vue";
     import { ActionPayload } from "vuex";
 
-    import { Dialog, RootState } from "@/core/types";
+    import { Action, Dialog, RootState } from "@/core/types";
 
     import BannerDialog from "@/components/dialogs/banner-dialog.vue";
     import ButtonAnchor from "@/components/mdc/buttons/button-anchor.vue";
@@ -72,6 +72,15 @@
                 {
                     return null;
                 }
+            },
+            actions(): Action[] | null
+            {
+                if ((this.banner?.actions?.length))
+                {
+                    return this.banner.actions;
+                }
+
+                return null;
             }
         },
 

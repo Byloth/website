@@ -118,8 +118,11 @@
                             message: this.message
                         });
 
-                        alert(`Grazie per il tuo messaggio, ${this.name}.\n` +
-                            `Ti risponderò il prima possibile!`);
+                        this.$store.dispatch("dialog", {
+                            type: "snackbar",
+                            message: { text: "Il tuo messaggio è stato inviato correttamente." },
+                            timeout: 5000
+                        });
 
                         await close();
 
@@ -133,14 +136,30 @@
                         // eslint-disable-next-line no-console
                         console.error(err);
 
-                        alert("Sono spiacente ma si è verificato un errore sconosciuto.\n" +
-                            "Riprova oppure contattami in qualche altro modo.");
+                        this.$store.dispatch("dialog", {
+                            type: "alert",
+                            message: {
+                                title: "Errore imprevisto",
+                                text: "Si è verificato un errore sconosciuto.\n" +
+                                    "\n" +
+                                    "Riprova più tardi e se il problema \n" +
+                                    "persiste consultare un medico."
+                            },
+                            dismissable: true
+                        });
                     }
                 }
                 else
                 {
-                    alert("Tutti i campi sono obbligatori.\n" +
-                        "Compilali correttamente prima di proseguire.");
+                    this.$store.dispatch("dialog", {
+                        type: "alert",
+                        message: {
+                            title: "Informazioni mancanti",
+                            text: "Tutti i campi sono obbligatori.\n" +
+                                "Compilali correttamente prima di proseguire."
+                        },
+                        dismissable: true
+                    });
                 }
             }
         }

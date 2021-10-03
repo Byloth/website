@@ -53,14 +53,6 @@
                           @click="openContactDialog">
                     Scrivi
                 </ListItem>
-                <!-- TODO: Remove this section before publish to `production`! -->
-                <hr class="mdc-list-divider" />
-                <h5 class="mdc-list-group__subheader">
-                    Debug
-                </h5>
-                <ListItem title="Something" @click="emitMessage">
-                    Emetti messaggio
-                </ListItem>
             </List>
         </div>
         <div class="mdc-drawer__footer">
@@ -126,44 +118,6 @@
                 navigate(evt);
 
                 this.emitSelect(evt);
-            },
-
-            emitMessage(): void
-            {
-                const alert: Dialog = {
-                    type: "alert",
-                    message: {
-                        title: "Attenzione!",
-                        text: "Questo è un testo di prova.\nChiudi per continuare."
-                    },
-                    actions: [
-                        {
-                            type: "primary",
-                            text: "Chiudi",
-
-                            callback: () => console.log("YASSS!")
-                        }
-                    ]
-                };
-                const snackbar: Dialog = {
-                    type: "snackbar",
-                    message: {
-                        text: "Questo sito è una bomba!"
-                    },
-                    dismissable: true,
-                    actions: [
-                        {
-                            type: "primary",
-                            text: "Esplodi",
-                            callback: () => console.log("%cBOOOM! 💣💥", "font-size: 100px; color: red; font-weight: bold;")
-                        }
-                    ]
-
-                };
-
-                const dialog = [alert, snackbar][Math.floor(Math.random() * 2)];
-
-                this.$store.dispatch("dialog", dialog);
             }
         }
     });
