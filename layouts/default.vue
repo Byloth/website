@@ -113,7 +113,8 @@
             window.addEventListener("resize", this.onResize, { capture: true, passive: true });
 
             this.onResize();
-            this.$store.dispatch("loaded", this);
+
+            setTimeout(() => this.$store.dispatch("loaded", this), 200);
         },
         destroyed: function(): void
         {

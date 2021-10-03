@@ -2,7 +2,6 @@ import { Location } from "vue-router";
 
 export interface Action
 {
-    type: "primary" | "secondary";
     text: string;
 
     callback?: () => void;

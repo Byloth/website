@@ -14,7 +14,6 @@
                           v-slot="{ href, navigate }"
                           :key="index"
                           custom
-                          :raised="action.type === 'primary'"
                           :to="action.location">
                     <ButtonAnchor :href="href"
                                   :title="action.text"
@@ -24,7 +23,6 @@
                 </NuxtLink>
                 <ButtonItem v-else-if="action.callback"
                             :key="index"
-                            :raised="action.type === 'primary'"
                             @click="handleCallback(action.callback)">
                     {{ action.text }}
                 </ButtonItem>
