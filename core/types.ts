@@ -53,3 +53,8 @@ export interface RootState extends IndexState
 {
     config: ConfigState;
 }
+
+export interface WorkboxEvent extends Event
+{
+    isUpdate: boolean;
+}
