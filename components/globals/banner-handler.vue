@@ -149,6 +149,7 @@
         pre
         {
             margin: 0px;
+            white-space: pre-wrap;
         }
     }
 </style>

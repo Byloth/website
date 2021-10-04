@@ -68,9 +68,6 @@
     import { Route } from "vue-router";
 
     import { cssClasses } from "@material/drawer";
-
-    import { Dialog } from "@/core/types";
-
     import List from "@/components/mdc/lists/list.vue";
     import ListItem from "@/components/mdc/lists/list-item.vue";
 

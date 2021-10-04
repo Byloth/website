@@ -120,8 +120,8 @@
 
                         this.$store.dispatch("dialog", {
                             type: "snackbar",
-                            message: { text: "Il tuo messaggio è stato inviato correttamente." },
-                            timeout: 5000
+                            timeout: 5000,
+                            message: { text: "Il tuo messaggio è stato inviato correttamente." }
                         });
 
                         await close();
@@ -138,14 +138,14 @@
 
                         this.$store.dispatch("dialog", {
                             type: "alert",
+                            dismissable: true,
                             message: {
                                 title: "Errore imprevisto",
                                 text: "Si è verificato un errore sconosciuto.\n" +
                                     "\n" +
                                     "Riprova più tardi e se il problema \n" +
                                     "persiste consultare un medico."
-                            },
-                            dismissable: true
+                            }
                         });
                     }
                 }
@@ -153,12 +153,12 @@
                 {
                     this.$store.dispatch("dialog", {
                         type: "alert",
+                        dismissable: true,
                         message: {
                             title: "Informazioni mancanti",
                             text: "Tutti i campi sono obbligatori.\n" +
                                 "Compilali correttamente prima di proseguire."
-                        },
-                        dismissable: true
+                        }
                     });
                 }
             }
