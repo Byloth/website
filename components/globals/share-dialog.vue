@@ -1,9 +1,9 @@
 <template>
-    <BottomDialog id="share-dialog"
-                  v-model="isOpen"
+    <BottomDialog v-model="isOpen"
+                  class="share-dialog"
                   title="Condividi">
-        <TextField id="share-dialog-field-url"
-                   ref="text-field"
+        <TextField ref="text-field"
+                   class="share-dialog-field-url"
                    leading-icon="link"
                    readonly
                    :value="url" />
@@ -114,7 +114,7 @@
 
         mounted: function(): void
         {
-            this.stopListening = this.$store.subscribeAction(this.onDialogAction);
+            this.stopListening = this.$store.subscribeAction(this.onShareAction);
         },
         destroyed: function(): void
         {
@@ -127,7 +127,7 @@
                 return encodeURIComponent(text);
             },
 
-            onDialogAction(action: ActionPayload, state: RootState): void
+            onShareAction(action: ActionPayload, state: RootState): void
             {
                 if (action.type === "share")
                 {
@@ -226,14 +226,13 @@
 </script>
 
 <style lang="scss" scoped>
-    #share-dialog
+    .share-dialog
     {
-        #share-dialog-field-url
+        .share-dialog-field-url
         {
             margin: 0px;
             padding: 0px 1em;
         }
-
         .divider
         {
             border: none;

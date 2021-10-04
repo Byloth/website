@@ -1,7 +1,7 @@
 <template>
     <div class="mdc-drawer-scrim overlay"
          :class="classes"
-         @click="onClickEvent">
+         @click="onClick">
     </div>
 </template>
 
@@ -23,7 +23,7 @@
             }
         },
         methods: {
-            onClickEvent(evt: MouseEvent): void
+            onClick(evt: MouseEvent): void
             {
                 this.$emit("click", evt);
             }

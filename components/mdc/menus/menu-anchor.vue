@@ -2,7 +2,8 @@
     <li class="mdc-list-item" role="menuitem">
         <a :href="href"
            :rel="rel"
-           :target="target">
+           :target="target"
+           @click="$emit('click', $event)">
             <span ref="ripple" class="mdc-list-item__ripple"></span>
             <span v-if="icon"
                   class="material-icons mdc-list-item__graphic"

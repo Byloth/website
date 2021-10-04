@@ -42,6 +42,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     "@/plugins/init.client.ts",
+    "@/plugins/errors-handler.client.ts",
 
     "@/plugins/globals/mdc.client.ts",
     "@/plugins/globals/time.client.ts",

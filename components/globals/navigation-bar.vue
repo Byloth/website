@@ -14,9 +14,9 @@
                     {{ title }}
                 </h1>
             </section>
-            <NavigationActions :actions="actions" @select="onSelectEvent" />
+            <NavigationActions :actions="menus" @select="onSelect" />
         </TopAppBar>
-        <CookieBanner id="cookie-banner" />
+        <BannerHandler id="banner-handler" />
     </div>
 </template>
 
@@ -27,13 +27,13 @@
     import { cssClasses } from "@material/top-app-bar";
     import { ScrollAnimation, ClassAnimatorBehavior } from "@byloth/vue-scroll-animator";
 
-    import { Action } from "@/core/types";
+    import { Menu } from "@/core/types";
 
     import ActionButton from "@/components/mdc/actions/action-button.vue";
     import NavigationActions from "@/components/navigation-actions.vue";
     import TopAppBar from "@/components/mdc/top-app-bar.vue";
 
-    import CookieBanner from "./cookie-banner.vue";
+    import BannerHandler from "./banner-handler.vue";
 
     interface NavigationBarData
     {
@@ -43,7 +43,7 @@
 
     export default Vue.extend({
         name: "NavigationBar",
-        components: { ActionButton, CookieBanner, NavigationActions, TopAppBar },
+        components: { ActionButton, BannerHandler, NavigationActions, TopAppBar },
         props: {
             toggler: {
                 default: true,
@@ -55,7 +55,7 @@
 
         computed: mapState("config", {
             title: "title",
-            actions: "actions"
+            menus: "menus"
         }),
 
         mounted: function(): void
@@ -135,9 +135,9 @@
         },
 
         methods: {
-            onSelectEvent(action: Action): void
+            onSelect(menu: Menu): void
             {
-                this.$store.dispatch(action.name);
+                this.$store.dispatch(menu.name);
             }
         }
     });
@@ -159,10 +159,8 @@
             position: relative;
         }
 
-        & > .cookie-banner
+        & > #banner-handler
         {
-            backdrop-filter: blur(20px) saturate(180%);
-            background-color: rgba(#FFFFFF, 0.75);
             padding-top: calc(1em + 10px);
             position: relative;
         }

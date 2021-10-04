@@ -24,7 +24,7 @@
     interface ButtonData { _ripple?: MDCRipple; }
 
     export default Vue.extend({
-        name: "Button",
+        name: "ButtonItem",
         props: {
             title: {
                 default: "",
@@ -34,6 +34,16 @@
                 default: "",
                 type: String
             },
+
+            // Colors
+            //
+            secondary: {
+                default: false,
+                type: Boolean
+            },
+
+            // Styles
+            //
             outlined: {
                 default: false,
                 type: Boolean
@@ -54,6 +64,8 @@
             classes(): Record<string, boolean>
             {
                 return {
+                    "mdc-button--secondary": this.secondary,
+
                     "mdc-button--outlined": this.outlined,
                     "mdc-button--raised": this.raised,
                     "mdc-button--unelevated": this.unelevated

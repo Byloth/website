@@ -98,7 +98,7 @@
         {
             this.dailyMessage = await DailyMessage.GetRandomOne();
 
-            if (this.dailyMessage.canBeExecuted === true)
+            if (this.dailyMessage.canBeExecuted)
             {
                 this.$nextTick((): Promise<unknown> => this.dailyMessage!.execute());
             }

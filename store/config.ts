@@ -3,7 +3,7 @@ import { ConfigState } from "@/core/types";
 const state = (): ConfigState => ({
     title: "Byloth's Website",
     author: "Matteo Bilotta",
-    actions: [
+    menus: [
         {
             id: 1,
             name: "share",
@@ -39,13 +39,13 @@ const state = (): ConfigState => ({
             icon: "library_books",
             title: "BLog"
         },
-        // {
-        //     id: 3,
-        //     name: "events",
-        //     path: "/events",
-        //     icon: "event",
-        //     title: "Eventi"
-        // },
+        {
+            id: 3,
+            name: "events",
+            path: "/events",
+            icon: "event",
+            title: "Eventi"
+        },
         {
             id: 4,
             name: "about",
@@ -54,7 +54,7 @@ const state = (): ConfigState => ({
             title: "Chi sono"
         }
     ],
-    version: "5.0.8"
+    version: "5.0.9"
 });
 
 export { state };

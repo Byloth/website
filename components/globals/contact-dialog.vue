@@ -1,10 +1,10 @@
 <template>
-    <FullscreenDialog id="contact-dialog"
-                      v-model="isOpen"
+    <FullscreenDialog v-model="isOpen"
+                      class="contact-dialog"
                       title="Scrivi il tuo messaggio"
                       done-text="Invia"
-                      @cancel="onCancelEvent"
-                      @done="onDoneEvent">
+                      @cancel="onCancel"
+                      @done="onDone">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -80,7 +80,7 @@
 
         mounted: function(): void
         {
-            this.stopListening = this.$store.subscribeAction(this.onDialogAction);
+            this.stopListening = this.$store.subscribeAction(this.onContactAction);
         },
         destroyed: function(): void
         {
@@ -88,7 +88,7 @@
         },
 
         methods: {
-            onDialogAction(action: ActionPayload, state: RootState): void
+            onContactAction(action: ActionPayload, state: RootState): void
             {
                 if (action.type === "contact")
                 {
@@ -96,7 +96,7 @@
                 }
             },
 
-            async onCancelEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            async onCancel(close: () => Promise<void>, evt: MouseEvent): Promise<void>
             {
                 await close();
 
@@ -105,7 +105,7 @@
                 this.subject = "";
                 this.message = "";
             },
-            async onDoneEvent(close: () => Promise<void>, evt: MouseEvent): Promise<void>
+            async onDone(close: () => Promise<void>, evt: MouseEvent): Promise<void>
             {
                 if ((this.name) && (this.email) && (this.subject) && (this.message))
                 {
@@ -118,8 +118,11 @@
                             message: this.message
                         });
 
-                        alert(`Grazie per il tuo messaggio, ${this.name}.\n` +
-                            `Ti risponderò il prima possibile!`);
+                        this.$store.dispatch("dialog", {
+                            type: "snackbar",
+                            timeout: 5000,
+                            message: { text: "Il tuo messaggio è stato inviato correttamente." }
+                        });
 
                         await close();
 
@@ -133,14 +136,30 @@
                         // eslint-disable-next-line no-console
                         console.error(err);
 
-                        alert("Sono spiacente ma si è verificato un errore sconosciuto.\n" +
-                            "Riprova oppure contattami in qualche altro modo.");
+                        this.$store.dispatch("dialog", {
+                            type: "alert",
+                            dismissable: true,
+                            message: {
+                                title: "Errore imprevisto",
+                                text: "Si è verificato un errore sconosciuto.\n" +
+                                    "\n" +
+                                    "Riprova più tardi e se il problema \n" +
+                                    "persiste consultare un medico."
+                            }
+                        });
                     }
                 }
                 else
                 {
-                    alert("Tutti i campi sono obbligatori.\n" +
-                        "Compilali correttamente prima di proseguire.");
+                    this.$store.dispatch("dialog", {
+                        type: "alert",
+                        dismissable: true,
+                        message: {
+                            title: "Informazioni mancanti",
+                            text: "Tutti i campi sono obbligatori.\n" +
+                                "Compilali correttamente prima di proseguire."
+                        }
+                    });
                 }
             }
         }

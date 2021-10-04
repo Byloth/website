@@ -13,18 +13,25 @@ export interface TransientMixinData
     isShown: boolean;
     isOpen: boolean;
 }
-
-export default (enterTransitionDuration?: number, exitTransitionDuration?: number): VueConstructor =>
+export interface TransientMixinOptions
 {
-    if (enterTransitionDuration === undefined)
-    {
-        enterTransitionDuration = TRANSITION_DURATION;
-        exitTransitionDuration = TRANSITION_DURATION;
-    }
-    else if (exitTransitionDuration === undefined)
-    {
-        exitTransitionDuration = enterTransitionDuration;
-    }
+    openClass?: string;
+
+    enterTransitionDuration?: number;
+    exitTransitionDuration?: number;
+}
+
+const DEFAULT_OPTS: TransientMixinOptions = {
+    openClass: "open",
+
+    enterTransitionDuration: TRANSITION_DURATION,
+    exitTransitionDuration: TRANSITION_DURATION
+};
+
+// export default (enterTransitionDuration?: number, exitTransitionDuration?: number): VueConstructor =>
+export default (options: TransientMixinOptions = { }): VueConstructor =>
+{
+    options = { ...DEFAULT_OPTS, ...options };
 
     return Vue.extend({
         name: "TransientMixin",
@@ -43,21 +50,28 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
         computed: {
             classes(): Record<string, boolean>
             {
-                return { "open": this.isOpen };
+                return { [options.openClass!]: this.isOpen };
             }
         },
         watch: {
-            value(value: boolean, oldValue: boolean): void
-            {
-                if (value !== oldValue)
+            value: {
+                immediate: true,
+
+                handler: async function(value: boolean, oldValue: boolean): Promise<void>
                 {
-                    if (value)
+                    if (value !== oldValue)
                     {
-                        this.open();
-                    }
-                    else
-                    {
-                        this.close();
+                        if (value)
+                        {
+                            if (!this.isShown)
+                            {
+                                await this.open();
+                            }
+                        }
+                        else if (this.isShown)
+                        {
+                            await this.close();
+                        }
                     }
                 }
             }
@@ -68,10 +82,12 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
             if (this._openingTimeout)
             {
                 clearTimeout(this._openingTimeout);
+                this._openingTimeout = undefined;
             }
             if (this._closingTimeout)
             {
                 clearTimeout(this._closingTimeout);
+                this._closingTimeout = undefined;
             }
         },
 
@@ -88,10 +104,13 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
                         this.isOpen = true;
                         this._openingTimeout = setTimeout(() =>
                         {
+                            this._openingTimeout = undefined;
+
                             this.$emit("input", true);
+                            this.$emit("show");
 
                             resolve();
-                        }, enterTransitionDuration);
+                        }, options.enterTransitionDuration);
                     });
                 });
             },
@@ -101,13 +120,17 @@ export default (enterTransitionDuration?: number, exitTransitionDuration?: numbe
                 return new Promise<void>((resolve: (value: void | PromiseLike<void>) => void, reject: (reason?: any) => void) =>
                 {
                     this.isOpen = false;
+
                     this._closingTimeout = setTimeout(() =>
                     {
+                        this._closingTimeout = undefined;
                         this.isShown = false;
+
                         this.$emit("input", false);
+                        this.$emit("dismiss");
 
                         resolve();
-                    }, exitTransitionDuration);
+                    }, options.exitTransitionDuration);
                 });
             }
         }

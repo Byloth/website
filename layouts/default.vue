@@ -14,12 +14,13 @@
             </div>
             <Flooter id="flooter" ref="flooter" />
         </div>
-        <!-- <SnackbarDialog /> -->
+        <SnackbarHandler id="snackbar-handler" />
         <DrawerScrim id="drawer-scrim"
                      :value="isModal && isOpen"
                      @click="closeDrawer" />
-        <ShareDialog id="share-dialog" @open="onDialogOpenEvent" />
-        <ContactDialog id="contact-dialog" @open="onDialogOpenEvent" />
+        <ShareDialog id="share-dialog" @open="onDialogOpen" />
+        <ContactDialog id="contact-dialog" @open="onDialogOpen" />
+        <AlertHandler id="alert-handler" @open="onDialogOpen" />
     </div>
 </template>
 
@@ -33,10 +34,10 @@
     import DrawerScrim from "@/components/globals/drawer-scrim.vue";
     import Flooter from "@/components/globals/flooter.vue";
     import Jumbotron from "@/components/globals/jumbotron.vue";
+    import AlertHandler from "@/components/globals/alert-handler.vue";
+    import SnackbarHandler from "@/components/globals/snackbar-handler.vue";
     import NavigationBar from "@/components/globals/navigation-bar.vue";
     import ShareDialog from "@/components/globals/share-dialog.vue";
-
-    // import SnackbarDialog from "@/components/dialogs/snackbar-dialog.vue";
 
     export enum DrawerStatus
     {
@@ -67,10 +68,10 @@
             DrawerScrim,
             Flooter,
             Jumbotron,
+            AlertHandler,
+            SnackbarHandler,
             NavigationBar,
-            ShareDialog // ,
-
-            // SnackbarDialog
+            ShareDialog
         },
 
         data: (): DrawerLayoutData => ({
@@ -109,19 +110,21 @@
         {
             this._body = document.querySelector("body")!;
 
-            window.addEventListener("resize", this.onResizeEvent, { capture: true, passive: true });
+            window.addEventListener("resize", this.onResize, { capture: true, passive: true });
 
-            this.onResizeEvent();
+            this.onResize();
+
+            setTimeout(() => this.$store.dispatch("loaded", this), 200);
         },
         destroyed: function(): void
         {
-            window.removeEventListener("resize", this.onResizeEvent);
+            window.removeEventListener("resize", this.onResize);
         },
 
         methods: {
             disable(disabled: boolean): void
             {
-                if (disabled === true)
+                if (disabled)
                 {
                     this._body!.removeAttribute("disabled");
                 }
@@ -165,7 +168,7 @@
                 }
             },
 
-            onResizeEvent(evt?: Event): void
+            onResize(evt?: Event): void
             {
                 const windowWidth = window.innerWidth;
 
@@ -184,7 +187,7 @@
 
                 this.margin = (this.$refs.flooter as Vue).$el.clientHeight;
             },
-            onDialogOpenEvent(value: boolean): void
+            onDialogOpen(value: boolean): void
             {
                 this.dialog = value;
             },
