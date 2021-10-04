@@ -47,6 +47,7 @@ export default {
     "@/plugins/globals/mdc.client.ts",
     "@/plugins/globals/time.client.ts",
 
+    "@/plugins/refresh-dialog.client.ts",
     "@/plugins/vue-scroll-animator.client.ts"
   ],
 
