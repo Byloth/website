@@ -94,7 +94,7 @@
         components: { TextLoader },
 
         data: (): JumbotronData => ({ dailyMessage: null }),
-        created: async function(): Promise<void>
+        fetch: async function(): Promise<void>
         {
             this.dailyMessage = await DailyMessage.GetRandomOne();
 

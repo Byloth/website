@@ -11,20 +11,17 @@
 
     import { Post } from "@/models";
 
-    interface HomePageData { posts: Post[]; }
+    interface HomePageData { posts?: Post[]; }
+    interface HomePageAsyncData { posts: Post[]; }
 
     export default Vue.extend({
         name: "HomePage",
         components: { Timeline },
 
-        data: (): HomePageData => ({ posts: [] }),
+        asyncData: async (): Promise<HomePageAsyncData> => ({ posts: await Post.GetAll(this) }),
+        data: (): HomePageData => ({ }),
 
-        head: { title: "Home" },
-
-        created: async function(): Promise<void>
-        {
-            this.posts = await Post.GetAll(this);
-        }
+        head: { title: "Home" }
     });
 </script>
 
