@@ -6,6 +6,7 @@
 
 <script lang="ts">
     import Vue from "vue";
+    import { Context } from "@nuxt/types";
 
     import Timeline from "@/components/timelines/timeline.vue";
 
@@ -18,8 +19,8 @@
         name: "HomePage",
         components: { Timeline },
 
-        asyncData: async (): Promise<HomePageAsyncData> => ({ posts: await Post.GetAll(this) }),
-        data: (): HomePageData => ({ }),
+        asyncData: async (context: Context): Promise<HomePageAsyncData> => ({ posts: await Post.GetAll(context) }),
+        data: (): HomePageData => ({ posts: undefined }),
 
         head: { title: "Home" }
     });

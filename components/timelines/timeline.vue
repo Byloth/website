@@ -1,6 +1,6 @@
 <template>
     <div class="container timeline">
-        <template v-if="item && items.length">
+        <template v-if="items">
             <TimelineItem v-for="item, index in items"
                           :key="index"
                           :item="item"

@@ -87,13 +87,13 @@
 
     import TextLoader from "@/components/loaders/text-loader.vue";
 
-    interface JumbotronData { dailyMessage: DailyMessage | null; }
+    interface JumbotronData { dailyMessage?: DailyMessage; }
 
     export default Vue.extend({
         name: "Jumbotron",
         components: { TextLoader },
 
-        data: (): JumbotronData => ({ dailyMessage: null }),
+        data: (): JumbotronData => ({ dailyMessage: undefined }),
         fetch: async function(): Promise<void>
         {
             this.dailyMessage = await DailyMessage.GetRandomOne();
