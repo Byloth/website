@@ -78,7 +78,7 @@
                     "mdc-button--unelevated": this.unelevated
                 };
             },
-            properties(): Record<string, unknown>
+            properties(): Record<string, string>
             {
                 if (this.href)
                 {

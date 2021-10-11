@@ -1,29 +1,57 @@
 <template>
-    <button class="mdc-icon-button"
-            :alt="title"
-            :title="title"
-            :aria-label="title"
-            @click="$emit('click', $event)">
+    <component :is="tag"
+               class="mdc-icon-button"
+               v-bind="properties"
+               :alt="title"
+               :title="title"
+               :aria-label="title"
+               @click="$emit('click', $event)">
         <slot></slot>
-    </button>
+    </component>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
     import { MDCRipple } from "@material/ripple";
 
-    interface ActionButtonData { _ripple?: MDCRipple; }
+    interface ActionItemData { _ripple?: MDCRipple; }
 
     export default Vue.extend({
-        name: "ActionButton",
+        name: "ActionItem",
         props: {
+            href: {
+                default: "",
+                type: String
+            },
             title: {
                 required: true,
                 type: String
             }
         },
 
-        data: (): ActionButtonData => ({ }),
+        data: (): ActionItemData => ({ }),
+
+        computed: {
+            properties(): Record<string, string>
+            {
+                if (this.href)
+                {
+                    return { "href": this.href };
+                }
+
+                return { };
+            },
+            tag(): string
+            {
+                if (this.href)
+                {
+                    return "a";
+                }
+
+                return "button";
+            }
+        },
+
         mounted: function(): void
         {
             this._ripple = new MDCRipple(this.$el);
@@ -35,6 +63,18 @@
 <style lang="scss" scoped>
     .mdc-icon-button
     {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+
+        &:active,
+        &:focus,
+        &:hover
+        {
+            color: inherit;
+            text-decoration: none;
+        }
+
         /*
          * Il codice che segue, risolve un problema di visualizzazione dovuto al mix
          *  dell'uso del MDCRipple insieme alle CSS Transitions (in particolare allo scaling).

@@ -10,56 +10,56 @@
         <hr class="divider" />
         <div class="row">
             <div class="col-3">
-                <ActionButton title="Copia negli Appunti" @click="onCopyClick">
+                <ActionItem title="Copia negli Appunti" @click="onCopyClick">
                     <span class="fas fa-copy"></span>
-                </ActionButton>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionAnchor :href="`mailto:?subject=${encode(title)}&body=${encode(text + `\n\n` + url)}`"
-                              title="Invia tramite e-mail"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
+                <ActionItem :href="`mailto:?subject=${encode(title)}&body=${encode(text + `\n\n` + url)}`"
+                            title="Invia tramite e-mail"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank">
                     <span class="fas fa-envelope"></span>
-                </ActionAnchor>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionAnchor :href="`//wa.me/?text=${encode(text + `\n\n` + url)}`"
-                              title="Invia tramite WhatsApp"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
+                <ActionItem :href="`//wa.me/?text=${encode(text + `\n\n` + url)}`"
+                            title="Invia tramite WhatsApp"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank">
                     <span class="fab fa-whatsapp"></span>
-                </ActionAnchor>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionAnchor :href="`//t.me/share/?url=${encode(url)}&text=${encode('\n' + text)}`"
-                              title="Invia tramite Telegram"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
+                <ActionItem :href="`//t.me/share/?url=${encode(url)}&text=${encode('\n' + text)}`"
+                            title="Invia tramite Telegram"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank">
                     <span class="fab fa-telegram"></span>
-                </ActionAnchor>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionButton title="Condividi su Facebook" @click="shareOnFacebook">
+                <ActionItem title="Condividi su Facebook" @click="shareOnFacebook">
                     <span class="fab fa-facebook"></span>
-                </ActionButton>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionButton title="Condividi su LinkedIn" @click="shareOnLinkedIn">
+                <ActionItem title="Condividi su LinkedIn" @click="shareOnLinkedIn">
                     <span class="fab fa-linkedin"></span>
-                </ActionButton>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionButton title="Condividi su Pinterest" @click="shareOnPinterest">
+                <ActionItem title="Condividi su Pinterest" @click="shareOnPinterest">
                     <span class="fab fa-pinterest"></span>
-                </ActionButton>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionAnchor :href="`//twitter.com/intent/tweet?url=${encode(url)}&text=${encode(text + '\n\n')}`"
-                              title="Condividi su Twitter"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
+                <ActionItem :href="`//twitter.com/intent/tweet?url=${encode(url)}&text=${encode(text + '\n\n')}`"
+                            title="Condividi su Twitter"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank">
                     <span class="fab fa-twitter"></span>
-                </ActionAnchor>
+                </ActionItem>
             </div>
         </div>
     </BottomDialog>
@@ -71,8 +71,7 @@
 
     import { RootState } from "@/core/types";
 
-    import ActionAnchor from "@/components/mdc/actions/action-anchor.vue";
-    import ActionButton from "@/components/mdc/actions/action-button.vue";
+    import ActionItem from "@/components/mdc/action-item.vue";
     import BottomDialog from "@/components/dialogs/bottom-dialog.vue";
     import TextField from "@/components/mdc/fields/text-field.vue";
 
@@ -89,7 +88,7 @@
 
     export default Vue.extend({
         name: "ShareDialog",
-        components: { ActionAnchor, ActionButton, BottomDialog, TextField },
+        components: { ActionItem, BottomDialog, TextField },
 
         data: (): ShareDialogData => ({
             isOpen: false,

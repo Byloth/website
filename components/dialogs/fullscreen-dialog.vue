@@ -6,13 +6,13 @@
         <div class="dialog">
             <TopAppBar>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                    <ActionButton class="mdc-top-app-bar__action-item"
-                                  :title="cancelText"
-                                  @click="$emit('cancel', close, $event)">
+                    <ActionItem class="mdc-top-app-bar__action-item"
+                                :title="cancelText"
+                                @click="$emit('cancel', close, $event)">
                         <span class="material-icons">
                             close
                         </span>
-                    </ActionButton>
+                    </ActionItem>
                     <h1 ref="title" class="mdc-top-app-bar__title">
                         {{ title }}
                     </h1>
@@ -35,7 +35,7 @@
 <script lang="ts">
     import Vue from "vue";
 
-    import ActionButton from "@/components/mdc/actions/action-button.vue";
+    import ActionItem from "@/components/mdc/action-item.vue";
     import ButtonItem from "@/components/mdc/button-item.vue";
     import TopAppBar from "@/components/mdc/top-app-bar.vue";
 
@@ -43,7 +43,7 @@
 
     export default Vue.extend({
         name: "FullscreenDialog",
-        components: { ActionButton, ButtonItem, TopAppBar },
+        components: { ActionItem, ButtonItem, TopAppBar },
         mixins: [TransientMixin()],
         props: {
             title: {
