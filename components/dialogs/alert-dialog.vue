@@ -21,6 +21,7 @@
                 <div class="mdc-dialog__actions">
                     <ButtonItem v-if="dismissable"
                                 class="mdc-dialog__button"
+                                :title="closeText"
                                 @click="close">
                         {{ closeText }}
                     </ButtonItem>
@@ -37,7 +38,7 @@
 
     import TransientMixin from "@/mixins/transient";
 
-    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
+    import ButtonItem from "@/components/mdc/button-item.vue";
 
     interface AlertDialogData
     {

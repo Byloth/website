@@ -1,10 +1,12 @@
 <template>
-    <button class="mdc-button"
-            :class="classes"
-            :alt="title"
-            :title="title"
-            :aria-label="title"
-            @click="$emit('click', $event)">
+    <component :is="tag"
+               class="mdc-button"
+               v-bind="properties"
+               :class="classes"
+               :alt="title"
+               :title="title"
+               :aria-label="title"
+               @click="$emit('click', $event)">
         <div class="mdc-button__ripple"></div>
         <span v-if="icon"
               class="material-icons mdc-button__icon"
@@ -14,7 +16,7 @@
         <span class="mdc-button__label">
             <slot></slot>
         </span>
-    </button>
+    </component>
 </template>
 
 <script lang="ts">
@@ -26,6 +28,11 @@
     export default Vue.extend({
         name: "ButtonItem",
         props: {
+            href: {
+                default: "",
+                type: String
+            },
+
             title: {
                 default: "",
                 type: String
@@ -70,6 +77,24 @@
                     "mdc-button--raised": this.raised,
                     "mdc-button--unelevated": this.unelevated
                 };
+            },
+            properties(): Record<string, unknown>
+            {
+                if (this.href)
+                {
+                    return { "href": this.href };
+                }
+
+                return { };
+            },
+            tag(): string
+            {
+                if (this.href)
+                {
+                    return "a";
+                }
+
+                return "button";
             }
         },
 
@@ -82,4 +107,11 @@
 </script>
 
 <style lang="scss" scoped>
+    .mdc-button
+    {
+        &:hover
+        {
+            text-decoration: none;
+        }
+    }
 </style>

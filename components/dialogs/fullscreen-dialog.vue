@@ -18,7 +18,9 @@
                     </h1>
                 </section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                    <ButtonItem unelevated @click="$emit('done', close, $event)">
+                    <ButtonItem unelevated
+                                :title="doneText"
+                                @click="$emit('done', close, $event)">
                         {{ doneText }}
                     </ButtonItem>
                 </section>
@@ -34,7 +36,7 @@
     import Vue from "vue";
 
     import ActionButton from "@/components/mdc/actions/action-button.vue";
-    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
+    import ButtonItem from "@/components/mdc/button-item.vue";
     import TopAppBar from "@/components/mdc/top-app-bar.vue";
 
     import TransientMixin from "@/mixins/transient";
