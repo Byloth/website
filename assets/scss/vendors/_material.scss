@@ -4,7 +4,7 @@
 (
     $primary: variables.$primary-color,
     $secondary: variables.$secondary-color,
-    $background: variables.$background-color
+    $background: variables.$slightly-off-white
 );
 @use "~@material/typography" with
 (
