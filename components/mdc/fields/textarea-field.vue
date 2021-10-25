@@ -34,7 +34,7 @@
                           :required="required"
                           :readonly="readonly"
                           :value="value"
-                          @input="onInputEvent"></textarea>
+                          @input="onInput"></textarea>
             </span>
             <span v-if="!outlined" class="mdc-line-ripple"></span>
         </label>
@@ -115,7 +115,7 @@
         },
 
         methods: {
-            onInputEvent(evt: InputEvent)
+            onInput(evt: InputEvent)
             {
                 this.$emit("input", (evt.target as HTMLTextAreaElement)!.value);
             }

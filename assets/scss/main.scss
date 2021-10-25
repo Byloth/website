@@ -27,6 +27,12 @@
         background-color: rgba(variables.$secondary-color, 0.5);
     }
 }
+*,
+*::before,
+*::after
+{
+    box-sizing: inherit;
+}
 
 [title]
 {
@@ -34,6 +40,7 @@
     text-decoration-line: underline;
     text-decoration-style: dotted;
 
+    &.mdc-button,
     &.mdc-icon-button
     {
         cursor: pointer;
@@ -183,6 +190,7 @@ hr
 html
 {
     background-color: variables.$chrome-incognito-color;
+    box-sizing: border-box;
 
     @media print
     {
@@ -192,6 +200,7 @@ html
 
 img
 {
+    display: block;
     width: 100%;
 }
 

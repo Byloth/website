@@ -3,17 +3,21 @@
          class="banner-dialog"
          :class="classes">
         <div class="content">
-            <Avatar :icon="icon" />
+            <Avatar v-if="icon" :icon="icon" />
             <div class="details">
+                <h2 v-if="title" class="title">
+                    {{ title }}
+                </h2>
                 <slot></slot>
             </div>
         </div>
         <div class="actions">
-            <Button v-for="action in actions"
-                    :key="action.id"
-                    @click="$emit(action.id, close, $event)">
-                {{ action.text }}
-            </Button>
+            <ButtonItem v-if="dismissable"
+                        :title="closeText"
+                        @click="close">
+                {{ closeText }}
+            </ButtonItem>
+            <slot name="actions"></slot>
         </div>
     </div>
 </template>
@@ -22,23 +26,31 @@
     import Vue from "vue";
 
     import Avatar from "@/components/avatar.vue";
-    import Button from "@/components/mdc/button.vue";
+    import ButtonItem from "@/components/mdc/button-item.vue";
 
     import TransientMixin from "@/mixins/transient";
 
     export default Vue.extend({
         name: "BannerDialog",
-        components: { Avatar, Button },
+        components: { Avatar, ButtonItem },
         mixins: [TransientMixin()],
         props: {
             icon: {
-                default: "exclamation",
+                default: "",
                 type: String
             },
-            actions: {
-                default: () => [],
+            title: {
+                default: "",
+                type: String
+            },
 
-                type: Array
+            dismissable: {
+                default: false,
+                type: Boolean
+            },
+            closeText: {
+                default: "Chiudi",
+                type: String
             }
         }
     });
@@ -49,7 +61,8 @@
 
     .banner-dialog
     {
-        background-color: #FFFFFF;
+        background-color: rgba(#FFFFFF, 0.75);
+        backdrop-filter: blur(20px) saturate(180%);
         border-bottom: 1px solid rgba(0, 0, 0, 0.125);
         color: #000000;
         opacity: 0;
@@ -70,11 +83,18 @@
 
             & > .avatar
             {
-                padding-right: 1em;
+                margin-right: 1em;
             }
             & > .details
             {
                 flex: 1;
+
+                & > .title
+                {
+                    font-size: 1.25em;
+                    margin: 0px;
+                    margin-bottom: 0.5em;
+                }
             }
         }
         & > .actions
@@ -90,7 +110,7 @@
         &.open
         {
             opacity: 1;
-            transform: translateY(0%);
+            transform: none;
         }
 
         @media print

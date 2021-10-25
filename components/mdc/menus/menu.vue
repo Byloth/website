@@ -40,21 +40,21 @@
         mounted: function(): void
         {
             this._menu = new MDCMenu(this.$el);
-            this._menu.listen(strings.CLOSED_EVENT, this.onCloseEvent);
-            this._menu.listen(strings.OPENED_EVENT, this.onOpenEvent);
+            this._menu.listen(strings.CLOSED_EVENT, this.onClose);
+            this._menu.listen(strings.OPENED_EVENT, this.onOpen);
         },
         destroyed: function(): void
         {
-            this._menu!.unlisten(strings.OPENED_EVENT, this.onOpenEvent);
-            this._menu!.unlisten(strings.CLOSED_EVENT, this.onCloseEvent);
+            this._menu!.unlisten(strings.OPENED_EVENT, this.onOpen);
+            this._menu!.unlisten(strings.CLOSED_EVENT, this.onClose);
         },
 
         methods: {
-            onOpenEvent(): void
+            onOpen(): void
             {
                 this.$emit("input", true);
             },
-            onCloseEvent(): void
+            onClose(): void
             {
                 this.$emit("input", false);
             }

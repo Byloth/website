@@ -1,5 +1,11 @@
 <?php
-    require_once(__DIR__ . "/env.php");
+    define("BASE_URL", realpath(__DIR__ . "/../.."));
+
+    require_once(BASE_URL . "/envs/smtp.php");
+    require_once(BASE_URL . "/vendor/autoload.php");
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
     function json_response($responseCode = 204, $responseData = null)
     {
@@ -8,36 +14,18 @@
         die(json_encode($responseData));
     }
 
-    $recipient = __RECIPIENT__;
-    if (!isSet($recipient))
-    {
-        json_response(500, [
-            "type" => "env_error_recipient",
-            "text" => "Sorry... An error has occurred. Please, try contact me in some other way."
-        ]);
-    }
-
-    $sender = __SENDER__;
-    if (!isSet($sender))
-    {
-        json_response(500, [
-            "type" => "env_error_sender",
-            "text" => "Sorry... An error has occurred. Please, try contact me in some other way."
-        ]);
-    }
-
     $input = json_decode(file_get_contents("php://input"), true);
     if (empty($input))
     {
         json_response(400, [
             "type" => "empty_request",
-            "text" => "You request is empty. It must be in AJAX JSON POST format."
+            "text" => "You request is empty. It must be in 'application/json' format."
         ]);
     }
 
     $name = filter_var($input["name"], FILTER_SANITIZE_STRING);
     $email = filter_var($input["email"], FILTER_SANITIZE_EMAIL);
-    $subject =  filter_var($input["subject"], FILTER_SANITIZE_STRING);
+    $subject = filter_var($input["subject"], FILTER_SANITIZE_STRING);
     $message = filter_var($input["message"], FILTER_SANITIZE_STRING);
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -47,41 +35,55 @@
             "text" => "The e-mail address you wrote is invalid. Please, enter a valid one."
         ]);
     }
-
     if (!trim($message))
     {
         json_response(400, [
             "type" => "empty_message",
-            "text" => "The message you wrote is empty. Please, enter a message before sending it."
+            "text" => "The message you wrote is empty. Please, enter a valid message before sending it."
         ]);
     }
 
-    $boundary = "=_NextPart_" . md5(uniqid(time()));
-
-    $headers = null;
-    $headers .= "From: \"Byloth's Website\" <website@byloth.net>\r\n";
-    $headers .= "Reply-To: \"" . $name . "\" <" . $email . ">\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: multipart/alternative;\n\tboundary=\"" . $boundary . "\"\r\n";
-    $headers .= "X-Mailer: PHP " . phpversion();
-
-    $message_body = null;
-    $message_body .= "This is a multi-part message in MIME format.\r\n\r\n";
-    $message_body .= "--" . $boundary . "\r\n";
-    $message_body .= "Content-Type: text/plain;\n\tcharset=\"utf-8\"\r\n";
-    $message_body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
-    $message_body .= $message . "\r\n\r\n";
-    $message_body .= "\r\n--" . $boundary . "--\r\n";
-
-    if (mail($recipient, $subject, $message_body, $headers))
+    try
     {
+        $mail = new PHPMailer(true);
+
+        // Authentication
+        //
+        $mail -> isSMTP();
+        $mail -> Host = SMTP_HOST;
+        $mail -> SMTPAuth = true;
+        $mail -> Username = SMTP_USER;
+        $mail -> Password = SMTP_PASS;
+        $mail -> SMTPSecure = PHPMailer :: ENCRYPTION_SMTPS;
+        $mail -> Port = SMTP_PORT;
+
+        // Addresses
+        //
+        $mail -> setFrom(SENDER_MAIL, SENDER_NAME);
+        $mail -> addAddress(RECIPIENT_MAIL, RECIPIENT_NAME);
+        $mail -> addReplyTo($email, $name);
+
+        // Content
+        //
+        $mail -> Subject = $subject;
+        $mail -> Body = $message;
+
+        $mail -> send();
+
         json_response(200, [
             "type" => "success",
             "text" => "Thanks " . $name . " for your message! I'll get back to you as soon as possible."
         ]);
     }
+    catch (Exception $e)
+    {
+        json_response(500, [
+            "type" => "smtp_error",
+            "text" => "Sorry... An error has occurred. Please, try contact me in some other way."
+        ]);
+    }
 
     json_response(500, [
         "type" => "unknown_error",
-        "text" => "Sorry... An unexpected and unknown error has occurred."
+        "text" => "Sorry... An error has occurred. Please, try contact me in some other way."
     ]);

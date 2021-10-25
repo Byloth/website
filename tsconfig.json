@@ -7,7 +7,9 @@
     "lib": [
       "ESNext",
       "ESNext.AsyncIterable",
-      "DOM"
+      "DOM",
+      "DOM.Iterable",
+      "ScriptHost"
     ],
     "esModuleInterop": true,
     "allowJs": true,
@@ -17,12 +19,7 @@
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
-    "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"],
-      "~~/*": ["./*"],
-      "@@/*": ["./*"]
-    },
+    "paths": { "@/*": ["./*"] },
     "types": [
       "@types/node",
       "@nuxt/content",

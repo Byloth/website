@@ -1,4 +1,6 @@
 import Vue from "vue";
+
+import { Context } from "@nuxt/types";
 import { IContentDocument } from "@nuxt/content/types/content";
 
 import Document from "./core/document";
@@ -12,7 +14,13 @@ export interface Thumbnail
 
 export default class Post extends Document
 {
-    public static async GetAll({ $content }: Vue): Promise<Post[]>
+    public static async Get({ $content }: Vue | Context, slug: string): Promise<Post>
+    {
+        const document = await $content("posts", slug).fetch();
+
+        return new Post(document as IContentDocument);
+    }
+    public static async GetAll({ $content }: Vue | Context): Promise<Post[]>
     {
         const documents = await $content("posts")
             .sortBy("date", "desc")
@@ -21,33 +29,21 @@ export default class Post extends Document
         return documents.map((document: IContentDocument) => new Post(document));
     }
 
-    protected readonly _icon?: string;
-
     public readonly title: string;
     public readonly subtitle?: string;
+    public readonly icon: string;
     public readonly author: string;
     public readonly date: Date;
 
     public readonly thumbnail?: Thumbnail;
 
-    public get icon(): string
-    {
-        if (this._icon)
-        {
-            return this._icon;
-        }
-
-        return "thumbtack";
-    }
-
     public constructor(document: IContentDocument)
     {
         super(document);
 
-        this._icon = document.icon;
-
         this.title = document.title;
         this.subtitle = document.subtitle;
+        this.icon = document.icon ? document.icon : "thumbtack";
         this.author = document.author;
         this.date = new Date(document.date);
 

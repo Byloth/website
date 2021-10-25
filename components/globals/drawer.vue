@@ -5,9 +5,9 @@
             <h3 class="mdc-drawer__title">
                 Benvenuto
             </h3>
-            <h6 class="mdc-drawer__subtitle">
+            <h4 class="mdc-drawer__subtitle">
                 Visitatore anonimo
-            </h6>
+            </h4>
         </div>
         <div class="mdc-drawer__content">
             <List>
@@ -21,22 +21,31 @@
                               :icon="page.icon"
                               :title="`Naviga a ${page.title}`"
                               :href="href"
-                              @click="onClickEvent(route, navigate, $event)">
+                              @click="onClick(route, navigate, $event)">
                         {{ page.title }}
                     </ListItem>
                 </NuxtLink>
                 <hr class="mdc-list-divider" />
-                <h6 class="mdc-list-group__subheader">
-                    Contattami
-                </h6>
+                <h5 class="mdc-list-group__subheader">
+                    Link utili
+                </h5>
                 <ListItem fa
                           href="//discord.gg/5QvHTwzvqW"
                           icon="discord"
                           target="_blank"
                           title="Unisciti alla community su Discord"
                           rel="nofollow noopener noreferrer"
-                          @click="emitSelectEvent">
+                          @click="emitSelect">
                     Chatta
+                </ListItem>
+                <ListItem fa
+                          href="//t.me/bylothink"
+                          icon="telegram"
+                          target="_blank"
+                          title="Seguimi sul canale di Telegram"
+                          rel="nofollow noopener noreferrer"
+                          @click="emitSelect">
+                    Segui
                     <sup class="badge">new</sup>
                 </ListItem>
                 <ListItem icon="mail"
@@ -59,7 +68,6 @@
     import { Route } from "vue-router";
 
     import { cssClasses } from "@material/drawer";
-
     import List from "@/components/mdc/lists/list.vue";
     import ListItem from "@/components/mdc/lists/list-item.vue";
 
@@ -91,7 +99,7 @@
             })
         },
         methods: {
-            emitSelectEvent(evt: MouseEvent): void
+            emitSelect(evt: MouseEvent): void
             {
                 this.$emit("select", evt);
             },
@@ -99,14 +107,14 @@
             {
                 this.$store.dispatch("contact");
 
-                this.emitSelectEvent(evt);
+                this.emitSelect(evt);
             },
 
-            onClickEvent(route: Route, navigate: (e: Event) => void, evt: MouseEvent): void
+            onClick(route: Route, navigate: (e: Event) => void, evt: MouseEvent): void
             {
                 navigate(evt);
 
-                this.emitSelectEvent(evt);
+                this.emitSelect(evt);
             }
         }
     });

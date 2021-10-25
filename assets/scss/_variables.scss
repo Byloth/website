@@ -1,9 +1,9 @@
 // Colors...
 //
 
-$not-quite-black: #212121;
+$not-quite-black: #202124;
 $somewhat-gray: #666666;
-// $slightly-off-white: #f0f0f0;
+$slightly-off-white: #FAFAFA;
 
 $primary-color: #1976D2;
 $primary-dark-color: #004BA0;
@@ -13,7 +13,10 @@ $secondary-color: #FFD600;
 $secondary-dark-color: #C7A500;
 $secondary-light-color: #FFFF52;
 
-$background-color: #FAFAFA;
+$success-color: #2E7D32;
+$info-color: #29B6F6;
+$warning-color: #F9A825;
+$danger-color: #B71C1C;
 
 $chrome-scrollbar-color: #F1F1F1;
 $chrome-link-preview-color: #DEE1E6;
@@ -27,12 +30,13 @@ $font-family: unquote("Ubuntu, Roboto, Helvetica, sans-serif");
 //
 $xs-size: 0;
 $sm-size: 600px;
-$md-size: 960px;
-$lg-size: 1280px;
-$xl-size: 1600px;
+$md-size: 854px;
+$lg-size: 1024px;
+$xl-size: 1280px;
+$xxl-size: 1440px;
 
-$max-mobile-size: $sm-size - 1px;
-$min-tablet-size: $sm-size;
+$max-mobile-size: $md-size - 1px;
+$min-tablet-size: $md-size;
 $max-tablet-size: $lg-size - 1px;
 $min-desktop-size: $lg-size;
 

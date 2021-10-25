@@ -1,65 +1,65 @@
 <template>
-    <BottomDialog id="share-dialog"
-                  v-model="isOpen"
+    <BottomDialog v-model="isOpen"
+                  class="share-dialog"
                   title="Condividi">
-        <TextField id="share-dialog-field-url"
-                   ref="text-field"
+        <TextField ref="text-field"
+                   class="share-dialog-field-url"
                    leading-icon="link"
                    readonly
                    :value="url" />
         <hr class="divider" />
         <div class="row">
             <div class="col-3">
-                <ActionButton title="Copia negli Appunti" @click="onCopyClick">
+                <ActionItem title="Copia negli Appunti" @click="onCopyClick">
                     <span class="fas fa-copy"></span>
-                </ActionButton>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionAnchor :href="`mailto:?subject=${encode(title)}&body=${encode(text + `\n\n` + url)}`"
-                              title="Invia tramite e-mail"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
+                <ActionItem :href="`mailto:?subject=${encode(title)}&body=${encode(text + `\n\n` + url)}`"
+                            title="Invia tramite e-mail"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank">
                     <span class="fas fa-envelope"></span>
-                </ActionAnchor>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionAnchor :href="`//wa.me/?text=${encode(text + `\n\n` + url)}`"
-                              title="Invia tramite WhatsApp"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
+                <ActionItem :href="`//wa.me/?text=${encode(text + `\n\n` + url)}`"
+                            title="Invia tramite WhatsApp"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank">
                     <span class="fab fa-whatsapp"></span>
-                </ActionAnchor>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionAnchor :href="`//t.me/share/?url=${encode(url)}&text=${encode('\n' + text)}`"
-                              title="Invia tramite Telegram"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
+                <ActionItem :href="`//t.me/share/?url=${encode(url)}&text=${encode('\n' + text)}`"
+                            title="Invia tramite Telegram"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank">
                     <span class="fab fa-telegram"></span>
-                </ActionAnchor>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionButton title="Condividi su Facebook" @click="shareOnFacebook">
+                <ActionItem title="Condividi su Facebook" @click="shareOnFacebook">
                     <span class="fab fa-facebook"></span>
-                </ActionButton>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionButton title="Condividi su LinkedIn" @click="shareOnLinkedIn">
+                <ActionItem title="Condividi su LinkedIn" @click="shareOnLinkedIn">
                     <span class="fab fa-linkedin"></span>
-                </ActionButton>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionButton title="Condividi su Pinterest" @click="shareOnPinterest">
+                <ActionItem title="Condividi su Pinterest" @click="shareOnPinterest">
                     <span class="fab fa-pinterest"></span>
-                </ActionButton>
+                </ActionItem>
             </div>
             <div class="col-3">
-                <ActionAnchor :href="`//twitter.com/intent/tweet?url=${encode(url)}&text=${encode(text + '\n\n')}`"
-                              title="Condividi su Twitter"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
+                <ActionItem :href="`//twitter.com/intent/tweet?url=${encode(url)}&text=${encode(text + '\n\n')}`"
+                            title="Condividi su Twitter"
+                            rel="nofollow noopener noreferrer"
+                            target="_blank">
                     <span class="fab fa-twitter"></span>
-                </ActionAnchor>
+                </ActionItem>
             </div>
         </div>
     </BottomDialog>
@@ -71,8 +71,7 @@
 
     import { RootState } from "@/core/types";
 
-    import ActionAnchor from "@/components/mdc/actions/action-anchor.vue";
-    import ActionButton from "@/components/mdc/actions/action-button.vue";
+    import ActionItem from "@/components/mdc/action-item.vue";
     import BottomDialog from "@/components/dialogs/bottom-dialog.vue";
     import TextField from "@/components/mdc/fields/text-field.vue";
 
@@ -89,7 +88,7 @@
 
     export default Vue.extend({
         name: "ShareDialog",
-        components: { ActionAnchor, ActionButton, BottomDialog, TextField },
+        components: { ActionItem, BottomDialog, TextField },
 
         data: (): ShareDialogData => ({
             isOpen: false,
@@ -114,7 +113,7 @@
 
         mounted: function(): void
         {
-            this.stopListening = this.$store.subscribeAction(this.onDialogAction);
+            this.stopListening = this.$store.subscribeAction(this.onShareAction);
         },
         destroyed: function(): void
         {
@@ -127,7 +126,7 @@
                 return encodeURIComponent(text);
             },
 
-            onDialogAction(action: ActionPayload, state: RootState): void
+            onShareAction(action: ActionPayload, state: RootState): void
             {
                 if (action.type === "share")
                 {
@@ -157,7 +156,8 @@
 
             _openPopup(url: string, target?: string, features?: string, replace?: boolean): Promise<void>
             {
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => any, reject: (reason?: any) => void) =>
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => void, reject: (reason?: any) => void) =>
                 {
                     const popup = window.open(url, target, features, replace);
 
@@ -225,14 +225,13 @@
 </script>
 
 <style lang="scss" scoped>
-    #share-dialog
+    .share-dialog
     {
-        #share-dialog-field-url
+        .share-dialog-field-url
         {
             margin: 0px;
             padding: 0px 1em;
         }
-
         .divider
         {
             border: none;

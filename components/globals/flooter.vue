@@ -1,7 +1,7 @@
 <template>
     <footer class="mdc-flooter">
         <div class="row">
-            <div class="column col-sm-4 col-md-6">
+            <div class="column col-md-4 col-lg-6">
                 <h3>Mappa del sito</h3>
                 <ul>
                     <NuxtLink v-for="page in pages"
@@ -18,44 +18,62 @@
                     </NuxtLink>
                 </ul>
             </div>
-            <div class="column col-sm-8 col-md-6">
+            <div class="column col-md-8 col-lg-6">
                 <h3>Contatti e social</h3>
-                <ActionAnchor href="//www.facebook.com/matteo.bilotta"
-                              title="Matteo Bilotta su Facebook"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-facebook"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//github.com/Byloth"
-                              title="Matteo Bilotta su GitHub"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-github"></span>
-                </ActionAnchor>
-                <ActionAnchor title="Matteo Bilotta su Instagram"
-                              href="//www.instagram.com/i.byloth/"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-instagram"></span>
-                </ActionAnchor>
-                <ActionAnchor title="Matteo Bilotta su LinkedIn"
-                              href="//www.linkedin.com/in/byloth/"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-linkedin-in"></span>
-                </ActionAnchor>
-                <ActionAnchor title="Matteo Bilotta su Spotify"
-                              href="//open.spotify.com/user/21q4g5zjmgfv5qctquiqawkgq"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-spotify"></span>
-                </ActionAnchor>
-                <ActionAnchor href="//twitter.com/iByloth"
-                              title="Matteo Bilotta su Twitter"
-                              rel="nofollow noopener noreferrer"
-                              target="_blank">
-                    <span class="fab fa-twitter"></span>
-                </ActionAnchor>
+                <div class="row">
+                    <div class="column">
+                        <ActionItem href="//www.facebook.com/matteo.bilotta"
+                                    title="Matteo Bilotta su Facebook"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
+                            <span class="fab fa-facebook"></span>
+                        </ActionItem>
+                        <ActionItem href="//github.com/Byloth"
+                                    title="Matteo Bilotta su GitHub"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
+                            <span class="fab fa-github"></span>
+                        </ActionItem>
+                        <ActionItem href="//www.instagram.com/i.byloth/"
+                                    title="Matteo Bilotta su Instagram"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
+                            <span class="fab fa-instagram"></span>
+                        </ActionItem>
+                        <ActionItem href="//www.linkedin.com/in/byloth/"
+                                    title="Matteo Bilotta su LinkedIn"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
+                            <span class="fab fa-linkedin-in"></span>
+                        </ActionItem>
+                    </div>
+                    <div class="column">
+                        <ActionItem href="//open.spotify.com/user/21q4g5zjmgfv5qctquiqawkgq"
+                                    title="Matteo Bilotta su Spotify"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
+                            <span class="fab fa-spotify"></span>
+                        </ActionItem>
+                        <ActionItem href="//steamcommunity.com/id/byloth/"
+                                    title="Matteo Bilotta su Steam"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
+                            <span class="fab fa-steam"></span>
+                        </ActionItem>
+                        <ActionItem href="//www.twitch.tv/bylo_th"
+                                    title="Matteo Bilotta su Twitch"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
+                            <span class="fab fa-twitch"></span>
+                        </ActionItem>
+                        <ActionItem href="//twitter.com/iByloth"
+                                    title="Matteo Bilotta su Twitter"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank">
+                            <span class="fab fa-twitter"></span>
+                        </ActionItem>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="license-info">
@@ -78,12 +96,12 @@
     import Vue from "vue";
     import { mapState } from "vuex";
 
-    import ActionAnchor from "@/components/mdc/actions/action-anchor.vue";
+    import ActionItem from "@/components/mdc/action-item.vue";
     import CreativeCommonsIcon from "@/components/icons/creative-commons-icon.vue";
 
     export default Vue.extend({
         name: "Flooter",
-        components: { ActionAnchor, CreativeCommonsIcon },
+        components: { ActionItem, CreativeCommonsIcon },
         computed: mapState("config", {
             author: "author",
             pages: "pages"
@@ -107,6 +125,18 @@
         & > .row > .column
         {
             padding: 0px 1em;
+
+            & a
+            {
+                color: #FFFFFF;
+                margin-right: 0.25em;
+
+                &::before,
+                &::after
+                {
+                    background-color: #FFFFFF;
+                }
+            }
 
             & > ul
             {
@@ -146,15 +176,13 @@
                 }
             }
 
-            & a
+            & > .row > .column
             {
-                color: #FFFFFF;
-                margin-right: 0.25em;
+                flex: unset;
 
-                &::before,
-                &::after
+                @media (min-width: 500px)
                 {
-                    background-color: #FFFFFF;
+                    width: auto;
                 }
             }
         }

@@ -4,7 +4,7 @@
 (
     $primary: variables.$primary-color,
     $secondary: variables.$secondary-color,
-    $background: variables.$background-color
+    $background: variables.$slightly-off-white
 );
 @use "~@material/typography" with
 (
@@ -13,6 +13,7 @@
 
 @use "~@material/button/button";
 @use "~@material/card";
+@use "~@material/dialog";
 @use "~@material/drawer";
 @use "~@material/floating-label/mdc-floating-label";
 @use "~@material/icon-button";
@@ -21,6 +22,7 @@
 @use "~@material/menu-surface/mdc-menu-surface";
 @use "~@material/menu/mdc-menu";
 @use "~@material/notched-outline/mdc-notched-outline";
+@use "~@material/snackbar/mdc-snackbar";
 @use "~@material/textfield";
 @use "~@material/textfield/icon";
 @use "~@material/textfield/helper-text";
@@ -29,6 +31,7 @@
 
 @include button.core-styles;
 @include card.core-styles;
+@include dialog.core-styles;
 @include drawer.core-styles;
 @include drawer.dismissible-core-styles;
 @include drawer.modal-core-styles;

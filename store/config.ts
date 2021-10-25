@@ -3,7 +3,7 @@ import { ConfigState } from "@/core/types";
 const state = (): ConfigState => ({
     title: "Byloth's Website",
     author: "Matteo Bilotta",
-    actions: [
+    menus: [
         {
             id: 1,
             name: "share",
@@ -54,7 +54,7 @@ const state = (): ConfigState => ({
             title: "Chi sono"
         }
     ],
-    version: "5.0.5"
+    version: "5.0.9"
 });
 
 export { state };

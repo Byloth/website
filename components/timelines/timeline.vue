@@ -1,6 +1,6 @@
 <template>
     <div class="container timeline">
-        <template v-if="items.length > 0">
+        <template v-if="items">
             <TimelineItem v-for="item, index in items"
                           :key="index"
                           :item="item"
@@ -27,7 +27,6 @@
         props: {
             items: {
                 default: () => [],
-
                 type: Array
             }
         }
@@ -35,9 +34,18 @@
 </script>
 
 <style lang="scss" scoped>
+    @use "~@/assets/scss/variables";
+
     .timeline
     {
         display: flex;
         flex-direction: column;
+        padding: 0.25em 0px;
+        padding-right: 0.5em;
+
+        @media (min-width: variables.$sm-size)
+        {
+            padding: 0px;
+        }
     }
 </style>

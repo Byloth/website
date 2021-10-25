@@ -28,7 +28,6 @@
         props: {
             error: {
                 default: () => ({ }),
-
                 type: Object
             }
         },
@@ -46,14 +45,11 @@
 
         main
         {
+            margin: 2em;
+
             & > h3
             {
                 font-weight: normal;
-            }
-            & > hr
-            {
-                border: none;
-                border-top: 1px solid rgba(0, 0, 0, 0.2);
             }
             & > p
             {

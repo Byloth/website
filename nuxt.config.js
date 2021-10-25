@@ -1,12 +1,32 @@
+const PRODUCTION = process.env.NODE_ENV === "production";
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: "static",
+  modern: PRODUCTION ? "client" : false,
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: "%s @ Byloth's Website",
     meta: [],
     link: [
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+        crossorigin: true
+      },
+
+      {
+        rel: "preload",
+        as: "style",
+        href: "https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      },
+      {
+        rel: "preload",
+        as: "style",
+        href: "https://fonts.googleapis.com/css2?family=Material+Icons"
+      },
+
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Material+Icons" },
 
@@ -22,10 +42,12 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     "@/plugins/init.client.ts",
+    "@/plugins/errors-handler.client.ts",
 
     "@/plugins/globals/mdc.client.ts",
     "@/plugins/globals/time.client.ts",
 
+    "@/plugins/refresh-dialog.client.ts",
     "@/plugins/vue-scroll-animator.client.ts"
   ],
 
@@ -48,12 +70,27 @@ export default {
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: { baseURL: process.env.BASE_URL },
+  axios: { baseUrl: "https://www.byloth.net" },
 
   // Content module configuration (https://go.nuxtjs.dev/content-config)
   content: { },
 
-  googleAnalytics: { id: "UA-55278628-1" },
+  generate: {
+    routes: async function()
+    {
+      const { $content } = require("@nuxt/content");
+      const files = await $content("posts")
+        .only(["path"])
+        .fetch();
+
+      return files.map((file) => file.path === "/index" ? "/" : file.path);
+    }
+  },
+
+  googleAnalytics: {
+    id: ["UA-55278628-1", "G-B7SZ4CRWXT"],
+    disabled: true
+  },
 
   pwa: {
     manifest: {
@@ -72,10 +109,5 @@ export default {
   sitemap: { hostname: "https://www.byloth.net" },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: { },
-
-  server: {
-    port: 8080,
-    host: "0.0.0.0"
-  }
+  build: { }
 };

@@ -44,8 +44,9 @@ Non ho, certo, voglia di andarmi a cercare altri motivi migliori di questi solo 
 far coincidere la data di **pubblicazione ufficiale** alla realtà dei fatti.  
 Avete tanta voglia di farlo? [Pensateci voi](https://it.wikipedia.org/wiki/15_febbraio)!
 
-Per cui... A scanso di equivoci, lo scriverò per esteso:
-
 ---
+
+Per cui...  
+A scanso di equivoci, lo scriverò qui per esteso:
 
 ### 🌐 Online dal ~15 Febbraio 2021~ 12 Febbraio 2021! ###

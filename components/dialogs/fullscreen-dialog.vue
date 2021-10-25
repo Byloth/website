@@ -6,21 +6,23 @@
         <div class="dialog">
             <TopAppBar>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                    <ActionButton class="mdc-top-app-bar__action-item"
-                                  :title="cancelText"
-                                  @click="$emit('cancel', close, $event)">
+                    <ActionItem class="mdc-top-app-bar__action-item"
+                                :title="cancelText"
+                                @click="$emit('cancel', close, $event)">
                         <span class="material-icons">
                             close
                         </span>
-                    </ActionButton>
+                    </ActionItem>
                     <h1 ref="title" class="mdc-top-app-bar__title">
                         {{ title }}
                     </h1>
                 </section>
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                    <Button unelevated @click="$emit('done', close, $event)">
+                    <ButtonItem unelevated
+                                :title="doneText"
+                                @click="$emit('done', close, $event)">
                         {{ doneText }}
-                    </Button>
+                    </ButtonItem>
                 </section>
             </TopAppBar>
             <div class="content">
@@ -33,15 +35,15 @@
 <script lang="ts">
     import Vue from "vue";
 
-    import ActionButton from "@/components/mdc/actions/action-button.vue";
-    import Button from "@/components/mdc/button.vue";
+    import ActionItem from "@/components/mdc/action-item.vue";
+    import ButtonItem from "@/components/mdc/button-item.vue";
     import TopAppBar from "@/components/mdc/top-app-bar.vue";
 
     import TransientMixin from "@/mixins/transient";
 
     export default Vue.extend({
         name: "FullscreenDialog",
-        components: { ActionButton, Button, TopAppBar },
+        components: { ActionItem, ButtonItem, TopAppBar },
         mixins: [TransientMixin()],
         props: {
             title: {
@@ -77,6 +79,9 @@
         }
         & > .dialog
         {
+            // SMELLS: Perché questo `dialog` viene visualizzato come `flex`?
+            //         Che senso ha? Serve a qualcosa?
+            //
             display: flex;
             flex: 1;
             flex-direction: column;
@@ -117,12 +122,9 @@
             }
         }
 
-        &.open
+        &.open > .dialog
         {
-            & > .dialog
-            {
-                transform: translateY(0%);
-            }
+            transform: none;
         }
 
         @media (min-width: variables.$md-size)
