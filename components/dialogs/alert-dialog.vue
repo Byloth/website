@@ -40,10 +40,7 @@
 
     import ButtonItem from "@/components/mdc/button-item.vue";
 
-    interface AlertDialogData
-    {
-        isOpen: boolean;
-    }
+    interface AlertDialogData { isOpen: boolean; }
 
     export default Vue.extend({
         name: "AlertDialog",
