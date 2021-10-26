@@ -9,10 +9,20 @@
 
     const GUARD_SPACING = 150;
 
+    interface TimelineItemComponent
+    {
+        isReverse: boolean;
+        yCoord: number;
+
+        $el: HTMLElement;
+
+        $on(event: string | string[], callback: () => void): void;
+        $off(event: string | string[], callback: () => void): void;
+    }
     interface TimelineData
     {
         height: number | null;
-        items: Vue[];
+        items: TimelineItemComponent[];
     }
 
     export default Vue.extend({
@@ -21,13 +31,13 @@
         provide: function()
         {
             return {
-                register: (item: Vue) =>
+                register: (item: TimelineItemComponent) =>
                 {
                     item.$on("load", this.computeYCoords);
 
                     this.items.push(item);
                 },
-                unregister: (item: Vue) =>
+                unregister: (item: TimelineItemComponent) =>
                 {
                     this.items = this.items.filter((i) => i !== item);
 
@@ -66,10 +76,10 @@
         methods: {
             computeYCoords(): void
             {
-                let previousStraight: number = null;
+                let previousStraight: number | null = null;
                 let currentStraight = 0;
 
-                let previousReverse: number = null;
+                let previousReverse: number | null = null;
                 let currentReverse = 0;
 
                 for (const index in this.items)

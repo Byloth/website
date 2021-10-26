@@ -18,7 +18,7 @@ export default class Post extends Document
     {
         const document = await $content("posts", slug).fetch();
 
-        return new Post(document as IContentDocument);
+        return new Post((document as unknown) as IContentDocument);
     }
     public static async GetAll({ $content }: Vue | Context): Promise<Post[]>
     {

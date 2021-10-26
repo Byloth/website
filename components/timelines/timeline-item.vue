@@ -65,6 +65,11 @@
 
     import Avatar from "@/components/avatar.vue";
 
+    interface TimelineComponent
+    {
+        register(item: Vue): void;
+        unregister(item: Vue): void;
+    }
     interface TimelineItemData
     {
         isReverse: boolean;
@@ -109,11 +114,15 @@
 
         created: function(): void
         {
-            this.register(this);
+            const timeline = (this as unknown) as TimelineComponent;
+
+            timeline.register(this);
         },
         destroyed: function(): void
         {
-            this.unregister(this);
+            const timeline = (this as unknown) as TimelineComponent;
+
+            timeline.unregister(this);
         },
 
         methods: {
