@@ -22,15 +22,16 @@ export default abstract class Document implements IContentDocument
     public readonly extension: string;
     public readonly slug: string;
 
-    public readonly body: Element;
+    public readonly body?: Element;
     public readonly excerpt?: { body: Element };
-    public readonly toc: TableOfContent[];
+    public readonly toc?: TableOfContent[];
 
     public readonly createdAt: Date;
     public readonly updatedAt: Date;
 
     public readonly hasBody: boolean;
     public readonly hasExcerpt: boolean;
+    public readonly hasToc: boolean;
 
     public constructor({ dir, path, extension, slug, createdAt, updatedAt, body, excerpt, toc }: IContentDocument)
     {
@@ -39,14 +40,15 @@ export default abstract class Document implements IContentDocument
         this.extension = extension;
         this.slug = slug;
 
-        this.body = body;
+        this.body = body as Element;
         this.excerpt = { body: excerpt };
         this.toc = toc;
 
         this.createdAt = new Date(createdAt);
         this.updatedAt = new Date(updatedAt);
 
-        this.hasBody = !!body.children?.length;
+        this.hasBody = !!this.body?.children?.length;
         this.hasExcerpt = !!excerpt?.children?.length;
+        this.hasToc = !!toc?.length;
     }
 }
