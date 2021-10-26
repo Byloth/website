@@ -1,7 +1,7 @@
 <template>
-    <ActionButton class="mdc-top-app-bar__action-item mdc-menu-surface--anchor"
-                  :title="title"
-                  @click="toggleMenu">
+    <ActionItem class="mdc-top-app-bar__action-item mdc-menu-surface--anchor"
+                :title="title"
+                @click="toggleMenu">
         <span class="material-icons">
             more_vert
         </span>
@@ -27,13 +27,13 @@
                 </template>
             </template>
         </Menu>
-    </ActionButton>
+    </ActionItem>
 </template>
 
 <script lang="ts">
     import Vue from "vue";
 
-    import ActionButton from "./mdc/actions/action-button.vue";
+    import ActionItem from "./mdc/action-item.vue";
     import Menu from "./mdc/menus/menu.vue";
     import MenuAnchor from "./mdc/menus/menu-anchor.vue";
     import MenuItem from "./mdc/menus/menu-item.vue";
@@ -42,7 +42,7 @@
 
     export default Vue.extend({
         name: "OverflowMenu",
-        components: { ActionButton, Menu, MenuAnchor, MenuItem },
+        components: { ActionItem, Menu, MenuAnchor, MenuItem },
         props: {
             actions: {
                 default: () => [],

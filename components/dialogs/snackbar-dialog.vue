@@ -20,12 +20,12 @@
                 </div>
                 <div class="mdc-snackbar__actions" aria-atomic="true">
                     <slot name="actions"></slot>
-                    <ActionButton v-if="dismissable"
-                                  class="mdc-snackbar__dismiss material-icons"
-                                  title="Dismiss"
-                                  @click="close">
+                    <ActionItem v-if="dismissable"
+                                class="mdc-snackbar__dismiss material-icons"
+                                title="Dismiss"
+                                @click="close">
                         close
-                    </ActionButton>
+                    </ActionItem>
                 </div>
             </div>
         </div>
@@ -37,11 +37,11 @@
 
     import TransientMixin from "@/mixins/transient";
 
-    import ActionButton from "@/components/mdc/actions/action-button.vue";
+    import ActionItem from "@/components/mdc/action-item.vue";
 
     export default Vue.extend({
         name: "SnackbarDialog",
-        components: { ActionButton },
+        components: { ActionItem },
         mixins: [TransientMixin({
             openClass: "mdc-snackbar--open",
             enterTransitionDuration: 150,

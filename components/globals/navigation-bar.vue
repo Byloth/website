@@ -2,14 +2,14 @@
     <div class="navigation-bar">
         <TopAppBar ref="top-app-bar" class="mdc-top-app-bar--prominent">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <ActionButton v-if="toggler"
-                              class="mdc-top-app-bar__navigation-icon"
-                              title="Apri / Chiudi la barra di navigazione"
-                              @click="$emit('drawer-toggle', $event)">
+                <ActionItem v-if="toggler"
+                            class="mdc-top-app-bar__navigation-icon"
+                            title="Apri / Chiudi la barra di navigazione"
+                            @click="$emit('drawer-toggle', $event)">
                     <span class="material-icons">
                         menu
                     </span>
-                </ActionButton>
+                </ActionItem>
                 <h1 ref="title" class="mdc-top-app-bar__title">
                     {{ title }}
                 </h1>
@@ -29,7 +29,7 @@
 
     import { Menu } from "@/core/types";
 
-    import ActionButton from "@/components/mdc/actions/action-button.vue";
+    import ActionItem from "@/components/mdc/action-item.vue";
     import NavigationActions from "@/components/navigation-actions.vue";
     import TopAppBar from "@/components/mdc/top-app-bar.vue";
 
@@ -43,7 +43,7 @@
 
     export default Vue.extend({
         name: "NavigationBar",
-        components: { ActionButton, BannerHandler, NavigationActions, TopAppBar },
+        components: { ActionItem, BannerHandler, NavigationActions, TopAppBar },
         props: {
             toggler: {
                 default: true,

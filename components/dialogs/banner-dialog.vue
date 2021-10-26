@@ -12,7 +12,9 @@
             </div>
         </div>
         <div class="actions">
-            <ButtonItem v-if="dismissable" @click="close">
+            <ButtonItem v-if="dismissable"
+                        :title="closeText"
+                        @click="close">
                 {{ closeText }}
             </ButtonItem>
             <slot name="actions"></slot>
@@ -24,7 +26,7 @@
     import Vue from "vue";
 
     import Avatar from "@/components/avatar.vue";
-    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
+    import ButtonItem from "@/components/mdc/button-item.vue";
 
     import TransientMixin from "@/mixins/transient";
 

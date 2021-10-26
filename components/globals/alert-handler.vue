@@ -16,16 +16,17 @@
                           :key="index"
                           custom
                           :to="action.location">
-                    <ButtonAnchor class="mdc-dialog__button"
-                                  :href="href"
-                                  :title="action.text"
-                                  @click="navigate">
+                    <ButtonItem class="mdc-dialog__button"
+                                :href="href"
+                                :title="action.text"
+                                @click="navigate">
                         {{ action.text }}
-                    </ButtonAnchor>
+                    </ButtonItem>
                 </NuxtLink>
                 <ButtonItem v-else-if="action.callback"
                             :key="index"
                             class="mdc-dialog__button"
+                            :title="action.text"
                             @click="handleCallback(action.callback)">
                     {{ action.text }}
                 </ButtonItem>
@@ -41,8 +42,7 @@
     import { Action, Dialog, RootState } from "@/core/types";
 
     import AlertDialog from "@/components/dialogs/alert-dialog.vue";
-    import ButtonAnchor from "@/components/mdc/buttons/button-anchor.vue";
-    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
+    import ButtonItem from "@/components/mdc/button-item.vue";
 
     interface AlertHandlerData
     {
@@ -57,7 +57,7 @@
 
     export default Vue.extend({
         name: "AlertHandler",
-        components: { AlertDialog, ButtonAnchor, ButtonItem },
+        components: { AlertDialog, ButtonItem },
 
         data: (): AlertHandlerData => ({
             alerts: [],

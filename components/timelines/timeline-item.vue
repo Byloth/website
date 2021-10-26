@@ -1,48 +1,53 @@
 <template>
-    <div class="timeline-item" :class="classes">
+    <div class="timeline-item"
+         :class="classes"
+         :style="styles">
         <div class="content mdc-card">
             <div class="header">
-                <Avatar :icon="item.icon" />
+                <Avatar :icon="value.icon" />
                 <div class="details">
                     <h2 class="title">
-                        {{ item.title }}
+                        {{ value.title }}
                     </h2>
-                    <h4 v-if="item.subtitle" class="subtitle">
-                        {{ item.subtitle }}
+                    <h4 v-if="value.subtitle" class="subtitle">
+                        {{ value.subtitle }}
                     </h4>
                 </div>
             </div>
-            <template v-if="item.thumbnail">
-                <div v-if="item.thumbnail.type === 'youtube'" class="video">
+            <template v-if="value.thumbnail">
+                <div v-if="value.thumbnail.type === 'youtube'" class="video">
                     <div class="wrapper">
                         <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen
                                 frameborder="0"
-                                :title="item.thumbnail.description"
-                                :src="item.thumbnail.source">
+                                :title="value.thumbnail.description"
+                                :src="value.thumbnail.source"
+                                @load="onLoad">
                         </iframe>
                     </div>
                 </div>
                 <div v-else class="image">
-                    <img :src="item.thumbnail.source" :alt="item.thumbnail.description" />
+                    <img :src="value.thumbnail.source"
+                         :alt="value.thumbnail.description"
+                         @load="onLoad" />
                 </div>
             </template>
-            <div v-if="item.hasBody" class="body">
-                <template v-if="item.hasExcerpt">
-                    <NuxtContent :document="item.excerpt" />
+            <div v-if="value.hasBody" class="body">
+                <template v-if="value.hasExcerpt">
+                    <NuxtContent :document="value.excerpt" />
                     <div class="read-more">
-                        <NuxtLink :to="{ name: 'posts-slug', params: { slug: item.slug } }">
+                        <NuxtLink :to="{ name: 'posts-slug', params: { slug: value.slug } }">
                             continua…
                         </NuxtLink>
                     </div>
                 </template>
                 <template v-else>
-                    <NuxtContent :document="item" />
+                    <NuxtContent :document="value" />
                 </template>
             </div>
             <div class="footer">
                 <small class="details">
-                    {{ item.author }}, il {{ item.date | date }}
+                    {{ value.author }}, il {{ value.date | date }}
                 </small>
             </div>
         </div>
@@ -60,6 +65,12 @@
 
     import Avatar from "@/components/avatar.vue";
 
+    interface TimelineItemData
+    {
+        isReverse: boolean;
+        yCoord: number;
+    }
+
     export default Vue.extend({
         name: "TimelineItem",
         components: { Avatar },
@@ -69,20 +80,46 @@
                 return Time.DateAsString(value, false);
             }
         },
+        inject: [
+            "register",
+            "unregister"
+        ],
         props: {
-            item: {
+            value: {
                 required: true,
                 type: Object
-            },
-            reverse: {
-                default: false,
-                type: Boolean
             }
         },
+
+        data: (): TimelineItemData => ({
+            isReverse: false,
+            yCoord: 0
+        }),
+
         computed: {
             classes(): Record<string, boolean>
             {
-                return { "reverse": this.reverse };
+                return { "reverse": this.isReverse };
+            },
+            styles(): Record<string, string>
+            {
+                return { "top": `${this.yCoord}px` };
+            }
+        },
+
+        created: function(): void
+        {
+            this.register(this);
+        },
+        destroyed: function(): void
+        {
+            this.unregister(this);
+        },
+
+        methods: {
+            onLoad()
+            {
+                this.$emit("load");
             }
         }
     });
@@ -95,6 +132,7 @@
     {
         display: flex;
         flex-direction: row-reverse;
+        width: 100%;
 
         & > .content
         {
@@ -318,7 +356,7 @@
         }
         @media (min-width: variables.$md-size)
         {
-            margin-bottom: -50px;
+            position: absolute;
 
             &.reverse
             {

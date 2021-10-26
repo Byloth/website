@@ -19,12 +19,7 @@
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
-    "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"],
-      "~~/*": ["./*"],
-      "@@/*": ["./*"]
-    },
+    "paths": { "@/*": ["./*"] },
     "types": [
       "@types/node",
       "@nuxt/content",

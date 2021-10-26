@@ -15,14 +15,15 @@
                           :key="index"
                           custom
                           :to="action.location">
-                    <ButtonAnchor :href="href"
-                                  :title="action.text"
-                                  @click="navigate">
+                    <ButtonItem :href="href"
+                                :title="action.text"
+                                @click="navigate">
                         {{ action.text }}
-                    </ButtonAnchor>
+                    </ButtonItem>
                 </NuxtLink>
                 <ButtonItem v-else-if="action.callback"
                             :key="index"
+                            :title="action.text"
                             @click="handleCallback(action.callback)">
                     {{ action.text }}
                 </ButtonItem>
@@ -38,8 +39,7 @@
     import { Action, Dialog, RootState } from "@/core/types";
 
     import BannerDialog from "@/components/dialogs/banner-dialog.vue";
-    import ButtonAnchor from "@/components/mdc/buttons/button-anchor.vue";
-    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
+    import ButtonItem from "@/components/mdc/button-item.vue";
 
     interface BannerHandlerData
     {
@@ -54,7 +54,7 @@
 
     export default Vue.extend({
         name: "BannerHandler",
-        components: { BannerDialog, ButtonAnchor, ButtonItem },
+        components: { BannerDialog, ButtonItem },
 
         data: (): BannerHandlerData => ({
             banners: [],

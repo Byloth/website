@@ -8,26 +8,26 @@
         <template v-else>
             <template v-for="action in actions">
                 <template v-if="action.path">
-                    <ActionAnchor :key="action.id"
-                                  class="mdc-top-app-bar__action-item"
-                                  :href="action.path"
-                                  :title="action.title"
-                                  rel="nofollow noopener noreferrer"
-                                  target="_blank">
+                    <ActionItem :key="action.id"
+                                class="mdc-top-app-bar__action-item"
+                                :href="action.path"
+                                :title="action.title"
+                                rel="nofollow noopener noreferrer"
+                                target="_blank">
                         <span class="material-icons">
                             {{ action.icon }}
                         </span>
-                    </ActionAnchor>
+                    </ActionItem>
                 </template>
                 <template v-else>
-                    <ActionButton :key="action.id"
-                                  class="mdc-top-app-bar__action-item"
-                                  :title="action.title"
-                                  @click="$emit('select', action, $event)">
+                    <ActionItem :key="action.id"
+                                class="mdc-top-app-bar__action-item"
+                                :title="action.title"
+                                @click="$emit('select', action, $event)">
                         <span class="material-icons">
                             {{ action.icon }}
                         </span>
-                    </ActionButton>
+                    </ActionItem>
                 </template>
             </template>
         </template>
@@ -39,15 +39,14 @@
 
     import { MOBILE_SIZE } from "@/core/constants";
 
-    import ActionAnchor from "./mdc/actions/action-anchor.vue";
-    import ActionButton from "./mdc/actions/action-button.vue";
+    import ActionItem from "./mdc/action-item.vue";
     import OverflowMenu from "./overflow-menu.vue";
 
     interface NavigationActionsData { isCondensed: boolean; }
 
     export default Vue.extend({
         name: "NavigationActions",
-        components: { ActionAnchor, ActionButton, OverflowMenu },
+        components: { ActionItem, OverflowMenu },
         props: {
             actions: {
                 default: () => [],

@@ -230,6 +230,8 @@
         {
             background-color: variables.$chrome-scrollbar-color;
             box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 0.25em 0.5em 0.5em variables.$chrome-incognito-color;
+            min-height: calc(100vh - 288px);
+            margin-bottom: 355px;
             padding: 0px;
         }
 
@@ -257,12 +259,20 @@
                 padding: 0.5em;
             }
         }
+        @media (min-width: variables.$md-size)
+        {
+            & > #main-content
+            {
+                margin-bottom: 248px;
+            }
+        }
         @media print
         {
             & > #main-content
             {
                 background-color: #FFFFFF;
                 box-shadow: none;
+                margin-bottom: 0px;
                 padding: 0px;
             }
 

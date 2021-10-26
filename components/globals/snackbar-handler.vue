@@ -13,15 +13,16 @@
                       v-slot="{ href, navigate }"
                       custom
                       :to="action.location">
-                <ButtonAnchor class="mdc-snackbar__action"
-                              :href="href"
-                              :title="action.text"
-                              @click="navigate">
+                <ButtonItem class="mdc-snackbar__action"
+                            :href="href"
+                            :title="action.text"
+                            @click="navigate">
                     {{ action.text }}
-                </ButtonAnchor>
+                </ButtonItem>
             </NuxtLink>
             <ButtonItem v-else-if="action.callback"
                         class="mdc-snackbar__action"
+                        :title="action.text"
                         @click="handleCallback(action.callback)">
                 {{ action.text }}
             </ButtonItem>
@@ -35,8 +36,7 @@
 
     import { Action, Dialog, RootState } from "@/core/types";
 
-    import ButtonAnchor from "@/components/mdc/buttons/button-anchor.vue";
-    import ButtonItem from "@/components/mdc/buttons/button-item.vue";
+    import ButtonItem from "@/components/mdc/button-item.vue";
     import SnackbarDialog from "@/components/dialogs/snackbar-dialog.vue";
 
     interface SnackbarHandlerData
@@ -52,7 +52,7 @@
 
     export default Vue.extend({
         name: "SnackbarHandler",
-        components: { ButtonAnchor, ButtonItem, SnackbarDialog },
+        components: { ButtonItem, SnackbarDialog },
 
         data: (): SnackbarHandlerData => ({
             snackbars: [],
