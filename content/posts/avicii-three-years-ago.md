@@ -10,6 +10,7 @@ thumbnail:
     description: "\"The Nights\" by Avicii"
 
 tags:
+    - anniversary
     - music
 ---
 

@@ -35,6 +35,11 @@ $lg-size: 1024px;
 $xl-size: 1280px;
 $xxl-size: 1440px;
 
+// SMELLS: controllare 'sta roba!
+//
+// $max-mobile-size: $sm-size - 1px;
+// $min-tablet-size: $sm-size;
+//
 $max-mobile-size: $md-size - 1px;
 $min-tablet-size: $md-size;
 $max-tablet-size: $lg-size - 1px;

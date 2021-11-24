@@ -1,5 +1,5 @@
 ---
-title: "GIT: from Zero to Hero!" 
+title: "GIT: from Zero to Hero!"
 subtitle: Il primo evento della community è online!
 author: Matteo Bilotta
 date: 2021-04-01T17:01:38
