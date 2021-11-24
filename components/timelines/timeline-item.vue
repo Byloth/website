@@ -141,12 +141,14 @@
     {
         display: flex;
         flex-direction: row-reverse;
+        pointer-events: none;
         width: 100%;
 
         & > .content
         {
             margin: 0.25em 0px;
             margin-left: 1em;
+            pointer-events: all;
             text-align: left;
             width: calc(100% - 2.5em - 2px);
 
