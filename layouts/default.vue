@@ -50,10 +50,10 @@
     {
         _body?: HTMLElement;
 
-        dialog: boolean;
         isModal: boolean;
         isOpen: boolean;
         toggler: boolean;
+        openDialogs: number;
 
         margin: number;
 
@@ -75,10 +75,10 @@
         },
 
         data: (): DrawerLayoutData => ({
-            dialog: false,
             isModal: false,
             isOpen: false,
             toggler: true,
+            openDialogs: 0,
 
             margin: 0,
 
@@ -98,11 +98,11 @@
         watch: {
             isOpen(value: boolean, oldValue: boolean): void
             {
-                this.disable(!(this.isModal && value) && !this.dialog);
+                this.disable((this.isModal && value) || !!(this.openDialogs));
             },
-            dialog(value: boolean, oldValue: boolean): void
+            openDialogs(value: boolean, oldValue: boolean): void
             {
-                this.disable(!(this.isModal && this.isOpen) && !value);
+                this.disable((this.isModal && this.isOpen) || !!(value));
             }
         },
 
@@ -126,11 +126,11 @@
             {
                 if (disabled)
                 {
-                    this._body!.removeAttribute("disabled");
+                    this._body!.setAttribute("disabled", "");
                 }
                 else
                 {
-                    this._body!.setAttribute("disabled", "");
+                    this._body!.removeAttribute("disabled");
                 }
             },
 
@@ -187,9 +187,16 @@
 
                 this.margin = (this.$refs.flooter as Vue).$el.clientHeight;
             },
-            onDialogOpen(value: boolean): void
+            onDialogOpen(isOpen: boolean): void
             {
-                this.dialog = value;
+                if (isOpen)
+                {
+                    this.openDialogs += 1;
+                }
+                else
+                {
+                    this.openDialogs -= 1;
+                }
             },
 
             closeDrawer(evt: MouseEvent): void

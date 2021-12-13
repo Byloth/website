@@ -26,6 +26,15 @@
             title: {
                 required: true,
                 type: String
+            },
+
+            rel: {
+                default: "",
+                type: String
+            },
+            target: {
+                default: "",
+                type: String
             }
         },
 
@@ -36,19 +45,18 @@
             {
                 if (this.href)
                 {
-                    return { "href": this.href };
+                    return {
+                        "href": this.href,
+                        "rel": this.rel,
+                        "target": this.target
+                    };
                 }
 
                 return { };
             },
             tag(): string
             {
-                if (this.href)
-                {
-                    return "a";
-                }
-
-                return "button";
+                return this.href ? "a" : "button";
             }
         },
 

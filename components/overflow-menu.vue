@@ -6,26 +6,15 @@
             more_vert
         </span>
         <Menu v-model="isOpen">
-            <template v-for="action in actions">
-                <template v-if="action.path">
-                    <NuxtLink :key="action.id"
-                              v-slot="{ href, navigate }"
-                              custom
-                              :to="action.path">
-                        <MenuAnchor :href="href"
-                                    rel="nofollow noopener noreferrer"
-                                    target="_blank"
-                                    @click="navigate">
-                            {{ action.title }}
-                        </MenuAnchor>
-                    </NuxtLink>
-                </template>
-                <template v-else>
-                    <MenuItem :key="action.id" @click="$emit('select', action, $event)">
-                        {{ action.title }}
-                    </MenuItem>
-                </template>
-            </template>
+            <MenuItem v-for="action in actions"
+                      :key="action.id"
+                      :href="action.path"
+                      :title="action.title"
+                      rel="nofollow noopener noreferrer"
+                      target="_blank"
+                      @click="onClick(action, $event)">
+                {{ action.title }}
+            </MenuItem>
         </Menu>
     </ActionItem>
 </template>
@@ -33,16 +22,17 @@
 <script lang="ts">
     import Vue from "vue";
 
+    import { Menu as Action } from "@/core/types";
+
     import ActionItem from "./mdc/action-item.vue";
     import Menu from "./mdc/menus/menu.vue";
-    import MenuAnchor from "./mdc/menus/menu-anchor.vue";
     import MenuItem from "./mdc/menus/menu-item.vue";
 
     interface OverflowMenuData { isOpen: boolean; }
 
     export default Vue.extend({
         name: "OverflowMenu",
-        components: { ActionItem, Menu, MenuAnchor, MenuItem },
+        components: { ActionItem, Menu, MenuItem },
         props: {
             actions: {
                 default: () => [],
@@ -60,6 +50,14 @@
             toggleMenu(): void
             {
                 this.isOpen = !this.isOpen;
+            },
+
+            onClick(action: Action, evt: Event): void
+            {
+                if (!action.path)
+                {
+                    this.$emit("select", action, evt);
+                }
             }
         }
     });
