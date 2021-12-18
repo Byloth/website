@@ -19,7 +19,8 @@ export default {
       {
         rel: "preload",
         as: "style",
-        href: "https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        href: "https://fonts.googleapis.com/css2?" +
+          "family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
       },
       {
         rel: "preload",
@@ -27,7 +28,11 @@ export default {
         href: "https://fonts.googleapis.com/css2?family=Material+Icons"
       },
 
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?" +
+          "family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Material+Icons" },
 
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
@@ -66,6 +71,7 @@ export default {
     "@nuxt/content",
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
+    ["@nuxtjs/google-adsense", { id: "ca-pub-7943302075960059" }],
     "@nuxtjs/sitemap"
   ],
 

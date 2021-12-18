@@ -17,6 +17,7 @@
             <template v-if="value.thumbnail">
                 <div v-if="value.thumbnail.type === 'youtube'" class="video">
                     <div class="wrapper">
+                        <!-- eslint-disable-next-line max-len -->
                         <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen
                                 frameborder="0"

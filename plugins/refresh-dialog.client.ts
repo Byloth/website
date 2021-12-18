@@ -8,7 +8,7 @@ export default async ({ store }: Context): Promise<void> =>
 
     if (workbox)
     {
-        workbox.addEventListener("installed", (event) =>
+        workbox.addEventListener("installed", (event: Event) =>
         {
             const workboxEvent = event as WorkboxEvent;
 
