@@ -87,7 +87,8 @@ export default abstract class Time
                 {
                     divisor = (divisor / Time._TIME_DEFINITIONS[iterationCount].divisor);
 
-                    const subResultArray = Time._TimeDifferenceAsArray(timeDifference, stopAtFirst, divisor, iterationCount + 1, true);
+                    const subResultArray =
+                        Time._TimeDifferenceAsArray(timeDifference, stopAtFirst, divisor, iterationCount + 1, true);
 
                     if (subResultArray !== undefined)
                     {

@@ -2,15 +2,15 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "lib": [
       "ESNext",
-      "ESNext.AsyncIterable",
       "DOM",
-      "DOM.Iterable",
-      "ScriptHost"
+      "ScriptHost",
+      "WebWorker"
     ],
+    "jsx": "preserve",
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,

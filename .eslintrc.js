@@ -4,8 +4,14 @@ module.exports = {
     "@byloth/eslint-config-typescript",
     "@byloth/eslint-config-vue"
   ],
-  overrides: [{
-    files: ["*.ts"],
-    rules: { "no-unused-vars": "off" }
-  }]
+  overrides: [
+    {
+      files: ["*.ts"],
+      rules: { "no-unused-vars": "off" }
+    },
+    {
+      files: ["*.json"],
+      rules: { "max-len": "off" }
+    }
+  ]
 };

@@ -156,8 +156,7 @@
 
             _openPopup(url: string, target?: string, features?: string, replace?: boolean): Promise<void>
             {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => void, reject: (reason?: any) => void) =>
+                return new Promise((resolve, reject) =>
                 {
                     const popup = window.open(url, target, features, replace);
 
