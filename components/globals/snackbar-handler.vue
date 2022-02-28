@@ -75,7 +75,8 @@
                 {
                     if (this.snackbar.actions.length > 1)
                     {
-                        throw new Error("Multiple actions aren't supported for 'snackbar' type dialog. Use a single button.");
+                        throw new Error("Multiple actions aren't supported for" +
+                            " 'snackbar' type dialog. Use a single button.");
                     }
 
                     return this.snackbar.actions[0];

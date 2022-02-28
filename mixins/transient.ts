@@ -94,8 +94,7 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
         methods: {
             open(): Promise<void>
             {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => void, reject: (reason?: any) => void) =>
+                return new Promise((resolve, reject) =>
                 {
                     this.isShown = true;
 
@@ -116,8 +115,7 @@ export default (options: TransientMixinOptions = { }): VueConstructor =>
             },
             close(): Promise<void>
             {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                return new Promise<void>((resolve: (value: void | PromiseLike<void>) => void, reject: (reason?: any) => void) =>
+                return new Promise((resolve, reject) =>
                 {
                     this.isOpen = false;
 
