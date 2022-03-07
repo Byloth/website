@@ -71,7 +71,6 @@ export default {
     "@nuxt/content",
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    ["@nuxtjs/google-adsense", { id: "ca-pub-7943302075960059" }],
     "@nuxtjs/sitemap"
   ],
 
