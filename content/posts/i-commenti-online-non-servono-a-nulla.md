@@ -38,7 +38,7 @@ In questa chiacchierata online proveremo a rispondere a queste ed altre domande,
 il tema dei "**commenti sui social**" sotto il punto di vista **etico** e "**filosofico**".  
 Proveremo, soprattutto, a confrontarci in modo tale da far nascere una discussione seria e **costruttiva** tanto da, chissà, magari far cambiare idea addirittura al sottoscritto...
 
-- **Luogo:** online ([Discord](https://discord.gg/5QvHTwzvqW) & [Twitch](https://www.twitch.tv/bylo_th))
+- **Luogo:** online ([Discord](https://discord.gg/5QvHTwzvqW) & [Twitch](https://www.twitch.tv/bylothink))
 - **Data:** Sabato 18 Settembre 2021
 - **Orario:** dalle ore 15:00
 

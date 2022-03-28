@@ -60,7 +60,7 @@
                                     target="_blank">
                             <span class="fab fa-steam"></span>
                         </ActionItem>
-                        <ActionItem href="//www.twitch.tv/bylo_th"
+                        <ActionItem href="//www.twitch.tv/bylothink"
                                     title="Matteo Bilotta su Twitch"
                                     rel="nofollow noopener noreferrer"
                                     target="_blank">
