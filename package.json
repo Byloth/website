@@ -1,0 +1,19 @@
+{
+  "name": "@byloth/website",
+  "version": "6.0.0-rc1",
+  "description": "My personal static-generated website; based on Vue.js & VitePress.",
+  "main": "index.js",
+  "repository": "https://github.com/Byloth/website",
+  "author": "Matteo Bilotta <me@byloth.net>",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "serve": "vitepress serve"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.17",
+    "vue": "^3.2.40"
+  },
+  "private": true
+}
