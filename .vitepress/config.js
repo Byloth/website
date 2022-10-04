@@ -1,18 +1,19 @@
-import { defineConfig } from 'vitepress'
+import { resolve } from "path";
+import { defineConfig } from "vitepress";
 
 export default defineConfig({
-    lang: "it-IT",
-    title: "Byloth's Website",
-    description: "My personal static-generated website; based on Vue.js & VitePress.",  
+  lang: "it-IT",
+  title: "Byloth's Website",
+  description: "My personal static-generated website; based on Vue.js & VitePress.",
 
-    lastUpdated: true,
+  lastUpdated: true,
 
-    srcDir: "./src",
-    outDir: "./dist",
-    themeConfig: {
-      footer: {
-        message: "Rilasciato con Licenza CC BY-SA 4.0",
-        copyright: 'Copyright © 2014-2022 Matteo Bilotta'
-      }
+  srcDir: "./src",
+  outDir: "./dist",
+
+  vite: {
+    resolve: {
+      alias: { "@": resolve(__dirname, "../src") }
     }
+  }
 });

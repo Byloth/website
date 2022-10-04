@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": [
+      "ESNext",
+      "DOM",
+      "ScriptHost",
+      "WebWorker"
+    ],
+    "strict": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
+    "types": [
+      "vite/client",
+      "vitepress/client"
+    ]
+  },
+  "include": [
+    ".vitepress/**/*",
+    ".vitepress/**/*.json",
+
+    "src/**/*",
+    "src/**/*.json"
+  ]
+}
