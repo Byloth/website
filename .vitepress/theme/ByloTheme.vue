@@ -6,12 +6,19 @@
 </script>
 
 <template>
-    <div>
+    <header>
         <h1>{{ $data.site.value.title }}</h1>
-        <main>
+        <nav></nav>
+    </header>
+    <aside>
+    </aside>
+    <main>
+        <article>
             <Component :is="$route.component" />
-        </main>
-    </div>
+        </article>
+        <aside></aside>
+    </main>
+    <footer></footer>
 </template>
 
 <style lang="scss">
