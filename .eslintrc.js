@@ -4,11 +4,6 @@ module.exports = {
     "@byloth/eslint-config-typescript",
     "@byloth/eslint-config-vue"
   ],
-  globals: {
-    defineProps: true,
-    defineEmits: true,
-    defineExpose: true
-  },
   ignorePatterns: ["!/.vitepress/"],
   overrides: [
     {
