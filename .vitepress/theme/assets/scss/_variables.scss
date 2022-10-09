@@ -2,4 +2,28 @@
 {
     --primary-background: #FAFAFA;
     --secondary-background: #D7D7D7;
+
+    --container-size: 100%;
+    --sidebar-size: 300px;
+
+    @media only screen and (min-width: 576px)
+    {
+        --container-size: 540px;
+    }
+    @media only screen and (min-width: 768px)
+    {
+        --container-size: 720px;
+    }
+    @media only screen and (min-width: 992px)
+    {
+        --container-size: 960px;
+    }
+    @media only screen and (min-width: 1200px)
+    {
+        --container-size: 1140px;
+    }
+    @media only screen and (min-width: 1400px)
+    {
+        --container-size: 1320px;
+    }
 }

@@ -6,15 +6,21 @@
 
     import FloatingHeader from "./components/globals/FloatingHeader.vue";
     import HiddenFooter from "./components/globals/HiddenFooter.vue";
+    import SideBar from "./components/globals/SideBar.vue";
 
     const $route = useRoute();
     const $el = ref<HTMLElement | null>(null);
 
+    //
+    // SMELLS: Tutte queste logiche dinamiche, possono essere tranquillamente
+    //          sostituite con delle `media queries` ben organizzate.
+    //
     const onHeaderResize = (newSize: Size) =>
     {
         const _self = $el.value!;
 
-        _self.style.marginTop = `calc(${newSize.height}px + 1em)`;
+        _self.style.minHeight = `calc(100vh - (${newSize.height}px + 1em))`;
+        _self.style.paddingTop = `calc(${newSize.height}px + 1em)`;
     };
     const onFooterResize = (newSize: Size) =>
     {
@@ -25,28 +31,15 @@
 </script>
 
 <template>
-    <div id="layout" ref="$el">
+    <div id="layout">
+        <a href="#"
+           title="Vai diretto al contenuto"
+           style="display: none;">
+            Salta al contenuto
+        </a>
         <FloatingHeader @resize="onHeaderResize" />
-        <aside class="__debug">
-            <ul>
-                <li>
-                    <a href="#">First post</a>
-                </li>
-                <li>
-                    <a href="#">You won't believe me!</a>
-                </li>
-                <li>
-                    <a href="#">Yesterday this happened...</a>
-                </li>
-                <li>
-                    <a href="#">How to suft this site</a>
-                </li>
-                <li>
-                    <a href="#">What I do while I sleep</a>
-                </li>
-            </ul>
-        </aside>
-        <main class="__debug">
+        <SideBar />
+        <main ref="$el" class="layout__content">
             <nav class="__debug">
                 <ul>
                     <li>
@@ -61,7 +54,7 @@
                 </ul>
             </nav>
             <article class="__debug">
-                <Component :is="$route.component" />
+                <Component :is="$route.component" class="container" />
             </article>
             <aside class="__debug">
                 <strong>In this page:</strong>
@@ -97,11 +90,11 @@
 <style lang="scss">
     @import "./assets/scss/main";
 
-    #layout
+    .layout__content
     {
         background-color: var(--primary-background);
-        border-radius: 1em;
+        padding-top: calc(100px + 1em);
         min-height: 100vh;
-        padding: 1em 0px;
+        padding-left: calc(var(--sidebar-size) + 1em + 2px);
     }
 </style>

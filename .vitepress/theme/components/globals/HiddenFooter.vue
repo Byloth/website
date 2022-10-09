@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import ResizableElement from "../core/ResizableElement.vue";
+    import ResizableElement from "../utils/ResizableElement.vue";
 </script>
 
 <template>
@@ -31,20 +31,15 @@
     }
     .footer__color-bar
     {
-        // #70baff -> #ffba70
-
-        background: linear-gradient(90deg, #007fff, #7276fa, #a36bef, #c95edf, #e651cb, #fc45b4, #ff3e9a, #ff4080, #ff4b65, #ff5b4b, #ff6d2e, #ff7f00);
-        height: 100px;
-        background-size: 100% auto;
-        background-position: 0 0;
-        animation: gradient 2s infinite;
-        animation-fill-mode: forwards;
-        animation-timing-function: linear;
-        filter: blur(75px);
+        background: linear-gradient(90deg, #007fff, #7276fa, #a36bef, #c95edf, #e651cb, #fc45b4,
+                                           #ff3e9a, #ff4080, #ff4b65, #ff5b4b, #ff6d2e, #ff7f00);
+        height: 75px;
+        background-size: 100%;
+        filter: blur(25px);
         position: fixed;
-        bottom: -50px;
-        left: -50px;
-        right: -50px;
+        bottom: -25px;
+        left: -25px;
+        right: -25px;
         z-index: -1;
     }
 </style>

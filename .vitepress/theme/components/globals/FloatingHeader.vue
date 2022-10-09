@@ -1,26 +1,40 @@
 <script lang="ts" setup>
     import { useData } from "vitepress";
 
-    import ResizableElement from "../core/ResizableElement.vue";
+    import ResizableElement from "../utils/ResizableElement.vue";
 
     const $data = useData();
     const $site = $data.site;
 </script>
 
 <template>
-    <ResizableElement is="footer" id="header">
-        <a href="#">Skip to content</a>
-        <div class="header__content pure-g">
-            <h1 class="header__title pure-u-1-3">
-                <a href="#">{{ $site.title }}</a>
+    <ResizableElement is="header" id="header">
+        <div class="header__content card">
+            <h1 class="header__title card">
+                <a href="#" title="Naviga alla Home">{{ $site.title }}</a>
             </h1>
-            <nav class="pure-u-2-3">
+            <nav class="header__menu container">
                 <ul>
                     <li>
-                        <a href="#">Home</a>
+                        <a class="header__menu-item"
+                           href="#"
+                           title="Naviga alla Home">
+                            Home
+                        </a>
                     </li>
                     <li>
-                        <a href="#">Blog</a>
+                        <a class="header__menu-item"
+                           href="#"
+                           title="Naviga alla pagina d'informazioni">
+                            Chi sono
+                        </a>
+                    </li>
+                    <li>
+                        <a class="header__menu-item"
+                           href="#"
+                           title="Naviga al Blog">
+                            Blog
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -31,14 +45,46 @@
 <style lang="scss" scoped>
     #header
     {
-        background-color: var(--primary-background);
-        border: 1px solid #000;
-        border-radius: 1em;
         left: 0px;
-        margin: 0.5em 1em;
-        padding: 0.5em 1em;
         position: fixed;
         right: 0px;
         top: 0px;
+    }
+
+    .header__content
+    {
+        margin: 0.5em 1em;
+        margin-top: 2.5em;
+        padding: 0.5em 1em;
+        position: relative;
+    }
+
+    .header__title
+    {
+        left: calc(var(--sidebar-size) + 1em);
+        margin: 0px;
+        margin-top: -1em;
+        padding: 0.5em 1em;
+        position: absolute;
+        top: 0px;
+    }
+    .header__menu > ul
+    {
+        display: flex;
+        margin: 0px;
+        padding: 0px;
+        justify-content: flex-end;
+
+        & > li
+        {
+            display: block;
+            list-style: none;
+        }
+
+        .header__menu-item
+        {
+            display: inline-block;
+            padding: 0.5em 1em;
+        }
     }
 </style>

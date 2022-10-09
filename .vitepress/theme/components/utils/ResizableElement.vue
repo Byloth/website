@@ -22,6 +22,8 @@
         const width = _self.offsetWidth;
         const height = _self.offsetHeight;
 
+        console.log(_self);
+
         if ((_lastSize.width === width) && (_lastSize.height === height))
         {
             return;
