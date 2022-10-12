@@ -5,8 +5,9 @@
     import { Size } from "./core/types";
 
     import FloatingHeader from "./components/globals/FloatingHeader.vue";
+    import FloatingSidebar from "./components/globals/FloatingSidebar.vue";
     import HiddenFooter from "./components/globals/HiddenFooter.vue";
-    import SideBar from "./components/globals/SideBar.vue";
+    import NavBreadcrumb from "./components/ui/NavBreadcrumb.vue";
 
     const $route = useRoute();
     const $el = ref<HTMLElement | null>(null);
@@ -19,8 +20,8 @@
     {
         const _self = $el.value!;
 
-        _self.style.minHeight = `calc(100vh - (${newSize.height}px + 1em))`;
-        _self.style.paddingTop = `calc(${newSize.height}px + 1em)`;
+        _self.style.minHeight = `calc(99.5vh - (${newSize.height}px + 1rem))`;
+        _self.style.paddingTop = `calc(${newSize.height}px + 1rem)`;
     };
     const onFooterResize = (newSize: Size) =>
     {
@@ -38,50 +39,42 @@
             Salta al contenuto
         </a>
         <FloatingHeader @resize="onHeaderResize" />
-        <SideBar />
+        <FloatingSidebar />
         <main ref="$el" class="layout__content">
-            <nav class="__debug">
-                <ul>
-                    <li>
-                        <a href="#">Byloth's Website</a> /
-                    </li>
-                    <li>
-                        <a href="#">Blog</a> /
-                    </li>
-                    <li>
-                        <strong>This page</strong>
-                    </li>
-                </ul>
-            </nav>
-            <article class="__debug">
-                <Component :is="$route.component" class="container" />
-            </article>
-            <aside class="__debug">
-                <strong>In this page:</strong>
-                <ul>
-                    <li>
-                        <a href="#">Introduction</a>
-                    </li>
-                    <li>
-                        <a href="#">Thesis</a>
-                    </li>
-                    <li>
-                        <a href="#">Antithesis</a>
-                    </li>
-                    <li>
-                        <a href="#">Development</a>
-                    </li>
-                    <li>
-                        <a href="#">Conclusion</a>
-                    </li>
-                    <li>
-                        <a href="#">Notes & Sources</a>
-                    </li>
-                    <li>
-                        <a href="#">Final thanks</a>
-                    </li>
-                </ul>
-            </aside>
+            <div class="container" style="display: flex;">
+                <article class="__debug" style="flex: 1;">
+                    <NavBreadcrumb />
+                    <Component :is="$route.component" />
+                </article>
+                <aside style="border: 1px solid #000; width: 250px;">
+                    <div style="padding: 0.5rem 1rem;">
+                        <strong>In this page:</strong>
+                        <ul>
+                            <li>
+                                <a href="#">Introduction</a>
+                            </li>
+                            <li>
+                                <a href="#">Thesis</a>
+                            </li>
+                            <li>
+                                <a href="#">Antithesis</a>
+                            </li>
+                            <li>
+                                <a href="#">Development</a>
+                            </li>
+                            <li>
+                                <a href="#">Conclusion</a>
+                            </li>
+                            <li>
+                                <a href="#">Notes & Sources</a>
+                            </li>
+                            <li>
+                                <a href="#">Final thanks</a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
         </main>
         <HiddenFooter @resize="onFooterResize" />
     </div>
@@ -93,8 +86,28 @@
     .layout__content
     {
         background-color: var(--primary-background);
-        padding-top: calc(100px + 1em);
-        min-height: 100vh;
-        padding-left: calc(var(--sidebar-size) + 1em + 2px);
+        border-bottom-left-radius: calc(1em + 300px) 8em;
+        border-bottom-right-radius: calc(1em + 300px) 4em;
+        padding-top: calc(100px + 1rem);
+        min-height: 99.5vh;
+        padding-left: calc(var(--sidebar-size) + 1rem + 2px);
+
+        & > .container
+        {
+            margin-left: max(0px, calc((100% - 1321px) / 2));
+
+            @media only screen and (min-width: 992px)
+            {
+                margin-right: calc((100% - 644px) / 2);
+            }
+            @media only screen and (min-width: 1200px)
+            {
+                margin-right: calc((100% - 824px) / 2);
+            }
+            @media only screen and (min-width: 1400px)
+            {
+                margin-right: calc((100% - 1004px) / 2);
+            }
+        }
     }
 </style>

@@ -27,7 +27,7 @@
 
     .footer__content
     {
-        padding: 2em 4em;
+        padding: 2rem 4rem;
     }
     .footer__color-bar
     {
