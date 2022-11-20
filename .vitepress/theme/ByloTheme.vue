@@ -46,7 +46,7 @@
                     <NavBreadcrumb />
                     <Component :is="$route.component" />
                 </article>
-                <aside style="border: 1px solid #000; width: 250px;">
+                <aside style="border: 1px solid #000; width: var(--index-size);">
                     <div style="padding: 0.5rem 1rem;">
                         <strong>In this page:</strong>
                         <ul>
@@ -90,24 +90,11 @@
         border-bottom-right-radius: calc(1em + 300px) 4em;
         padding-top: calc(100px + 1rem);
         min-height: 99.5vh;
-        padding-left: calc(var(--sidebar-size) + 1rem + 2px);
+        padding-left: calc(var(--sidebar-size) + 2rem + 2px);
 
         & > .container
         {
-            margin-left: max(0px, calc((100% - 1321px) / 2));
-
-            @media only screen and (min-width: 992px)
-            {
-                margin-right: calc((100% - 644px) / 2);
-            }
-            @media only screen and (min-width: 1200px)
-            {
-                margin-right: calc((100% - 824px) / 2);
-            }
-            @media only screen and (min-width: 1400px)
-            {
-                margin-right: calc((100% - 1004px) / 2);
-            }
+            margin-left: var(--container-margin-left);
         }
     }
 </style>

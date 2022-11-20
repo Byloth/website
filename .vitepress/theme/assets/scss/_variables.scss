@@ -1,29 +1,82 @@
 :root
 {
+    $sidebar-size: 300px;
+    $index-size: 250px;
+
     --primary-background: #FAFAFA;
     --secondary-background: #D7D7D7;
 
     --container-size: 100%;
-    --sidebar-size: 300px;
+    --sidebar-size: #{$sidebar-size};
+    --index-size: #{$index-size};
 
+    /*
+     * CSS breakpoints based on: Bootstrap
+     */
     @media only screen and (min-width: 576px)
     {
         --container-size: 540px;
     }
+    /*
+     * Previous website version -> 600px (Max: 565px)
+     */
+    /*
+     * Tailwind CSS -> 640px
+     */
     @media only screen and (min-width: 768px)
     {
         --container-size: 720px;
     }
+    /*
+     * Previous website version:
+     *  854px (Max: 820px) -> the left sidebar opens by swifting the page content right
+     */
+    /*
+     * VitePress:
+     *  960px -> the left sidebar starts to be visible.
+     */
     @media only screen and (min-width: 992px)
     {
         --container-size: 960px;
     }
+    /*
+     * Previous website version:
+     *  1024px (Max: 944px) -> the left sidebar remains open and fixed
+     *
+     * Tailwind CSS -> 1024px
+     */
     @media only screen and (min-width: 1200px)
     {
         --container-size: 1140px;
     }
+    /*
+     * VitePress:
+     *  1280px -> the right sidebar starts to be visible
+     *
+     * Previous website version -> 1280px (Max: 945px)
+     * Tailwind CSS -> 1280px
+     */
     @media only screen and (min-width: 1400px)
     {
-        --container-size: 1320px;
+        $container-size: 1182px;
+
+        $container-space-taken: calc($container-size + 2px);
+        $sidebar-space-taken: calc($sidebar-size + (16px * 2) + 2px);
+        $sidebar-half-space-taken: calc($sidebar-space-taken / 2);
+
+        $container-breakpoint: calc($container-space-taken + $sidebar-half-space-taken);
+        $header-menu-breakpoint: calc($container-space-taken - $sidebar-half-space-taken);
+        $sidebar-breakpoint: calc($container-space-taken + $sidebar-space-taken + $sidebar-half-space-taken);
+
+        --container-size: #{$container-size};
+        --container-margin-left: max(0px, (100% - #{$container-breakpoint}) / 2);
+        --header-menu-margin-left: max(#{$sidebar-space-taken}, (100% - #{$header-menu-breakpoint}) / 2);
+        --sidebar-left: max(0px, (100% - #{$sidebar-breakpoint}) / 2);
     }
+    /*
+     * Previous website version -> 1440px (Max: 1070px)
+     */
+    /*
+     * Tailwind CSS -> 1536px
+     */
 }

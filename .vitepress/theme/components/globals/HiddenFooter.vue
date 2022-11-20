@@ -5,9 +5,13 @@
 <template>
     <ResizableElement is="footer" id="footer">
         <div class="footer__content">
-            Designed & Developed with ♥ by Byloth.<br />
+            Designed & Developed with
+            <span class="fa-solid fa-heart"></span>
+            by Byloth.<br />
             Proudly based on
-            <a href="https://vuejs.org/">Vue.js 3</a> &
+            <a href="https://vuejs.org/">
+                <span class="fa-brands fa-vuejs"></span>
+                Vue.js</a> &
             <a href="https://vitepress.vuejs.org/">VitePress</a>.
         </div>
         <div class="footer__color-bar"></div>

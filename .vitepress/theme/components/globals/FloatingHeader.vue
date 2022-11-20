@@ -70,7 +70,7 @@
     }
     .header__menu
     {
-        // --container-size: 1376px;
+        margin-left: var(--header-menu-margin-left);
 
         & > ul
         {

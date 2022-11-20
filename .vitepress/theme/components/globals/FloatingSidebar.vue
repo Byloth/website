@@ -31,8 +31,7 @@
     {
         bottom: 0px;
         margin: 0.5rem 1rem;
-        left: 0px;
-        left: max(0px, calc((100% - 1039px) / 2 + -300px));
+        left: var(--sidebar-left);
         position: fixed;
         top: 0px;
         width: var(--sidebar-size);
