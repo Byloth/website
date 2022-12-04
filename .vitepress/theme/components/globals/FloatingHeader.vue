@@ -55,6 +55,7 @@
     {
         margin: 0.5rem 1rem;
         margin-top: 2.5rem;
+        min-height: 35px;
         padding: 0.5rem 1rem;
         position: relative;
     }
@@ -70,6 +71,7 @@
     }
     .header__menu
     {
+        display: none;
         margin-left: var(--header-menu-margin-left);
 
         & > ul
@@ -90,6 +92,11 @@
                 display: inline-block;
                 padding: 0.5rem 1rem;
             }
+        }
+
+        @media only screen and (min-width: 768px)
+        {
+            display: block;
         }
     }
 </style>

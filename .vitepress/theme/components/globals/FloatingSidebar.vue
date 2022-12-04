@@ -30,11 +30,17 @@
     #side-bar
     {
         bottom: 0px;
+        display: none;
         margin: 0.5rem 1rem;
         left: var(--sidebar-left);
         position: fixed;
         top: 0px;
         width: var(--sidebar-size);
+
+        @media only screen and (min-width: 1281px)
+        {
+            display: block;
+        }
     }
 
     .side-bar__content
