@@ -61,7 +61,7 @@
 
     .header__title
     {
-        left: calc(max(var(--sidebar-size), calc(((100% - 1039px) / 2) + 0.5em)) + 2rem);
+        left: var(--header-title-margin-left);
         margin: 0px;
         margin-top: -1rem;
         padding: 0.5rem 1rem;

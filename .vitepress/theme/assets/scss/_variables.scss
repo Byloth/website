@@ -56,21 +56,30 @@
      * Previous website version -> 1280px (Max: 945px)
      * Tailwind CSS -> 1280px
      */
-    @media only screen and (min-width: 1400px)
+    // @media only screen and (min-width: 1400px)
+    @media only screen and (min-width: 1533px)
     {
         $container-size: 1182px;
 
-        $container-space-taken: calc($container-size + 2px);
-        $sidebar-space-taken: calc($sidebar-size + (16px * 2) + 2px);
+        $border-size: 2px;
+        $extra-size: calc(16px * 2);
+        $sidebar-extra-size: calc($extra-size + $border-size);
+
+        $container-space-taken: calc($container-size + $border-size);
+        $sidebar-space-taken: calc($sidebar-size + $sidebar-extra-size);
         $sidebar-half-space-taken: calc($sidebar-space-taken / 2);
 
+        $header-menu-min-margin: calc($sidebar-size + ($sidebar-extra-size / 2));
+        $header-title-min-margin: calc($sidebar-size + $sidebar-extra-size);
+
         $container-breakpoint: calc($container-space-taken + $sidebar-half-space-taken);
-        $header-menu-breakpoint: calc($container-space-taken - $sidebar-half-space-taken);
+        $header-menu-breakpoint: calc($container-space-taken - $sidebar-half-space-taken - $sidebar-extra-size);
         $sidebar-breakpoint: calc($container-space-taken + $sidebar-space-taken + $sidebar-half-space-taken);
 
         --container-size: #{$container-size};
         --container-margin-left: max(0px, (100% - #{$container-breakpoint}) / 2);
-        --header-menu-margin-left: max(#{$sidebar-space-taken}, (100% - #{$header-menu-breakpoint}) / 2);
+        --header-menu-margin-left: max(#{$header-menu-min-margin}, (100% - #{$header-menu-breakpoint}) / 2);
+        --header-title-margin-left: max(#{$header-title-min-margin}, (100% - #{$header-menu-breakpoint}) / 2);
         --sidebar-left: max(0px, (100% - #{$sidebar-breakpoint}) / 2);
     }
     /*
