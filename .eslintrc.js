@@ -4,19 +4,8 @@ module.exports = {
     "@byloth/eslint-config-typescript",
     "@byloth/eslint-config-vue"
   ],
-  ignorePatterns: ["!/.vitepress/"],
-  overrides: [
-    {
-      files: ["config.js"],
-      rules: { "indent": ["error", 2, { SwitchCase: 1 }] }
-    },
-    {
-      files: ["*.json"],
-      rules: { "max-len": "off" }
-    },
-    {
-      files: ["*.ts"],
-      rules: { "no-dupe-class-members": "off" }
-    }
-  ]
+  overrides: [{
+    files: ["*.ts"],
+    rules: { "no-dupe-class-members": "off" }
+  }]
 };

@@ -33,8 +33,11 @@
         emit("resize", { width, height });
     });
 
-    onMounted(updateSize);
-    useEventListener(window, "resize", updateSize);
+    onMounted(() =>
+    {
+        updateSize();
+        useEventListener(window, "resize", updateSize);
+    });
 </script>
 
 <template>

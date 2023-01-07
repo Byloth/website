@@ -9,6 +9,7 @@ export default defineConfig({
   lastUpdated: true,
 
   srcDir: "./src",
+  cacheDir: "./cache",
   outDir: "./dist",
 
   vite: {
