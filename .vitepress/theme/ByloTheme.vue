@@ -2,12 +2,12 @@
     import { ref } from "vue";
     import { useRoute } from "vitepress";
 
-    import { Size } from "./core/types";
-
     import FloatingHeader from "./components/globals/FloatingHeader.vue";
     import FloatingSidebar from "./components/globals/FloatingSidebar.vue";
     import HiddenFooter from "./components/globals/HiddenFooter.vue";
     import NavBreadcrumb from "./components/ui/NavBreadcrumb.vue";
+
+    import type { Size } from "./types.js";
 
     const $route = useRoute();
     const $el = ref<HTMLElement | null>(null);

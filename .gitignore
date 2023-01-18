@@ -16,6 +16,8 @@ Desktop.ini
 
 # Generated & compiled files
 #
+/tsconfig.tsbuildinfo
+
 /cache/
 /dist/
 

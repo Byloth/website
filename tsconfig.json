@@ -3,7 +3,7 @@
     "composite": true,
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "lib": [
       "ESNext",
       "DOM",
@@ -13,14 +13,20 @@
     "strict": true,
     "jsx": "preserve",
     "noEmit": true,
+    "noImplicitThis": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
+    "preserveValueImports": true,
     "experimentalDecorators": true,
+    "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "paths": { "@/*": ["src/*"] },
+    "paths": {
+      "@/*": ["src/*"],
+      "@theme/*": [".vitepress/theme/*"]
+    },
     "types": [
       "vite/client",
       "vitepress/client"

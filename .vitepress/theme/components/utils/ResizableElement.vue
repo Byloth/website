@@ -2,7 +2,7 @@
     import { onMounted, ref } from "vue";
     import { useEventListener, useDebounceFn } from "@vueuse/core";
 
-    import { Size } from "../../core/types";
+    import type { Size } from "@theme/types.js";
 
     defineProps({
         is: {

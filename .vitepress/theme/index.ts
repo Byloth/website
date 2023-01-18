@@ -1,6 +1,6 @@
-import { Theme as ThemeConfig } from "vitepress";
+import type { Theme as ThemeConfig } from "vitepress";
 
-import ByloTheme from "./ByloTheme.vue";
+import ByloTheme from "@theme/ByloTheme.vue";
 
 const themeConfig: ThemeConfig = {
     Layout: ByloTheme,

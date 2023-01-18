@@ -1,7 +1,7 @@
 {
   "name": "@byloth/website",
   "version": "6.0.0-rc.1",
-  "description": "My personal static-generated website; based on Vue.js & VitePress.",
+  "description": "My personal static-generated website; based on Vue.js & VitePress. 🌐",
   "homepage": "https://www.byloth.dev/",
   "repository": {
     "type": "git",
@@ -15,7 +15,8 @@
     "email": "me@byloth.net",
     "url": "https://www.byloth.dev/"
   },
-  "license": "GPL-3.0-or-later",
+  "license": "GPL-3.0",
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
@@ -27,23 +28,23 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
-    "@vueuse/core": "^9.10.0",
+    "@vueuse/core": "^9.11.0",
     "purecss": "^3.0.0",
     "vue": "^3.2.45"
   },
   "devDependencies": {
-    "@byloth/eslint-config-typescript": "^2.4.0",
-    "@byloth/eslint-config-vue": "^2.4.0",
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
-    "eslint": "^8.31.0",
-    "eslint-plugin-vue": "^9.8.0",
+    "@byloth/eslint-config-typescript": "^2.4.1",
+    "@byloth/eslint-config-vue": "^2.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "^8.32.0",
+    "eslint-plugin-vue": "^9.9.0",
     "sass": "^1.57.1",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
-    "vitepress": "^1.0.0-alpha.35",
+    "vitepress": "^1.0.0-alpha.38",
     "vue-eslint-parser": "^9.1.0",
-    "vue-tsc": "^1.0.22"
+    "vue-tsc": "^1.0.24"
   },
   "private": true
 }

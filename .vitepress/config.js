@@ -4,7 +4,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   lang: "it-IT",
   title: "Byloth's Website",
-  description: "My personal static-generated website; based on Vue.js & VitePress.",
+  description: "My personal static-generated website; based on Vue.js & VitePress. 🌐",
 
   lastUpdated: true,
 
@@ -14,7 +14,10 @@ export default defineConfig({
 
   vite: {
     resolve: {
-      alias: { "@": resolve(__dirname, "../src") }
+      alias: {
+        "@": resolve(__dirname, "../src"),
+        "@theme": resolve(__dirname, "./theme"),
+      }
     }
   }
 });
