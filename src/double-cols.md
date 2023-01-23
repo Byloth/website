@@ -1,0 +1,3 @@
+---
+layout: double-cols
+---
