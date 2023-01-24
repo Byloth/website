@@ -9,7 +9,7 @@
     --primary-background: #FAFAFA;
     --secondary-background: #D7D7D7;
 
-    --container-size: 100%;
+    --container-size: 21cm;
     --sidebar-size: #{$sidebar-size};
     --index-size: #{$index-size};
 
@@ -35,7 +35,7 @@
      */
     @media only screen and (min-width: 947px)
     {
-        $container-size: 930px;
+        $container-size: 21cm;
 
         $header-title-breakpoint: calc($container-size - $extra-size);
 
@@ -56,7 +56,7 @@
      */
     @media only screen and (min-width: 1281px)
     {
-        $container-size: 930px;
+        $container-size: 21cm;
 
         $container-space-taken: calc($container-size + $border-size);
         $sidebar-space-taken: calc($sidebar-size + $extra-size);
@@ -89,7 +89,7 @@
      */
     @media only screen and (min-width: 1533px)
     {
-        $container-size: 1182px;
+        $container-size: 21cm;
 
         $container-space-taken: calc($container-size + $border-size);
         $sidebar-space-taken: calc($sidebar-size + $extra-size);

@@ -12,6 +12,8 @@
         <DoubleCols v-if="frontmatter.layout === 'double-cols'" />
         <Default v-else />
     </div>
+    <div v-else>
+    </div>
 </template>
 
 <style lang="scss">
