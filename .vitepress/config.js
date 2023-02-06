@@ -16,7 +16,7 @@ export default defineConfig({
     resolve: {
       alias: {
         "@": resolve(__dirname, "../src"),
-        "@theme": resolve(__dirname, "./theme"),
+        "@theme": resolve(__dirname, "./theme")
       }
     }
   }
