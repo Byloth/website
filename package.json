@@ -27,7 +27,7 @@
     "ci": "yarn install --frozen-lockfile"
   },
   "dependencies": {
-    "@byloth/vue-scroll-animator": "^3.0.0-rc.4",
+    "@byloth/vue-scroll-animator": "^3.0.0-rc.5",
     "@fortawesome/fontawesome-free": "^6.2.1",
     "@vueuse/core": "^9.12.0",
     "purecss": "^3.0.0",
