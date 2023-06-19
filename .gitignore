@@ -16,7 +16,10 @@ Desktop.ini
 
 # Generated & compiled files
 #
+/cache/
 /dist/
+
+/tsconfig.tsbuildinfo
 
 # Log files
 #

@@ -3,20 +3,22 @@
     "composite": true,
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "lib": [
       "ESNext",
       "DOM",
-      "ScriptHost",
+      "DOM.Iterable",
       "WebWorker"
     ],
     "strict": true,
     "jsx": "preserve",
     "noEmit": true,
+    "noImplicitThis": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
@@ -29,8 +31,15 @@
   "include": [
     ".vitepress/**/*",
     ".vitepress/**/*.json",
+    ".vitepress/**/*.vue",
 
     "src/**/*",
-    "src/**/*.json"
+    "src/**/*.json",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "cache",
+    "dist",
+    "node_modules"
   ]
 }
