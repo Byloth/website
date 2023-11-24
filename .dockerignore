@@ -1,0 +1,46 @@
+# Files created by OS
+#
+**/.DS_Store
+**/Desktop.ini
+
+# Files created by IDE
+#
+.idea/
+.vscode/
+
+*.code-workspace
+
+# Downloadable & installable modules & components
+#
+node_modules/
+
+# Generated & compiled files
+#
+cache/
+dist/
+
+tsconfig.tsbuildinfo
+
+# Log files
+#
+yarn-error.log
+
+# GIT files
+#
+.git/
+
+**/.gitignore
+
+# Docker & build files
+#
+.dockerignore
+docker-compose.yml
+Dockerfile
+
+# Other project files
+#
+.editorconfig
+.eslintrc.cjs
+
+LICENSE
+README.md
