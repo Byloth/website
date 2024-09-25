@@ -19,11 +19,11 @@ node_modules/
 cache/
 dist/
 
-tsconfig.tsbuildinfo
+tsconfig/*.tsbuildinfo
 
 # Log files
 #
-yarn-error.log
+*.log
 
 # GIT files
 #

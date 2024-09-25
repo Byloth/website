@@ -19,11 +19,11 @@ Desktop.ini
 /cache/
 /dist/
 
-/tsconfig.tsbuildinfo
+/tsconfig/*.tsbuildinfo
 
 # Log files
 #
-/yarn-error.log
+*.log
 
 # Not ignored
 #

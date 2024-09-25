@@ -2,16 +2,42 @@
 
 My personal static-generated website; based on Vue.js & VitePress.
 
-## Getting started
+## Prerequisites
 
-### Install dependencies
+Make sure to have [**Node.js**](https://nodejs.org/) installed on your system.
 
-```sh
-yarn install
+### Package Manager
+
+Enable [`pnpm`](https://pnpm.io/) as the package manager for the project:
+
+```bash
+corepack enable pnpm
 ```
 
-### Run development server
+## Project Setup
 
 ```sh
-yarn dev
+pnpm install
 ```
+
+### Compile and Hot-Reload for Development
+
+```sh
+pnpm dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+pnpm build
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+pnpm lint
+```
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
