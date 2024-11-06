@@ -5,10 +5,14 @@ hero:
   name: I am...
   text: Matteo Bilotta 👋
   tagline: I usually write software that works.
+  image:
+    src: /byloth.png
+    alt: Logo di Bylothink
+
   actions:
     - theme: brand
-      text: Vai al Blog
-      link: /blog/
+      text: Vai a Mastodon
+      link: https://mastodon.uno/@byloth
     - theme: alt
       text: Vai a GitHub
       link: https://github.com/byloth
