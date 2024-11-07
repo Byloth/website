@@ -21,7 +21,12 @@ export default defineConfig({
     ["link", { rel: "apple-touch-icon", href: "/favicons/bylothink-180x180.png", sizes: "180x180", type: "image.png" }],
 
     // Mastodon verification
-    ["link", { rel: "me", href: "https://mastodon.uno/@byloth" }]
+    ["link", { rel: "me", href: "https://mastodon.uno/@byloth" }],
+    ["script", {
+      "src": "https://cloud.umami.is/script.js",
+      "data-website-id": "09af29ca-054d-4146-8055-9ce85c17bfe9",
+      "defer": ""
+    }]
   ],
 
   lastUpdated: true,
