@@ -34,7 +34,7 @@ export default defineConfig({
     logo: "/favicons/bylothink-32x32.png",
     socialLinks: [
       { icon: "github", link: "https://github.com/Byloth" },
-      { icon: "mastodon", link: "ttps://mastodon.uno/@byloth" },
+      { icon: "mastodon", link: "https://mastodon.uno/@byloth" },
       { icon: "instagram", link: "https://www.instagram.com/byloth.dev/" },
       { icon: "linkedin", link: "https://www.linkedin.com/in/byloth/" },
       { icon: "spotify", link: "https://open.spotify.com/user/21q4g5zjmgfv5qctquiqawkgq" },
