@@ -10,18 +10,12 @@ indent_size = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[config.{js,ts}]
-indent_size = 2
-
-[*.config.{js,ts}]
-indent_size = 2
-
-[.eslintrc.{cjs,js}]
+[*.config.{js,mjs,ts,mts}]
 indent_size = 2
 
 [*.{json,yml}]
 indent_size = 2
 
-[*.md]
+[*.{js,md,ts,vue}]
 max_line_length = off
 trim_trailing_whitespace = false

@@ -19,7 +19,9 @@ Desktop.ini
 /cache/
 /dist/
 
-/tsconfig/*.tsbuildinfo
+# Environmental files
+#
+.env
 
 # Log files
 #

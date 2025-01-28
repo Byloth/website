@@ -1,6 +1,6 @@
 {
   "name": "@byloth/website",
-  "version": "6.0.0-rc.3",
+  "version": "6.0.0-rc.4",
   "description": "My personal static-generated website; based on Vue.js & VitePress. 🌐",
   "keywords": [
     "Vue.js",
@@ -29,25 +29,21 @@
     "build": "vitepress build",
     "preview": "vitepress preview",
     "typecheck": "vue-tsc --build --force",
-    "lint": "eslint --ext .cjs,.js,.json,.ts,.vue --ignore-path .gitignore .",
+    "lint": "eslint .",
     "prepare": "husky"
   },
   "dependencies": {
-    "vue": "^3.5.12"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@byloth/eslint-config-nuxt": "^2.8.3",
-    "@types/node": "^20.17.6",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.1",
-    "eslint-plugin-vue": "^9.30.0",
-    "husky": "^9.1.6",
-    "typescript": "^5.6.3",
-    "vite": "^5.4.10",
-    "vitepress": "^1.5.0",
-    "vue-eslint-parser": "^9.4.3",
-    "vue-tsc": "^2.1.10"
+    "@byloth/eslint-config-nuxt": "^3.0.3",
+    "@eslint/compat": "^1.2.5",
+    "@types/node": "^22.12.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "vitepress": "^1.6.3",
+    "vue-tsc": "^2.2.0"
   },
   "private": true,
   "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
