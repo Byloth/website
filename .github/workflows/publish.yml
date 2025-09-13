@@ -1,0 +1,64 @@
+name: Publish on GitHub Pages
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Project build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning source code
+        uses: actions/checkout@v4
+      - name: "`bun` installation"
+        uses: oven-sh/setup-bun@v2
+      - name: Installing dependencies
+        run: bun install
+      - name: Linting the source code
+        run: bun run lint
+        env:
+          NODE_ENV: production
+
+      - name: Checking type consistency
+        run: bun run typecheck
+      - name: Generating the static site
+        run: bun run generate
+      - name: Uploading the artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: byloth-website
+          path: dist
+
+  deploy:
+    name: Artifact deploy
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Download the artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: byloth-website
+
+      - name: Configuring GitHub Pages
+        uses: actions/configure-pages@v4
+      - name: Uploading to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - id: deployment
+        name: Deploying to GitHub Pages
+        uses: actions/deploy-pages@v4
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
