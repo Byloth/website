@@ -1,15 +1,13 @@
 <script lang="ts" setup>
-    import FontAwesome from "@/components/ui/FontAwesome.vue";
-
     const YEAR = new Date().getFullYear();
 </script>
 
 <template>
     <footer class="hidden-footer">
         <p>
-            Made with <FontAwesome icon="heart"
-                                   alt="Lots of love!"
-                                   title="Lots of love!" /> by
+            Made with
+            <span class="fa-solid fa-heart" title="Lots of love!"></span>
+            by
             <a class="link bold"
                href="https://www.byloth.dev/"
                target="_blank"

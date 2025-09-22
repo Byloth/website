@@ -5,12 +5,12 @@
 </script>
 
 <template>
-    <!-- eslint-disable vue/no-multiple-template-root -->
-
-    <NuxtLayout>
-        <NuxtPage />
-    </NuxtLayout>
-    <AlertHandler />
+    <UApp>
+        <NuxtLayout>
+            <NuxtPage />
+        </NuxtLayout>
+        <AlertHandler />
+    </UApp>
 </template>
 
 <style lang="scss">

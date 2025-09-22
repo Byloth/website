@@ -1,25 +1,24 @@
 <script lang="ts" setup>
-    import FontAwesome from "@/components/ui/FontAwesome.vue";
 </script>
 
 <template>
     <nav class="navigation-bar">
         <div class="container row">
             <div class="col">
-                <RouterLink :to="{ name: 'index' }" class="link bold">
+                <ULink :to="{ name: 'index' }" class="link bold">
                     Byloth's Website
-                </RouterLink>
+                </ULink>
             </div>
             <div class="col right">
-                <RouterLink :to="{ name: 'about' }" class="link">
+                <ULink :to="{ name: 'about' }" class="link">
                     About
-                </RouterLink>
+                </ULink>
                 <a class="link"
                    href="https://github.com/Byloth/website"
                    target="_blank"
                    title="Byloth's Website on GitHub">
                     GitHub
-                    <FontAwesome icon="square-arrow-up-right" />
+                    <span class="fa-solid fa-square-arrow-up-right"></span>
                 </a>
             </div>
         </div>

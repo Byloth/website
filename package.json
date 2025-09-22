@@ -42,9 +42,8 @@
   },
   "dependencies": {
     "@byloth/nuxt-vuert-module": "^1.4.1",
-    "@fortawesome/fontawesome-free": "^7.0.1",
-    "@pinia/nuxt": "0.11.2",
-    "bootstrap": "^5.3.8",
+    "@nuxt/ui": "^3.3.4",
+    "@pinia/nuxt": "^0.11.2",
     "nuxt": "^4.1.2",
     "pinia": "^3.0.3",
     "vue": "^3.5.21",
@@ -52,11 +51,11 @@
   },
   "devDependencies": {
     "@byloth/eslint-config-nuxt": "^3.2.1",
-    "@eslint/compat": "^1.3.2",
+    "@eslint/compat": "^1.4.0",
     "husky": "^9.1.7",
-    "sass": "^1.92.1",
+    "sass": "^1.93.0",
     "typescript": "^5.9.2",
-    "vue-tsc": "^3.0.7"
+    "vue-tsc": "^3.0.8"
   },
   "private": true
 }

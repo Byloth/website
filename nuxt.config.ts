@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    baseURL: "/",
     pageTransition: { name: "page", mode: "out-in" }
   },
   compatibilityDate: "2025-07-15",
@@ -16,6 +15,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     "@byloth/nuxt-vuert-module",
+    "@nuxt/ui",
     "@pinia/nuxt"
   ],
   typescript: {
