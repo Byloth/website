@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     "@byloth/nuxt-vuert-module",
+    "@nuxt/content",
     "@nuxt/ui",
     "@pinia/nuxt"
   ],

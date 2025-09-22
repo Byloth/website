@@ -42,7 +42,8 @@
   },
   "dependencies": {
     "@byloth/nuxt-vuert-module": "^1.4.1",
-    "@nuxt/ui": "^3.3.4",
+    "@nuxt/content": "^3.7.1",
+    "@nuxt/ui": "^4.0.0-beta.0",
     "@pinia/nuxt": "^0.11.2",
     "nuxt": "^4.1.2",
     "pinia": "^3.0.3",
