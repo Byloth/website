@@ -3,22 +3,26 @@
 </script>
 
 <template>
-    <footer class="hidden-footer">
-        <p>
-            Made with
-            <span class="fa-solid fa-heart" title="Lots of love!"></span>
-            by
-            <a class="link bold"
-               href="https://www.byloth.dev/"
-               target="_blank"
-               title="Byloth's Website">Byloth</a>.
-        </p>
-        <p>
-            <small>
-                Copywrong ©️ 2014 - {{ YEAR }} “<b>Byloth's Website</b>”. All the wrongs reserved.
-            </small>
-        </p>
-    </footer>
+    <UFooter class="hidden-footer">
+        <template #left>
+            <p class="hidden-footer__content">
+                Made with
+                <span class="fa-solid fa-heart" title="Lots of love!"></span>
+                by
+                <ULink href="https://www.byloth.dev/"
+                       target="_blank"
+                       class="hidden-footer__link">Byloth</ULink>.
+            </p>
+        </template>
+
+        <template #right>
+            <p class="hidden-footer__content">
+                <small>
+                    Copywrong ©️ 2014 - {{ YEAR }} "<b>Byloth's Website</b>". All the wrongs reserved.
+                </small>
+            </p>
+        </template>
+    </UFooter>
 </template>
 
 <style lang="scss" scoped>
@@ -37,26 +41,43 @@
 
     .hidden-footer
     {
-        align-items: center;
         bottom: 0px;
         color: #FFF;
-        display: flex;
-        flex-direction: column;
         height: var(--hidden-footer-height);
-        justify-content: center;
         left: 0px;
         position: fixed;
         right: 0px;
         text-align: center;
         z-index: -1;
 
-        p
+        // Override UFooter styles to center content
+        :deep(.ui-footer-container)
+        {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+
+            @media (min-width: 1024px)
+            {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        &__content
         {
             margin-bottom: 0.25em;
 
             &:last-child
             {
                 margin-bottom: 0px;
+            }
+
+            @media (min-width: 1024px)
+            {
+                margin-bottom: 0;
             }
         }
 
@@ -67,21 +88,16 @@
             cursor: help;
         }
 
-        .link
+        &__link
         {
             $link-color: #007FFF;
 
-            --link-color: #{$link-color};
+            color: $link-color;
+            font-weight: bold;
+
             &:hover
             {
-                --link-color: #{color.adjust($link-color, $lightness: 10%)};
-            }
-
-            color: var(--link-color);
-
-            &.bold
-            {
-                font-weight: bold;
+                color: color.adjust($link-color, $lightness: 10%);
             }
         }
     }

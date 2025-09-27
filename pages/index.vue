@@ -1,6 +1,8 @@
 <script lang="ts" setup>
     import AppButton from "@/components/ui/AppButton.vue";
 
+    definePageMeta({ layout: "home" });
+
     const $vuert = useVuert();
 
     const emitSuccess = () => $vuert.emit({
@@ -78,7 +80,7 @@
 </script>
 
 <template>
-    <div id="home-page" class="page">
+    <main id="home-page" class="page">
         <h1>Byloth's Website</h1>
         <p>The Byloth's Website is up and running! 🚀</p>
         <div>
@@ -95,19 +97,25 @@
                 Danger
             </AppButton>
         </div>
-    </div>
+    </main>
 </template>
 
 <style lang="scss" scoped>
     #home-page
     {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 100dvh;
-        padding-top: var(--navigation-bar-height);
+        padding: 1rem 0.5rem;
         text-align: center;
+
+        // TODO: Let's test these breakpoints and see if they work well, before changing them.
+        //
+        @media (min-width: 768px)
+        {
+            padding: 2rem 1rem;
+        }
+        @media (min-width: 1024px)
+        {
+            padding: 3rem 1.5rem;
+        }
 
         .btn
         {
