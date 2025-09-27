@@ -1,6 +1,6 @@
 {
   "name": "@byloth/website",
-  "version": "6.0.0-rc.4",
+  "version": "6.0.0-rc.5",
   "description": "My personal static-generated website; based on Vue.js & VitePress. 🌐",
   "keywords": [
     "Vue.js",
@@ -33,18 +33,17 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "vue": "^3.5.13"
+    "vue": "^3.5.22"
   },
   "devDependencies": {
-    "@byloth/eslint-config-nuxt": "^3.0.3",
-    "@eslint/compat": "^1.2.5",
-    "@types/node": "^22.12.0",
+    "@byloth/eslint-config-nuxt": "^3.2.1",
+    "@eslint/compat": "^1.4.0",
+    "@types/node": "^22.18.6",
     "husky": "^9.1.7",
-    "typescript": "^5.7.3",
-    "vite": "^6.0.11",
-    "vitepress": "^1.6.3",
-    "vue-tsc": "^2.2.0"
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7",
+    "vitepress": "^1.6.4",
+    "vue-tsc": "^3.0.8"
   },
-  "private": true,
-  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
+  "private": true
 }
