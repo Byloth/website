@@ -2,8 +2,9 @@
 title: Home
 layout: home
 hero:
-  name: I am...
-  text: Matteo Bilotta 👋
+  text: I am...
+  name: Matteo Bilotta
+  emoji: 👋
   tagline: I usually write software that works.
   image:
     src: /byloth.png
