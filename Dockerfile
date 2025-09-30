@@ -1,23 +1,20 @@
-FROM node:22.13-alpine AS builder
+FROM oven/bun:1.2-alpine AS builder
 
 RUN apk add --no-cache \
-    git \
- \
- && corepack enable
+    git
 
 WORKDIR "/opt/byloth/website"
 COPY ./package.json ./package.json
-COPY ./pnpm-lock.yaml ./pnpm-lock.yaml
-RUN pnpm install --frozen-lockfile \
+COPY ./bun.lock ./bun.lock
+RUN bun install --frozen-lockfile \
  \
- && rm -rf /root/.cache \
-           /tmp/v8-compile-cache-0
+ && rm -rf /root/.bun
 
 COPY ./ ./
 
-RUN pnpm build
+RUN bun build
 
-FROM nginx:1.27-alpine
+FROM nginx:1.29-alpine
 
 COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 
