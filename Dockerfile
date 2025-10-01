@@ -12,7 +12,7 @@ RUN bun install --frozen-lockfile \
 
 COPY ./ ./
 
-RUN bun build
+RUN bun run build
 
 FROM nginx:1.29-alpine
 

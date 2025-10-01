@@ -40,6 +40,7 @@
     "@eslint/compat": "^1.4.0",
     "@types/node": "^22.18.7",
     "husky": "^9.1.7",
+    "sass": "^1.93.2",
     "typescript": "^5.9.2",
     "vite": "^7.1.7",
     "vitepress": "^1.6.4",
