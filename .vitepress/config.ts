@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
@@ -15,8 +15,8 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@": resolve(__dirname, "../src"),
-        "@theme": resolve(__dirname, "./theme")
+        "@": fileURLToPath(new URL("../src", import.meta.url)),
+        "@theme": fileURLToPath(new URL("./theme", import.meta.url))
       }
     }
   }

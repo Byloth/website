@@ -4,7 +4,7 @@ import { createScrollAnimator } from "@byloth/vue-scroll-animator";
 
 import ByloTheme from "@theme/ByloTheme.vue";
 
-const themeConfig: Theme = {
+export default {
     Layout: ByloTheme,
     NotFound: () => "Error 404 - Page not found!",
 
@@ -15,6 +15,5 @@ const themeConfig: Theme = {
         app.use(scrollAnimator);
     },
     setup: () => { /* ... */ }
-};
 
-export default themeConfig;
+} satisfies Theme;

@@ -16,14 +16,16 @@ Desktop.ini
 
 # Generated & compiled files
 #
-/tsconfig.tsbuildinfo
-
 /cache/
 /dist/
 
+# Environmental files
+#
+.env
+
 # Log files
 #
-/yarn-error.log
+*.log
 
 # Not ignored
 #
