@@ -33,7 +33,7 @@
 </script>
 
 <template>
-    <UHeader to="index" class="floating-header" :class="[`floating-header--${mode}`]">
+    <UHeader to="/" class="floating-header" :class="[`floating-header--${mode}`]">
         <!-- Custom Logo and Title -->
         <template #title>
             <!-- TODO: Add actual logo image -->

@@ -42,21 +42,22 @@
   },
   "dependencies": {
     "@byloth/nuxt-vuert-module": "^1.4.1",
-    "@nuxt/content": "^3.7.1",
-    "@nuxt/ui": "^4.0.0",
-    "@pinia/nuxt": "^0.11.2",
-    "nuxt": "^4.1.2",
-    "pinia": "^3.0.3",
-    "vue": "^3.5.22",
-    "vue-router": "^4.5.1"
+    "@nuxt/content": "^3.11.2",
+    "@nuxt/ui": "^4.4.0",
+    "@pinia/nuxt": "^0.11.3",
+    "better-sqlite3": "^12.6.2",
+    "nuxt": "^4.3.1",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.28",
+    "vue-router": "^5.0.2"
   },
   "devDependencies": {
-    "@byloth/eslint-config-nuxt": "^3.2.1",
-    "@eslint/compat": "^1.4.0",
+    "@byloth/eslint-config-nuxt": "^3.2.2",
+    "@eslint/compat": "^2.0.2",
     "husky": "^9.1.7",
-    "sass": "^1.93.2",
-    "typescript": "^5.9.2",
-    "vue-tsc": "^3.0.8"
+    "sass": "^1.97.3",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.2.4"
   },
   "private": true
 }
